@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Behna - Traditional Women's Apparel</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/swiper/8.4.5/swiper-bundle.min.css">
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700&display=swap");
+
+        body {
+            font-family: "Barlow", sans-serif;
+            background: #e9ebef;
+            margin: 0;
+            padding: 0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            vertical-align: middle;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            background: white;
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: #2b2d42;
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #2b2d42;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            color: #ff215a;
+        }
+
+        .contact-btn {
+            background: #2b2d42;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+
+        .contact-btn:hover {
+            background: #ff215a;
+        }
+
+        /* Main Container */
+        .bdt-timeline-container {
+            display: flow-root;
+            box-sizing: content-box;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 15px;
+            padding-right: 15px;
+            overflow: hidden;
+        }
+
+        /* Slider Wrapper */
+        .upk-salf-slider-wrapper {
+            display: flex;
+            flex-direction: row;
+            background: #fff;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            height: 500px;
+            padding: 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .swiper-container {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .swiper-wrapper {
+            width: 100%;
+            height: 100%;
+        }
+
+        .upk-salf-item {
+            position: relative;
+            display: flex;
+            flex-direction: row-reverse;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .upk-salf-item.swiper-slide-active .upk-salf-title,
+        .upk-salf-item.swiper-slide-active .upk-salf-desc,
+        .upk-salf-item.swiper-slide-active .upk-salf-button {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .upk-salf-image-wrap {
+            height: 100%;
+            width: 70%;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .upk-xanc-img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .upk-salf-content-wrap {
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            max-width: 450px;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(15px);
+            transition: backdrop-filter 0.9s;
+            padding: 40px;
+            z-index: 10;
+        }
+
+        .upk-salf-title {
+            font-size: 32px;
+            font-weight: 700;
+            line-height: 1.2;
+            color: #2b2d42;
+            text-transform: capitalize;
+            margin-bottom: 20px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease 0.2s;
+        }
+
+        .upk-salf-desc {
+            color: #656565;
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 25px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease 0.4s;
+        }
+
+        .upk-salf-button {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease 0.6s;
+        }
+
+        .upk-salf-button .link {
+            color: #2b2d42;
+            cursor: pointer;
+            font-weight: 600;
+            text-decoration: none;
+            text-transform: capitalize;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .upk-salf-button .link:hover {
+            color: #ff215a;
+        }
+
+        .arrow-icon {
+            position: relative;
+            top: 0;
+            transition: transform 0.3s ease;
+            vertical-align: middle;
+        }
+
+        .arrow-icon--circle {
+            transition: stroke-dashoffset 0.3s ease;
+            stroke-dasharray: 95;
+            stroke-dashoffset: 95;
+        }
+
+        .link--arrowed g {
+            stroke: currentColor;
+            color: #2b2d42;
+        }
+
+        .link--arrowed:hover .arrow-icon {
+            transform: translate3d(5px, 0, 0);
+        }
+
+        .link--arrowed:hover .arrow-icon--circle {
+            stroke-dashoffset: 0;
+        }
+
+        .link--arrowed:hover g {
+            color: #ff215a;
+        }
+
+        /* Navigation */
+        .upk-salf-nav-pag-wrap {
+            position: absolute;
+            top: 0;
+            height: 100%;
+            right: 0;
+            z-index: 20;
+        }
+
+        .upk-salf-navigation {
+            margin-top: 40px;
+            margin-right: 20px;
+        }
+
+        .upk-salf-navigation .link--arrowed {
+            display: inline-block;
+        }
+
+        .upk-salf-navigation .upk-button-next {
+            margin-top: 15px;
+            transform: rotate(90deg);
+        }
+
+        .upk-salf-navigation .upk-button-prev {
+            transform: rotate(-90deg);
+        }
+
+        /* Pagination */
+        .upk-salf-pagi-wrap {
+            position: absolute;
+            top: 50%;
+            right: 0;
+            margin-right: 45px;
+            transform: translateY(-50%);
+        }
+
+        .swiper-pagination-bullet {
+            background-color: transparent;
+            opacity: 0.8;
+            width: 20px;
+            height: 20px;
+            margin: 6px 0;
+            display: block;
+        }
+
+        .swiper-pagination-bullet--svg-animation svg {
+            transform: rotate(-90deg);
+        }
+
+        .svg__circle-inner {
+            stroke: #2b2d42;
+            fill: transparent;
+            transition: all 0.3s ease;
+        }
+
+        .swiper-pagination-bullet-active .svg__circle {
+            stroke: #ff215a;
+            stroke-dasharray: 75;
+            stroke-dashoffset: 0;
+            animation: progress 4s ease-in-out 1 forwards;
+        }
+
+        .swiper-pagination-bullet-active .svg__circle-inner {
+            fill: #2b2d42;
+            stroke: #ff215a;
+        }
+
+        @keyframes progress {
+            0% {
+                stroke-dashoffset: 75;
+                opacity: 1;
+            }
+            95% {
+                stroke-dashoffset: 0;
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+                stroke-dashoffset: 0;
+            }
+        }
+
+        /* Just Landed Section */
+        .just-landed {
+            text-align: center;
+            padding: 60px 0;
+            background: white;
+        }
+
+        .just-landed h2 {
+            font-size: 48px;
+            font-weight: 700;
+            color: #2b2d42;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+            
+            .upk-salf-slider-wrapper {
+                height: 400px;
+            }
+
+            .upk-salf-content-wrap {
+                max-width: 90%;
+                padding: 30px 20px;
+                position: absolute;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                bottom: 20px;
+                top: auto;
+            }
+
+            .upk-salf-image-wrap {
+                width: 100%;
+            }
+
+            .upk-salf-title {
+                font-size: 24px;
+            }
+
+            .upk-salf-desc {
+                font-size: 14px;
+            }
+
+            .upk-salf-navigation {
+                margin-top: 20px;
+                margin-right: 10px;
+            }
+
+            .upk-salf-pagi-wrap {
+                margin-right: 25px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .upk-salf-slider-wrapper {
+                height: 600px;
+            }
+
+            .upk-salf-title {
+                font-size: 42px;
+            }
+
+            .upk-salf-content-wrap {
+                padding: 50px;
+            }
+        }
+
+        @media (min-width: 1440px) {
+            .upk-salf-slider-wrapper {
+                height: 650px;
+            }
+
+            .upk-salf-title {
+                font-size: 48px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">BEHENA</a>
+            <ul class="nav-menu">
+                <li><a href="#">NEW ARRIVALS</a></li>
+                <li><a href="#">SAREES</a></li>
+                <li><a href="#">LEHENGAS</a></li>
+                <li><a href="#">SUITS & KURTAS</a></li>
+                <li><a href="#">DUPATTAS</a></li>
+                <li><a href="#">BRIDAL COLLECTION</a></li>
+                <li><a href="#">SALE</a></li>
+            </ul>
+            <a href="#" class="contact-btn">CONTACT US</a>
+        </div>
+    </nav>
+
+    <!-- Hero Swiper Slider -->
+    <section class="hero-slider-container">
+        <div class="bdt-timeline-container">
+            <div class="upk-salf-slider-wrapper">
+                <div class="swiper-container mySwiper2">
+                    <div class="swiper-wrapper">
+                        <div class="upk-salf-item swiper-slide">
+                            <div class="upk-salf-image-wrap">
+                                <img class="upk-xanc-img" src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=800&h=600&fit=crop" alt="Traditional Saree Collection" />
+                            </div>
+                            <div class="upk-salf-content-wrap">
+                                <h3 class="upk-salf-title" data-swiper-parallax-y="-150" data-swiper-parallax-duration="1200">
+                                    Exquisite Traditional Sarees
+                                </h3>
+                                <div class="upk-salf-desc" data-swiper-parallax-y="-200" data-swiper-parallax-duration="1400">
+                                    Discover our stunning collection of handwoven sarees crafted by master artisans. Each piece tells a story of tradition, elegance, and timeless beauty.
+                                </div>
+                                <div class="upk-salf-button" data-swiper-parallax-y="-300" data-swiper-parallax-duration="1500">
+                                    <a class="link link--arrowed" href="#">
+                                        Explore Collection
+                                        <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 32 32">
+                                            <g fill="none" stroke="#ff215a" stroke-width="1.5" stroke-linejoin="round" stroke-miterlimit="10">
+                                                <circle class="arrow-icon--circle" cx="16" cy="16" r="15.12"></circle>
+                                                <path class="arrow-icon--arrow" d="M16.14 9.93L22.21 16l-6.07 6.07M8.23 16h13.98"></path>
+                                            </g>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="upk-salf-item swiper-slide">
+                            <div class="upk-salf-image-wrap">
+                                <img class="upk-xanc-img" src="https://images.unsplash.com/photo-1583391733956-6c78276477e2?w=800&h=600&fit=crop" alt="Designer Lehengas" />
+                            </div>
+                            <div class="upk-salf-content-wrap">
+                                <h3 class="upk-salf-title" data-swiper-parallax-y="-150" data-swiper-parallax-duration="1200">
+                                    Designer Lehengas & Sharara Sets
+                                </h3>
+                                <div class="upk-salf-desc" data-swiper-parallax-y="-200" data-swiper-parallax-duration="1400">
+                                    Make every celebration memorable with our designer lehengas and sharara sets. Perfect for weddings, festivals, and special occasions.
+                                </div>
+                                <div class="upk-salf-button" data-swiper-parallax-y="-300" data-swiper-parallax-duration="1500">
+                                    <a class="link link--arrowed" href="#">
+                                        Shop Lehengas
+                                        <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 32 32">
+                                            <g fill="none" stroke="#ff215a" stroke-width="1.5" stroke-linejoin="round" stroke-miterlimit="10">
+                                                <circle class="arrow-icon--circle" cx="16" cy="16" r="15.12"></circle>
+                                                <path class="arrow-icon--arrow" d="M16.14 9.93L22.21 16l-6.07 6.07M8.23 16h13.98"></path>
+                                            </g>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="upk-salf-item swiper-slide">
+                            <div class="upk-salf-image-wrap">
+                                <img class="upk-xanc-img" src="https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?w=800&h=600&fit=crop" alt="Bridal Collection" />
+                            </div>
+                            <div class="upk-salf-content-wrap">
+                                <h3 class="upk-salf-title" data-swiper-parallax-y="-150" data-swiper-parallax-duration="1200">
+                                    Bridal Collection
+                                </h3>
+                                <div class="upk-salf-desc" data-swiper-parallax-y="-200" data-swiper-parallax-duration="1400">
+                                    Your dream wedding deserves the perfect outfit. Explore our exclusive bridal collection featuring intricate embroidery and luxurious fabrics.
+                                </div>
+                                <div class="upk-salf-button" data-swiper-parallax-y="-300" data-swiper-parallax-duration="1500">
+                                    <a class="link link--arrowed" href="#">
+                                        View Bridal Wear
+                                        <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 32 32">
+                                            <g fill="none" stroke="#ff215a" stroke-width="1.5" stroke-linejoin="round" stroke-miterlimit="10">
+                                                <circle class="arrow-icon--circle" cx="16" cy="16" r="15.12"></circle>
+                                                <path class="arrow-icon--arrow" d="M16.14 9.93L22.21 16l-6.07 6.07M8.23 16h13.98"></path>
+                                            </g>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="upk-salf-item swiper-slide">
+                            <div class="upk-salf-image-wrap">
+                                <img class="upk-xanc-img" src="https://images.unsplash.com/photo-1506629905750-b4b52b5d3206?w=800&h=600&fit=crop" alt="Kurta Sets" />
+                            </div>
+                            <div class="upk-salf-content-wrap">
+                                <h3 class="upk-salf-title" data-swiper-parallax-y="-150" data-swiper-parallax-duration="1200">
+                                    Elegant Kurta Sets
+                                </h3>
+                                <div class="upk-salf-desc" data-swiper-parallax-y="-200" data-swiper-parallax-duration="1400">
+                                    Comfortable yet stylish kurta sets perfect for daily wear and casual occasions. Experience the perfect blend of tradition and contemporary style.
+                                </div>
+                                <div class="upk-salf-button" data-swiper-parallax-y="-300" data-swiper-parallax-duration="1500">
+                                    <a class="link link--arrowed" href="#">
+                                        Shop Kurtas
+                                        <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 32 32">
+                                            <g fill="none" stroke="#ff215a" stroke-width="1.5" stroke-linejoin="round" stroke-miterlimit="10">
+                                                <circle class="arrow-icon--circle" cx="16" cy="16" r="15.12"></circle>
+                                                <path class="arrow-icon--arrow" d="M16.14 9.93L22.21 16l-6.07 6.07M8.23 16h13.98"></path>
+                                            </g>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="upk-salf-nav-pag-wrap">
+                    <div class="upk-salf-navigation">
+                        <div class="upk-button-prev upk-n-p">
+                            <a class="link link--arrowed" href="#">
+                                <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 32 32">
+                                    <g fill="none" stroke="#ff215a" stroke-width="1.5" stroke-linejoin="round" stroke-miterlimit="10">
+                                        <circle class="arrow-icon--circle" cx="16" cy="16" r="15.12"></circle>
+                                        <path class="arrow-icon--arrow" d="M16.14 9.93L22.21 16l-6.07 6.07M8.23 16h13.98"></path>
+                                    </g>
+                                </svg>
+                            </a>
+                        </div>
+                        <div class="upk-button-next upk-n-p">
+                            <a class="link link--arrowed" href="#">
+                                <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 32 32">
+                                    <g fill="none" stroke="#ff215a" stroke-width="1.5" stroke-linejoin="round" stroke-miterlimit="10">
+                                        <circle class="arrow-icon--circle" cx="16" cy="16" r="15.12"></circle>
+                                        <path class="arrow-icon--arrow" d="M16.14 9.93L22.21 16l-6.07 6.07M8.23 16h13.98"></path>
+                                    </g>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="upk-salf-pagi-wrap">
+                        <div class="swiper-pagination"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Just Landed Section -->
+    <section class="just-landed">
+        <div class="bdt-timeline-container">
+            <h2>JUST LANDED</h2>
+        </div>
+    </section>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/swiper/8.4.5/swiper-bundle.min.js"></script>
+    <script>
+        // Initialize Swiper Hero Slider
+        var mainSlider = new Swiper(".mySwiper2", {
+            parallax: true,
+            speed: 1200,
+            effect: "slide",
+            direction: "vertical",
+            autoplay: {
+                delay: 4000,
+                disableOnInteraction: false,
+            },
+            loop: true,
+            navigation: {
+                nextEl: ".upk-button-next",
+                prevEl: ".upk-button-prev",
+            },
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+                renderBullet: function (index, className) {
+                    return (
+                        '<span class="' +
+                        className +
+                        ' swiper-pagination-bullet--svg-animation"><svg width="28" height="28" viewBox="0 0 28 28"><circle class="svg__circle" cx="14" cy="14" r="10" fill="none" stroke-width="2"></circle><circle class="svg__circle-inner" cx="14" cy="14" r="2" stroke-width="3"></circle></svg></span>'
+                    );
+                },
+            },
+        });
+    </script>
+</body>
+</html>
