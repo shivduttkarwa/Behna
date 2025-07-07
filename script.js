@@ -1,175 +1,243 @@
-// Initialize Swiper Hero Slider
-var mainSlider = new Swiper(".mySwiper2", {
-  parallax: true,
-  speed: 1200,
-  effect: "slide",
-  direction: "vertical",
-  autoplay: true,
-  navigation: {
-    nextEl: ".upk-button-next",
-    prevEl: ".upk-button-prev",
-  },
-  pagination: {
-    el: ".swiper-pagination",
-    clickable: true,
-    renderBullet: function (index, className) {
-      return (
-        '<span class="' +
-        className +
-        ' swiper-pagination-bullet--svg-animation"><svg width="28" height="28" viewBox="0 0 28 28"><circle class="svg__circle" cx="14" cy="14" r="10" fill="none" stroke-width="2"></circle><circle class="svg__circle-inner" cx="14" cy="14" r="2" stroke-width="3"></circle></svg></span>'
-      );
-    },
-  },
-});
+//========================Slider JavaScript==========================
+let currentSlideIndex = 0;
+let isTransitioning = false;
+let autoSlideTimer = null;
+
+const slides = document.querySelectorAll(".slide");
+const totalSlides = slides.length;
+const dots = document.querySelectorAll(".nav-dot");
+const slideCounter = document.querySelector(".slide-counter .current");
+
+// Update UI elements
+function updateSlideCounter() {
+  slideCounter.textContent = String(currentSlideIndex + 1).padStart(2, "0");
+}
+
+function updateDots() {
+  dots.forEach((dot, index) => {
+    dot.classList.toggle("active", index === currentSlideIndex);
+  });
+}
+
+// Fixed video handling
+function handleVideoPlayback(activeIndex) {
+  slides.forEach((slide, index) => {
+    const video = slide.querySelector("video");
+    if (!video) return;
+
+    if (index === activeIndex) {
+      video.muted = true;
+      video.currentTime = 0;
+      video.play().catch(console.log);
+    } else {
+      video.pause();
+      video.currentTime = 0;
+    }
+  });
+}
+
+// Fixed main slide transition function
+function showSlide(targetIndex) {
+  if (isTransitioning || targetIndex === currentSlideIndex) return;
+
+  const prevIndex = currentSlideIndex;
+  isTransitioning = true;
+  targetIndex = Math.max(0, Math.min(targetIndex, totalSlides - 1));
+
+  // Update current index immediately
+  currentSlideIndex = targetIndex;
+
+  // Remove all transition classes first
+  slides.forEach((slide) => {
+    slide.classList.remove("active", "prev");
+  });
+
+  // Apply new classes
+  slides[prevIndex].classList.add("prev");
+  slides[targetIndex].classList.add("active");
+
+  // Update UI
+  updateSlideCounter();
+  updateDots();
+  handleVideoPlayback(currentSlideIndex);
+
+  // Clean up after transition completes
+  setTimeout(() => {
+    slides.forEach((slide, index) => {
+      if (index !== currentSlideIndex) {
+        slide.classList.remove("active", "prev");
+      }
+    });
+    isTransitioning = false;
+  }, 1200); // Match CSS transition duration
+}
+
+// Navigation functions
+function nextSlide() {
+  if (isTransitioning) return;
+  const nextIndex = (currentSlideIndex + 1) % totalSlides;
+  showSlide(nextIndex);
+  resetAutoSlide();
+}
+
+function previousSlide() {
+  if (isTransitioning) return;
+  const prevIndex = (currentSlideIndex - 1 + totalSlides) % totalSlides;
+  showSlide(prevIndex);
+  resetAutoSlide();
+}
+
+function goToSlide(index) {
+  if (isTransitioning || index === currentSlideIndex) return;
+  showSlide(index);
+  resetAutoSlide();
+}
+
+// Auto slide functionality
+function startAutoSlide() {
+  stopAutoSlide();
+  autoSlideTimer = setInterval(() => {
+    if (!isTransitioning) {
+      nextSlide();
+    }
+  }, 6000);
+}
+
+function stopAutoSlide() {
+  if (autoSlideTimer) {
+    clearInterval(autoSlideTimer);
+    autoSlideTimer = null;
+  }
+}
+
+function resetAutoSlide() {
+  stopAutoSlide();
+  setTimeout(startAutoSlide, 1000);
+}
+
+// Video controls
+function toggleVideo(button) {
+  const slide = button.closest(".slide");
+  const video = slide.querySelector("video");
+
+  if (!video) return;
+
+  if (video.paused) {
+    video.play().catch(console.log);
+    button.innerHTML = "⏸";
+  } else {
+    video.pause();
+    button.innerHTML = "▶️";
+  }
+}
 
 // Mobile Navigation
-function toggleMobileNav() {
-  const mobileMenuBtn = document.querySelector(".mobile-menu-btn");
-  const mobileNav = document.querySelector(".mobile-nav");
-  const mobileOverlay = document.querySelector(".mobile-overlay");
+function toggleMobileMenu() {
+  const toggle = document.querySelector(".mobile-toggle");
+  const menu = document.getElementById("mobileMenu");
+  const backdrop = document.getElementById("mobileBackdrop");
+  const body = document.body;
 
-  mobileMenuBtn.classList.toggle("active");
-  mobileNav.classList.toggle("active");
-  mobileOverlay.classList.toggle("active");
-
-  if (mobileNav.classList.contains("active")) {
-    document.body.style.overflow = "hidden";
-  } else {
-    document.body.style.overflow = "";
-  }
+  toggle.classList.toggle("active");
+  menu.classList.toggle("active");
+  backdrop.classList.toggle("active");
+  body.classList.toggle("menu-open");
 }
 
-function closeMobileNav() {
-  const mobileMenuBtn = document.querySelector(".mobile-menu-btn");
-  const mobileNav = document.querySelector(".mobile-nav");
-  const mobileOverlay = document.querySelector(".mobile-overlay");
+function closeMobileMenu() {
+  const toggle = document.querySelector(".mobile-toggle");
+  const menu = document.getElementById("mobileMenu");
+  const backdrop = document.getElementById("mobileBackdrop");
+  const body = document.body;
 
-  mobileMenuBtn.classList.remove("active");
-  mobileNav.classList.remove("active");
-  mobileOverlay.classList.remove("active");
-  document.body.style.overflow = "";
+  toggle.classList.remove("active");
+  menu.classList.remove("active");
+  backdrop.classList.remove("active");
+  body.classList.remove("menu-open");
 }
 
-// Intersection Observer for animations
-const observerOptions = {
-  threshold: 0.1,
-  rootMargin: "0px 0px -50px 0px",
-};
-
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("visible");
-    }
-  });
-}, observerOptions);
-
-// Observe sections for fade-in animations
-document.querySelectorAll(".fade-in").forEach((section) => {
-  observer.observe(section);
-});
-
-// Color dot selection
-document.querySelectorAll(".color-dot").forEach((dot) => {
-  dot.addEventListener("click", function () {
-    this.parentElement.querySelectorAll(".color-dot").forEach((d) => {
-      d.style.border = "2px solid #ddd";
-    });
-    this.style.border = "2px solid #000";
-  });
-});
-
-// Smooth scrolling for anchor links
-document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-  anchor.addEventListener("click", function (e) {
-    e.preventDefault();
-    const target = document.querySelector(this.getAttribute("href"));
-    if (target) {
-      target.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
-    }
-  });
-});
-
-// Form submission
+// Close mobile menu when clicking on menu items
 document
-  .querySelector(".contact-form form")
-  .addEventListener("submit", function (e) {
-    e.preventDefault();
-
-    // Simple form validation and submission
-    const formData = new FormData(this);
-    const submitBtn = this.querySelector(".submit-btn");
-
-    submitBtn.textContent = "Sending...";
-    submitBtn.disabled = true;
-
-    // Simulate form submission
-    setTimeout(() => {
-      submitBtn.textContent = "Message Sent!";
-      submitBtn.style.background = "#28a745";
-
-      setTimeout(() => {
-        this.reset();
-        submitBtn.textContent = "Send Message";
-        submitBtn.style.background = "#000";
-        submitBtn.disabled = false;
-      }, 2000);
-    }, 1500);
+  .querySelectorAll(".mobile-nav-link, .mobile-contact-btn")
+  .forEach((link) => {
+    link.addEventListener("click", closeMobileMenu);
   });
 
-// Scroll to top functionality
-function scrollToTop() {
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth",
-  });
-}
+// Keyboard navigation
+document.addEventListener("keydown", (e) => {
+  if (isTransitioning) return;
 
-// Show/hide scroll to top button
-window.addEventListener("scroll", () => {
-  const scrollTop = document.querySelector(".scroll-top");
-  if (window.scrollY > 500) {
-    scrollTop.classList.add("visible");
-  } else {
-    scrollTop.classList.remove("visible");
+  switch (e.key) {
+    case "ArrowLeft":
+      previousSlide();
+      break;
+    case "ArrowRight":
+      nextSlide();
+      break;
+    case "Escape":
+      closeMobileMenu();
+      break;
   }
 });
 
-// CTA Button hover animation
-document.querySelector(".cta-btn").addEventListener("mouseenter", function () {
-  gsap.to(this, {
-    scale: 1.05,
-    duration: 0.2,
-    ease: "power2.out",
+// Touch navigation
+let touchStartX = 0;
+let touchEndX = 0;
+
+document.addEventListener(
+  "touchstart",
+  (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+  },
+  { passive: true }
+);
+
+document.addEventListener(
+  "touchend",
+  (e) => {
+    if (isTransitioning) return;
+
+    touchEndX = e.changedTouches[0].screenX;
+    const diff = touchStartX - touchEndX;
+    const threshold = 50;
+
+    if (Math.abs(diff) > threshold) {
+      if (diff > 0) {
+        nextSlide();
+      } else {
+        previousSlide();
+      }
+    }
+  },
+  { passive: true }
+);
+
+// Pause on hover (desktop only)
+if (window.innerWidth > 768) {
+  const slider = document.querySelector(".hero-slider");
+  slider.addEventListener("mouseenter", stopAutoSlide);
+  slider.addEventListener("mouseleave", startAutoSlide);
+}
+
+// Initialize
+document.addEventListener("DOMContentLoaded", () => {
+  // Ensure first slide is active
+  slides.forEach((slide, index) => {
+    slide.classList.toggle("active", index === 0);
   });
+
+  updateSlideCounter();
+  updateDots();
+
+  // Initialize videos
+  document.querySelectorAll("video").forEach((video) => {
+    video.muted = true;
+    video.preload = "auto";
+    video.playsInline = true;
+  });
+
+  // Start autoplay after a delay
+  setTimeout(startAutoSlide, 3000);
 });
 
-document.querySelector(".cta-btn").addEventListener("mouseleave", function () {
-  gsap.to(this, {
-    scale: 1,
-    duration: 0.2,
-    ease: "power2.out",
-  });
-});
-
-// Product card animations
-document.querySelectorAll(".product-card").forEach((card) => {
-  card.addEventListener("mouseenter", function () {
-    gsap.to(this, {
-      y: -10,
-      duration: 0.3,
-      ease: "power2.out",
-    });
-  });
-
-  card.addEventListener("mouseleave", function () {
-    gsap.to(this, {
-      y: 0,
-      duration: 0.3,
-      ease: "power2.out",
-    });
-  });
-});
+//================testimonial slider JavaScript==========================
