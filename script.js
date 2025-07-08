@@ -1,25 +1,33 @@
-//========================Slider JavaScript==========================
+// ======================== PRELOADER ========================
+window.addEventListener("load", function () {
+  const preloader = document.getElementById("preloader");
+  setTimeout(() => {
+    preloader.classList.add("fade-out");
+    setTimeout(() => {
+      preloader.style.display = "none";
+      // Initialize slider after preloader is hidden
+      initializeSlider();
+    }, 800);
+  }, 3000);
+});
+
+// ======================== SLIDER VARIABLES ========================
 let currentSlideIndex = 0;
 let isTransitioning = false;
 let autoSlideTimer = null;
+let isSliderInitialized = false;
 
 const slides = document.querySelectorAll(".slide");
 const totalSlides = slides.length;
 const dots = document.querySelectorAll(".nav-dot");
-const slideCounter = document.querySelector(".slide-counter .current");
 
-// Update UI elements
-function updateSlideCounter() {
-  slideCounter.textContent = String(currentSlideIndex + 1).padStart(2, "0");
-}
-
+// ======================== SLIDER FUNCTIONS ========================
 function updateDots() {
   dots.forEach((dot, index) => {
     dot.classList.toggle("active", index === currentSlideIndex);
   });
 }
 
-// Fixed video handling
 function handleVideoPlayback(activeIndex) {
   slides.forEach((slide, index) => {
     const video = slide.querySelector("video");
@@ -28,7 +36,10 @@ function handleVideoPlayback(activeIndex) {
     if (index === activeIndex) {
       video.muted = true;
       video.currentTime = 0;
-      video.play().catch(console.log);
+      const playPromise = video.play();
+      if (playPromise !== undefined) {
+        playPromise.catch((e) => console.log("Video autoplay failed:", e));
+      }
     } else {
       video.pause();
       video.currentTime = 0;
@@ -36,32 +47,35 @@ function handleVideoPlayback(activeIndex) {
   });
 }
 
-// Fixed main slide transition function
 function showSlide(targetIndex) {
-  if (isTransitioning || targetIndex === currentSlideIndex) return;
+  if (
+    isTransitioning ||
+    targetIndex === currentSlideIndex ||
+    !isSliderInitialized
+  )
+    return;
 
   const prevIndex = currentSlideIndex;
   isTransitioning = true;
   targetIndex = Math.max(0, Math.min(targetIndex, totalSlides - 1));
 
-  // Update current index immediately
   currentSlideIndex = targetIndex;
 
-  // Remove all transition classes first
+  // Remove all classes first
   slides.forEach((slide) => {
     slide.classList.remove("active", "prev");
   });
 
-  // Apply new classes
-  slides[prevIndex].classList.add("prev");
-  slides[targetIndex].classList.add("active");
+  // Apply new classes with slight delay for smooth transition
+  requestAnimationFrame(() => {
+    slides[prevIndex].classList.add("prev");
+    slides[targetIndex].classList.add("active");
+  });
 
-  // Update UI
-  updateSlideCounter();
   updateDots();
   handleVideoPlayback(currentSlideIndex);
 
-  // Clean up after transition completes
+  // Clean up after transition
   setTimeout(() => {
     slides.forEach((slide, index) => {
       if (index !== currentSlideIndex) {
@@ -69,32 +83,33 @@ function showSlide(targetIndex) {
       }
     });
     isTransitioning = false;
-  }, 1200); // Match CSS transition duration
+  }, 1000);
 }
 
-// Navigation functions
 function nextSlide() {
-  if (isTransitioning) return;
+  if (isTransitioning || !isSliderInitialized) return;
   const nextIndex = (currentSlideIndex + 1) % totalSlides;
   showSlide(nextIndex);
   resetAutoSlide();
 }
 
 function previousSlide() {
-  if (isTransitioning) return;
+  if (isTransitioning || !isSliderInitialized) return;
   const prevIndex = (currentSlideIndex - 1 + totalSlides) % totalSlides;
   showSlide(prevIndex);
   resetAutoSlide();
 }
 
 function goToSlide(index) {
-  if (isTransitioning || index === currentSlideIndex) return;
+  if (isTransitioning || index === currentSlideIndex || !isSliderInitialized)
+    return;
   showSlide(index);
   resetAutoSlide();
 }
 
-// Auto slide functionality
+// ======================== AUTO SLIDE ========================
 function startAutoSlide() {
+  if (!isSliderInitialized) return;
   stopAutoSlide();
   autoSlideTimer = setInterval(() => {
     if (!isTransitioning) {
@@ -115,7 +130,7 @@ function resetAutoSlide() {
   setTimeout(startAutoSlide, 1000);
 }
 
-// Video controls
+// ======================== VIDEO CONTROLS ========================
 function toggleVideo(button) {
   const slide = button.closest(".slide");
   const video = slide.querySelector("video");
@@ -131,32 +146,28 @@ function toggleVideo(button) {
   }
 }
 
-// Mobile Navigation
+// ======================== MOBILE NAVIGATION ========================
 function toggleMobileMenu() {
   const toggle = document.querySelector(".mobile-toggle");
   const menu = document.getElementById("mobileMenu");
   const backdrop = document.getElementById("mobileBackdrop");
-  const body = document.body;
 
   toggle.classList.toggle("active");
   menu.classList.toggle("active");
   backdrop.classList.toggle("active");
-  body.classList.toggle("menu-open");
 }
 
 function closeMobileMenu() {
   const toggle = document.querySelector(".mobile-toggle");
   const menu = document.getElementById("mobileMenu");
   const backdrop = document.getElementById("mobileBackdrop");
-  const body = document.body;
 
   toggle.classList.remove("active");
   menu.classList.remove("active");
   backdrop.classList.remove("active");
-  body.classList.remove("menu-open");
 }
 
-// Close mobile menu when clicking on menu items
+// ======================== EVENT LISTENERS ========================
 document
   .querySelectorAll(".mobile-nav-link, .mobile-contact-btn")
   .forEach((link) => {
@@ -165,7 +176,7 @@ document
 
 // Keyboard navigation
 document.addEventListener("keydown", (e) => {
-  if (isTransitioning) return;
+  if (isTransitioning || !isSliderInitialized) return;
 
   switch (e.key) {
     case "ArrowLeft":
@@ -195,7 +206,7 @@ document.addEventListener(
 document.addEventListener(
   "touchend",
   (e) => {
-    if (isTransitioning) return;
+    if (isTransitioning || !isSliderInitialized) return;
 
     touchEndX = e.changedTouches[0].screenX;
     const diff = touchStartX - touchEndX;
@@ -219,25 +230,46 @@ if (window.innerWidth > 768) {
   slider.addEventListener("mouseleave", startAutoSlide);
 }
 
-// Initialize
-document.addEventListener("DOMContentLoaded", () => {
+// ======================== INITIALIZATION ========================
+function initializeSlider() {
+  isSliderInitialized = true;
+
   // Ensure first slide is active
   slides.forEach((slide, index) => {
     slide.classList.toggle("active", index === 0);
   });
 
-  updateSlideCounter();
   updateDots();
 
-  // Initialize videos
+  // Initialize videos with better mobile support
   document.querySelectorAll("video").forEach((video) => {
     video.muted = true;
     video.preload = "auto";
     video.playsInline = true;
+    video.setAttribute("webkit-playsinline", "true");
+
+    // Handle video load
+    video.addEventListener("loadeddata", () => {
+      if (video.closest(".slide").classList.contains("active")) {
+        const playPromise = video.play();
+        if (playPromise !== undefined) {
+          playPromise.catch((e) => console.log("Video autoplay failed:", e));
+        }
+      }
+    });
   });
 
-  // Start autoplay after a delay
-  setTimeout(startAutoSlide, 3000);
-});
+  // Handle first slide video if it exists
+  handleVideoPlayback(currentSlideIndex);
 
-//================testimonial slider JavaScript==========================
+  // Start autoplay after initialization
+  setTimeout(startAutoSlide, 2000);
+}
+
+// Ensure videos are ready on page load
+document.addEventListener("DOMContentLoaded", () => {
+  // Preload videos
+  document.querySelectorAll("video").forEach((video) => {
+    video.load();
+  });
+});

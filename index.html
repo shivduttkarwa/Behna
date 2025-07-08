@@ -24,10 +24,32 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+    <!-- Preloader -->
+    <div class="preloader" id="preloader">
+      <div class="preloader-content">
+        <div class="preloader-logo">
+          <img
+            src="../img/logo.png"
+            alt="Fashion Logo"
+            class="preloader-logo-img"
+          />
+        </div>
+        <div class="loading-bar">
+          <div class="loading-progress"></div>
+        </div>
+      </div>
+    </div>
+
     <!-- Navigation -->
     <nav class="navbar">
       <div class="nav-container">
-        <a href="#" class="logo">FASHION</a>
+        <a href="#" class="logo">
+          <img
+            src="../img/logo.png"
+            alt="Fashion Logo"
+            class="navbar-logo-img"
+          />
+        </a>
 
         <ul class="nav-menu">
           <li><a href="#" class="nav-link">Home</a></li>
@@ -87,82 +109,58 @@
 
     <!-- Hero Slider -->
     <section class="hero-slider">
-      <!-- Slide Counter -->
-      <div class="slide-counter">
-        <span class="current">01</span>
-        <span class="total">/04</span>
-      </div>
-
-      <!-- Slide 1 -->
+      <!-- Slide 1 - Video -->
       <div class="slide active">
-        <video class="slide-bg video" muted loop preload="auto">
+        <video class="slide-bg video" muted loop playsinline preload="auto">
           <source src="img/hero-video1.mp4" type="video/mp4" />
         </video>
-
         <div class="slide-overlay"></div>
-
         <div class="slide-content">
           <h1 class="slide-title">Summer Collection</h1>
-          <p class="slide-subtitle">
-            Discover the latest trends in summer fashion with our exclusive
-            collection
-          </p>
+          <p class="slide-subtitle">Latest trends in summer fashion</p>
           <div class="slide-ctas">
-            <a href="#" class="cta-button cta-primary">Shop Now</a>
-            <a href="#" class="cta-button cta-secondary">View Catalog</a>
+            <a href="#" class="cta-button">Shop Now</a>
           </div>
         </div>
-
         <div class="project-info">
           <div class="project-type">Collection</div>
-          <div class="project-category">Winter 2025</div>
+          <div class="project-category">Summer 2025</div>
           <a href="#" class="project-cta">Explore →</a>
         </div>
-      </div>
-
-      <!-- Slide 2 -->
-      <div class="slide">
-        <img src="img/hero-11.jpg" alt="Fashion Collection" class="slide-bg" />
-        <div class="slide-overlay"></div>
-
-        <div class="slide-content">
-          <h1 class="slide-title">Exclusive Designs</h1>
-          <p class="slide-subtitle">
-            Handcrafted pieces that define modern elegance and timeless style
-          </p>
-          <div class="slide-ctas">
-            <a href="#" class="cta-button cta-primary">Discover</a>
-            <a href="#" class="cta-button cta-secondary">Learn More</a>
-          </div>
-        </div>
-
-        <div class="project-info">
-          <div class="project-type">Limited Edition</div>
-          <div class="project-category">Designer Series</div>
-          <a href="#" class="project-cta">View Collection →</a>
-        </div>
-
         <div class="video-controls">
           <button class="play-pause-btn" onclick="toggleVideo(this)">⏸</button>
         </div>
       </div>
 
-      <!-- Slide 3 -->
+      <!-- Slide 2 - Image -->
       <div class="slide">
-        <img src="img/hero-2.jpg" alt="Fashion Store" class="slide-bg" />
+        <img src="img/hero-2.jpg" alt="Fashion Collection" class="slide-bg" />
         <div class="slide-overlay"></div>
-
         <div class="slide-content">
-          <h1 class="slide-title">Premium Quality</h1>
-          <p class="slide-subtitle">
-            Experience uncompromising quality and craftsmanship in every piece
-          </p>
+          <h1 class="slide-title">Exclusive Designs</h1>
+          <p class="slide-subtitle">Modern elegance and timeless style</p>
           <div class="slide-ctas">
-            <a href="#" class="cta-button cta-primary">Shop Quality</a>
-            <a href="#" class="cta-button cta-secondary">Our Story</a>
+            <a href="#" class="cta-button">Discover</a>
           </div>
         </div>
+        <div class="project-info">
+          <div class="project-type">Limited Edition</div>
+          <div class="project-category">Designer Series</div>
+          <a href="#" class="project-cta">View Collection →</a>
+        </div>
+      </div>
 
+      <!-- Slide 3 - Image -->
+      <div class="slide">
+        <img src="img/hero-3.jpg" alt="Fashion Store" class="slide-bg" />
+        <div class="slide-overlay"></div>
+        <div class="slide-content">
+          <h1 class="slide-title">Premium Quality</h1>
+          <p class="slide-subtitle">Uncompromising craftsmanship</p>
+          <div class="slide-ctas">
+            <a href="#" class="cta-button">Shop Quality</a>
+          </div>
+        </div>
         <div class="project-info">
           <div class="project-type">Craftsmanship</div>
           <div class="project-category">Premium Line</div>
@@ -170,28 +168,26 @@
         </div>
       </div>
 
-      <!-- Slide 4 -->
+      <!-- Slide 4 - Video -->
       <div class="slide">
-        <video class="slide-bg video" muted loop preload="auto">
+        <video class="slide-bg video" muted loop playsinline preload="auto">
           <source src="img/hero_vid3.mp4" type="video/mp4" />
         </video>
         <div class="slide-overlay"></div>
-
         <div class="slide-content">
           <h1 class="slide-title">New Arrivals</h1>
-          <p class="slide-subtitle">
-            Fresh styles and trending pieces to complete your wardrobe
-          </p>
+          <p class="slide-subtitle">Fresh styles and trending pieces</p>
           <div class="slide-ctas">
-            <a href="#" class="cta-button cta-primary">See New Items</a>
-            <a href="#" class="cta-button cta-secondary">All Products</a>
+            <a href="#" class="cta-button">See New Items</a>
           </div>
         </div>
-
         <div class="project-info">
           <div class="project-type">New</div>
           <div class="project-category">Latest Arrivals</div>
           <a href="#" class="project-cta">Browse New →</a>
+        </div>
+        <div class="video-controls">
+          <button class="play-pause-btn" onclick="toggleVideo(this)">⏸</button>
         </div>
       </div>
 
@@ -213,95 +209,6 @@
       <div class="corner-sticker sticker-top-left">TRADITIONAL</div>
       <div class="corner-sticker sticker-bottom-right">2025</div>
       <div class="corner-sticker sticker-top-right">FASHION</div>
-    </section>
-
-    <!-- New Arrivals Section -->
-
-    <section class="behna-new-arrivals-section">
-      <div class="container">
-        <h2 class="behna-new-arrivals-title">New Arrivals</h2>
-        <div class="behna-new-arrivals-grid">
-          <!-- Card 1 -->
-          <div class="behna-new-arrivals-card">
-            <img src="img/hero-1.avif" alt="Zoya Kurta" />
-            <div class="behna-new-arrivals-content">
-              <h3>Zoya Kurta Set</h3>
-              <p class="origin">Pastel Peach · ₹2,899</p>
-              <p class="desc">
-                Mirror-embroidered cotton kurta perfect for festive comfort.
-              </p>
-              <button class="behna-new-arrivals-btn">Shop Now</button>
-            </div>
-          </div>
-
-          <!-- Card 2 -->
-          <div class="behna-new-arrivals-card">
-            <img src="img/hero-2.jpg" alt="Noor Anarkali" />
-            <div class="behna-new-arrivals-content">
-              <h3>Noor Anarkali</h3>
-              <p class="origin">Emerald Green · ₹4,250</p>
-              <p class="desc">
-                Classic Mughal vibes with rich zari craftsmanship.
-              </p>
-              <button class="behna-new-arrivals-btn">View Details</button>
-            </div>
-          </div>
-
-          <!-- Card 3 -->
-          <div class="behna-new-arrivals-card">
-            <img src="img/hero-2.jpg" alt="Meher Saree" />
-            <div class="behna-new-arrivals-content">
-              <h3>Meher Organza Saree</h3>
-              <p class="origin">Ivory Shimmer · ₹3,799</p>
-              <p class="desc">
-                Feather-light organza drape with subtle shimmer accents.
-              </p>
-              <button class="behna-new-arrivals-btn">Buy Now</button>
-            </div>
-          </div>
-
-          <!-- Card 4 -->
-          <div class="behna-new-arrivals-card">
-            <img src="img/hero-3.jpg" alt="Ira Sharara Set" />
-            <div class="behna-new-arrivals-content">
-              <h3>Ira Sharara Set</h3>
-              <p class="origin">Rose Blush · ₹3,450</p>
-              <p class="desc">
-                Flared sharara pants with sequin-detailed kurti for modern
-                bridesmaids.
-              </p>
-              <button class="behna-new-arrivals-btn">Explore</button>
-            </div>
-          </div>
-
-          <!-- Card 5 -->
-          <div class="behna-new-arrivals-card">
-            <img src="img/pexels-dhanno-25185000.jpg" alt="Aarohi Co-ord" />
-            <div class="behna-new-arrivals-content">
-              <h3>Aarohi Co-ord Set</h3>
-              <p class="origin">Rust & Beige · ₹2,499</p>
-              <p class="desc">
-                Smart ethnic co-ord set for power-packed work or brunch style.
-              </p>
-              <button class="behna-new-arrivals-btn">Buy Now</button>
-            </div>
-          </div>
-
-          <!-- Card 6 -->
-          <div class="behna-new-arrivals-card">
-            <img src="img/about.jpg" alt="Diya Dupatta Edit" />
-            <div class="behna-new-arrivals-content">
-              <h3>Diya Dupatta Edit</h3>
-              <p class="origin">Golden Net · ₹999</p>
-              <p class="desc">
-                Sheer gold dupatta with delicate scallop lace border — light and
-                luxe.
-              </p>
-              <button class="behna-new-arrivals-btn">Add to Cart</button>
-            </div>
-          </div>
-        </div>
-      </div>
     </section>
 
     <!-- Scripts -->
