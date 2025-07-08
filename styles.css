@@ -999,7 +999,7 @@ body {
 
 @media (max-width: 30rem) {
   .hero-slider {
-    height: calc(100vh - 4.375rem);
+    height: 80vh;
   }
 
   .slide {
@@ -1059,7 +1059,7 @@ body {
   }
 
   .video-controls {
-    bottom: 5.5rem;
+    bottom: 3.5rem;
   }
 
   .play-pause-btn {
