@@ -273,3 +273,61 @@ document.addEventListener("DOMContentLoaded", () => {
     video.load();
   });
 });
+
+//====================New Arrivals Section=====================
+// Add smooth scroll behavior for better UX
+document.addEventListener("DOMContentLoaded", function () {
+  // Add click handlers for buttons
+  const buttons = document.querySelectorAll(".card__btn");
+
+  buttons.forEach((button) => {
+    button.addEventListener("click", function (e) {
+      e.preventDefault();
+
+      // Add a subtle click animation
+      this.style.transform = "scale(0.95)";
+      setTimeout(() => {
+        this.style.transform = "scale(1)";
+      }, 150);
+
+      // You can add navigation logic here
+      console.log("Navigating to product page...");
+    });
+  });
+
+  // Intersection Observer for scroll animations
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: "0px 0px -50px 0px",
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = "1";
+        entry.target.style.transform = "translateY(0)";
+      }
+    });
+  }, observerOptions);
+
+  // Observe all cards for scroll animation
+  document.querySelectorAll(".cards__item").forEach((card) => {
+    observer.observe(card);
+  });
+});
+
+// Add hover sound effect (optional)
+function addHoverEffects() {
+  const cards = document.querySelectorAll(".card");
+
+  cards.forEach((card) => {
+    card.addEventListener("mouseenter", function () {
+      this.style.transition = "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)";
+    });
+  });
+}
+
+// Initialize hover effects
+addHoverEffects();
+
+// ======================== trending section ========================

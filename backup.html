@@ -1,801 +1,658 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Behena - Traditional Women's Clothing</title>
-    <!-- Google Fonts -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Oswald:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <!-- Swiper CSS -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.4.5/swiper-bundle.min.css"
-    />
-    <!-- Font Awesome -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <!-- Header -->
-    <header class="header">
-      <nav class="navbar">
-        <a href="#" class="logo">BEHENA</a>
-        <ul class="nav-menu">
-          <li><a href="#">New Arrivals</a></li>
-          <li><a href="#">Sarees</a></li>
-          <li><a href="#">Lehengas</a></li>
-          <li><a href="#">Suits & Kurtas</a></li>
-          <li><a href="#">Dupattas</a></li>
-          <li><a href="#">Bridal Collection</a></li>
-          <li><a href="#">Sale</a></li>
-        </ul>
-        <a href="#contact" class="contact-btn">Contact Us</a>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elegance Couture | Premium Women's Apparel</title>
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700|Montserrat:300,400,600" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-        <div class="mobile-menu-btn" onclick="toggleMobileNav()">
-          <span></span>
-          <span></span>
-          <span></span>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: #f9f3f0;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://images.unsplash.com/photo-1483985988355-763728e1935b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            color: white;
+            text-align: center;
+            position: relative;
+        }
+
+        .header-content {
+            z-index: 2;
+        }
+
+        .header-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .header-content p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            letter-spacing: 1px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #e8b4b8;
+            color: #333;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background: #d8a3a7;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .main-nav {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px;
+            z-index: 10;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 400;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #e8b4b8;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background: white;
+            margin: 5px;
+            transition: all 0.3s ease;
+        }
+
+        /* Featured Collection */
+        .featured {
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 2px;
+            background: #e8b4b8;
+            bottom: -10px;
+            left: 25%;
+        }
+
+        .products {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            width: 300px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .product-img {
+            height: 350px;
+            overflow: hidden;
+        }
+
+        .product-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .product-card:hover .product-img img {
+            transform: scale(1.05);
+        }
+
+        .product-info {
+            padding: 20px;
+            text-align: left;
+        }
+
+        .product-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .product-price {
+            font-weight: 600;
+            color: #e8b4b8;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        /* About Section */
+        .about {
+            padding: 100px 0;
+            background: white;
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .about-img {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        /* Newsletter */
+        .newsletter {
+            padding: 80px 0;
+            background: #e8b4b8;
+            color: white;
+            text-align: center;
+        }
+
+        .newsletter h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .newsletter p {
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+
+        .newsletter-form {
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            border-radius: 30px 0 0 30px;
+            font-size: 1rem;
+        }
+
+        .newsletter-form button {
+            padding: 15px 30px;
+            background: #333;
+            color: white;
+            border: none;
+            border-radius: 0 30px 30px 0;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .newsletter-form button:hover {
+            background: #222;
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            padding: 50px 0 20px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .footer-col h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .footer-col h3:after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 2px;
+            background: #e8b4b8;
+            bottom: -8px;
+            left: 0;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-col ul li a:hover {
+            color: #e8b4b8;
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #e8b4b8;
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .header-content p {
+                font-size: 1rem;
+            }
+
+            .nav-links {
+                position: absolute;
+                right: 0;
+                top: 80px;
+                background: #333;
+                width: 100%;
+                flex-direction: column;
+                align-items: center;
+                padding: 20px 0;
+                clip-path: circle(0px at 90% -10%);
+                transition: all 0.5s ease-out;
+                pointer-events: none;
+            }
+
+            .nav-links li {
+                margin: 15px 0;
+            }
+
+            .nav-links.active {
+                clip-path: circle(1000px at 90% -10%);
+                pointer-events: all;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .hamburger.active div:nth-child(1) {
+                transform: rotate(-45deg) translate(-5px, 6px);
+            }
+
+            .hamburger.active div:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active div:nth-child(3) {
+                transform: rotate(45deg) translate(-5px, -6px);
+            }
+
+            .about-content {
+                flex-direction: column;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .newsletter-form input {
+                border-radius: 30px;
+                margin-bottom: 10px;
+            }
+
+            .newsletter-form button {
+                border-radius: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="main-nav">
+            <a href="#" class="logo">Elegance Couture</a>
+            <ul class="nav-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#featured">Collections</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </nav>
+        <div class="header-content">
+            <h1>Timeless Elegance</h1>
+            <p>Discover our premium collection of women's apparel designed for the modern, sophisticated woman who values quality and style.</p>
+            <a href="#featured" class="btn">Shop Now</a>
         </div>
-      </nav>
     </header>
 
-    <!-- Mobile Navigation -->
-    <div class="mobile-overlay" onclick="closeMobileNav()"></div>
-    <nav class="mobile-nav">
-      <div class="mobile-nav-header">
-        <div class="mobile-nav-logo">BEHENA</div>
-        <i class="fas fa-times mobile-nav-close" onclick="closeMobileNav()"></i>
-      </div>
-      <ul class="mobile-nav-menu">
-        <li><a href="#" onclick="closeMobileNav()">New Arrivals</a></li>
-        <li><a href="#" onclick="closeMobileNav()">Sarees</a></li>
-        <li><a href="#" onclick="closeMobileNav()">Lehengas</a></li>
-        <li><a href="#" onclick="closeMobileNav()">Suits & Kurtas</a></li>
-        <li><a href="#" onclick="closeMobileNav()">Dupattas</a></li>
-        <li><a href="#" onclick="closeMobileNav()">Bridal Collection</a></li>
-        <li><a href="#" onclick="closeMobileNav()">Sale</a></li>
-      </ul>
-      <a href="#contact" class="mobile-contact-btn" onclick="closeMobileNav()"
-        >Contact Us</a
-      >
-    </nav>
-
-    <!-- Hero Swiper Slider -->
-
-    <div class="bdt-timeline-container">
-      <div class="upk-salf-slider-wrapper">
-        <div class="swiper-container mySwiper2">
-          <div class="swiper-wrapper">
-            <div class="upk-salf-item swiper-slide">
-              <div class="upk-salf-image-wrap">
-                <img class="upk-xanc-img" src="img/hero-1.avif" />
-              </div>
-              <div class="upk-salf-content-wrap">
-                <h3
-                  class="upk-salf-title"
-                  data-swiper-parallax-y="-150"
-                  data-swiper-parallax-duration="1200"
-                >
-                  we help you make modern interior
-                </h3>
-                <div
-                  class="upk-salf-desc"
-                  data-swiper-parallax-y="-200"
-                  data-swiper-parallax-duration="1400"
-                >
-                  we will help you to make an elegant and luxurius interrior
-                  designed by porfessional interrior designer.
+    <section class="featured" id="featured">
+        <div class="container">
+            <h2 class="section-title">Featured Collection</h2>
+            <div class="products">
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1551232864-3f0890e580d9?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Silk Evening Dress">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Silk Evening Dress</h3>
+                        <p class="product-price">$189.99</p>
+                        <a href="#" class="btn">Add to Cart</a>
+                    </div>
                 </div>
-                <div
-                  class="upk-salf-button"
-                  data-swiper-parallax-y="-300"
-                  data-swiper-parallax-duration="1500"
-                >
-                  <a class="link link--arrowed" href="#"
-                    >read more
-                    <svg
-                      class="arrow-icon"
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="28"
-                      height="28"
-                      viewBox="0 0 32 32"
-                    >
-                      <g
-                        fill="none"
-                        stroke="#ff215a"
-                        stroke-width="1.5"
-                        stroke-linejoin="round"
-                        stroke-miterlimit="10"
-                      >
-                        <circle
-                          class="arrow-icon--circle"
-                          cx="16"
-                          cy="16"
-                          r="15.12"
-                        ></circle>
-                        <path
-                          class="arrow-icon--arrow"
-                          d="M16.14 9.93L22.21 16l-6.07 6.07M8.23 16h13.98"
-                        ></path>
-                      </g>
-                    </svg>
-                  </a>
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Wool Blend Coat">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Wool Blend Coat</h3>
+                        <p class="product-price">$249.99</p>
+                        <a href="#" class="btn">Add to Cart</a>
+                    </div>
                 </div>
-              </div>
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1581044777550-4cfa60707c03?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Linen Summer Set">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Linen Summer Set</h3>
+                        <p class="product-price">$129.99</p>
+                        <a href="#" class="btn">Add to Cart</a>
+                    </div>
+                </div>
             </div>
-
-            <div class="upk-salf-item swiper-slide">
-              <div class="upk-salf-image-wrap">
-                <img class="upk-xanc-img" src="img/hero-11.jpg" />
-              </div>
-              <div class="upk-salf-content-wrap">
-                <h3
-                  class="upk-salf-title"
-                  data-swiper-parallax-y="-150"
-                  data-swiper-parallax-duration="1200"
-                >
-                  we help you make modern interior
-                </h3>
-                <div
-                  class="upk-salf-desc"
-                  data-swiper-parallax-y="-200"
-                  data-swiper-parallax-duration="1400"
-                >
-                  we will help you to make an elegant and luxurius interrior
-                  designed by porfessional interrior designer.
-                </div>
-
-                <div
-                  class="upk-salf-button"
-                  data-swiper-parallax-y="-300"
-                  data-swiper-parallax-duration="1500"
-                >
-                  <a class="link link--arrowed" href="#"
-                    >read more
-                    <svg
-                      class="arrow-icon"
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="28"
-                      height="28"
-                      viewBox="0 0 32 32"
-                    >
-                      <g
-                        fill="none"
-                        stroke="#ff215a"
-                        stroke-width="1.5"
-                        stroke-linejoin="round"
-                        stroke-miterlimit="10"
-                      >
-                        <circle
-                          class="arrow-icon--circle"
-                          cx="16"
-                          cy="16"
-                          r="15.12"
-                        ></circle>
-                        <path
-                          class="arrow-icon--arrow"
-                          d="M16.14 9.93L22.21 16l-6.07 6.07M8.23 16h13.98"
-                        ></path>
-                      </g>
-                    </svg>
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <div class="upk-salf-item swiper-slide">
-              <div class="upk-salf-image-wrap">
-                <img class="upk-xanc-img" src="img/hero-2.jpg" />
-              </div>
-              <div class="upk-salf-content-wrap">
-                <h3
-                  class="upk-salf-title"
-                  data-swiper-parallax-y="-150"
-                  data-swiper-parallax-duration="1200"
-                >
-                  we help you make modern interior
-                </h3>
-                <div
-                  class="upk-salf-desc"
-                  data-swiper-parallax-y="-200"
-                  data-swiper-parallax-duration="1400"
-                >
-                  we will help you to make an elegant and luxurius interrior
-                  designed by porfessional interrior designer.
-                </div>
-
-                <div
-                  class="upk-salf-button"
-                  data-swiper-parallax-y="-300"
-                  data-swiper-parallax-duration="1500"
-                >
-                  <a class="link link--arrowed" href="#"
-                    >read more
-                    <svg
-                      class="arrow-icon"
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="28"
-                      height="28"
-                      viewBox="0 0 32 32"
-                    >
-                      <g
-                        fill="none"
-                        stroke="#ff215a"
-                        stroke-width="1.5"
-                        stroke-linejoin="round"
-                        stroke-miterlimit="10"
-                      >
-                        <circle
-                          class="arrow-icon--circle"
-                          cx="16"
-                          cy="16"
-                          r="15.12"
-                        ></circle>
-                        <path
-                          class="arrow-icon--arrow"
-                          d="M16.14 9.93L22.21 16l-6.07 6.07M8.23 16h13.98"
-                        ></path>
-                      </g>
-                    </svg>
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <div class="upk-salf-item swiper-slide">
-              <div class="upk-salf-image-wrap">
-                <img class="upk-xanc-img" src="img/hero-3.jpg" />
-              </div>
-              <div class="upk-salf-content-wrap">
-                <h3
-                  class="upk-salf-title"
-                  data-swiper-parallax-y="-150"
-                  data-swiper-parallax-duration="1200"
-                >
-                  we help you make modern interior
-                </h3>
-                <div
-                  class="upk-salf-desc"
-                  data-swiper-parallax-y="-200"
-                  data-swiper-parallax-duration="1400"
-                >
-                  we will help you to make an elegant and luxurius interrior
-                  designed by porfessional interrior designer.
-                </div>
-
-                <div
-                  class="upk-salf-button"
-                  data-swiper-parallax-y="-300"
-                  data-swiper-parallax-duration="1500"
-                >
-                  <a class="link link--arrowed" href="#"
-                    >read more
-                    <svg
-                      class="arrow-icon"
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="28"
-                      height="28"
-                      viewBox="0 0 32 32"
-                    >
-                      <g
-                        fill="none"
-                        stroke="#ff215a"
-                        stroke-width="1.5"
-                        stroke-linejoin="round"
-                        stroke-miterlimit="10"
-                      >
-                        <circle
-                          class="arrow-icon--circle"
-                          cx="16"
-                          cy="16"
-                          r="15.12"
-                        ></circle>
-                        <path
-                          class="arrow-icon--arrow"
-                          d="M16.14 9.93L22.21 16l-6.07 6.07M8.23 16h13.98"
-                        ></path>
-                      </g>
-                    </svg>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
-
-        <div class="upk-salf-nav-pag-wrap">
-          <div class="upk-salf-navigation">
-            <div class="upk-button-prev upk-n-p">
-              <a class="link link--arrowed" href="#">
-                <svg
-                  class="arrow-icon"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="28"
-                  height="28"
-                  viewBox="0 0 32 32"
-                >
-                  <g
-                    fill="none"
-                    stroke="#ff215a"
-                    stroke-width="1.5"
-                    stroke-linejoin="round"
-                    stroke-miterlimit="10"
-                  >
-                    <circle
-                      class="arrow-icon--circle"
-                      cx="16"
-                      cy="16"
-                      r="15.12"
-                    ></circle>
-                    <path
-                      class="arrow-icon--arrow"
-                      d="M16.14 9.93L22.21 16l-6.07 6.07M8.23 16h13.98"
-                    ></path>
-                  </g>
-                </svg>
-              </a>
-            </div>
-            <div class="upk-button-next upk-n-p">
-              <a class="link link--arrowed" href="#">
-                <svg
-                  class="arrow-icon"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="28"
-                  height="28"
-                  viewBox="0 0 32 32"
-                >
-                  <g
-                    fill="none"
-                    stroke="#ff215a"
-                    stroke-width="1.5"
-                    stroke-linejoin="round"
-                    stroke-miterlimit="10"
-                  >
-                    <circle
-                      class="arrow-icon--circle"
-                      cx="16"
-                      cy="16"
-                      r="15.12"
-                    ></circle>
-                    <path
-                      class="arrow-icon--arrow"
-                      d="M16.14 9.93L22.21 16l-6.07 6.07M8.23 16h13.98"
-                    ></path>
-                  </g>
-                </svg>
-              </a>
-            </div>
-          </div>
-
-          <div class="upk-salf-pagi-wrap">
-            <div class="swiper-pagination"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Just Landed Section -->
-    <section class="just-landed fade-in">
-      <h2 class="section-title">Just Landed</h2>
-      <div class="category-grid">
-        <div class="category-card">
-          <div class="category-image category-1"></div>
-          <div class="category-overlay">
-            <h3>Sarees</h3>
-          </div>
-        </div>
-
-        <div class="category-card">
-          <div class="category-image category-2"></div>
-          <div class="category-overlay">
-            <h3>Lehengas</h3>
-          </div>
-        </div>
-
-        <div class="category-card">
-          <div class="category-image category-3"></div>
-          <div class="category-overlay">
-            <h3>Suits</h3>
-          </div>
-        </div>
-
-        <div class="category-card">
-          <div class="category-image category-4"></div>
-          <div class="category-overlay">
-            <h3>Accessories</h3>
-          </div>
-        </div>
-      </div>
     </section>
 
-    <!-- Brand Hero Section -->
-    <section class="brand-section fade-in">
-      <div class="brand-container">
-        <div class="brand-hero">
-          <div class="brand-hero-content">
-            <h2>Heritage Collection</h2>
-            <a href="#" class="brand-hero-btn">Shop Traditional</a>
-          </div>
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-img">
+                    <img src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1351&q=80" alt="About Elegance Couture">
+                </div>
+                <div class="about-text">
+                    <h2>Our Story</h2>
+                    <p>Founded in 2015, Elegance Couture began as a small boutique in Paris with a vision to create timeless, high-quality women's apparel that combines classic elegance with contemporary style.</p>
+                    <p>Today, we've grown into an international brand, but our commitment remains the same: to design beautiful, sustainable fashion that empowers women to look and feel their best.</p>
+                    <p>Each piece in our collection is crafted with care, using premium fabrics and attention to detail that sets us apart.</p>
+                    <a href="#" class="btn">Learn More</a>
+                </div>
+            </div>
         </div>
-      </div>
     </section>
 
-    <!-- Products Section -->
-    <section class="products-section fade-in">
-      <div class="products-grid">
-        <div class="product-card">
-          <div
-            class="product-image"
-            style="
-              background-image: url('https://images.unsplash.com/photo-1582735689369-4fe89db7114c?w=300&q=80');
-            "
-          >
-            <a href="#contact" class="buy-now-btn">Buy Now</a>
-          </div>
-          <div class="product-colors">
-            <div class="color-dot" style="background: #8b4513"></div>
-            <div class="color-dot" style="background: #ffd700"></div>
-            <div class="color-dot" style="background: #dc143c"></div>
-          </div>
-          <div class="product-info">
-            <h3>Behena Traditional</h3>
-            <div class="product-title">Silk Banarasi Saree</div>
-            <div class="product-price">₹12,499</div>
-          </div>
-        </div>
-
-        <div class="product-card">
-          <div
-            class="product-image"
-            style="
-              background-image: url('https://images.unsplash.com/photo-1594736797933-d0801ba2fe65?w=300&q=80');
-            "
-          >
-            <a href="#contact" class="buy-now-btn">Buy Now</a>
-          </div>
-          <div class="product-colors">
-            <div class="color-dot" style="background: #ff1493"></div>
-            <div class="color-dot" style="background: #ffb6c1"></div>
-          </div>
-          <div class="product-info">
-            <h3>Behena Traditional</h3>
-            <div class="product-title">Designer Lehenga</div>
-            <div class="product-price">₹24,999</div>
-          </div>
-        </div>
-
-        <div class="product-card">
-          <div
-            class="product-image"
-            style="
-              background-image: url('https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=300&q=80');
-            "
-          >
-            <a href="#contact" class="buy-now-btn">Buy Now</a>
-          </div>
-          <div class="product-colors">
-            <div class="color-dot" style="background: #4169e1"></div>
-            <div class="color-dot" style="background: #87ceeb"></div>
-            <div class="color-dot" style="background: #191970"></div>
-          </div>
-          <div class="product-info">
-            <h3>Behena Traditional</h3>
-            <div class="product-title">Anarkali Suit</div>
-            <div class="product-price">₹7,499</div>
-          </div>
-        </div>
-
-        <div class="product-card">
-          <div
-            class="product-image"
-            style="
-              background-image: url('https://images.unsplash.com/photo-1573007974656-b958089e9f7b?w=300&q=80');
-            "
-          >
-            <a href="#contact" class="buy-now-btn">Buy Now</a>
-          </div>
-          <div class="product-colors">
-            <div class="color-dot" style="background: #32cd32"></div>
-            <div class="color-dot" style="background: #90ee90"></div>
-          </div>
-          <div class="product-info">
-            <h3>Behena Traditional</h3>
-            <div class="product-title">Palazzo Set</div>
-            <div class="product-price">₹5,799</div>
-          </div>
-        </div>
-
-        <div class="product-card">
-          <div
-            class="product-image"
-            style="
-              background-image: url('https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?w=300&q=80');
-            "
-          >
-            <a href="#contact" class="buy-now-btn">Buy Now</a>
-          </div>
-          <div class="product-colors">
-            <div class="color-dot" style="background: #ff6347"></div>
-            <div class="color-dot" style="background: #ffa500"></div>
-            <div class="color-dot" style="background: #ffd700"></div>
-          </div>
-          <div class="product-info">
-            <h3>Behena Traditional</h3>
-            <div class="product-title">Embroidered Kurti</div>
-            <div class="product-price">₹4,999</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Most Loved Brands -->
-    <section class="loved-brands fade-in">
-      <div class="loved-brands-container">
-        <h2 class="section-title">Most Loved Collections</h2>
-        <div class="brands-grid">
-          <div class="brand-card">
-            <div class="brand-image brand-1"></div>
-            <div class="brand-overlay">
-              <h3>Heritage Sarees</h3>
-            </div>
-          </div>
-
-          <div class="brand-card">
-            <div class="brand-image brand-2"></div>
-            <div class="brand-overlay">
-              <h3>Royal Collection</h3>
-            </div>
-          </div>
-
-          <div class="brand-card">
-            <div class="brand-image brand-3"></div>
-            <div class="brand-overlay">
-              <h3>Bridal Elegance</h3>
-            </div>
-          </div>
-
-          <div class="brand-card">
-            <div class="brand-image brand-4"></div>
-            <div class="brand-overlay">
-              <h3>Festive Wear</h3>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section class="testimonials fade-in">
-      <div class="testimonials-container">
-        <h2 class="section-title">What Our Customers Say</h2>
-        <div class="testimonials-grid">
-          <div class="testimonial-card">
-            <div
-              class="testimonial-image"
-              style="
-                background-image: url('https://images.unsplash.com/photo-1494790108755-2616b612b786?w=80&q=80');
-              "
-            ></div>
-            <div class="stars">★★★★★</div>
-            <div class="testimonial-text">
-              "The quality of the sarees is absolutely amazing! I've never felt
-              more beautiful in traditional wear."
-            </div>
-            <div class="testimonial-author">Priya Sharma</div>
-          </div>
-
-          <div class="testimonial-card">
-            <div
-              class="testimonial-image"
-              style="
-                background-image: url('https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=80&q=80');
-              "
-            ></div>
-            <div class="stars">★★★★★</div>
-            <div class="testimonial-text">
-              "Behena's lehengas are perfect for weddings. The embroidery work
-              is exquisite and the fit is perfect!"
-            </div>
-            <div class="testimonial-author">Kavya Patel</div>
-          </div>
-
-          <div class="testimonial-card">
-            <div
-              class="testimonial-image"
-              style="
-                background-image: url('https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=80&q=80');
-              "
-            ></div>
-            <div class="stars">★★★★★</div>
-            <div class="testimonial-text">
-              "Fast delivery and excellent customer service. The kurtas are
-              comfortable and stylish for everyday wear."
-            </div>
-            <div class="testimonial-author">Anita Singh</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Size Guide Section -->
-    <section class="size-guide fade-in">
-      <div class="size-guide-container">
-        <h2 class="section-title">Perfect Fit Guarantee</h2>
-        <div class="size-guide-content">
-          <div class="size-guide-image"></div>
-          <div class="size-guide-info">
-            <h3>Find Your Perfect Size</h3>
-            <p>
-              Our traditional wear is carefully crafted to provide the perfect
-              fit. Use our comprehensive size guide to find your ideal
-              measurements for sarees, lehengas, and suits.
-            </p>
-            <p>
-              We offer custom tailoring services to ensure every piece fits you
-              perfectly. Our expert tailors have years of experience in
-              traditional Indian clothing.
-            </p>
-            <button class="size-guide-btn">View Size Guide</button>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact Us Section -->
-    <section class="contact-us fade-in" id="contact">
-      <div class="contact-container">
-        <h2 class="section-title">Contact Us</h2>
-        <div class="contact-content">
-          <div class="contact-info">
-            <h3>Get in Touch</h3>
-            <div class="contact-details">
-              <div class="contact-item">
-                <i class="fas fa-map-marker-alt"></i>
-                <span>123 Fashion Street, Mumbai, India - 400001</span>
-              </div>
-              <div class="contact-item">
-                <i class="fas fa-phone"></i>
-                <span>+91 98765 43210</span>
-              </div>
-              <div class="contact-item">
-                <i class="fas fa-envelope"></i>
-                <span>hello@behena.com</span>
-              </div>
-              <div class="contact-item">
-                <i class="fas fa-clock"></i>
-                <span>Mon - Sat: 10:00 AM - 8:00 PM</span>
-              </div>
-            </div>
-            <p>
-              We'd love to hear from you! Whether you have questions about our
-              products, need styling advice, or want to discuss custom orders,
-              our team is here to help.
-            </p>
-          </div>
-
-          <div class="contact-form">
-            <form>
-              <div class="form-group">
-                <label for="name">Full Name</label>
-                <input type="text" id="name" name="name" required />
-              </div>
-              <div class="form-group">
-                <label for="email">Email Address</label>
-                <input type="email" id="email" name="email" required />
-              </div>
-              <div class="form-group">
-                <label for="phone">Phone Number</label>
-                <input type="tel" id="phone" name="phone" />
-              </div>
-              <div class="form-group">
-                <label for="product">Product Interest</label>
-                <input
-                  type="text"
-                  id="product"
-                  name="product"
-                  placeholder="e.g., Silk Banarasi Saree"
-                />
-              </div>
-              <div class="form-group">
-                <label for="message">Message</label>
-                <textarea
-                  id="message"
-                  name="message"
-                  placeholder="Tell us about your requirements..."
-                  required
-                ></textarea>
-              </div>
-              <button type="submit" class="submit-btn">Send Message</button>
+    <section class="newsletter" id="contact">
+        <div class="container">
+            <h2>Join Our Newsletter</h2>
+            <p>Subscribe to receive updates on new collections, exclusive offers, and style inspiration.</p>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Your email address" required>
+                <button type="submit">Subscribe</button>
             </form>
-          </div>
         </div>
-      </div>
     </section>
 
-    <!-- Cool CTA Section -->
-    <section class="cta-section">
-      <div class="cta-background"></div>
-      <div class="cta-container">
-        <h2 class="cta-title">Ready to Embrace Tradition?</h2>
-        <p class="cta-subtitle">
-          Join thousands of women who trust Behena for their traditional wear
-          needs
-        </p>
-        <a href="#contact" class="cta-btn">Start Your Journey</a>
-      </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-      <div class="footer-content">
-        <div class="social-section">
-          <div class="social-title">Follow @Behena</div>
-          <div class="social-icons">
-            <a href="#" class="social-icon facebook"
-              ><i class="fab fa-facebook"></i
-            ></a>
-            <a href="#" class="social-icon twitter"
-              ><i class="fab fa-twitter"></i
-            ></a>
-            <a href="#" class="social-icon instagram"
-              ><i class="fab fa-instagram"></i
-            ></a>
-            <a href="#" class="social-icon youtube"
-              ><i class="fab fa-youtube"></i
-            ></a>
-          </div>
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h3>Elegance Couture</h3>
+                    <p>Premium women's apparel designed for the sophisticated modern woman who values quality, comfort, and timeless style.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Shop</h3>
+                    <ul>
+                        <li><a href="#">New Arrivals</a></li>
+                        <li><a href="#">Dresses</a></li>
+                        <li><a href="#">Tops</a></li>
+                        <li><a href="#">Outerwear</a></li>
+                        <li><a href="#">Accessories</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Help</h3>
+                    <ul>
+                        <li><a href="#">Customer Service</a></li>
+                        <li><a href="#">Shipping Policy</a></li>
+                        <li><a href="#">Returns & Exchanges</a></li>
+                        <li><a href="#">Size Guide</a></li>
+                        <li><a href="#">FAQs</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li><a href="#">+1 (555) 123-4567</a></li>
+                        <li><a href="mailto:info@elegancecouture.com">info@elegancecouture.com</a></li>
+                        <li><a href="#">123 Fashion Ave, New York, NY</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Elegance Couture. All rights reserved.</p>
+            </div>
         </div>
-
-        <div class="footer-links">
-          <div class="footer-section">
-            <h3>Customer Service</h3>
-            <ul>
-              <li><a href="#">My Account</a></li>
-              <li><a href="#contact">Contact Us</a></li>
-              <li><a href="#">Size Guide</a></li>
-              <li><a href="#">Returns Center</a></li>
-              <li><a href="#">Shipping Info</a></li>
-            </ul>
-          </div>
-
-          <div class="footer-section">
-            <h3>Quick Links</h3>
-            <ul>
-              <li><a href="#">About Behena</a></li>
-              <li><a href="#">Care Instructions</a></li>
-              <li><a href="#">FAQs</a></li>
-              <li><a href="#">Shipping Policy</a></li>
-              <li><a href="#">Returns Policy</a></li>
-              <li><a href="#">Privacy Policy</a></li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="footer-bottom">
-          <p>
-            Behena ™ Is A Trademark Of Behena Traditional LLC. ©2025 Behena
-            Traditional LLC. All Rights Reserved.
-          </p>
-        </div>
-      </div>
     </footer>
 
-    <!-- Scroll to top button -->
-    <button class="scroll-top" onclick="scrollToTop()">
-      <i class="fas fa-chevron-up"></i>
-    </button>
+    <script>
+        // Mobile Navigation
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
 
-    <!-- Scripts -->
-    <!-- Swiper JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.4.5/swiper-bundle.min.js"></script>
-    <!-- Custom JS -->
-    <script src="script.js"></script>
-  </body>
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            hamburger.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                hamburger.classList.remove('active');
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Add shadow to navbar on scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('.main-nav');
+            if (window.scrollY > 50) {
+                nav.style.background = 'rgba(51, 51, 51, 0.9)';
+                nav.style.padding = '15px 20px';
+                nav.style.boxShadow = '0 5px 10px rgba(0, 0, 0, 0.1)';
+            } else {
+                nav.style.background = 'transparent';
+                nav.style.padding = '20px';
+                nav.style.boxShadow = 'none';
+            }
+        });
+
+        // Newsletter form submission
+        const newsletterForm = document.querySelector('.newsletter-form');
+        if (newsletterForm) {
+            newsletterForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const email = this.querySelector('input').value;
+                // Here you would typically send the email to your server
+                alert(`Thank you for subscribing with ${email}! You'll receive our newsletter soon.`);
+                this.reset();
+            });
+        }
+    </script>
+    <!-- Font Awesome for icons (you can also host this locally) -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</body>
 </html>

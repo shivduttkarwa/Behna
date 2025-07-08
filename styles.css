@@ -414,7 +414,7 @@ body {
 .hero-slider {
   position: relative;
   width: 100%;
-  height: 100vh;
+  height: 90vh;
   overflow: hidden;
   margin-top: 4.375rem;
 }
@@ -999,7 +999,7 @@ body {
 
 @media (max-width: 30rem) {
   .hero-slider {
-    height: 80vh;
+    height: 75vh;
   }
 
   .slide {
@@ -1068,3 +1068,249 @@ body {
     font-size: 0.5625rem;
   }
 }
+
+/*======================New Arrivals Section======================  */
+
+.section-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.section-title {
+  color: var(--color-text-primary);
+  font-size: 2.5rem;
+  font-weight: var(--font-weight-light);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+  position: relative;
+  margin-top: 3rem;
+}
+
+.section-title::after {
+  content: "";
+  display: block;
+  width: 270px;
+  height: 2px;
+  background-color: var(--color-accent);
+  margin: 0rem auto;
+}
+
+.section-subtitle {
+  color: var(--color-text-muted);
+  font-size: 1.1rem;
+  font-weight: var(--font-weight-light);
+  letter-spacing: 1px;
+}
+
+img {
+  height: auto;
+  max-width: 100%;
+  vertical-align: middle;
+}
+
+.btn {
+  background-color: transparent;
+  border: 2px solid var(--color-accent);
+  color: var(--color-accent);
+  padding: 0.75rem 1.5rem;
+  text-transform: uppercase;
+  font-weight: var(--font-weight-medium);
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.btn:hover {
+  background-color: var(--color-accent);
+  color: var(--color-secondary);
+  transform: translateY(-2px);
+}
+
+.btn--block {
+  display: block;
+  width: 100%;
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.cards__item {
+  display: flex;
+  padding: 0.5rem;
+  width: 100%;
+}
+
+/* Tablet: 2 cards per row */
+@media (min-width: 768px) {
+  .cards__item {
+    width: calc(50% - 1rem);
+    margin: 0.5rem;
+  }
+}
+
+/* Laptop/Desktop: 4 cards per row */
+@media (min-width: 992px) {
+  .cards__item {
+    width: calc(25% - 1rem);
+    margin: 0.5rem;
+    padding: 0.5rem;
+  }
+}
+
+.card {
+  background-color: var(--bg-primary);
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.25);
+}
+
+.card:hover .card__image {
+  filter: contrast(100%) saturate(110%);
+}
+
+.card__content {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  padding: 1.5rem;
+}
+
+.card__image {
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+  filter: contrast(85%) saturate(100%);
+  overflow: hidden;
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.43, 0.41, 0.22, 0.91);
+}
+
+.card__image::before {
+  content: "";
+  display: block;
+  padding-top: 75%; /* 4:3 aspect ratio */
+}
+
+@media (min-width: 768px) {
+  .card__image::before {
+    padding-top: 80%; /* Slightly taller on larger screens */
+  }
+}
+
+.card__image--saree {
+  background-image: url("img/newarr1.jpg");
+}
+
+.card__image--lehenga {
+  background-image: url("img/newarr2.jpg");
+}
+
+.card__image--salwar {
+  background-image: url("img/newaarr3.jpg");
+}
+
+.card__image--anarkali {
+  background-image: url("img/freepik_assistant_1751965993729.jpeg");
+}
+
+.card__title {
+  color: var(--color-text-primary);
+  font-size: 1.25rem;
+  font-weight: var(--font-weight-medium);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.card__price {
+  color: var(--color-accent);
+  font-size: 1.1rem;
+  font-weight: var(--font-weight-medium);
+  margin-bottom: 0.75rem;
+}
+
+.card__text {
+  flex: 1 1 auto;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  color: var(--color-text-muted);
+}
+
+.card__badge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background-color: var(--color-accent);
+  color: var(--color-secondary);
+  padding: 0.25rem 0.75rem;
+  border-radius: 1rem;
+  font-size: 0.75rem;
+  font-weight: var(--font-weight-medium);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.cards__item {
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+.cards__item:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.cards__item:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.cards__item:nth-child(3) {
+  animation-delay: 0.3s;
+}
+.cards__item:nth-child(4) {
+  animation-delay: 0.4s;
+}
+
+/* Mobile optimizations */
+@media (max-width: 479px) {
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .card__content {
+    padding: 1.25rem;
+  }
+
+  body {
+    padding: 0.5rem;
+  }
+}
+
+/* ================================== Trending Now Section ================================== */
