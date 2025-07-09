@@ -223,11 +223,10 @@ function createProductCard(product) {
   `;
 }
 
-// ==== BULLETPROOF SLIDER LOGIC ====
 function initSlider(section, productsArr) {
-  const track = document.getElementById(section + "Slider");
+  const slider = document.getElementById(section + "Slider");
   const nav = document.getElementById(section + "Nav");
-  if (!track || !nav) return;
+  if (!slider || !nav) return;
 
   let slidesPerView = 1;
   let current = 0;
@@ -238,31 +237,27 @@ function initSlider(section, productsArr) {
     else slidesPerView = 1;
   }
 
-  // Build slides ONCE
-  function buildSlides() {
-    track.innerHTML = "";
-    productsArr.forEach((product) => {
-      track.innerHTML += createProductCard(product);
+  function setCardWidths() {
+    let widthPct = 100 / slidesPerView;
+    Array.from(slider.children).forEach((card) => {
+      card.style.flex = `0 0 ${widthPct}%`;
+      card.style.maxWidth = `${widthPct}%`;
+      card.style.width = `${widthPct}%`;
     });
-    track.style.display = "flex";
-    track.style.transition = "transform 0.4s cubic-bezier(.67,.12,.44,1.04)";
-    track.style.willChange = "transform";
-    // Initial card widths
+  }
+
+  function buildSlides() {
+    slider.innerHTML = "";
+    productsArr.forEach((product) => {
+      slider.innerHTML += createProductCard(product);
+    });
     setCardWidths();
   }
 
-  function setCardWidths() {
-    let widthPct = 100 / slidesPerView;
-    Array.from(track.children).forEach((card) => {
-      card.style.flex = `0 0 ${widthPct}%`;
-      card.style.maxWidth = `${widthPct}%`;
-    });
-  }
-
-  function updateTrack() {
-    let slideWidth = track.offsetWidth / slidesPerView;
-    let move = current * slideWidth;
-    track.style.transform = `translateX(-${move}px)`;
+  function updateSlider() {
+    let step = 100 / slidesPerView;
+    slider.style.transform = `translateX(-${current * step}%)`;
+    renderNav();
   }
 
   function renderNav() {
@@ -276,7 +271,7 @@ function initSlider(section, productsArr) {
     nav.querySelectorAll(".slider-dot").forEach((dot) => {
       dot.addEventListener("click", function () {
         current = parseInt(this.dataset.index);
-        update();
+        updateSlider();
       });
     });
   }
@@ -287,55 +282,55 @@ function initSlider(section, productsArr) {
     if (current < 0) current = 0;
   }
 
-  function update() {
+  function goTo(idx) {
+    current = idx;
     clampCurrent();
-    setCardWidths();
-    updateTrack();
-    renderNav();
+    updateSlider();
   }
 
   // Touch/drag swipe support (never gets lost)
   let startX = 0,
     isDragging = false;
 
-  track.addEventListener("touchstart", (e) => {
+  slider.addEventListener("touchstart", (e) => {
     if (e.touches.length !== 1) return;
     isDragging = true;
     startX = e.touches[0].clientX;
   });
 
-  track.addEventListener("touchmove", (e) => {
+  slider.addEventListener("touchmove", (e) => {
     if (!isDragging) return;
     let diff = startX - e.touches[0].clientX;
     if (Math.abs(diff) > 40) {
       let maxIdx = Math.max(0, productsArr.length - slidesPerView);
       if (diff > 0 && current < maxIdx) {
         current++;
-        update();
+        updateSlider();
         isDragging = false;
       } else if (diff < 0 && current > 0) {
         current--;
-        update();
+        updateSlider();
         isDragging = false;
       }
     }
   });
 
-  track.addEventListener("touchend", () => (isDragging = false));
+  slider.addEventListener("touchend", () => (isDragging = false));
 
-  // Responsive: adjust slidesPerView and reset widths
+  // Responsive: adjust slidesPerView and widths
   function resizeHandler() {
     let oldSlidesPerView = slidesPerView;
     updateSlidesPerView();
     setCardWidths();
-    if (slidesPerView !== oldSlidesPerView) current = 0;
-    update();
+    let maxIdx = Math.max(0, productsArr.length - slidesPerView);
+    if (current > maxIdx) current = maxIdx;
+    updateSlider();
   }
 
   // Initial setup
   updateSlidesPerView();
   buildSlides();
-  update();
+  updateSlider();
   window.addEventListener("resize", resizeHandler);
 }
 
