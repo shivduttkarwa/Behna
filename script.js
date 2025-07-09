@@ -1,4 +1,4 @@
-// ===== HERO SLIDER (Slide/Fade/Pill Dots) =====
+// ====== HERO SLIDER (auto & dots) ======
 const heroSlides = document.querySelectorAll(".main-hero-slide");
 const heroDots = document.getElementById("mainHeroDots");
 let heroCurrent = 0,
@@ -87,92 +87,92 @@ const products = {
   ],
   festive: [
     {
-      name: "Zari Work Saree",
+      name: "Zari Work Suit",
       price: "₹6,999",
       image:
         "https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?ixlib=rb-4.0.3&auto=format&fit=crop&w=1025&q=80",
-      desc: "Heavy zari work for festive occasions",
+      desc: "Elegant suit with festive zari detailing",
     },
     {
-      name: "Silk Lehenga",
+      name: "Silk Anarkali",
       price: "₹8,499",
       image:
         "https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?ixlib=rb-4.0.3&auto=format&fit=crop&w=735&q=80",
-      desc: "Pure silk with intricate embroidery",
+      desc: "Luxurious silk anarkali for celebrations",
     },
     {
-      name: "Embroidered Anarkali",
-      price: "₹5,299",
+      name: "Chikankari Kurti",
+      price: "₹2,299",
       image:
         "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?ixlib=rb-4.0.3&auto=format&fit=crop&w=687&q=80",
-      desc: "Floor-length Anarkali with detailed handwork",
+      desc: "Traditional hand-embroidered chikankari kurti",
     },
     {
-      name: "Velvet Blouse",
-      price: "₹2,999",
+      name: "Block Print Kurti",
+      price: "₹1,499",
       image:
         "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-4.0.3&auto=format&fit=crop&w=736&q=80",
-      desc: "Rich velvet with antique gold embroidery",
+      desc: "Soft cotton, vibrant block print",
     },
   ],
   everyday: [
     {
-      name: "Cotton Printed Kurta",
+      name: "Cotton Saree",
       price: "₹1,299",
       image:
         "https://images.unsplash.com/photo-1581044777550-4cfa60707c03?ixlib=rb-4.0.3&auto=format&fit=crop&w=686&q=80",
-      desc: "Comfortable daily wear with traditional prints",
+      desc: "Easy-care cotton for daily wear",
     },
     {
-      name: "Linen Palazzos",
-      price: "₹1,499",
+      name: "Handloom Linen Saree",
+      price: "₹2,799",
       image:
         "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=687&q=80",
-      desc: "Breathable linen for all-day comfort",
+      desc: "Breezy linen, perfect for summer",
     },
     {
-      name: "Chikankari Top",
-      price: "₹999",
+      name: "Printed Silk Saree",
+      price: "₹3,199",
       image:
         "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?ixlib=rb-4.0.3&auto=format&fit=crop&w=687&q=80",
-      desc: "Delicate Chikankari embroidery on cotton",
+      desc: "Lightweight silk with fresh prints",
     },
     {
-      name: "Rayon Dupatta",
-      price: "₹799",
+      name: "Rayon Saree",
+      price: "₹1,899",
       image:
         "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?ixlib=rb-4.0.3&auto=format&fit=crop&w=1972&q=80",
-      desc: "Lightweight with subtle prints",
+      desc: "Comfort meets style for every day",
     },
   ],
   wedding: [
     {
-      name: "Bridal Red Lehenga",
-      price: "₹24,999",
+      name: "Embroidered Cord Set",
+      price: "₹3,599",
       image:
         "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1494&q=80",
-      desc: "Hand-embroidered with Swarovski crystals",
+      desc: "Two-piece set, stunning embroidery",
     },
     {
-      name: "Zardozi Saree",
-      price: "₹18,499",
+      name: "Georgette Co-ord",
+      price: "₹2,499",
       image:
         "https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?ixlib=rb-4.0.3&auto=format&fit=crop&w=735&q=80",
-      desc: "Traditional Zardozi work on pure silk",
+      desc: "Soft georgette, all-day comfort",
     },
     {
-      name: "Pearl Embroidered Gown",
-      price: "₹32,999",
+      name: "Festive Cord Set",
+      price: "₹2,999",
       image:
         "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-4.0.3&auto=format&fit=crop&w=736&q=80",
-      desc: "Contemporary bridal wear with pearl detailing",
+      desc: "Festive colors, tailored for a flawless fit",
     },
     {
-      name: "Bridal Jewelry Set",
-      price: "₹12,499",
+      name: "Printed Cord Set",
+      price: "₹1,899",
       image:
         "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=687&q=80",
-      desc: "Antique finish temple jewelry set",
+      desc: "Bright prints, relaxed silhouette",
     },
   ],
   accessories: [
@@ -181,33 +181,32 @@ const products = {
       price: "₹1,299",
       image:
         "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=687&q=80",
-      desc: "Traditional gold-plated jhumkas",
+      desc: "Gold-plated, handcrafted",
     },
     {
       name: "Silk Potli Bag",
       price: "₹1,499",
       image:
         "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?ixlib=rb-4.0.3&auto=format&fit=crop&w=687&q=80",
-      desc: "Handwoven silk with embroidery",
+      desc: "Handwoven silk, beautiful embroidery",
     },
     {
-      name: "Bridal Maang Tikka",
+      name: "Maang Tikka",
       price: "₹2,999",
       image:
         "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?ixlib=rb-4.0.3&auto=format&fit=crop&w=1972&q=80",
-      desc: "Intricately designed with pearls and stones",
+      desc: "Pearls & stones, festive perfect",
     },
     {
-      name: "Traditional Mojris",
-      price: "₹1,799",
+      name: "Stole & Dupatta",
+      price: "₹1,299",
       image:
         "https://images.unsplash.com/photo-1581044777550-4cfa60707c03?ixlib=rb-4.0.3&auto=format&fit=crop&w=686&q=80",
-      desc: "Hand-embroidered leather mojris",
+      desc: "Softest cotton, elegant design",
     },
   ],
 };
 
-// ===== PRODUCT CARD TEMPLATE =====
 function createProductCard(product) {
   return `
     <div class="product-card">
@@ -224,46 +223,51 @@ function createProductCard(product) {
   `;
 }
 
-// ===== SLIDER SETUP (ROBUST & MOBILE FRIENDLY) =====
+// ==== BULLETPROOF SLIDER LOGIC ====
 function initSlider(section, productsArr) {
-  const slider = document.getElementById(section + "Slider");
+  const track = document.getElementById(section + "Slider");
   const nav = document.getElementById(section + "Nav");
-  if (!slider || !nav) return; // safety check
+  if (!track || !nav) return;
 
   let slidesPerView = 1;
   let current = 0;
 
   function updateSlidesPerView() {
-    if (window.innerWidth >= 1024) {
-      slidesPerView = 3;
-    } else if (window.innerWidth >= 600) {
-      slidesPerView = 2;
-    } else {
-      slidesPerView = 1;
-    }
+    if (window.innerWidth >= 1024) slidesPerView = 3;
+    else if (window.innerWidth >= 600) slidesPerView = 2;
+    else slidesPerView = 1;
   }
 
-  function getMaxIndex() {
-    return Math.max(0, productsArr.length - slidesPerView);
-  }
-
-  function renderSlider() {
-    slider.innerHTML = "";
-    let width = (100 / slidesPerView).toFixed(4) + "%";
-    productsArr.forEach((product, i) => {
-      slider.innerHTML += `<div class="product-card" style="flex:0 0 ${width};max-width:${width}">${createProductCard(
-        product
-      )}</div>`;
+  // Build slides ONCE
+  function buildSlides() {
+    track.innerHTML = "";
+    productsArr.forEach((product) => {
+      track.innerHTML += createProductCard(product);
     });
-    slider.style.transform = `translateX(-${current * (100 / slidesPerView)}%)`;
+    track.style.display = "flex";
+    track.style.transition = "transform 0.4s cubic-bezier(.67,.12,.44,1.04)";
+    track.style.willChange = "transform";
+    // Initial card widths
+    setCardWidths();
+  }
+
+  function setCardWidths() {
+    let widthPct = 100 / slidesPerView;
+    Array.from(track.children).forEach((card) => {
+      card.style.flex = `0 0 ${widthPct}%`;
+      card.style.maxWidth = `${widthPct}%`;
+    });
+  }
+
+  function updateTrack() {
+    let slideWidth = track.offsetWidth / slidesPerView;
+    let move = current * slideWidth;
+    track.style.transform = `translateX(-${move}px)`;
   }
 
   function renderNav() {
     nav.innerHTML = "";
-    let dotCount =
-      productsArr.length <= slidesPerView
-        ? 1
-        : productsArr.length - slidesPerView + 1;
+    let dotCount = Math.max(1, productsArr.length - slidesPerView + 1);
     for (let i = 0; i < dotCount; i++) {
       nav.innerHTML += `<div class="slider-dot${
         i === current ? " active" : ""
@@ -272,72 +276,70 @@ function initSlider(section, productsArr) {
     nav.querySelectorAll(".slider-dot").forEach((dot) => {
       dot.addEventListener("click", function () {
         current = parseInt(this.dataset.index);
-        updateSlider();
+        update();
       });
     });
   }
 
-  function updateSlider() {
-    let maxIdx = getMaxIndex();
+  function clampCurrent() {
+    let maxIdx = Math.max(0, productsArr.length - slidesPerView);
     if (current > maxIdx) current = maxIdx;
     if (current < 0) current = 0;
-    renderSlider();
+  }
+
+  function update() {
+    clampCurrent();
+    setCardWidths();
+    updateTrack();
     renderNav();
   }
 
-  // Touch swipe for mobile
+  // Touch/drag swipe support (never gets lost)
   let startX = 0,
-    isDown = false;
-  slider.addEventListener(
-    "touchstart",
-    (e) => {
-      isDown = true;
-      startX = e.touches[0].clientX;
-    },
-    false
-  );
-  slider.addEventListener(
-    "touchmove",
-    (e) => {
-      if (!isDown) return;
-      let moveX = e.touches[0].clientX;
-      let diff = startX - moveX;
-      if (Math.abs(diff) > 50) {
-        let maxIdx = getMaxIndex();
-        if (diff > 0 && current < maxIdx) {
-          current++;
-        } else if (diff < 0 && current > 0) {
-          current--;
-        }
-        updateSlider();
-        isDown = false;
-      }
-    },
-    false
-  );
-  slider.addEventListener("touchend", () => (isDown = false), false);
+    isDragging = false;
 
-  function onResize() {
-    let prev = slidesPerView;
-    updateSlidesPerView();
-    if (slidesPerView !== prev) {
-      current = 0;
-      updateSlider();
-    } else {
-      let maxIdx = getMaxIndex();
-      if (current > maxIdx) {
-        current = maxIdx;
-        updateSlider();
+  track.addEventListener("touchstart", (e) => {
+    if (e.touches.length !== 1) return;
+    isDragging = true;
+    startX = e.touches[0].clientX;
+  });
+
+  track.addEventListener("touchmove", (e) => {
+    if (!isDragging) return;
+    let diff = startX - e.touches[0].clientX;
+    if (Math.abs(diff) > 40) {
+      let maxIdx = Math.max(0, productsArr.length - slidesPerView);
+      if (diff > 0 && current < maxIdx) {
+        current++;
+        update();
+        isDragging = false;
+      } else if (diff < 0 && current > 0) {
+        current--;
+        update();
+        isDragging = false;
       }
     }
-  }
-  window.addEventListener("resize", onResize);
+  });
 
+  track.addEventListener("touchend", () => (isDragging = false));
+
+  // Responsive: adjust slidesPerView and reset widths
+  function resizeHandler() {
+    let oldSlidesPerView = slidesPerView;
+    updateSlidesPerView();
+    setCardWidths();
+    if (slidesPerView !== oldSlidesPerView) current = 0;
+    update();
+  }
+
+  // Initial setup
   updateSlidesPerView();
-  updateSlider();
+  buildSlides();
+  update();
+  window.addEventListener("resize", resizeHandler);
 }
 
-// ===== INIT ALL SLIDERS =====
+// ==== INIT ALL SLIDERS (MATCHES SECTION IDS) ====
 document.addEventListener("DOMContentLoaded", function () {
   initSlider("newArrivals", products.newArrivals);
   initSlider("festive", products.festive);
