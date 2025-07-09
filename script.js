@@ -1,4 +1,4 @@
-// Hero slider (slide/fade/pill-dots)
+// ===== HERO SLIDER (Slide/Fade/Pill Dots) =====
 const heroSlides = document.querySelectorAll(".main-hero-slide");
 const heroDots = document.getElementById("mainHeroDots");
 let heroCurrent = 0,
@@ -41,7 +41,7 @@ if (heroDots) {
 }
 startHeroTimer();
 
-// Hamburger mobile nav
+// ===== HAMBURGER MOBILE NAV =====
 document.querySelector(".menu-toggle").addEventListener("click", function () {
   this.classList.toggle("active");
   document.querySelector(".nav-links").classList.toggle("active");
@@ -53,7 +53,7 @@ document.querySelectorAll(".nav-links a").forEach((link) => {
   });
 });
 
-// Product Data
+// ===== PRODUCT DATA =====
 const products = {
   newArrivals: [
     {
@@ -207,28 +207,31 @@ const products = {
   ],
 };
 
-// Product Card Template
+// ===== PRODUCT CARD TEMPLATE =====
 function createProductCard(product) {
   return `
-                <div class="product-card">
-                    <div class="product-image-container">
-                        <img src="${product.image}" alt="${product.name}" class="product-image">
-                    </div>
-                    <div class="product-info">
-                        <div class="product-name">${product.name}</div>
-                        <div class="product-price">${product.price}</div>
-                        <div class="product-desc">${product.desc}</div>
-                        <button class="product-btn">View Details</button>
-                    </div>
-                </div>
-            `;
+    <div class="product-card">
+      <div class="product-image-container">
+        <img src="${product.image}" alt="${product.name}" class="product-image">
+      </div>
+      <div class="product-info">
+        <div class="product-name">${product.name}</div>
+        <div class="product-price">${product.price}</div>
+        <div class="product-desc">${product.desc}</div>
+        <button class="product-btn">View Details</button>
+      </div>
+    </div>
+  `;
 }
 
-// Slider Setup
+// ===== SLIDER SETUP (ROBUST & MOBILE FRIENDLY) =====
 function initSlider(section, productsArr) {
   const slider = document.getElementById(section + "Slider");
   const nav = document.getElementById(section + "Nav");
+  if (!slider || !nav) return; // safety check
+
   let slidesPerView = 1;
+  let current = 0;
 
   function updateSlidesPerView() {
     if (window.innerWidth >= 1024) {
@@ -239,9 +242,10 @@ function initSlider(section, productsArr) {
       slidesPerView = 1;
     }
   }
-  updateSlidesPerView();
 
-  let current = 0;
+  function getMaxIndex() {
+    return Math.max(0, productsArr.length - slidesPerView);
+  }
 
   function renderSlider() {
     slider.innerHTML = "";
@@ -251,12 +255,15 @@ function initSlider(section, productsArr) {
         product
       )}</div>`;
     });
-    slider.style.transform = `translateX(-${current * 100}%)`;
+    slider.style.transform = `translateX(-${current * (100 / slidesPerView)}%)`;
   }
 
   function renderNav() {
     nav.innerHTML = "";
-    let dotCount = Math.ceil(productsArr.length / slidesPerView);
+    let dotCount =
+      productsArr.length <= slidesPerView
+        ? 1
+        : productsArr.length - slidesPerView + 1;
     for (let i = 0; i < dotCount; i++) {
       nav.innerHTML += `<div class="slider-dot${
         i === current ? " active" : ""
@@ -271,20 +278,14 @@ function initSlider(section, productsArr) {
   }
 
   function updateSlider() {
+    let maxIdx = getMaxIndex();
+    if (current > maxIdx) current = maxIdx;
+    if (current < 0) current = 0;
     renderSlider();
     renderNav();
   }
 
-  window.addEventListener("resize", () => {
-    let prevSlidesPerView = slidesPerView;
-    updateSlidesPerView();
-    if (slidesPerView !== prevSlidesPerView) {
-      current = 0;
-      updateSlider();
-    }
-  });
-
-  // Drag for mobile
+  // Touch swipe for mobile
   let startX = 0,
     isDown = false;
   slider.addEventListener(
@@ -302,10 +303,8 @@ function initSlider(section, productsArr) {
       let moveX = e.touches[0].clientX;
       let diff = startX - moveX;
       if (Math.abs(diff) > 50) {
-        if (
-          diff > 0 &&
-          current < Math.ceil(productsArr.length / slidesPerView) - 1
-        ) {
+        let maxIdx = getMaxIndex();
+        if (diff > 0 && current < maxIdx) {
           current++;
         } else if (diff < 0 && current > 0) {
           current--;
@@ -318,10 +317,27 @@ function initSlider(section, productsArr) {
   );
   slider.addEventListener("touchend", () => (isDown = false), false);
 
+  function onResize() {
+    let prev = slidesPerView;
+    updateSlidesPerView();
+    if (slidesPerView !== prev) {
+      current = 0;
+      updateSlider();
+    } else {
+      let maxIdx = getMaxIndex();
+      if (current > maxIdx) {
+        current = maxIdx;
+        updateSlider();
+      }
+    }
+  }
+  window.addEventListener("resize", onResize);
+
+  updateSlidesPerView();
   updateSlider();
 }
 
-// Initialize all sliders
+// ===== INIT ALL SLIDERS =====
 document.addEventListener("DOMContentLoaded", function () {
   initSlider("newArrivals", products.newArrivals);
   initSlider("festive", products.festive);
