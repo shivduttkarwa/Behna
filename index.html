@@ -3,278 +3,282 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Behena - Traditional Women's Clothing</title>
-
-    <!-- Custom CSS -->
+    <title>Behna - Timeless Traditional Wear</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
+      integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+      crossorigin="anonymous"
+    />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <!-- Preloader -->
-    <div class="preloader" id="preloader">
-      <div class="preloader-content">
-        <div class="preloader-logo">
-          <img
-            src="img/logo.png"
-            alt="Fashion Logo"
-            class="preloader-logo-img"
-          />
-        </div>
-        <div class="loading-bar">
-          <div class="loading-progress"></div>
+    <!-- Header -->
+    <header>
+      <div class="logo-container">
+        <img src="img/logo.png" alt="Behna Logo" class="logo-img" />
+      </div>
+      <nav class="nav-links">
+        <a href="#">NEW ARRIVALS</a>
+        <a href="#">COLLECTIONS</a>
+        <a href="#">SAREES</a>
+        <a href="#">SUITS</a>
+        <a href="#">LEHENGAS</a>
+        <a href="#">ACCESSORIES</a>
+      </nav>
+      <button class="contact-btn">Contact Us</button>
+      <div class="menu-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </header>
+
+    <!-- HERO SLIDER -->
+    <section class="main-hero-slider" id="mainHeroSlider">
+      <div class="main-hero-slide active">
+        <img
+          class="main-hero-bg"
+          src="https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&w=1350&q=80"
+          alt="Slide 1"
+        />
+        <div class="main-hero-overlay"></div>
+        <div class="main-hero-content">
+          <h2>Redefining Tradition for Today’s Woman</h2>
+          <p>
+            Discover sarees, suits, kurtis, cord sets, and accessories — all
+            crafted to blend timeless elegance with effortless modern style.
+            Step into the world of Behna, where every piece tells your story.
+          </p>
+          <a href="#" class="main-hero-btn">Shop Now</a>
         </div>
       </div>
-    </div>
-
-    <!-- Navigation -->
-    <nav class="navbar">
-      <div class="nav-container">
-        <a href="#" class="logo">
-          <img src="img/logo.png" alt="Fashion Logo" class="navbar-logo-img" />
-        </a>
-
-        <ul class="nav-menu">
-          <li><a href="#" class="nav-link">Home</a></li>
-          <li><a href="#" class="nav-link">Shop</a></li>
-          <li><a href="#" class="nav-link">About</a></li>
-          <li><a href="#" class="nav-link">Contact</a></li>
-        </ul>
-
-        <a href="#contact" class="contact-btn">Contact</a>
-
-        <button class="mobile-toggle" onclick="toggleMobileMenu()">
-          <div class="dots-container">
-            <div class="dot"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
-          </div>
-        </button>
-      </div>
-    </nav>
-
-    <!-- Mobile Menu Backdrop -->
-    <div
-      class="mobile-backdrop"
-      id="mobileBackdrop"
-      onclick="closeMobileMenu()"
-    ></div>
-
-    <!-- Mobile Menu -->
-    <div class="mobile-menu" id="mobileMenu">
-      <button class="menu-close" onclick="closeMobileMenu()">
-        <div class="close-dots-container">
-          <div class="close-dot"></div>
-          <div class="close-dot"></div>
-          <div class="close-dot"></div>
-          <div class="close-dot"></div>
-        </div>
-      </button>
-
-      <ul class="mobile-nav-list">
-        <li class="mobile-nav-item">
-          <a href="#" class="mobile-nav-link">Home</a>
-        </li>
-        <li class="mobile-nav-item">
-          <a href="#" class="mobile-nav-link">Shop</a>
-        </li>
-        <li class="mobile-nav-item">
-          <a href="#" class="mobile-nav-link">About</a>
-        </li>
-        <li class="mobile-nav-item">
-          <a href="#" class="mobile-nav-link">Contact</a>
-        </li>
-      </ul>
-
-      <a href="#contact" class="mobile-contact-btn">Contact Us</a>
-    </div>
-
-    <!-- Hero Slider -->
-    <section class="hero-slider">
-      <!-- Slide 1 - Video -->
-      <div class="slide active">
-        <video class="slide-bg video" muted loop playsinline preload="auto">
-          <source src="img/hero-video1.mp4" type="video/mp4" />
-        </video>
-        <div class="slide-overlay"></div>
-        <div class="slide-content">
-          <h1 class="slide-title">Summer Collection</h1>
-          <p class="slide-subtitle">Latest trends in summer fashion</p>
-          <div class="slide-ctas">
-            <a href="#" class="cta-button">Shop Now</a>
-          </div>
-        </div>
-        <div class="project-info">
-          <div class="project-type">Collection</div>
-          <div class="project-category">Summer 2025</div>
-          <a href="#" class="project-cta">Explore →</a>
-        </div>
-        <div class="video-controls">
-          <button class="play-pause-btn" onclick="toggleVideo(this)">⏸</button>
+      <div class="main-hero-slide">
+        <img
+          class="main-hero-bg"
+          src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=1350&q=80"
+          alt="Slide 2"
+        />
+        <div class="main-hero-overlay"></div>
+        <div class="main-hero-content">
+          <h2>Suit Up with Effortless Grace</h2>
+          <p>
+            Explore our curated collection of suits and kurtis for women,
+            designed for comfort, confidence, and everyday elegance — from
+            boardroom to brunch.
+          </p>
+          <a href="#" class="main-hero-btn">Shop Suits & Kurtis</a>
         </div>
       </div>
-
-      <!-- Slide 2 - Image -->
-      <div class="slide">
-        <img src="img/hero-2.jpg" alt="Fashion Collection" class="slide-bg" />
-        <div class="slide-overlay"></div>
-        <div class="slide-content">
-          <h1 class="slide-title">Exclusive Designs</h1>
-          <p class="slide-subtitle">Modern elegance and timeless style</p>
-          <div class="slide-ctas">
-            <a href="#" class="cta-button">Discover</a>
-          </div>
-        </div>
-        <div class="project-info">
-          <div class="project-type">Limited Edition</div>
-          <div class="project-category">Designer Series</div>
-          <a href="#" class="project-cta">View Collection →</a>
+      <div class="main-hero-slide">
+        <img
+          class="main-hero-bg"
+          src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=1350&q=80"
+          alt="Slide 3"
+        />
+        <div class="main-hero-overlay"></div>
+        <div class="main-hero-content">
+          <h2>Statement Styles, All Season Long</h2>
+          <p>
+            Unveil stunning cord sets, vibrant sarees, and perfect accessories
+            for every mood and moment. Find your next signature look at Behna.
+          </p>
+          <a href="#" class="main-hero-btn">Browse Collections</a>
         </div>
       </div>
-
-      <!-- Slide 3 - Image -->
-      <div class="slide">
-        <img src="img/hero-3.jpg" alt="Fashion Store" class="slide-bg" />
-        <div class="slide-overlay"></div>
-        <div class="slide-content">
-          <h1 class="slide-title">Premium Quality</h1>
-          <p class="slide-subtitle">Uncompromising craftsmanship</p>
-          <div class="slide-ctas">
-            <a href="#" class="cta-button">Shop Quality</a>
-          </div>
-        </div>
-        <div class="project-info">
-          <div class="project-type">Craftsmanship</div>
-          <div class="project-category">Premium Line</div>
-          <a href="#" class="project-cta">Discover Quality →</a>
-        </div>
-      </div>
-
-      <!-- Slide 4 - Video -->
-      <div class="slide">
-        <video class="slide-bg video" muted loop playsinline preload="auto">
-          <source src="img/hero_vid3.mp4" type="video/mp4" />
-        </video>
-        <div class="slide-overlay"></div>
-        <div class="slide-content">
-          <h1 class="slide-title">New Arrivals</h1>
-          <p class="slide-subtitle">Fresh styles and trending pieces</p>
-          <div class="slide-ctas">
-            <a href="#" class="cta-button">See New Items</a>
-          </div>
-        </div>
-        <div class="project-info">
-          <div class="project-type">New</div>
-          <div class="project-category">Latest Arrivals</div>
-          <a href="#" class="project-cta">Browse New →</a>
-        </div>
-        <div class="video-controls">
-          <button class="play-pause-btn" onclick="toggleVideo(this)">⏸</button>
-        </div>
-      </div>
-
-      <!-- Navigation Controls -->
-      <div class="nav-controls">
-        <button class="nav-control prev" onclick="previousSlide()"></button>
-        <button class="nav-control next" onclick="nextSlide()"></button>
-      </div>
-
-      <!-- Dot Navigation -->
-      <div class="dot-nav">
-        <div class="nav-dot active" onclick="goToSlide(0)"></div>
-        <div class="nav-dot" onclick="goToSlide(1)"></div>
-        <div class="nav-dot" onclick="goToSlide(2)"></div>
-        <div class="nav-dot" onclick="goToSlide(3)"></div>
-      </div>
-
-      <!-- Corner Stickers -->
-      <div class="corner-sticker sticker-top-left">TRADITIONAL</div>
-      <div class="corner-sticker sticker-bottom-right">2025</div>
-      <div class="corner-sticker sticker-top-right">FASHION</div>
+      <div class="main-hero-dots" id="mainHeroDots"></div>
     </section>
 
-    <!-- ====================================New Arrivals Section ============================-->
+    <!-- Section 1: New Arrivals -->
+    <section class="na-hero d-flex align-items-center justify-content-center">
+      <div class="na-video-wrap">
+        <video autoplay playsinline loop muted class="na-video-bg">
+          <source
+            src="https://tactusmarketing.com/wp-content/uploads/tactus-waves-hero.mp4"
+            type="video/mp4"
+          />
+        </video>
+      </div>
+      <div class="na-gradient-overlay position-absolute w-100"></div>
+      <div class="na-content position-relative text-center mb-5">
+        <h1 class="na-hero-title na-blend">A sea of new Traditions</h1>
+        <p class="text-white lead mt-3">
+          Discover the latest sarees, stylish suits, trendy cord sets, and fresh
+          accessories — crafted for the season, designed for you.
+        </p>
+        <a href="#shop" class="btn btn-light mt-4 px-4 py-2 font-weight-bold">
+          Shop New In
+        </a>
+      </div>
+    </section>
 
-    <section class="new-arrivals">
+    <section class="section">
       <div class="section-header">
-        <h2 class="section-title">New Arrivals</h2>
-        <p class="section-subtitle">
-          Discover the latest in traditional elegance
+        <h2>Summer Silk Collection</h2>
+        <p>
+          Feel the luxury of airy handwoven silks, stunning new prints, and bold
+          color stories. Perfect for every sun-kissed moment.
         </p>
       </div>
-
-      <ul class="cards">
-        <li class="cards__item">
-          <div class="card">
-            <div class="card__image card__image--saree">
-              <div class="card__badge">New</div>
-            </div>
-            <div class="card__content">
-              <div class="card__title">Silk Saree</div>
-              <div class="card__price">₹8,999</div>
-              <p class="card__text">
-                Exquisite handwoven silk saree with intricate golden zari work,
-                perfect for festive occasions and special celebrations.
-              </p>
-              <button class="btn btn--block card__btn">Shop Now</button>
-            </div>
-          </div>
-        </li>
-
-        <li class="cards__item">
-          <div class="card">
-            <div class="card__image card__image--lehenga">
-              <div class="card__badge">Trending</div>
-            </div>
-            <div class="card__content">
-              <div class="card__title">Bridal Lehenga</div>
-              <div class="card__price">₹15,999</div>
-              <p class="card__text">
-                Stunning bridal lehenga with detailed embroidery and mirror
-                work, crafted for your special day with traditional artistry.
-              </p>
-              <button class="btn btn--block card__btn">Shop Now</button>
-            </div>
-          </div>
-        </li>
-
-        <li class="cards__item">
-          <div class="card">
-            <div class="card__image card__image--salwar">
-              <div class="card__badge">Popular</div>
-            </div>
-            <div class="card__content">
-              <div class="card__title">Salwar Suit</div>
-              <div class="card__price">₹3,499</div>
-              <p class="card__text">
-                Comfortable and elegant cotton salwar kameez with beautiful
-                block prints, ideal for everyday wear and casual occasions.
-              </p>
-              <button class="btn btn--block card__btn">Shop Now</button>
-            </div>
-          </div>
-        </li>
-
-        <li class="cards__item">
-          <div class="card">
-            <div class="card__image card__image--anarkali">
-              <div class="card__badge">Limited</div>
-            </div>
-            <div class="card__content">
-              <div class="card__title">Anarkali Dress</div>
-              <div class="card__price">₹6,799</div>
-              <p class="card__text">
-                Graceful Anarkali dress with flowing silhouette and delicate
-                embellishments, perfect for parties and formal events.
-              </p>
-              <button class="btn btn--block card__btn">Shop Now</button>
-            </div>
-          </div>
-        </li>
-      </ul>
+      <div class="product-slider-container">
+        <div class="product-slider" id="newArrivalsSlider"></div>
+      </div>
+      <div class="slider-nav" id="newArrivalsNav"></div>
     </section>
 
-    <!-- trending section -->
+    <!-- Section 2: Festive Collection -->
+    <section class="hero-section">
+      <img
+        src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?ixlib=rb-4.0.3&auto=format&fit=crop&w=1025&q=80"
+        alt="Festive Collection"
+        class="hero-image"
+      />
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <h2>Festive Collection</h2>
+        <p>
+          Make every celebration memorable with our handpicked sarees, luxurious
+          suits, and unique accessories. Dress for the occasion, the Behna way.
+        </p>
+        <button class="hero-btn">View Festive Styles</button>
+      </div>
+    </section>
+    <section class="section">
+      <div class="section-header">
+        <h2>Diwali Special</h2>
+        <p>
+          Light up the season in rich sarees, beautifully tailored kurtis, and
+          festive accessories — curated just for you.
+        </p>
+      </div>
+      <div class="product-slider-container">
+        <div class="product-slider" id="festiveSlider"></div>
+      </div>
+      <div class="slider-nav" id="festiveNav"></div>
+    </section>
 
+    <!-- Section 3: Everyday Ethnic -->
+    <section class="hero-section">
+      <img
+        src="https://images.unsplash.com/photo-1581044777550-4cfa60707c03?ixlib=rb-4.0.3&auto=format&fit=crop&w=686&q=80"
+        alt="Everyday Ethnic"
+        class="hero-image"
+      />
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <h2>Everyday Essentials</h2>
+        <p>
+          Elevate your daily wardrobe with versatile kurtis, easy cord sets, and
+          light accessories — made for all-day comfort and effortless style.
+        </p>
+        <button class="hero-btn">Shop Everyday</button>
+      </div>
+    </section>
+    <section class="section">
+      <div class="section-header">
+        <h2>Daily Wear Favorites</h2>
+        <p>
+          Classic kurtis, must-have cord sets, and easy-care sarees — timeless
+          staples for the woman on the move.
+        </p>
+      </div>
+      <div class="product-slider-container">
+        <div class="product-slider" id="everydaySlider"></div>
+      </div>
+      <div class="slider-nav" id="everydayNav"></div>
+    </section>
+
+    <!-- Section 4: Wedding Special -->
+    <section class="hero-section">
+      <img
+        src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1494&q=80"
+        alt="Wedding Special"
+        class="hero-image"
+      />
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <h2>Bridal & Wedding Edit</h2>
+        <p>
+          Step into the spotlight with Behna’s wedding sarees, regal lehengas,
+          and elegant accessories for the modern bride and her tribe.
+        </p>
+        <button class="hero-btn">Book Bridal Styling</button>
+      </div>
+    </section>
+    <section class="section">
+      <div class="section-header">
+        <h2>Bridal Lehengas & Sarees</h2>
+        <p>
+          Discover exquisite craftsmanship, rich fabrics, and signature Behna
+          details — because your big day deserves the best.
+        </p>
+      </div>
+      <div class="product-slider-container">
+        <div class="product-slider" id="weddingSlider"></div>
+      </div>
+      <div class="slider-nav" id="weddingNav"></div>
+    </section>
+
+    <!-- Section 5: Accessories -->
+    <section class="hero-section">
+      <img
+        src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=687&q=80"
+        alt="Accessories"
+        class="hero-image"
+      />
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <h2>Finish With Flair</h2>
+        <p>
+          Elevate your look with handcrafted earrings, potli bags, stoles, and
+          more. Shop accessories that make every outfit unforgettable.
+        </p>
+        <button class="hero-btn">Explore Accessories</button>
+      </div>
+    </section>
+    <section class="section">
+      <div class="section-header">
+        <h2>Accessories & Add-Ons</h2>
+        <p>
+          Complete your wardrobe with trending jewelry, stoles, and statement
+          pieces — perfect for mixing, matching, and making it your own.
+        </p>
+      </div>
+      <div class="product-slider-container">
+        <div class="product-slider" id="accessoriesSlider"></div>
+      </div>
+      <div class="slider-nav" id="accessoriesNav"></div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-logo">BEHNA</div>
+      <div class="footer-links">
+        <a href="#">About Us</a>
+        <a href="#">Our Craft</a>
+        <a href="#">Stores</a>
+        <a href="#">Contact</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms</a>
+      </div>
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-pinterest-p"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+      </div>
+      <p class="copyright">
+        © 2023 Behna Traditional Wear. All Rights Reserved.
+      </p>
+    </footer>
     <script src="script.js"></script>
   </body>
 </html>

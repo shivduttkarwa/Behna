@@ -1,333 +1,331 @@
-// ======================== PRELOADER ========================
-window.addEventListener("load", function () {
-  const preloader = document.getElementById("preloader");
-  setTimeout(() => {
-    preloader.classList.add("fade-out");
-    setTimeout(() => {
-      preloader.style.display = "none";
-      // Initialize slider after preloader is hidden
-      initializeSlider();
-    }, 800);
-  }, 3000);
-});
+// Hero slider (slide/fade/pill-dots)
+const heroSlides = document.querySelectorAll(".main-hero-slide");
+const heroDots = document.getElementById("mainHeroDots");
+let heroCurrent = 0,
+  heroTimer = null,
+  heroPrev = 0;
 
-// ======================== SLIDER VARIABLES ========================
-let currentSlideIndex = 0;
-let isTransitioning = false;
-let autoSlideTimer = null;
-let isSliderInitialized = false;
-
-const slides = document.querySelectorAll(".slide");
-const totalSlides = slides.length;
-const dots = document.querySelectorAll(".nav-dot");
-
-// ======================== SLIDER FUNCTIONS ========================
-function updateDots() {
-  dots.forEach((dot, index) => {
-    dot.classList.toggle("active", index === currentSlideIndex);
+function showHeroSlide(idx) {
+  if (idx === heroCurrent) return;
+  heroSlides.forEach((slide, i) => {
+    slide.classList.remove("active", "out-left", "out-right");
+    if (heroDots.children[i]) heroDots.children[i].classList.remove("active");
+  });
+  let outClass = idx > heroCurrent ? "out-left" : "out-right";
+  heroSlides[heroCurrent].classList.add(outClass);
+  heroSlides[idx].classList.add("active");
+  if (heroDots.children[idx]) heroDots.children[idx].classList.add("active");
+  heroPrev = heroCurrent;
+  heroCurrent = idx;
+}
+function nextHeroSlide() {
+  showHeroSlide((heroCurrent + 1) % heroSlides.length);
+}
+function startHeroTimer() {
+  heroTimer = setInterval(nextHeroSlide, 4700);
+}
+function resetHeroTimer() {
+  clearInterval(heroTimer);
+  startHeroTimer();
+}
+if (heroDots) {
+  heroSlides.forEach((_, i) => {
+    let dot = document.createElement("div");
+    dot.className = "main-hero-dot" + (i === 0 ? " active" : "");
+    dot.addEventListener("click", () => {
+      showHeroSlide(i);
+      resetHeroTimer();
+    });
+    heroDots.appendChild(dot);
   });
 }
+startHeroTimer();
 
-function handleVideoPlayback(activeIndex) {
-  slides.forEach((slide, index) => {
-    const video = slide.querySelector("video");
-    if (!video) return;
+// Hamburger mobile nav
+document.querySelector(".menu-toggle").addEventListener("click", function () {
+  this.classList.toggle("active");
+  document.querySelector(".nav-links").classList.toggle("active");
+});
+document.querySelectorAll(".nav-links a").forEach((link) => {
+  link.addEventListener("click", function () {
+    document.querySelector(".nav-links").classList.remove("active");
+    document.querySelector(".menu-toggle").classList.remove("active");
+  });
+});
 
-    if (index === activeIndex) {
-      video.muted = true;
-      video.currentTime = 0;
-      const playPromise = video.play();
-      if (playPromise !== undefined) {
-        playPromise.catch((e) => console.log("Video autoplay failed:", e));
-      }
+// Product Data
+const products = {
+  newArrivals: [
+    {
+      name: "Banarasi Silk Saree",
+      price: "₹4,999",
+      image:
+        "https://images.unsplash.com/photo-1571875257727-256c39da42af?ixlib=rb-4.0.3&auto=format&fit=crop&w=880&q=80",
+      desc: "Handwoven pure silk with intricate zari work",
+    },
+    {
+      name: "Kalamkari Kurta Set",
+      price: "₹2,499",
+      image:
+        "https://images.unsplash.com/photo-1594631252845-29fc4cc8cde9?ixlib=rb-4.0.3&auto=format&fit=crop&w=687&q=80",
+      desc: "Organic cotton with traditional Kalamkari prints",
+    },
+    {
+      name: "Chanderi Dupatta",
+      price: "₹1,299",
+      image:
+        "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?ixlib=rb-4.0.3&auto=format&fit=crop&w=1972&q=80",
+      desc: "Lightweight Chanderi silk with golden borders",
+    },
+    {
+      name: "Cotton Printed Suit",
+      price: "₹3,299",
+      image:
+        "https://images.unsplash.com/photo-1595341595379-cf1cd0fb7fb3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80",
+      desc: "Breathable cotton with traditional block prints",
+    },
+  ],
+  festive: [
+    {
+      name: "Zari Work Saree",
+      price: "₹6,999",
+      image:
+        "https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?ixlib=rb-4.0.3&auto=format&fit=crop&w=1025&q=80",
+      desc: "Heavy zari work for festive occasions",
+    },
+    {
+      name: "Silk Lehenga",
+      price: "₹8,499",
+      image:
+        "https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?ixlib=rb-4.0.3&auto=format&fit=crop&w=735&q=80",
+      desc: "Pure silk with intricate embroidery",
+    },
+    {
+      name: "Embroidered Anarkali",
+      price: "₹5,299",
+      image:
+        "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?ixlib=rb-4.0.3&auto=format&fit=crop&w=687&q=80",
+      desc: "Floor-length Anarkali with detailed handwork",
+    },
+    {
+      name: "Velvet Blouse",
+      price: "₹2,999",
+      image:
+        "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-4.0.3&auto=format&fit=crop&w=736&q=80",
+      desc: "Rich velvet with antique gold embroidery",
+    },
+  ],
+  everyday: [
+    {
+      name: "Cotton Printed Kurta",
+      price: "₹1,299",
+      image:
+        "https://images.unsplash.com/photo-1581044777550-4cfa60707c03?ixlib=rb-4.0.3&auto=format&fit=crop&w=686&q=80",
+      desc: "Comfortable daily wear with traditional prints",
+    },
+    {
+      name: "Linen Palazzos",
+      price: "₹1,499",
+      image:
+        "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=687&q=80",
+      desc: "Breathable linen for all-day comfort",
+    },
+    {
+      name: "Chikankari Top",
+      price: "₹999",
+      image:
+        "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?ixlib=rb-4.0.3&auto=format&fit=crop&w=687&q=80",
+      desc: "Delicate Chikankari embroidery on cotton",
+    },
+    {
+      name: "Rayon Dupatta",
+      price: "₹799",
+      image:
+        "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?ixlib=rb-4.0.3&auto=format&fit=crop&w=1972&q=80",
+      desc: "Lightweight with subtle prints",
+    },
+  ],
+  wedding: [
+    {
+      name: "Bridal Red Lehenga",
+      price: "₹24,999",
+      image:
+        "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1494&q=80",
+      desc: "Hand-embroidered with Swarovski crystals",
+    },
+    {
+      name: "Zardozi Saree",
+      price: "₹18,499",
+      image:
+        "https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?ixlib=rb-4.0.3&auto=format&fit=crop&w=735&q=80",
+      desc: "Traditional Zardozi work on pure silk",
+    },
+    {
+      name: "Pearl Embroidered Gown",
+      price: "₹32,999",
+      image:
+        "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-4.0.3&auto=format&fit=crop&w=736&q=80",
+      desc: "Contemporary bridal wear with pearl detailing",
+    },
+    {
+      name: "Bridal Jewelry Set",
+      price: "₹12,499",
+      image:
+        "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=687&q=80",
+      desc: "Antique finish temple jewelry set",
+    },
+  ],
+  accessories: [
+    {
+      name: "Jhumka Earrings",
+      price: "₹1,299",
+      image:
+        "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=687&q=80",
+      desc: "Traditional gold-plated jhumkas",
+    },
+    {
+      name: "Silk Potli Bag",
+      price: "₹1,499",
+      image:
+        "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?ixlib=rb-4.0.3&auto=format&fit=crop&w=687&q=80",
+      desc: "Handwoven silk with embroidery",
+    },
+    {
+      name: "Bridal Maang Tikka",
+      price: "₹2,999",
+      image:
+        "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?ixlib=rb-4.0.3&auto=format&fit=crop&w=1972&q=80",
+      desc: "Intricately designed with pearls and stones",
+    },
+    {
+      name: "Traditional Mojris",
+      price: "₹1,799",
+      image:
+        "https://images.unsplash.com/photo-1581044777550-4cfa60707c03?ixlib=rb-4.0.3&auto=format&fit=crop&w=686&q=80",
+      desc: "Hand-embroidered leather mojris",
+    },
+  ],
+};
+
+// Product Card Template
+function createProductCard(product) {
+  return `
+                <div class="product-card">
+                    <div class="product-image-container">
+                        <img src="${product.image}" alt="${product.name}" class="product-image">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-name">${product.name}</div>
+                        <div class="product-price">${product.price}</div>
+                        <div class="product-desc">${product.desc}</div>
+                        <button class="product-btn">View Details</button>
+                    </div>
+                </div>
+            `;
+}
+
+// Slider Setup
+function initSlider(section, productsArr) {
+  const slider = document.getElementById(section + "Slider");
+  const nav = document.getElementById(section + "Nav");
+  let slidesPerView = 1;
+
+  function updateSlidesPerView() {
+    if (window.innerWidth >= 1024) {
+      slidesPerView = 3;
+    } else if (window.innerWidth >= 600) {
+      slidesPerView = 2;
     } else {
-      video.pause();
-      video.currentTime = 0;
+      slidesPerView = 1;
     }
-  });
-}
+  }
+  updateSlidesPerView();
 
-function showSlide(targetIndex) {
-  if (
-    isTransitioning ||
-    targetIndex === currentSlideIndex ||
-    !isSliderInitialized
-  )
-    return;
+  let current = 0;
 
-  const prevIndex = currentSlideIndex;
-  isTransitioning = true;
-  targetIndex = Math.max(0, Math.min(targetIndex, totalSlides - 1));
-
-  currentSlideIndex = targetIndex;
-
-  // Remove all classes first
-  slides.forEach((slide) => {
-    slide.classList.remove("active", "prev");
-  });
-
-  // Apply new classes with slight delay for smooth transition
-  requestAnimationFrame(() => {
-    slides[prevIndex].classList.add("prev");
-    slides[targetIndex].classList.add("active");
-  });
-
-  updateDots();
-  handleVideoPlayback(currentSlideIndex);
-
-  // Clean up after transition
-  setTimeout(() => {
-    slides.forEach((slide, index) => {
-      if (index !== currentSlideIndex) {
-        slide.classList.remove("active", "prev");
-      }
+  function renderSlider() {
+    slider.innerHTML = "";
+    let width = (100 / slidesPerView).toFixed(4) + "%";
+    productsArr.forEach((product, i) => {
+      slider.innerHTML += `<div class="product-card" style="flex:0 0 ${width};max-width:${width}">${createProductCard(
+        product
+      )}</div>`;
     });
-    isTransitioning = false;
-  }, 1000);
-}
+    slider.style.transform = `translateX(-${current * 100}%)`;
+  }
 
-function nextSlide() {
-  if (isTransitioning || !isSliderInitialized) return;
-  const nextIndex = (currentSlideIndex + 1) % totalSlides;
-  showSlide(nextIndex);
-  resetAutoSlide();
-}
-
-function previousSlide() {
-  if (isTransitioning || !isSliderInitialized) return;
-  const prevIndex = (currentSlideIndex - 1 + totalSlides) % totalSlides;
-  showSlide(prevIndex);
-  resetAutoSlide();
-}
-
-function goToSlide(index) {
-  if (isTransitioning || index === currentSlideIndex || !isSliderInitialized)
-    return;
-  showSlide(index);
-  resetAutoSlide();
-}
-
-// ======================== AUTO SLIDE ========================
-function startAutoSlide() {
-  if (!isSliderInitialized) return;
-  stopAutoSlide();
-  autoSlideTimer = setInterval(() => {
-    if (!isTransitioning) {
-      nextSlide();
+  function renderNav() {
+    nav.innerHTML = "";
+    let dotCount = Math.ceil(productsArr.length / slidesPerView);
+    for (let i = 0; i < dotCount; i++) {
+      nav.innerHTML += `<div class="slider-dot${
+        i === current ? " active" : ""
+      }" data-index="${i}"></div>`;
     }
-  }, 6000);
-}
-
-function stopAutoSlide() {
-  if (autoSlideTimer) {
-    clearInterval(autoSlideTimer);
-    autoSlideTimer = null;
+    nav.querySelectorAll(".slider-dot").forEach((dot) => {
+      dot.addEventListener("click", function () {
+        current = parseInt(this.dataset.index);
+        updateSlider();
+      });
+    });
   }
-}
 
-function resetAutoSlide() {
-  stopAutoSlide();
-  setTimeout(startAutoSlide, 1000);
-}
-
-// ======================== VIDEO CONTROLS ========================
-function toggleVideo(button) {
-  const slide = button.closest(".slide");
-  const video = slide.querySelector("video");
-
-  if (!video) return;
-
-  if (video.paused) {
-    video.play().catch(console.log);
-    button.innerHTML = "⏸";
-  } else {
-    video.pause();
-    button.innerHTML = "▶️";
+  function updateSlider() {
+    renderSlider();
+    renderNav();
   }
-}
 
-// ======================== MOBILE NAVIGATION ========================
-function toggleMobileMenu() {
-  const toggle = document.querySelector(".mobile-toggle");
-  const menu = document.getElementById("mobileMenu");
-  const backdrop = document.getElementById("mobileBackdrop");
-
-  toggle.classList.toggle("active");
-  menu.classList.toggle("active");
-  backdrop.classList.toggle("active");
-}
-
-function closeMobileMenu() {
-  const toggle = document.querySelector(".mobile-toggle");
-  const menu = document.getElementById("mobileMenu");
-  const backdrop = document.getElementById("mobileBackdrop");
-
-  toggle.classList.remove("active");
-  menu.classList.remove("active");
-  backdrop.classList.remove("active");
-}
-
-// ======================== EVENT LISTENERS ========================
-document
-  .querySelectorAll(".mobile-nav-link, .mobile-contact-btn")
-  .forEach((link) => {
-    link.addEventListener("click", closeMobileMenu);
+  window.addEventListener("resize", () => {
+    let prevSlidesPerView = slidesPerView;
+    updateSlidesPerView();
+    if (slidesPerView !== prevSlidesPerView) {
+      current = 0;
+      updateSlider();
+    }
   });
 
-// Keyboard navigation
-document.addEventListener("keydown", (e) => {
-  if (isTransitioning || !isSliderInitialized) return;
-
-  switch (e.key) {
-    case "ArrowLeft":
-      previousSlide();
-      break;
-    case "ArrowRight":
-      nextSlide();
-      break;
-    case "Escape":
-      closeMobileMenu();
-      break;
-  }
-});
-
-// Touch navigation
-let touchStartX = 0;
-let touchEndX = 0;
-
-document.addEventListener(
-  "touchstart",
-  (e) => {
-    touchStartX = e.changedTouches[0].screenX;
-  },
-  { passive: true }
-);
-
-document.addEventListener(
-  "touchend",
-  (e) => {
-    if (isTransitioning || !isSliderInitialized) return;
-
-    touchEndX = e.changedTouches[0].screenX;
-    const diff = touchStartX - touchEndX;
-    const threshold = 50;
-
-    if (Math.abs(diff) > threshold) {
-      if (diff > 0) {
-        nextSlide();
-      } else {
-        previousSlide();
-      }
-    }
-  },
-  { passive: true }
-);
-
-// Pause on hover (desktop only)
-if (window.innerWidth > 768) {
-  const slider = document.querySelector(".hero-slider");
-  slider.addEventListener("mouseenter", stopAutoSlide);
-  slider.addEventListener("mouseleave", startAutoSlide);
-}
-
-// ======================== INITIALIZATION ========================
-function initializeSlider() {
-  isSliderInitialized = true;
-
-  // Ensure first slide is active
-  slides.forEach((slide, index) => {
-    slide.classList.toggle("active", index === 0);
-  });
-
-  updateDots();
-
-  // Initialize videos with better mobile support
-  document.querySelectorAll("video").forEach((video) => {
-    video.muted = true;
-    video.preload = "auto";
-    video.playsInline = true;
-    video.setAttribute("webkit-playsinline", "true");
-
-    // Handle video load
-    video.addEventListener("loadeddata", () => {
-      if (video.closest(".slide").classList.contains("active")) {
-        const playPromise = video.play();
-        if (playPromise !== undefined) {
-          playPromise.catch((e) => console.log("Video autoplay failed:", e));
+  // Drag for mobile
+  let startX = 0,
+    isDown = false;
+  slider.addEventListener(
+    "touchstart",
+    (e) => {
+      isDown = true;
+      startX = e.touches[0].clientX;
+    },
+    false
+  );
+  slider.addEventListener(
+    "touchmove",
+    (e) => {
+      if (!isDown) return;
+      let moveX = e.touches[0].clientX;
+      let diff = startX - moveX;
+      if (Math.abs(diff) > 50) {
+        if (
+          diff > 0 &&
+          current < Math.ceil(productsArr.length / slidesPerView) - 1
+        ) {
+          current++;
+        } else if (diff < 0 && current > 0) {
+          current--;
         }
+        updateSlider();
+        isDown = false;
       }
-    });
-  });
+    },
+    false
+  );
+  slider.addEventListener("touchend", () => (isDown = false), false);
 
-  // Handle first slide video if it exists
-  handleVideoPlayback(currentSlideIndex);
-
-  // Start autoplay after initialization
-  setTimeout(startAutoSlide, 2000);
+  updateSlider();
 }
 
-// Ensure videos are ready on page load
-document.addEventListener("DOMContentLoaded", () => {
-  // Preload videos
-  document.querySelectorAll("video").forEach((video) => {
-    video.load();
-  });
-});
-
-//====================New Arrivals Section=====================
-// Add smooth scroll behavior for better UX
+// Initialize all sliders
 document.addEventListener("DOMContentLoaded", function () {
-  // Add click handlers for buttons
-  const buttons = document.querySelectorAll(".card__btn");
-
-  buttons.forEach((button) => {
-    button.addEventListener("click", function (e) {
-      e.preventDefault();
-
-      // Add a subtle click animation
-      this.style.transform = "scale(0.95)";
-      setTimeout(() => {
-        this.style.transform = "scale(1)";
-      }, 150);
-
-      // You can add navigation logic here
-      console.log("Navigating to product page...");
-    });
-  });
-
-  // Intersection Observer for scroll animations
-  const observerOptions = {
-    threshold: 0.1,
-    rootMargin: "0px 0px -50px 0px",
-  };
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.style.opacity = "1";
-        entry.target.style.transform = "translateY(0)";
-      }
-    });
-  }, observerOptions);
-
-  // Observe all cards for scroll animation
-  document.querySelectorAll(".cards__item").forEach((card) => {
-    observer.observe(card);
-  });
+  initSlider("newArrivals", products.newArrivals);
+  initSlider("festive", products.festive);
+  initSlider("everyday", products.everyday);
+  initSlider("wedding", products.wedding);
+  initSlider("accessories", products.accessories);
 });
-
-// Add hover sound effect (optional)
-function addHoverEffects() {
-  const cards = document.querySelectorAll(".card");
-
-  cards.forEach((card) => {
-    card.addEventListener("mouseenter", function () {
-      this.style.transition = "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)";
-    });
-  });
-}
-
-// Initialize hover effects
-addHoverEffects();
-
-// ======================== trending section ========================
