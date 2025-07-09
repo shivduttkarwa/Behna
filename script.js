@@ -231,24 +231,19 @@ function initSlider(section, productsArr) {
   let slidesPerView = 1;
   let current = 0;
 
-  // Create navigation buttons
-  const sliderContainer = slider.parentElement;
-  const prevBtn = document.createElement("button");
-  const nextBtn = document.createElement("button");
-
-  prevBtn.className = "slider-btn slider-btn-prev";
-  nextBtn.className = "slider-btn slider-btn-next";
-
-  prevBtn.innerHTML = '<i class="fas fa-chevron-left"></i>';
-  nextBtn.innerHTML = '<i class="fas fa-chevron-right"></i>';
-
-  sliderContainer.appendChild(prevBtn);
-  sliderContainer.appendChild(nextBtn);
-
+  // Responsive detection
   function updateSlidesPerView() {
     if (window.innerWidth >= 1024) slidesPerView = 3;
     else if (window.innerWidth >= 600) slidesPerView = 2;
     else slidesPerView = 1;
+  }
+
+  function buildSlides() {
+    slider.innerHTML = "";
+    productsArr.forEach((product) => {
+      slider.innerHTML += createProductCard(product);
+    });
+    setCardWidths();
   }
 
   function setCardWidths() {
@@ -260,91 +255,48 @@ function initSlider(section, productsArr) {
     });
   }
 
-  function buildSlides() {
-    slider.innerHTML = "";
-    productsArr.forEach((product) => {
-      slider.innerHTML += createProductCard(product);
-    });
-    setCardWidths();
+  function getMaxIdx() {
+    return Math.max(0, productsArr.length - slidesPerView);
   }
 
   function updateSlider() {
     let step = 100 / slidesPerView;
+    let maxIdx = getMaxIdx();
+    if (current > maxIdx) current = maxIdx;
+    if (current < 0) current = 0;
     slider.style.transform = `translateX(-${current * step}%)`;
     renderNav();
-    updateButtonStates();
-  }
-
-  function updateButtonStates() {
-    let maxIdx = Math.max(0, productsArr.length - slidesPerView);
-    prevBtn.disabled = current === 0;
-    nextBtn.disabled = current >= maxIdx;
-
-    prevBtn.style.opacity = current === 0 ? "0.3" : "1";
-    nextBtn.style.opacity = current >= maxIdx ? "0.3" : "1";
   }
 
   function renderNav() {
     nav.innerHTML = "";
     let dotCount = Math.max(1, productsArr.length - slidesPerView + 1);
     for (let i = 0; i < dotCount; i++) {
-      nav.innerHTML += `<div class="slider-dot${
-        i === current ? " active" : ""
-      }" data-index="${i}"></div>`;
-    }
-    nav.querySelectorAll(".slider-dot").forEach((dot) => {
+      let dot = document.createElement("div");
+      dot.className = "slider-dot" + (i === current ? " active" : "");
       dot.addEventListener("click", function () {
-        current = parseInt(this.dataset.index);
+        current = i;
         updateSlider();
       });
-    });
-  }
-
-  function clampCurrent() {
-    let maxIdx = Math.max(0, productsArr.length - slidesPerView);
-    if (current > maxIdx) current = maxIdx;
-    if (current < 0) current = 0;
-  }
-
-  function goTo(idx) {
-    current = idx;
-    clampCurrent();
-    updateSlider();
-  }
-
-  // Button click handlers
-  prevBtn.addEventListener("click", () => {
-    if (current > 0) {
-      current--;
-      updateSlider();
+      nav.appendChild(dot);
     }
-  });
+  }
 
-  nextBtn.addEventListener("click", () => {
-    let maxIdx = Math.max(0, productsArr.length - slidesPerView);
-    if (current < maxIdx) {
-      current++;
-      updateSlider();
-    }
-  });
-
-  // Touch/drag swipe support (never gets lost)
+  // Touch/drag swipe support (never gets stuck)
   let startX = 0,
     isDragging = false,
     hasSwiped = false;
-
   slider.addEventListener("touchstart", (e) => {
     if (e.touches.length !== 1) return;
     isDragging = true;
     hasSwiped = false;
     startX = e.touches[0].clientX;
   });
-
   slider.addEventListener("touchmove", (e) => {
     if (!isDragging || hasSwiped) return;
     let diff = startX - e.touches[0].clientX;
+    let maxIdx = getMaxIdx();
     if (Math.abs(diff) > 40) {
-      let maxIdx = Math.max(0, productsArr.length - slidesPerView);
       if (diff > 0 && current < maxIdx) {
         current++;
         updateSlider();
@@ -356,18 +308,19 @@ function initSlider(section, productsArr) {
       }
     }
   });
-
   slider.addEventListener("touchend", () => {
     isDragging = false;
     hasSwiped = false;
   });
 
+  // Arrow button navigation (optional, can add buttons if you want)
+
   // Responsive: adjust slidesPerView and widths
   function resizeHandler() {
-    let oldSlidesPerView = slidesPerView;
+    let oldSPV = slidesPerView;
     updateSlidesPerView();
     setCardWidths();
-    let maxIdx = Math.max(0, productsArr.length - slidesPerView);
+    let maxIdx = getMaxIdx();
     if (current > maxIdx) current = maxIdx;
     updateSlider();
   }
@@ -377,21 +330,6 @@ function initSlider(section, productsArr) {
   buildSlides();
   updateSlider();
   window.addEventListener("resize", resizeHandler);
-
-  // Keyboard navigation
-  sliderContainer.setAttribute("tabindex", "0");
-  sliderContainer.addEventListener("keydown", (e) => {
-    if (e.key === "ArrowLeft" && current > 0) {
-      current--;
-      updateSlider();
-    } else if (e.key === "ArrowRight") {
-      let maxIdx = Math.max(0, productsArr.length - slidesPerView);
-      if (current < maxIdx) {
-        current++;
-        updateSlider();
-      }
-    }
-  });
 }
 
 // ==== INIT ALL SLIDERS (MATCHES SECTION IDS) ====
