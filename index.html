@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BEHNA</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Logo Transformation Container -->
+    <div class="logo-master">
+      <div class="logo-transform main-logo">
+        <img src="img/logo.png" alt="BEHNA" id="transformLogo" />
+      </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header" id="header">
+      <nav class="nav-container">
+        <div class="nav-left">
+          <span class="contact-text" onclick="openContact()">
+            <span class="contact-icon">+</span>CONTACT US
+          </span>
+        </div>
+        <div class="nav-right">
+          <div class="nav-icons">
+            <svg
+              class="icon search-icon"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              onclick="openSearch()"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+              ></path>
+            </svg>
+            <span class="menu-text" onclick="openMenu()">MENU</span>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Main Hero Section with 3 Slides -->
+    <section class="hero">
+      <div class="hero-slider" id="mainHeroSlider">
+        <div class="hero-slide active">
+          <video autoplay muted loop>
+            <source src="img/hero-vid-1 (1).mp4" type="video/mp4" />
+          </video>
+          <div class="hero-overlay"></div>
+          <div class="hero-content">
+            <h2 class="hero-collection">Timeless Elegance</h2>
+            <p class="hero-subtitle">
+              Discover the finest collection of traditional women's apparel from
+              Jaipur
+            </p>
+            <div class="hero-buttons">
+              <button
+                class="hero-button"
+                onclick="shopCategory('suits-kurtis')"
+              >
+                SUITS & KURTIS
+              </button>
+              <button class="hero-button" onclick="shopCategory('sarees')">
+                SAREES
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="hero-slide">
+          <img src="img/hero-2.jpg" alt="BEHNA Collection" />
+          <div class="hero-overlay"></div>
+          <div class="hero-content">
+            <h2 class="hero-collection">Exquisite Craftsmanship</h2>
+            <p class="hero-subtitle">
+              Handcrafted with love and precision in Jaipur
+            </p>
+            <div class="hero-buttons">
+              <button class="hero-button" onclick="shopCategory('sarees')">
+                SHOP SAREES
+              </button>
+              <button class="hero-button" onclick="shopCategory('accessories')">
+                ACCESSORIES
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="hero-slide">
+          <img src="img/hero-3.jpg" alt="Traditional Wear" />
+          <div class="hero-overlay"></div>
+          <div class="hero-content">
+            <h2 class="hero-collection">Modern Tradition</h2>
+            <p class="hero-subtitle">
+              Contemporary designs with traditional Rajasthani soul
+            </p>
+            <div class="hero-buttons">
+              <button class="hero-button" onclick="shopCategory('accessories')">
+                SHOP ACCESSORIES
+              </button>
+              <button
+                class="hero-button"
+                onclick="shopCategory('festive-wear')"
+              >
+                FESTIVE WEAR
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-indicators">
+        <span class="indicator active" onclick="setHeroSlide(0)"></span>
+        <span class="indicator" onclick="setHeroSlide(1)"></span>
+        <span class="indicator" onclick="setHeroSlide(2)"></span>
+      </div>
+    </section>
+
+    <!-- New Arrivals -->
+    <section class="new-arrivals">
+      <h2 class="new-arrivals-title">NEW ARRIVALS</h2>
+      <div class="new-arrivals-grid">
+        <div class="new-arrivals-item" onclick="shopCategory('suits-kurtis')">
+          <img
+            src="images/cheerful-traditional-indian-woman-white-background-studio-shot.jpg"
+            alt="New Suits & Kurtis"
+            class="new-arrivals-image"
+          />
+          <div class="new-arrivals-overlay">
+            <h3 class="new-arrivals-category">Latest Suits & Kurtis</h3>
+          </div>
+        </div>
+        <div class="new-arrivals-item" onclick="shopCategory('sarees')">
+          <img
+            src="images/new arr1 (1).jpg"
+            alt="New Sarees"
+            class="new-arrivals-image"
+          />
+          <div class="new-arrivals-overlay">
+            <h3 class="new-arrivals-category">Fresh Saree Collection</h3>
+          </div>
+        </div>
+        <div class="new-arrivals-item" onclick="shopCategory('cord-sets')">
+          <img
+            src="images/new arr2.jpg"
+            alt="Cord Sets"
+            class="new-arrivals-image"
+          />
+          <div class="new-arrivals-overlay">
+            <h3 class="new-arrivals-category">Trendy Cord Sets</h3>
+          </div>
+        </div>
+        <div class="new-arrivals-item" onclick="shopCategory('accessories')">
+          <img
+            src="images/new arr 3.png"
+            alt="Accessories"
+            class="new-arrivals-image"
+          />
+          <div class="new-arrivals-overlay">
+            <h3 class="new-arrivals-category">Statement Accessories</h3>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Suits and Kurtis Section -->
+    <section class="suits-kurtis">
+      <div class="suits-kurtis-container">
+        <div class="suits-kurtis-content">
+          <h2 class="suits-kurtis-title">SUITS & KURTIS</h2>
+          <p class="suits-kurtis-description">
+            Discover our exquisite collection of traditional suits and
+            contemporary kurtis, crafted with finest fabrics and intricate
+            embroidery work from Jaipur's skilled artisans.
+          </p>
+          <button
+            class="suits-kurtis-btn"
+            onclick="shopCategory('suits-kurtis')"
+          >
+            EXPLORE COLLECTION
+          </button>
+        </div>
+        <div class="suits-kurtis-image">
+          <img
+            src="images/beautiful-woman-purple-sweater-skirt.jpg"
+            alt="Suits & Kurtis Collection"
+            class="suits-kurtis-img"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- Sarees Section -->
+    <section class="sarees">
+      <div class="sarees-container">
+        <div class="sarees-image">
+          <img
+            src="images/pexels-vikashkr50-27103969.jpg"
+            alt="Sarees Collection"
+            class="sarees-img"
+          />
+        </div>
+        <div class="sarees-content">
+          <h2 class="sarees-title">SAREES</h2>
+          <p class="sarees-description">
+            Embrace timeless elegance with our handpicked saree collection
+            featuring silk, georgette, and cotton sarees adorned with
+            traditional Rajasthani prints and embellishments.
+          </p>
+          <button class="sarees-btn" onclick="shopCategory('sarees')">
+            SHOP SAREES
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cord Sets Section -->
+    <section class="cord-sets">
+      <div class="cord-sets-container">
+        <div class="cord-sets-content">
+          <h2 class="cord-sets-title">CORD SETS</h2>
+          <p class="cord-sets-description">
+            Modern comfort meets traditional aesthetics in our trendy cord set
+            collection. Perfect for casual occasions and contemporary styling
+            with a touch of ethnic charm.
+          </p>
+          <button class="cord-sets-btn" onclick="shopCategory('cord-sets')">
+            DISCOVER CORD SETS
+          </button>
+        </div>
+        <div class="cord-sets-image">
+          <img
+            src="images/pexels-brollwalamunda-20415076.jpg"
+            alt="Cord Sets Collection"
+            class="cord-sets-img"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- Accessories Section -->
+    <section class="accessories">
+      <div class="accessories-container">
+        <div class="accessories-image">
+          <img
+            src="images/pexels-brollwalamunda-20415076.jpg"
+            alt="Accessories Collection"
+            class="accessories-img"
+          />
+        </div>
+        <div class="accessories-content">
+          <h2 class="accessories-title">ACCESSORIES</h2>
+          <p class="accessories-description">
+            Complete your look with our curated accessories including
+            traditional jewelry, embroidered clutches, and statement pieces that
+            add the perfect finishing touch to your ensemble.
+          </p>
+          <button class="accessories-btn" onclick="shopCategory('accessories')">
+            VIEW ACCESSORIES
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services">
+      <h2 class="services-title">BEHNA SERVICES</h2>
+      <div class="services-grid">
+        <div class="service-item" onclick="openService('styling')">
+          <img
+            src="images/woman-7729639.jpg"
+            alt="Personal Styling"
+            class="service-image"
+          />
+          <h3 class="service-title">PERSONAL STYLING</h3>
+          <p class="service-description">
+            Get personalized styling advice from our expert stylists in Jaipur.
+            We help you choose the perfect traditional outfit for any occasion.
+          </p>
+        </div>
+        <div class="service-item" onclick="openService('appointment')">
+          <img
+            src="images/new arr2.jpg"
+            alt="Book an Appointment"
+            class="service-image"
+          />
+          <h3 class="service-title">BOOK AN APPOINTMENT</h3>
+          <p class="service-description">
+            Schedule a private appointment at our Jaipur boutique. Experience
+            personalized attention and exclusive access to our latest
+            collections.
+          </p>
+        </div>
+        <div class="service-item" onclick="openService('alteration')">
+          <img
+            src="img/hero-2.jpg"
+            alt="Alteration Services"
+            class="service-image"
+          />
+          <h3 class="service-title">ALTERATION SERVICES</h3>
+          <p class="service-description">
+            Perfect fit guaranteed with our professional alteration services.
+            Expert tailoring for all your traditional wear needs.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Elegant CTA Section -->
+    <section class="cta">
+      <div class="cta-container">
+        <div class="cta-content">
+          <h2 class="cta-title">EXPERIENCE BEHNA</h2>
+          <p class="cta-subtitle">
+            Step into our world of timeless elegance and discover the perfect
+            piece that tells your story
+          </p>
+          <div class="cta-buttons">
+            <button class="cta-btn primary" onclick="openContact()">
+              VISIT OUR STORE
+            </button>
+            <button
+              class="cta-btn secondary"
+              onclick="openService('appointment')"
+            >
+              BOOK CONSULTATION
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Us Section -->
+    <section class="contact-us">
+      <div class="contact-us-container">
+        <div class="contact-us-content">
+          <h2 class="contact-us-title">GET IN TOUCH</h2>
+          <p class="contact-us-subtitle">
+            Visit our boutique in the heart of Jaipur or reach out to us for
+            personalized assistance
+          </p>
+        </div>
+        <div class="contact-us-grid">
+          <div class="contact-us-item">
+            <h3 class="contact-us-item-title">VISIT US</h3>
+            <div class="contact-us-info">
+              <p>123 Johari Bazaar</p>
+              <p>Pink City, Jaipur</p>
+              <p>Rajasthan 302001, India</p>
+            </div>
+          </div>
+          <div class="contact-us-item">
+            <h3 class="contact-us-item-title">CALL US</h3>
+            <div class="contact-us-info">
+              <p>+91 98765 43210</p>
+              <p>Mon-Sat: 10AM-8PM</p>
+              <p>Sunday: 11AM-7PM</p>
+            </div>
+          </div>
+          <div class="contact-us-item">
+            <h3 class="contact-us-item-title">EMAIL US</h3>
+            <div class="contact-us-info">
+              <p>info@behna.com</p>
+              <p>orders@behna.com</p>
+              <p>support@behna.com</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sliding Menu -->
+    <div
+      class="menu-overlay"
+      id="menuOverlay"
+      onclick="closeMenuOverlay(event)"
+    >
+      <div class="menu-content">
+        <div class="menu-header">
+          <img
+            src="img/logo.png"
+            alt="BEHNA"
+            style="height: 60px; width: auto"
+          />
+          <span class="menu-close-text" onclick="closeMenu()">CLOSE</span>
+        </div>
+        <div class="menu-items">
+          <div class="menu-category">
+            <h3 class="menu-category-title">Collections</h3>
+            <ul class="menu-links">
+              <li>
+                <a href="#" onclick="shopCategory('suits-kurtis')"
+                  >Suits & Kurtis</a
+                >
+              </li>
+              <li><a href="#" onclick="shopCategory('sarees')">Sarees</a></li>
+              <li>
+                <a href="#" onclick="shopCategory('cord-sets')">Cord Sets</a>
+              </li>
+              <li>
+                <a href="#" onclick="shopCategory('accessories')"
+                  >Accessories</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="menu-category">
+            <h3 class="menu-category-title">Categories</h3>
+            <ul class="menu-links">
+              <li><a href="#" onclick="shopCategory('kurtis')">Kurtis</a></li>
+              <li>
+                <a href="#" onclick="shopCategory('punjabi-suits')"
+                  >Punjabi Suits</a
+                >
+              </li>
+              <li>
+                <a href="#" onclick="shopCategory('anarkali')">Anarkali</a>
+              </li>
+              <li>
+                <a href="#" onclick="shopCategory('silk-sarees')"
+                  >Silk Sarees</a
+                >
+              </li>
+              <li>
+                <a href="#" onclick="shopCategory('cotton-sarees')"
+                  >Cotton Sarees</a
+                >
+              </li>
+              <li><a href="#" onclick="shopCategory('jewelry')">Jewelry</a></li>
+              <li>
+                <a href="#" onclick="shopCategory('bags')">Bags & Clutches</a>
+              </li>
+            </ul>
+          </div>
+          <div class="menu-category">
+            <h3 class="menu-category-title">Services</h3>
+            <ul class="menu-links">
+              <li>
+                <a href="#" onclick="openService('appointment')"
+                  >Book an Appointment</a
+                >
+              </li>
+              <li>
+                <a href="#" onclick="openService('styling')"
+                  >Personal Styling</a
+                >
+              </li>
+              <li>
+                <a href="#" onclick="openService('alteration')"
+                  >Alteration Services</a
+                >
+              </li>
+              <li>
+                <a href="#" onclick="openService('sizing')">Size Guide</a>
+              </li>
+            </ul>
+          </div>
+          <div class="menu-category">
+            <h3 class="menu-category-title">BEHNA</h3>
+            <ul class="menu-links">
+              <li><a href="#" onclick="openStories()">Our Story</a></li>
+              <li><a href="#" onclick="openAbout()">About BEHNA</a></li>
+              <li>
+                <a href="#" onclick="openCraftsmanship()">Craftsmanship</a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  onclick="alert('Visit Our Jaipur Store - Located in the Heart of Jaipur...')"
+                  >Visit Our Jaipur Store</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contact Sliding Panel -->
+    <div
+      class="contact-overlay"
+      id="contactOverlay"
+      onclick="closeContactOverlay(event)"
+    >
+      <div class="contact-content">
+        <div class="contact-header">
+          <img
+            src="img/logo.png"
+            alt="BEHNA"
+            style="height: 60px; width: auto"
+          />
+          <span class="contact-close-text" onclick="closeContact()">CLOSE</span>
+        </div>
+        <div class="contact-details">
+          <div class="contact-section">
+            <h3 class="contact-section-title">Visit Our Store</h3>
+            <div class="contact-info">
+              <strong>BEHNA Boutique</strong><br />
+              123 Johari Bazaar<br />
+              Pink City, Jaipur<br />
+              Rajasthan 302001, India
+            </div>
+          </div>
+          <div class="contact-section">
+            <h3 class="contact-section-title">Call Us</h3>
+            <div class="contact-info">
+              <strong>Phone:</strong> +91 98765 43210<br />
+              <strong>WhatsApp:</strong> +91 98765 43210<br />
+              <strong>Hours:</strong> Mon-Sat: 10AM-8PM<br />
+              <strong>Sunday:</strong> 11AM-7PM
+            </div>
+          </div>
+          <div class="contact-section">
+            <h3 class="contact-section-title">Email Us</h3>
+            <div class="contact-info">
+              <strong>General:</strong> info@behna.com<br />
+              <strong>Orders:</strong> orders@behna.com<br />
+              <strong>Support:</strong> support@behna.com
+            </div>
+          </div>
+          <div class="contact-section">
+            <h3 class="contact-section-title">Follow Us</h3>
+            <div class="contact-info">
+              <strong>Instagram:</strong> @behna_jaipur<br />
+              <strong>Facebook:</strong> BEHNA Traditional Wear<br />
+              <strong>Pinterest:</strong> BEHNA Jaipur
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Search Overlay -->
+    <div
+      class="search-overlay"
+      id="searchOverlay"
+      onclick="closeSearchOverlay(event)"
+    >
+      <div class="search-content">
+        <div class="search-header">
+          <img
+            src="img/logo.png"
+            alt="BEHNA"
+            style="height: 60px; width: auto"
+          />
+          <span class="search-close-text" onclick="closeSearch()">CLOSE</span>
+        </div>
+        <div class="search-main">
+          <div class="search-input-container">
+            <input
+              type="text"
+              id="searchInput"
+              placeholder="Search for suits, sarees, accessories..."
+              class="search-input"
+              oninput="handleSearch()"
+            />
+            <div class="search-results" id="searchResults"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <div class="footer-logo">
+              <img src="img/logo.png" alt="BEHNA" class="footer-logo-img" />
+            </div>
+            <p class="footer-description">
+              Authentic traditional wear from the heart of Jaipur, crafted with
+              love and precision by skilled artisans.
+            </p>
+          </div>
+          <div class="footer-section">
+            <h4 class="footer-title">COLLECTIONS</h4>
+            <ul class="footer-links">
+              <li>
+                <a href="#" onclick="shopCategory('suits-kurtis')"
+                  >Suits & Kurtis</a
+                >
+              </li>
+              <li><a href="#" onclick="shopCategory('sarees')">Sarees</a></li>
+              <li>
+                <a href="#" onclick="shopCategory('cord-sets')">Cord Sets</a>
+              </li>
+              <li>
+                <a href="#" onclick="shopCategory('accessories')"
+                  >Accessories</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h4 class="footer-title">SERVICES</h4>
+            <ul class="footer-links">
+              <li>
+                <a href="#" onclick="openService('styling')"
+                  >Personal Styling</a
+                >
+              </li>
+              <li>
+                <a href="#" onclick="openService('appointment')"
+                  >Book Appointment</a
+                >
+              </li>
+              <li>
+                <a href="#" onclick="openService('alteration')"
+                  >Alteration Services</a
+                >
+              </li>
+              <li>
+                <a href="#" onclick="openService('sizing')">Size Guide</a>
+              </li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h4 class="footer-title">CONNECT</h4>
+            <div class="footer-social">
+              <a href="#" class="footer-social-link">Instagram</a>
+              <a href="#" class="footer-social-link">Facebook</a>
+              <a href="#" class="footer-social-link">Pinterest</a>
+            </div>
+            <div class="footer-newsletter">
+              <p class="footer-newsletter-text">Subscribe to our newsletter</p>
+              <div class="footer-newsletter-form">
+                <input
+                  type="email"
+                  placeholder="Your email"
+                  class="footer-newsletter-input"
+                  id="footerNewsletterEmail"
+                />
+                <button
+                  class="footer-newsletter-btn"
+                  onclick="subscribeFooterNewsletter()"
+                >
+                  SUBSCRIBE
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <div class="footer-bottom-content">
+            <p class="footer-copyright">© 2024 BEHNA. All rights reserved.</p>
+            <div class="footer-bottom-links">
+              <a href="#" class="footer-bottom-link">Privacy Policy</a>
+              <a href="#" class="footer-bottom-link">Terms of Service</a>
+              <a href="#" class="footer-bottom-link">Return Policy</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
