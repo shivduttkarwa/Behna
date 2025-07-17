@@ -4,9 +4,27 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>BEHNA</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@500&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+    <!-- Preloader -->
+    <div id="pre-load" class="loader">
+      <div class="loader-inner">
+        <div class="loader-logo">
+          <img src="img/logo.png" alt="BEHNA" />
+        </div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+      </div>
+    </div>
+
     <!-- Logo Transformation Container -->
     <div class="logo-master">
       <div class="logo-transform main-logo">
@@ -44,151 +62,334 @@
       </nav>
     </header>
 
-    <!-- Main Hero Section with 3 Slides -->
+    <!-- Main Hero Section -->
     <section class="hero">
-      <div class="hero-slider" id="mainHeroSlider">
-        <div class="hero-slide active">
-          <video autoplay muted loop>
-            <source src="img/hero-vid-1 (1).mp4" type="video/mp4" />
-          </video>
-          <div class="hero-overlay"></div>
-          <div class="hero-content">
-            <h2 class="hero-collection">Timeless Elegance</h2>
-            <p class="hero-subtitle">
-              Discover the finest collection of traditional women's apparel from
-              Jaipur
-            </p>
-            <div class="hero-buttons">
-              <button
-                class="hero-button"
-                onclick="shopCategory('suits-kurtis')"
-              >
-                SUITS & KURTIS
-              </button>
-              <button class="hero-button" onclick="shopCategory('sarees')">
-                SAREES
-              </button>
-            </div>
-          </div>
+      <video class="hero-video" autoplay muted loop>
+        <source src="img/hero-vid-1 (3).mp4" type="video/mp4" />
+      </video>
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <h2 class="hero-collection">Timeless Elegance</h2>
+        <p class="hero-subtitle">
+          Discover the finest collection of traditional women's apparel from
+          Jaipur
+        </p>
+        <div class="hero-buttons">
+          <button class="hero-button" onclick="shopCategory('suits-kurtis')">
+            SUITS & KURTIS
+          </button>
+          <button class="hero-button" onclick="shopCategory('sarees')">
+            SAREES
+          </button>
         </div>
-        <div class="hero-slide">
-          <img src="img/hero-2.jpg" alt="BEHNA Collection" />
-          <div class="hero-overlay"></div>
-          <div class="hero-content">
-            <h2 class="hero-collection">Exquisite Craftsmanship</h2>
-            <p class="hero-subtitle">
-              Handcrafted with love and precision in Jaipur
-            </p>
-            <div class="hero-buttons">
-              <button class="hero-button" onclick="shopCategory('sarees')">
-                SHOP SAREES
-              </button>
-              <button class="hero-button" onclick="shopCategory('accessories')">
-                ACCESSORIES
-              </button>
-            </div>
-          </div>
-        </div>
-        <div class="hero-slide">
-          <img src="img/hero-3.jpg" alt="Traditional Wear" />
-          <div class="hero-overlay"></div>
-          <div class="hero-content">
-            <h2 class="hero-collection">Modern Tradition</h2>
-            <p class="hero-subtitle">
-              Contemporary designs with traditional Rajasthani soul
-            </p>
-            <div class="hero-buttons">
-              <button class="hero-button" onclick="shopCategory('accessories')">
-                SHOP ACCESSORIES
-              </button>
-              <button
-                class="hero-button"
-                onclick="shopCategory('festive-wear')"
-              >
-                FESTIVE WEAR
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="hero-indicators">
-        <span class="indicator active" onclick="setHeroSlide(0)"></span>
-        <span class="indicator" onclick="setHeroSlide(1)"></span>
-        <span class="indicator" onclick="setHeroSlide(2)"></span>
       </div>
     </section>
 
     <!-- New Arrivals -->
     <section class="new-arrivals">
-      <h2 class="new-arrivals-title">NEW ARRIVALS</h2>
-      <div class="new-arrivals-grid">
-        <div class="new-arrivals-item" onclick="shopCategory('suits-kurtis')">
-          <img
-            src="images/cheerful-traditional-indian-woman-white-background-studio-shot.jpg"
-            alt="New Suits & Kurtis"
-            class="new-arrivals-image"
-          />
-          <div class="new-arrivals-overlay">
-            <h3 class="new-arrivals-category">Latest Suits & Kurtis</h3>
+      <h2 class="new-arrivals-section-title">NEW ARRIVALS</h2>
+      <ul class="cards">
+        <li class="cards__item">
+          <div class="card">
+            <div class="card__image card__image--suits"></div>
+            <div class="card__content">
+              <div class="card__title">Embroidered Silk Suit</div>
+              <p class="card__text">
+                Exquisite handcrafted silk suit with traditional mirror work and
+                intricate embroidery from Jaipur artisans. Perfect for special
+                occasions and festivals.
+              </p>
+              <button
+                class="btn btn--block card__btn"
+                onclick="shopCategory('suits-kurtis')"
+              >
+                View Details
+              </button>
+            </div>
           </div>
-        </div>
-        <div class="new-arrivals-item" onclick="shopCategory('sarees')">
-          <img
-            src="images/new arr1 (1).jpg"
-            alt="New Sarees"
-            class="new-arrivals-image"
-          />
-          <div class="new-arrivals-overlay">
-            <h3 class="new-arrivals-category">Fresh Saree Collection</h3>
+        </li>
+        <li class="cards__item">
+          <div class="card">
+            <div class="card__image card__image--sarees"></div>
+            <div class="card__content">
+              <div class="card__title">Banarasi Silk Saree</div>
+              <p class="card__text">
+                Pure Banarasi silk saree with golden zari work and traditional
+                motifs, perfect for special occasions and weddings with
+                authentic craftsmanship.
+              </p>
+              <button
+                class="btn btn--block card__btn"
+                onclick="shopCategory('sarees')"
+              >
+                View Details
+              </button>
+            </div>
           </div>
-        </div>
-        <div class="new-arrivals-item" onclick="shopCategory('cord-sets')">
-          <img
-            src="images/new arr2.jpg"
-            alt="Cord Sets"
-            class="new-arrivals-image"
-          />
-          <div class="new-arrivals-overlay">
-            <h3 class="new-arrivals-category">Trendy Cord Sets</h3>
+        </li>
+        <li class="cards__item">
+          <div class="card">
+            <div class="card__image card__image--cordsets"></div>
+            <div class="card__content">
+              <div class="card__title">Designer Cord Set</div>
+              <p class="card__text">
+                Contemporary cord set with ethnic prints, combining modern
+                comfort with traditional aesthetics for everyday wear and casual
+                occasions.
+              </p>
+              <button
+                class="btn btn--block card__btn"
+                onclick="shopCategory('cord-sets')"
+              >
+                View Details
+              </button>
+            </div>
           </div>
-        </div>
-        <div class="new-arrivals-item" onclick="shopCategory('accessories')">
-          <img
-            src="images/new arr 3.png"
-            alt="Accessories"
-            class="new-arrivals-image"
-          />
-          <div class="new-arrivals-overlay">
-            <h3 class="new-arrivals-category">Statement Accessories</h3>
+        </li>
+        <li class="cards__item">
+          <div class="card">
+            <div class="card__image card__image--accessories"></div>
+            <div class="card__content">
+              <div class="card__title">Kundan Jewelry Set</div>
+              <p class="card__text">
+                Elegant Kundan necklace and earring set with traditional
+                craftsmanship and premium quality stones, perfect complement to
+                any outfit.
+              </p>
+              <button
+                class="btn btn--block card__btn"
+                onclick="shopCategory('accessories')"
+              >
+                View Details
+              </button>
+            </div>
           </div>
-        </div>
-      </div>
+        </li>
+      </ul>
     </section>
 
     <!-- Suits and Kurtis Section -->
     <section class="suits-kurtis">
-      <div class="suits-kurtis-container">
-        <div class="suits-kurtis-content">
-          <h2 class="suits-kurtis-title">SUITS & KURTIS</h2>
-          <p class="suits-kurtis-description">
-            Discover our exquisite collection of traditional suits and
-            contemporary kurtis, crafted with finest fabrics and intricate
-            embroidery work from Jaipur's skilled artisans.
-          </p>
-          <button
-            class="suits-kurtis-btn"
-            onclick="shopCategory('suits-kurtis')"
-          >
-            EXPLORE COLLECTION
+      <div class="collection-header">
+        <div class="collection-info">
+          <h2 class="collection-title">Suits & Kurtis</h2>
+          <p class="collection-count">12 items</p>
+        </div>
+
+        <div class="collection-filters">
+          <button class="filter-btn">
+            <span>Filter</span>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path
+                d="M3 6h18M6 12h12M9 18h6"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+            </svg>
           </button>
+
+          <div class="sort-dropdown">
+            <select class="sort-select" aria-label="Sort products">
+              <option value="featured">Featured</option>
+              <option value="newest">Newest</option>
+              <option value="price-low">Price: Low to High</option>
+              <option value="price-high">Price: High to Low</option>
+            </select>
+          </div>
         </div>
-        <div class="suits-kurtis-image">
-          <img
-            src="images/beautiful-woman-purple-sweater-skirt.jpg"
-            alt="Suits & Kurtis Collection"
-            class="suits-kurtis-img"
-          />
+      </div>
+
+      <div class="product-grid">
+        <div class="product-card">
+          <div class="product-card__media">
+            <img
+              src="images/beautiful-woman-purple-sweater-skirt.jpg"
+              alt="Embroidered Silk Suit"
+              class="product-card__image"
+            />
+            <img
+              src="images/beautiful-woman-purple-sweater-skirt.jpg"
+              alt="Embroidered Silk Suit Alternate View"
+              class="product-card__image--hover"
+            />
+            <div class="product-card__quick-add">
+              <button class="quick-add-btn">Quick Add</button>
+              <div class="size-picker">
+                <button class="size-btn">XS</button>
+                <button class="size-btn">S</button>
+                <button class="size-btn">M</button>
+                <button class="size-btn">L</button>
+                <button class="size-btn">XL</button>
+              </div>
+            </div>
+          </div>
+          <div class="product-card__info">
+            <h3 class="product-card__title">Embroidered Silk Suit</h3>
+            <p class="product-card__price">₹8,999</p>
+            <div class="product-card__colors">
+              <button
+                class="color-swatch"
+                style="background: #8b4513"
+                aria-label="Brown"
+              ></button>
+              <button
+                class="color-swatch"
+                style="background: #dc143c"
+                aria-label="Crimson"
+              ></button>
+              <button
+                class="color-swatch"
+                style="background: #4169e1"
+                aria-label="Royal Blue"
+              ></button>
+            </div>
+          </div>
         </div>
+
+        <div class="product-card">
+          <div class="product-card__media">
+            <img
+              src="images/cheerful-traditional-indian-woman-white-background-studio-shot.jpg"
+              alt="Mirror Work Kurti"
+              class="product-card__image"
+            />
+            <img
+              src="images/cheerful-traditional-indian-woman-white-background-studio-shot.jpg"
+              alt="Mirror Work Kurti Alternate View"
+              class="product-card__image--hover"
+            />
+            <div class="product-card__quick-add">
+              <button class="quick-add-btn">Quick Add</button>
+              <div class="size-picker">
+                <button class="size-btn">XS</button>
+                <button class="size-btn">S</button>
+                <button class="size-btn">M</button>
+                <button class="size-btn">L</button>
+                <button class="size-btn">XL</button>
+              </div>
+            </div>
+          </div>
+          <div class="product-card__info">
+            <h3 class="product-card__title">Mirror Work Kurti</h3>
+            <p class="product-card__price">₹3,299</p>
+            <div class="product-card__colors">
+              <button
+                class="color-swatch"
+                style="background: #ffd700"
+                aria-label="Gold"
+              ></button>
+              <button
+                class="color-swatch"
+                style="background: #ff69b4"
+                aria-label="Hot Pink"
+              ></button>
+              <button
+                class="color-swatch"
+                style="background: #32cd32"
+                aria-label="Lime Green"
+              ></button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-card__media">
+            <img
+              src="images/new arr2.jpg"
+              alt="Bandhani Print Suit"
+              class="product-card__image"
+            />
+            <img
+              src="images/new arr2.jpg"
+              alt="Bandhani Print Suit Alternate View"
+              class="product-card__image--hover"
+            />
+            <div class="product-card__quick-add">
+              <button class="quick-add-btn">Quick Add</button>
+              <div class="size-picker">
+                <button class="size-btn">XS</button>
+                <button class="size-btn">S</button>
+                <button class="size-btn">M</button>
+                <button class="size-btn">L</button>
+                <button class="size-btn">XL</button>
+              </div>
+            </div>
+          </div>
+          <div class="product-card__info">
+            <h3 class="product-card__title">Bandhani Print Suit</h3>
+            <p class="product-card__price">₹5,799</p>
+            <div class="product-card__colors">
+              <button
+                class="color-swatch"
+                style="background: #800080"
+                aria-label="Purple"
+              ></button>
+              <button
+                class="color-swatch"
+                style="background: #ff4500"
+                aria-label="Orange Red"
+              ></button>
+              <button
+                class="color-swatch"
+                style="background: #228b22"
+                aria-label="Forest Green"
+              ></button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-card__media">
+            <img
+              src="img/hero-2.jpg"
+              alt="Palazzo Suit Set"
+              class="product-card__image"
+            />
+            <img
+              src="img/hero-2.jpg"
+              alt="Palazzo Suit Set Alternate View"
+              class="product-card__image--hover"
+            />
+            <div class="product-card__quick-add">
+              <button class="quick-add-btn">Quick Add</button>
+              <div class="size-picker">
+                <button class="size-btn">XS</button>
+                <button class="size-btn">S</button>
+                <button class="size-btn">M</button>
+                <button class="size-btn">L</button>
+                <button class="size-btn">XL</button>
+              </div>
+            </div>
+          </div>
+          <div class="product-card__info">
+            <h3 class="product-card__title">Palazzo Suit Set</h3>
+            <p class="product-card__price">₹7,499</p>
+            <div class="product-card__colors">
+              <button
+                class="color-swatch"
+                style="background: #2f4f4f"
+                aria-label="Dark Slate Gray"
+              ></button>
+              <button
+                class="color-swatch"
+                style="background: #cd853f"
+                aria-label="Peru"
+              ></button>
+              <button
+                class="color-swatch"
+                style="background: #9370db"
+                aria-label="Medium Purple"
+              ></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="suits-kurtis-footer">
+        <button class="view-all-btn" onclick="shopCategory('suits-kurtis')">
+          VIEW ALL SUITS & KURTIS
+        </button>
       </div>
     </section>
 
@@ -232,7 +433,7 @@
         </div>
         <div class="cord-sets-image">
           <img
-            src="images/pexels-brollwalamunda-20415076.jpg"
+            src="img/newarr2.jpg"
             alt="Cord Sets Collection"
             class="cord-sets-img"
           />

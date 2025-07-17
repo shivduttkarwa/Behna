@@ -221,71 +221,48 @@ function selectSearchResult(category, title) {
   closeSearch();
 }
 
-// Main Hero Slider Functionality
-let currentHeroSlide = 0;
-let heroSlides;
-let heroIndicators;
-
-// Initialize hero slider elements
-function initHeroSlider() {
-  heroSlides = document.querySelectorAll(".hero-slide");
-  heroIndicators = document.querySelectorAll(".indicator");
+// Product view handling
+function viewProduct(productId) {
+  // You can enhance this function to show a modal or navigate to product page
+  console.log(`Viewing product: ${productId}`);
+  // Example implementation:
+  // window.location.href = `/product/${productId}`;
 }
 
-function setHeroSlide(index) {
-  if (!heroSlides || !heroIndicators) return;
+// Preloader functionality
+window.addEventListener("load", function () {
+  const preloader = document.getElementById("pre-load");
 
-  // Remove active class from current slide and indicator
-  heroSlides[currentHeroSlide].classList.remove("active");
-  heroIndicators[currentHeroSlide].classList.remove("active");
+  // Hide preloader after a minimum time to show animation
+  setTimeout(() => {
+    preloader.classList.add("fade-out");
 
-  // Set new active slide and indicator
-  currentHeroSlide = index;
-  heroSlides[currentHeroSlide].classList.add("active");
-  heroIndicators[currentHeroSlide].classList.add("active");
-}
-
-function nextHeroSlide() {
-  if (!heroSlides || heroSlides.length === 0) return;
-
-  const nextIndex = (currentHeroSlide + 1) % heroSlides.length;
-  setHeroSlide(nextIndex);
-}
-
-// Initialize main hero slider
-document.addEventListener("DOMContentLoaded", function () {
-  // Initialize hero slider elements
-  initHeroSlider();
-
-  // Make sure elements exist before initializing
-  if (
-    heroSlides &&
-    heroSlides.length > 0 &&
-    heroIndicators &&
-    heroIndicators.length > 0
-  ) {
-    // Auto-advance main hero every 6 seconds
-    setInterval(nextHeroSlide, 6000);
-  }
+    // Remove preloader from DOM after fade animation
+    setTimeout(() => {
+      preloader.remove();
+    }, 500);
+  }, 2000); // Show preloader for minimum 2 seconds
 });
 
 // Newsletter subscription functionality
 function subscribeNewsletter() {
   const emailInput = document.getElementById("newsletterEmail");
   const email = emailInput.value.trim();
-  
+
   if (email === "") {
     alert("Please enter your email address");
     return;
   }
-  
+
   if (!validateEmail(email)) {
     alert("Please enter a valid email address");
     return;
   }
-  
+
   // Simulate newsletter subscription
-  alert(`Thank you for subscribing to BEHNA Stories! We'll send you the latest updates at ${email}`);
+  alert(
+    `Thank you for subscribing to BEHNA Stories! We'll send you the latest updates at ${email}`
+  );
   emailInput.value = "";
 }
 
@@ -293,19 +270,21 @@ function subscribeNewsletter() {
 function subscribeFooterNewsletter() {
   const emailInput = document.getElementById("footerNewsletterEmail");
   const email = emailInput.value.trim();
-  
+
   if (email === "") {
     alert("Please enter your email address");
     return;
   }
-  
+
   if (!validateEmail(email)) {
     alert("Please enter a valid email address");
     return;
   }
-  
+
   // Simulate newsletter subscription
-  alert(`Thank you for subscribing to BEHNA updates! We'll send you the latest collections at ${email}`);
+  alert(
+    `Thank you for subscribing to BEHNA updates! We'll send you the latest collections at ${email}`
+  );
   emailInput.value = "";
 }
 

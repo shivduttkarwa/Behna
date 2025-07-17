@@ -1,7 +1,8 @@
 {
   "permissions": {
     "allow": [
-      "WebFetch(domain:in.louisvuitton.com)"
+      "WebFetch(domain:in.louisvuitton.com)",
+      "WebFetch(domain:www.kitandace.com)"
     ],
     "deny": []
   }
