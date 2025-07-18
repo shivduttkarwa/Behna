@@ -307,138 +307,241 @@ document.addEventListener("keydown", (e) => {
 });
 
 // CD Slider with Controls and Hover Pause
-(function() {
-    function init(item) {
-        var items = item.querySelectorAll('li'),
-            current = 0,
-            autoPlayInterval,
-            isPlaying = true;
+(function () {
+  function init(item) {
+    var items = item.querySelectorAll("li"),
+      current = 0,
+      autoPlayInterval,
+      isPlaying = true;
 
-        // Create control buttons
-        var prevBtn = item.querySelector('.prev-btn');
-        var nextBtn = item.querySelector('.next-btn');
+    // Create control buttons
+    var prevBtn = item.querySelector(".prev-btn");
+    var nextBtn = item.querySelector(".next-btn");
 
-        items[current].className = "current";
-        if (items.length > 1) items[items.length-1].className = "prev_slide";
+    items[current].className = "current";
+    if (items.length > 1) items[items.length - 1].className = "prev_slide";
 
-        var navigate = function(dir) {
-            items[current].className = "";
+    var navigate = function (dir) {
+      items[current].className = "";
 
-            if (dir === 'right') {
-                current = current < items.length-1 ? current + 1 : 0;
-            } else {
-                current = current > 0 ? current - 1 : items.length-1;
-            }
+      if (dir === "right") {
+        current = current < items.length - 1 ? current + 1 : 0;
+      } else {
+        current = current > 0 ? current - 1 : items.length - 1;
+      }
 
-            var nextCurrent = current < items.length-1 ? current + 1 : 0,
-                prevCurrent = current > 0 ? current - 1 : items.length-1;
+      var nextCurrent = current < items.length - 1 ? current + 1 : 0,
+        prevCurrent = current > 0 ? current - 1 : items.length - 1;
 
-            items[current].className = "current";
-            items[prevCurrent].className = "prev_slide";
-            items[nextCurrent].className = "";
-        }
+      items[current].className = "current";
+      items[prevCurrent].className = "prev_slide";
+      items[nextCurrent].className = "";
+    };
 
-        // Auto-play functions
-        var startAutoPlay = function() {
-            if (isPlaying) {
-                autoPlayInterval = setInterval(function() {
-                    navigate('right');
-                }, 4000);
-            }
-        }
+    // Auto-play functions
+    var startAutoPlay = function () {
+      if (isPlaying) {
+        autoPlayInterval = setInterval(function () {
+          navigate("right");
+        }, 4000);
+      }
+    };
 
-        var stopAutoPlay = function() {
-            clearInterval(autoPlayInterval);
-        }
+    var stopAutoPlay = function () {
+      clearInterval(autoPlayInterval);
+    };
 
-        // Control button events
-        if (prevBtn) {
-            prevBtn.addEventListener('click', function() {
-                navigate('left');
-                stopAutoPlay();
-                startAutoPlay();
-            });
-        }
-
-        if (nextBtn) {
-            nextBtn.addEventListener('click', function() {
-                navigate('right');
-                stopAutoPlay();
-                startAutoPlay();
-            });
-        }
-
-        // Hover to pause
-        item.addEventListener('mouseenter', function() {
-            isPlaying = false;
-            stopAutoPlay();
-        });
-
-        item.addEventListener('mouseleave', function() {
-            isPlaying = true;
-            startAutoPlay();
-        });
-
-        // Keyboard navigation
-        document.addEventListener('keydown', function(ev) {
-            var keyCode = ev.keyCode || ev.which;
-            switch (keyCode) {
-                case 37:
-                    navigate('left');
-                    stopAutoPlay();
-                    startAutoPlay();
-                    break;
-                case 39:
-                    navigate('right');
-                    stopAutoPlay();
-                    startAutoPlay();
-                    break;
-            }
-        });
-
-        // Swipe navigation
-        item.addEventListener('touchstart', handleTouchStart, false);        
-        item.addEventListener('touchmove', handleTouchMove, false);
-        var xDown = null;
-        var yDown = null;
-        
-        function handleTouchStart(evt) {
-            xDown = evt.touches[0].clientX;
-            yDown = evt.touches[0].clientY;
-        };
-        
-        function handleTouchMove(evt) {
-            if (!xDown || !yDown) {
-                return;
-            }
-
-            var xUp = evt.touches[0].clientX;
-            var yUp = evt.touches[0].clientY;
-
-            var xDiff = xDown - xUp;
-            var yDiff = yDown - yUp;
-
-            if (Math.abs(xDiff) > Math.abs(yDiff)) {
-                if (xDiff > 0) {
-                    navigate('right');
-                } else {
-                    navigate('left');
-                }
-                stopAutoPlay();
-                startAutoPlay();
-            } 
-            xDown = null;
-            yDown = null;
-        };
-
-        // Start auto-play
+    // Control button events
+    if (prevBtn) {
+      prevBtn.addEventListener("click", function () {
+        navigate("left");
+        stopAutoPlay();
         startAutoPlay();
+      });
     }
 
-    // Initialize when DOM is ready
-    document.addEventListener('DOMContentLoaded', function() {
-        [].slice.call(document.querySelectorAll('.cd-slider')).forEach(function(item) {
-            init(item);
-        });
+    if (nextBtn) {
+      nextBtn.addEventListener("click", function () {
+        navigate("right");
+        stopAutoPlay();
+        startAutoPlay();
+      });
+    }
+
+    // Hover to pause
+    item.addEventListener("mouseenter", function () {
+      isPlaying = false;
+      stopAutoPlay();
     });
+
+    item.addEventListener("mouseleave", function () {
+      isPlaying = true;
+      startAutoPlay();
+    });
+
+    // Keyboard navigation
+    document.addEventListener("keydown", function (ev) {
+      var keyCode = ev.keyCode || ev.which;
+      switch (keyCode) {
+        case 37:
+          navigate("left");
+          stopAutoPlay();
+          startAutoPlay();
+          break;
+        case 39:
+          navigate("right");
+          stopAutoPlay();
+          startAutoPlay();
+          break;
+      }
+    });
+
+    // Swipe navigation
+    item.addEventListener("touchstart", handleTouchStart, false);
+    item.addEventListener("touchmove", handleTouchMove, false);
+    var xDown = null;
+    var yDown = null;
+
+    function handleTouchStart(evt) {
+      xDown = evt.touches[0].clientX;
+      yDown = evt.touches[0].clientY;
+    }
+
+    function handleTouchMove(evt) {
+      if (!xDown || !yDown) {
+        return;
+      }
+
+      var xUp = evt.touches[0].clientX;
+      var yUp = evt.touches[0].clientY;
+
+      var xDiff = xDown - xUp;
+      var yDiff = yDown - yUp;
+
+      if (Math.abs(xDiff) > Math.abs(yDiff)) {
+        if (xDiff > 0) {
+          navigate("right");
+        } else {
+          navigate("left");
+        }
+        stopAutoPlay();
+        startAutoPlay();
+      }
+      xDown = null;
+      yDown = null;
+    }
+
+    // Start auto-play
+    startAutoPlay();
+  }
+
+  // Initialize when DOM is ready
+  document.addEventListener("DOMContentLoaded", function () {
+    [].slice
+      .call(document.querySelectorAll(".cd-slider"))
+      .forEach(function (item) {
+        init(item);
+      });
+  });
 })();
+
+// Initialize product sliders with mobile support
+function initProductSliders() {
+  const sliders = document.querySelectorAll(".product-slider");
+
+  sliders.forEach((slider) => {
+    const track = slider.querySelector(".slider-track");
+    const prevBtn = slider.querySelector(".prev");
+    const nextBtn = slider.querySelector(".next");
+
+    // Responsive card width calculation
+    const getCardWidth = () => {
+      return window.innerWidth <= 480
+        ? 240
+        : window.innerWidth <= 768
+        ? 280
+        : 300;
+    };
+
+    let cardWidth = getCardWidth() + 32; // card width + gap
+    let scrollPosition = 0;
+
+    function updateSliderButtons() {
+      prevBtn.style.opacity = scrollPosition <= 0 ? "0.5" : "1";
+      nextBtn.style.opacity =
+        scrollPosition >= track.scrollWidth - track.clientWidth ? "0.5" : "1";
+
+      // Disable buttons if there's not enough content to scroll
+      if (track.scrollWidth <= track.clientWidth) {
+        prevBtn.style.display = "none";
+        nextBtn.style.display = "none";
+      } else {
+        prevBtn.style.display = "flex";
+        nextBtn.style.display = "flex";
+      }
+    }
+
+    prevBtn.addEventListener("click", () => {
+      cardWidth = getCardWidth() + 32; // Update card width on click
+      scrollPosition = Math.max(scrollPosition - cardWidth, 0);
+      track.scrollTo({
+        left: scrollPosition,
+        behavior: "smooth",
+      });
+      updateSliderButtons();
+    });
+
+    nextBtn.addEventListener("click", () => {
+      cardWidth = getCardWidth() + 32; // Update card width on click
+      scrollPosition = Math.min(
+        scrollPosition + cardWidth,
+        track.scrollWidth - track.clientWidth
+      );
+      track.scrollTo({
+        left: scrollPosition,
+        behavior: "smooth",
+      });
+      updateSliderButtons();
+    });
+
+    // Handle touch events for mobile
+    let startX,
+      isDragging = false;
+
+    track.addEventListener("touchstart", (e) => {
+      isDragging = true;
+      startX = e.touches[0].pageX - track.offsetLeft;
+      scrollPosition = track.scrollLeft;
+    });
+
+    track.addEventListener("touchmove", (e) => {
+      if (!isDragging) return;
+      e.preventDefault();
+      const x = e.touches[0].pageX - track.offsetLeft;
+      const walk = (x - startX) * 2;
+      track.scrollLeft = scrollPosition - walk;
+    });
+
+    track.addEventListener("touchend", () => {
+      isDragging = false;
+    });
+
+    // Update buttons on scroll
+    track.addEventListener("scroll", () => {
+      scrollPosition = track.scrollLeft;
+      updateSliderButtons();
+    });
+
+    // Handle window resize
+    window.addEventListener("resize", () => {
+      cardWidth = getCardWidth() + 32;
+      updateSliderButtons();
+    });
+
+    // Initial button state
+    updateSliderButtons();
+  });
+}
+
+// Initialize product sliders when DOM is loaded
+document.addEventListener("DOMContentLoaded", initProductSliders);
