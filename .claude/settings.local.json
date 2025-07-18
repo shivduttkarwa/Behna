@@ -3,7 +3,9 @@
     "allow": [
       "WebFetch(domain:in.louisvuitton.com)",
       "WebFetch(domain:www.kitandace.com)",
-      "Bash(rm:*)"
+      "Bash(rm:*)",
+      "Bash(tail:*)",
+      "Bash(grep:*)"
     ],
     "deny": []
   }

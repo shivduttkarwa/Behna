@@ -1,3 +1,19 @@
+// jQuery preloader functionality
+$(document).ready(function() {
+  setTimeout(function() {
+    $('#ctn-preloader').addClass('loaded');
+    // Una vez haya terminado el preloader aparezca el scroll
+    $('body').removeClass('no-scroll-y');
+
+    if ($('#ctn-preloader').hasClass('loaded')) {
+      // Es para que una vez que se haya ido el preloader se elimine toda la seccion preloader
+      $('#preloader').delay(1000).queue(function() {
+        $(this).remove();
+      });
+    }
+  }, 3000);
+});
+
 // Enhanced scroll effect with proper logo transformation
 let lastScroll = 0;
 const scrollThreshold = 10;
@@ -34,6 +50,132 @@ window.addEventListener("scroll", function () {
   }
 
   lastScroll = scrollPosition;
+});
+
+// Countdown Timer Functionality
+function startCountdown() {
+  // Set the date we're counting down to (12 days from now)
+  const countDownDate = new Date().getTime() + (12 * 24 * 60 * 60 * 1000);
+  
+  // Update the count down every 1 second
+  const timer = setInterval(function() {
+    // Get current date and time
+    const now = new Date().getTime();
+    
+    // Find the distance between now and the count down date
+    const distance = countDownDate - now;
+    
+    // Time calculations for days, hours, minutes and seconds
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    
+    // Display the result in the elements
+    const daysElement = document.getElementById("days");
+    const hoursElement = document.getElementById("hours");
+    const minutesElement = document.getElementById("minutes");
+    const secondsElement = document.getElementById("seconds");
+    
+    if (daysElement) daysElement.innerHTML = days.toString().padStart(2, '0');
+    if (hoursElement) hoursElement.innerHTML = hours.toString().padStart(2, '0');
+    if (minutesElement) minutesElement.innerHTML = minutes.toString().padStart(2, '0');
+    if (secondsElement) secondsElement.innerHTML = seconds.toString().padStart(2, '0');
+    
+    // If the count down is finished, write some text
+    if (distance < 0) {
+      clearInterval(timer);
+      if (daysElement) daysElement.innerHTML = "00";
+      if (hoursElement) hoursElement.innerHTML = "00";
+      if (minutesElement) minutesElement.innerHTML = "00";
+      if (secondsElement) secondsElement.innerHTML = "00";
+    }
+  }, 1000);
+}
+
+// Start countdown when page loads
+document.addEventListener('DOMContentLoaded', function() {
+  // Add a small delay to ensure DOM is fully loaded
+  setTimeout(startCountdown, 100);
+});
+
+// Also start countdown when jQuery is ready (backup)
+$(document).ready(function() {
+  setTimeout(startCountdown, 100);
+});
+
+// Initialize Swiper for offers
+document.addEventListener('DOMContentLoaded', function() {
+  const offersSwiper = new Swiper('.offers-swiper', {
+    slidesPerView: 1,
+    spaceBetween: 20,
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+      dynamicBullets: true,
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    autoplay: {
+      delay: 5000,
+      disableOnInteraction: false,
+    },
+    loop: true,
+    effect: 'slide',
+    speed: 600,
+    allowTouchMove: true,
+    watchSlidesProgress: false,
+    centeredSlides: false,
+    slidesPerGroup: 1,
+    autoHeight: false,
+    resistanceRatio: 0.85,
+    breakpoints: {
+      768: {
+        slidesPerView: 2,
+        spaceBetween: 30,
+      },
+      1024: {
+        slidesPerView: 2,
+        spaceBetween: 40,
+      },
+    },
+  });
+  
+  // Initialize Swiper for testimonials
+  const testimonialsSwiper = new Swiper('.testimonials-swiper', {
+    slidesPerView: 1,
+    spaceBetween: 20,
+    pagination: {
+      el: '.testimonials-swiper .swiper-pagination',
+      clickable: true,
+      dynamicBullets: true,
+    },
+    navigation: {
+      nextEl: '.testimonials-swiper .swiper-button-next',
+      prevEl: '.testimonials-swiper .swiper-button-prev',
+    },
+    autoplay: {
+      delay: 6000,
+      disableOnInteraction: false,
+    },
+    loop: true,
+    effect: 'slide',
+    speed: 600,
+    allowTouchMove: true,
+    autoHeight: false,
+    breakpoints: {
+      768: {
+        slidesPerView: 2,
+        spaceBetween: 30,
+      },
+      1024: {
+        slidesPerView: 3,
+        spaceBetween: 30,
+      },
+    },
+  });
 });
 
 // Menu functionality
@@ -545,3 +687,74 @@ function initProductSliders() {
 
 // Initialize product sliders when DOM is loaded
 document.addEventListener("DOMContentLoaded", initProductSliders);
+
+// Counter Animation for About Stats
+function animateCounters() {
+  const counters = document.querySelectorAll('.stat-number[data-count]');
+  
+  counters.forEach(counter => {
+    const target = parseInt(counter.getAttribute('data-count'));
+    const duration = 2000; // 2 seconds
+    const step = target / (duration / 16); // 60fps
+    let current = 0;
+    
+    const timer = setInterval(() => {
+      current += step;
+      if (current >= target) {
+        current = target;
+        clearInterval(timer);
+      }
+      
+      // Format number with + for all except years
+      const label = counter.nextElementSibling.textContent;
+      if (label.includes('Years')) {
+        counter.textContent = Math.floor(current);
+      } else {
+        counter.textContent = Math.floor(current) + '+';
+      }
+    }, 16);
+  });
+}
+
+// Intersection Observer for About Stats Animation
+const observerOptions = {
+  threshold: 0.5,
+  rootMargin: '0px 0px -100px 0px'
+};
+
+const statsObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      animateCounters();
+      statsObserver.unobserve(entry.target);
+    }
+  });
+}, observerOptions);
+
+// Start observing when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+  const statsSection = document.querySelector('.about-stats');
+  if (statsSection) {
+    statsObserver.observe(statsSection);
+  }
+});
+
+// Scroll to Top Functionality
+function scrollToTop() {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+}
+
+// Show/Hide Back to Top Button
+window.addEventListener('scroll', () => {
+  const backToTopButton = document.querySelector('.back-to-top');
+  if (backToTopButton) {
+    if (window.pageYOffset > 300) {
+      backToTopButton.classList.add('visible');
+    } else {
+      backToTopButton.classList.remove('visible');
+    }
+  }
+});

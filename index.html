@@ -8,26 +8,38 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@500&display=swap"
       rel="stylesheet"
     />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="styles.css" />
     <!-- Three.js for WebGL effects -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <!-- GSAP for animations -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   </head>
-  <body>
+  <body class="no-scroll-y">
     <!-- Preloader -->
-    <div id="pre-load" class="loader">
-      <div class="loader-inner">
-        <div class="loader-logo">
-          <img src="img/logo.png" alt="BEHNA" />
+    <section>
+      <div id="preloader">
+        <div id="ctn-preloader" class="ctn-preloader">
+          <div class="animation-preloader">
+            <div class="spinner"></div>
+            <div class="txt-loading">
+              <span data-text-preloader="L" class="letters-loading">L</span>
+              <span data-text-preloader="O" class="letters-loading">O</span>
+              <span data-text-preloader="A" class="letters-loading">A</span>
+              <span data-text-preloader="D" class="letters-loading">D</span>
+              <span data-text-preloader="I" class="letters-loading">I</span>
+              <span data-text-preloader="N" class="letters-loading">N</span>
+              <span data-text-preloader="G" class="letters-loading">G</span>
+            </div>
+          </div>
+          <div class="loader-section section-left"></div>
+          <div class="loader-section section-right"></div>
         </div>
-        <div class="box"></div>
-        <div class="box"></div>
-        <div class="box"></div>
-        <div class="box"></div>
-        <div class="box"></div>
       </div>
-    </div>
+    </section>
 
     <!-- Logo Transformation Container -->
     <div class="logo-master">
@@ -77,7 +89,7 @@
         webkit-playsinline
         preload="metadata"
       >
-        <source src="img/hero-vid-1 (3).mp4" type="video/mp4" />
+        <source src="img/hero-vid-1 (2).mp4" type="video/mp4" />
       </video>
       <div class="hero-overlay"></div>
       <div class="hero-content">
@@ -215,7 +227,6 @@
       <div class="popular-container">
         <div class="popular-header">
           <h2 class="popular-title">Popular top category</h2>
-          <a href="#" class="popular-view-all">View all</a>
         </div>
         <div class="popular-grid">
           <div class="category-item travel">
@@ -226,7 +237,7 @@
                 class="category-image"
               />
             </div>
-            <span class="category-name">Travel</span>
+            <span class="category-name">Suits & Kurtis</span>
           </div>
           <div class="category-item electronics">
             <div class="category-icon">
@@ -236,7 +247,7 @@
                 class="category-image"
               />
             </div>
-            <span class="category-name">Electronics</span>
+            <span class="category-name">Sarees</span>
           </div>
           <div class="category-item furniture">
             <div class="category-icon">
@@ -246,7 +257,7 @@
                 class="category-image"
               />
             </div>
-            <span class="category-name">Home & furniture</span>
+            <span class="category-name">Cord-Sets</span>
           </div>
           <div class="category-item books">
             <div class="category-icon">
@@ -256,196 +267,466 @@
                 class="category-image"
               />
             </div>
-            <span class="category-name">Books</span>
+            <span class="category-name">Accessories</span>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Sarees Section -->
-    <section class="collection-section sarees">
-      <div class="collection-hero">
-        <img
-          src="images/pexels-vikashkr50-27103969.jpg"
-          alt="Sarees Collection"
-          class="collection-hero__image"
-        />
-        <div class="collection-hero__overlay"></div>
-        <div class="collection-hero__content">
-          <h2 class="collection-hero__title">Sarees</h2>
-          <p class="collection-hero__subtitle">
-            Embrace tradition with our handpicked saree collection
-          </p>
+    <!-- Special Offers Section -->
+    <section class="special-offers">
+      <div class="offers-container">
+        <div class="offers-header">
+          <div class="offers-badge">
+            <span class="badge-text">LIMITED TIME</span>
+          </div>
+          <h2 class="offers-title">
+            <span class="offers-main">Special Offers</span>
+            <span class="offers-subtitle">Up to 70% Off</span>
+          </h2>
         </div>
-      </div>
 
-      <div class="collection-slider-container">
-        <h3 class="slider-title">Featured Collection</h3>
-        <div class="product-slider sarees-slider">
-          <button class="slider-arrow prev" aria-label="Previous items">
-            ‹
-          </button>
-          <div class="slider-track">
-            <div class="product-card">
-              <div class="product-card__media">
-                <img
-                  src="img/newarr1.jpg"
-                  alt="Banarasi Silk Saree"
-                  class="product-card__image"
-                />
-                <div class="product-card__quick-add">
-                  <button class="quick-add-btn">View Details</button>
+        <div class="offers-grid">
+          <div class="swiper offers-swiper">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <div class="offer-card offer-primary">
+                  <div class="card-background">
+                    <img
+                      src="images/beautiful-woman-purple-sweater-skirt.jpg"
+                      alt="Festive Collection"
+                      class="card-bg-image"
+                    />
+                  </div>
+                  <div class="card-content">
+                    <div class="card-badge">FESTIVE SPECIAL</div>
+                    <h3 class="card-title">Festive Collection</h3>
+                    <p class="card-discount">50% OFF</p>
+                    <p class="card-description">
+                      Celebrate in style with our exclusive festive wear
+                      collection
+                    </p>
+                    <button class="card-button">
+                      <span>Shop Now</span>
+                      <i class="ri-arrow-right-line"></i>
+                    </button>
+                  </div>
+                  <div class="card-decoration">
+                    <div class="floating-element"></div>
+                    <div class="floating-element"></div>
+                  </div>
                 </div>
               </div>
-              <div class="product-card__info">
-                <h3 class="product-card__title">Banarasi Silk Saree</h3>
-                <p class="product-card__price">₹12,999</p>
+
+              <div class="swiper-slide">
+                <div class="offer-card offer-secondary">
+                  <div class="card-background">
+                    <img
+                      src="images/new arr2.jpg"
+                      alt="Designer Sarees"
+                      class="card-bg-image"
+                    />
+                  </div>
+                  <div class="card-content">
+                    <div class="card-badge">TRENDING</div>
+                    <h3 class="card-title">Designer Sarees</h3>
+                    <p class="card-discount">40% OFF</p>
+                    <p class="card-description">
+                      Handcrafted sarees from the finest artisans
+                    </p>
+                    <button class="card-button">
+                      <span>Explore</span>
+                      <i class="ri-arrow-right-line"></i>
+                    </button>
+                  </div>
+                  <div class="card-decoration">
+                    <div class="floating-element"></div>
+                    <div class="floating-element"></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="swiper-slide">
+                <div class="offer-card offer-tertiary">
+                  <div class="card-background">
+                    <img
+                      src="images/pexels-anubhaw-anand-3236651.jpg"
+                      alt="Cord Sets"
+                      class="card-bg-image"
+                    />
+                  </div>
+                  <div class="card-content">
+                    <div class="card-badge">NEW ARRIVAL</div>
+                    <h3 class="card-title">Cord Sets</h3>
+                    <p class="card-discount">30% OFF</p>
+                    <p class="card-description">
+                      Modern comfort meets traditional elegance
+                    </p>
+                    <button class="card-button">
+                      <span>Discover</span>
+                      <i class="ri-arrow-right-line"></i>
+                    </button>
+                  </div>
+                  <div class="card-decoration">
+                    <div class="floating-element"></div>
+                    <div class="floating-element"></div>
+                  </div>
+                </div>
               </div>
             </div>
-            <div class="product-card">
-              <div class="product-card__media">
-                <img
-                  src="images/pexels-anubhaw-anand-3236651.jpg"
-                  alt="Designer Silk Saree"
-                  class="product-card__image"
-                />
-                <div class="product-card__quick-add">
-                  <button class="quick-add-btn">View Details</button>
-                </div>
+
+            <!-- Navigation buttons -->
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+
+            <!-- Pagination -->
+            <div class="swiper-pagination"></div>
+          </div>
+        </div>
+
+        <div class="offers-timer">
+          <div class="timer-content">
+            <span class="timer-label">Offer ends in:</span>
+            <div class="timer-display">
+              <div class="timer-unit">
+                <span class="timer-number" id="days">12</span>
+                <span class="timer-text">Days</span>
               </div>
-              <div class="product-card__info">
-                <h3 class="product-card__title">Designer Silk Saree</h3>
-                <p class="product-card__price">₹15,999</p>
+              <div class="timer-separator">:</div>
+              <div class="timer-unit">
+                <span class="timer-number" id="hours">23</span>
+                <span class="timer-text">Hours</span>
               </div>
-            </div>
-            <div class="product-card">
-              <div class="product-card__media">
-                <img
-                  src="images/pexels-dhanno-25185000.jpg"
-                  alt="Traditional Silk Saree"
-                  class="product-card__image"
-                />
-                <div class="product-card__quick-add">
-                  <button class="quick-add-btn">View Details</button>
-                </div>
+              <div class="timer-separator">:</div>
+              <div class="timer-unit">
+                <span class="timer-number" id="minutes">45</span>
+                <span class="timer-text">Minutes</span>
               </div>
-              <div class="product-card__info">
-                <h3 class="product-card__title">Traditional Silk Saree</h3>
-                <p class="product-card__price">₹18,999</p>
-              </div>
-            </div>
-            <div class="product-card">
-              <div class="product-card__media">
-                <img
-                  src="img/newaarr3.jpg"
-                  alt="Festive Wear Saree"
-                  class="product-card__image"
-                />
-                <div class="product-card__quick-add">
-                  <button class="quick-add-btn">View Details</button>
-                </div>
-              </div>
-              <div class="product-card__info">
-                <h3 class="product-card__title">Festive Wear Saree</h3>
-                <p class="product-card__price">₹21,999</p>
+              <div class="timer-separator">:</div>
+              <div class="timer-unit">
+                <span class="timer-number" id="seconds">30</span>
+                <span class="timer-text">Seconds</span>
               </div>
             </div>
           </div>
-          <button class="slider-arrow next" aria-label="Next items">›</button>
         </div>
       </div>
     </section>
 
-    <!-- Cord Sets Section -->
-    <section class="collection-section cord-sets">
-      <div class="collection-hero">
-        <img
-          src="img/newarr2.jpg"
-          alt="Cord Sets Collection"
-          class="collection-hero__image"
-        />
-        <div class="collection-hero__overlay"></div>
-        <div class="collection-hero__content">
-          <h2 class="collection-hero__title">Cord Sets</h2>
-          <p class="collection-hero__subtitle">
-            Contemporary comfort meets traditional aesthetics
-          </p>
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
+      <div class="testimonials-container">
+        <div class="testimonials-header">
+          <h2 class="testimonials-title">
+            <span class="testimonials-main">What Our Customers Say</span>
+            <span class="testimonials-subtitle"
+              >Authentic Reviews from Real Customers</span
+            >
+          </h2>
+        </div>
+
+        <div class="testimonials-grid">
+          <div class="swiper testimonials-swiper">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <div class="testimonial-card">
+                  <div class="testimonial-content">
+                    <div class="testimonial-stars">
+                      <i class="ri-star-fill"></i>
+                      <i class="ri-star-fill"></i>
+                      <i class="ri-star-fill"></i>
+                      <i class="ri-star-fill"></i>
+                      <i class="ri-star-fill"></i>
+                    </div>
+                    <p class="testimonial-text">
+                      Absolutely stunning sarees! The quality is exceptional and
+                      the intricate work is breathtaking. I've never received so
+                      many compliments on an outfit.
+                    </p>
+                    <div class="testimonial-author">
+                      <h4 class="author-name">Priya Sharma</h4>
+                      <span class="author-location">Udaipur</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="swiper-slide">
+                <div class="testimonial-card">
+                  <div class="testimonial-content">
+                    <div class="testimonial-stars">
+                      <i class="ri-star-fill"></i>
+                      <i class="ri-star-fill"></i>
+                      <i class="ri-star-fill"></i>
+                      <i class="ri-star-fill"></i>
+                      <i class="ri-star-fill"></i>
+                    </div>
+                    <p class="testimonial-text">
+                      The cord sets are so comfortable and stylish. Perfect for
+                      both office and casual wear. The fabric quality is amazing
+                      and they wash beautifully.
+                    </p>
+                    <div class="testimonial-author">
+                      <h4 class="author-name">Anita Verma</h4>
+                      <span class="author-location">Jodhpur</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="swiper-slide">
+                <div class="testimonial-card">
+                  <div class="testimonial-content">
+                    <div class="testimonial-stars">
+                      <i class="ri-star-fill"></i>
+                      <i class="ri-star-fill"></i>
+                      <i class="ri-star-fill"></i>
+                      <i class="ri-star-fill"></i>
+                      <i class="ri-star-fill"></i>
+                    </div>
+                    <p class="testimonial-text">
+                      Behna's kurtis are my go-to for traditional occasions. The
+                      embroidery work is exquisite and the fit is perfect.
+                      Highly recommend!
+                    </p>
+                    <div class="testimonial-author">
+                      <h4 class="author-name">Kavya Patel</h4>
+                      <span class="author-location">Ajmer</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="swiper-slide">
+                <div class="testimonial-card">
+                  <div class="testimonial-content">
+                    <div class="testimonial-stars">
+                      <i class="ri-star-fill"></i>
+                      <i class="ri-star-fill"></i>
+                      <i class="ri-star-fill"></i>
+                      <i class="ri-star-fill"></i>
+                      <i class="ri-star-fill"></i>
+                    </div>
+                    <p class="testimonial-text">
+                      Fast delivery and excellent customer service. The Punjabi
+                      suit I ordered was exactly as shown in the pictures. Will
+                      definitely order again!
+                    </p>
+                    <div class="testimonial-author">
+                      <h4 class="author-name">Simran Kaur</h4>
+                      <span class="author-location">Bikaner</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="swiper-slide">
+                <div class="testimonial-card">
+                  <div class="testimonial-content">
+                    <div class="testimonial-stars">
+                      <i class="ri-star-fill"></i>
+                      <i class="ri-star-fill"></i>
+                      <i class="ri-star-fill"></i>
+                      <i class="ri-star-fill"></i>
+                      <i class="ri-star-fill"></i>
+                    </div>
+                    <p class="testimonial-text">
+                      The accessories collection is beautiful! The jewelry
+                      pieces are so well-crafted and add the perfect touch to
+                      any outfit. Love the quality!
+                    </p>
+                    <div class="testimonial-author">
+                      <h4 class="author-name">Meera Rajput</h4>
+                      <span class="author-location">Jaipur</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="swiper-slide">
+                <div class="testimonial-card">
+                  <div class="testimonial-content">
+                    <div class="testimonial-stars">
+                      <i class="ri-star-fill"></i>
+                      <i class="ri-star-fill"></i>
+                      <i class="ri-star-fill"></i>
+                      <i class="ri-star-fill"></i>
+                      <i class="ri-star-fill"></i>
+                    </div>
+                    <p class="testimonial-text">
+                      Behna has become my trusted brand for traditional wear.
+                      The designs are contemporary yet rooted in tradition.
+                      Simply love everything!
+                    </p>
+                    <div class="testimonial-author">
+                      <h4 class="author-name">Riya Gupta</h4>
+                      <span class="author-location">Kota</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="swiper-slide">
+                <div class="testimonial-card">
+                  <div class="testimonial-content">
+                    <div class="testimonial-stars">
+                      <i class="ri-star-fill"></i>
+                      <i class="ri-star-fill"></i>
+                      <i class="ri-star-fill"></i>
+                      <i class="ri-star-fill"></i>
+                      <i class="ri-star-fill"></i>
+                    </div>
+                    <p class="testimonial-text">
+                      The fabric quality is outstanding and the colors are so
+                      vibrant. I've ordered multiple times and each piece
+                      exceeds my expectations.
+                    </p>
+                    <div class="testimonial-author">
+                      <h4 class="author-name">Pooja Singh</h4>
+                      <span class="author-location">Alwar</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="swiper-slide">
+                <div class="testimonial-card">
+                  <div class="testimonial-content">
+                    <div class="testimonial-stars">
+                      <i class="ri-star-fill"></i>
+                      <i class="ri-star-fill"></i>
+                      <i class="ri-star-fill"></i>
+                      <i class="ri-star-fill"></i>
+                      <i class="ri-star-fill"></i>
+                    </div>
+                    <p class="testimonial-text">
+                      Amazing craftsmanship and attention to detail. The
+                      traditional wear collection is perfect for weddings and
+                      festivals. Highly satisfied!
+                    </p>
+                    <div class="testimonial-author">
+                      <h4 class="author-name">Neha Agarwal</h4>
+                      <span class="author-location">Jaisalmer</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Navigation buttons -->
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+
+            <!-- Pagination -->
+            <div class="swiper-pagination"></div>
+          </div>
         </div>
       </div>
+    </section>
 
-      <div class="collection-slider-container">
-        <h3 class="slider-title">Trending Now</h3>
-        <div class="product-slider cord-sets-slider">
-          <button class="slider-arrow prev" aria-label="Previous items">
-            ‹
-          </button>
-          <div class="slider-track">
-            <div class="product-card">
-              <div class="product-card__media">
-                <img
-                  src="images/new arr2.jpg"
-                  alt="Printed Cord Set"
-                  class="product-card__image"
-                />
-                <div class="product-card__quick-add">
-                  <button class="quick-add-btn">View Details</button>
-                </div>
-              </div>
-              <div class="product-card__info">
-                <h3 class="product-card__title">Printed Cord Set</h3>
-                <p class="product-card__price">₹4,999</p>
-              </div>
+    <!-- About Behna Section -->
+    <section class="about-section">
+      <div class="about-container">
+        <div class="about-header">
+          <div class="about-badge">
+            <span class="badge-line"></span>
+            <span class="badge-text">Our Heritage</span>
+            <span class="badge-line"></span>
+          </div>
+          <h2 class="about-title">About Behna</h2>
+          <p class="about-subtitle">
+            Where tradition meets contemporary elegance
+          </p>
+        </div>
+
+        <div class="about-content">
+          <div class="about-left">
+            <div class="about-image-frame">
+              <img
+                src="images/beautiful-woman-purple-sweater-skirt.jpg"
+                alt="Behna Heritage"
+                class="about-main-image"
+              />
+              <div class="image-decoration"></div>
             </div>
-            <div class="product-card">
-              <div class="product-card__media">
-                <img
-                  src="img/hero-2.jpg"
-                  alt="Designer Cord Set"
-                  class="product-card__image"
-                />
-                <div class="product-card__quick-add">
-                  <button class="quick-add-btn">View Details</button>
+          </div>
+
+          <div class="about-right">
+            <div class="about-text-content">
+              <p class="about-intro">
+                Born in the vibrant city of Jaipur, Behna embodies the essence
+                of traditional Rajasthani craftsmanship. Our story began with a
+                passion for preserving the rich heritage of Indian textiles
+                while creating contemporary pieces for the modern woman.
+              </p>
+
+              <div class="about-highlights">
+                <div class="highlight-item">
+                  <div class="highlight-icon">
+                    <i class="ri-hand-heart-line"></i>
+                  </div>
+                  <div class="highlight-content">
+                    <h4 class="highlight-title">Handcrafted Excellence</h4>
+                    <p class="highlight-text">
+                      Every piece is meticulously crafted by skilled artisans
+                      who have inherited their craft through generations.
+                    </p>
+                  </div>
                 </div>
-              </div>
-              <div class="product-card__info">
-                <h3 class="product-card__title">Designer Cord Set</h3>
-                <p class="product-card__price">₹6,499</p>
-              </div>
-            </div>
-            <div class="product-card">
-              <div class="product-card__media">
-                <img
-                  src="images/new arr 3.png"
-                  alt="Casual Cord Set"
-                  class="product-card__image"
-                />
-                <div class="product-card__quick-add">
-                  <button class="quick-add-btn">View Details</button>
+
+                <div class="highlight-item">
+                  <div class="highlight-icon">
+                    <i class="ri-leaf-line"></i>
+                  </div>
+                  <div class="highlight-content">
+                    <h4 class="highlight-title">Sustainable Fashion</h4>
+                    <p class="highlight-text">
+                      We believe in ethical fashion that respects both our
+                      artisans and the environment.
+                    </p>
+                  </div>
                 </div>
-              </div>
-              <div class="product-card__info">
-                <h3 class="product-card__title">Casual Cord Set</h3>
-                <p class="product-card__price">₹3,999</p>
-              </div>
-            </div>
-            <div class="product-card">
-              <div class="product-card__media">
-                <img
-                  src="images/new arr1 (1).jpg"
-                  alt="Embroidered Cord Set"
-                  class="product-card__image"
-                />
-                <div class="product-card__quick-add">
-                  <button class="quick-add-btn">View Details</button>
+
+                <div class="highlight-item">
+                  <div class="highlight-icon">
+                    <i class="ri-star-line"></i>
+                  </div>
+                  <div class="highlight-content">
+                    <h4 class="highlight-title">Timeless Design</h4>
+                    <p class="highlight-text">
+                      Our designs blend traditional motifs with contemporary
+                      silhouettes for effortless elegance.
+                    </p>
+                  </div>
                 </div>
-              </div>
-              <div class="product-card__info">
-                <h3 class="product-card__title">Embroidered Cord Set</h3>
-                <p class="product-card__price">₹5,499</p>
               </div>
             </div>
           </div>
-          <button class="slider-arrow next" aria-label="Next items">›</button>
+        </div>
+
+        <div class="about-stats">
+          <div class="stats-container">
+            <div class="stat-card">
+              <div class="stat-number" data-count="1000">0</div>
+              <div class="stat-label">Happy Customers</div>
+              <div class="stat-description">Across Rajasthan</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number" data-count="500">0</div>
+              <div class="stat-label">Unique Designs</div>
+              <div class="stat-description">Created with Love</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number" data-count="25">0</div>
+              <div class="stat-label">Years of Heritage</div>
+              <div class="stat-description">Traditional Craftsmanship</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number" data-count="50">0</div>
+              <div class="stat-label">Master Artisans</div>
+              <div class="stat-description">Skilled Craftspeople</div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -640,100 +921,259 @@
         </div>
       </div>
     </div>
-    <!-- Footer -->
-    <footer class="footer">
-      <div class="footer-container">
-        <div class="footer-content">
-          <div class="footer-section">
-            <div class="footer-logo">
-              <img src="img/logo.png" alt="BEHNA" class="footer-logo-img" />
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+      <div class="cta-container">
+        <div class="cta-content">
+          <div class="cta-background">
+            <div class="cta-pattern"></div>
+            <div class="cta-overlay"></div>
+          </div>
+
+          <div class="cta-text-content">
+            <div class="cta-badge">
+              <span class="cta-badge-icon">
+                <i class="ri-sparkle-line"></i>
+              </span>
+              <span class="cta-badge-text">Join Our Heritage</span>
             </div>
-            <p class="footer-description">
-              Authentic traditional wear from the heart of Jaipur, crafted with
-              love and precision by skilled artisans.
+
+            <h2 class="cta-title">
+              <span class="cta-title-main">Experience the Art of</span>
+              <span class="cta-title-highlight">Traditional Elegance</span>
+            </h2>
+
+            <p class="cta-description">
+              Discover our exclusive collection of handcrafted garments that
+              celebrate the rich heritage of Rajasthani craftsmanship. Each
+              piece tells a story of tradition, elegance, and timeless beauty.
             </p>
-          </div>
-          <div class="footer-section">
-            <h4 class="footer-title">COLLECTIONS</h4>
-            <ul class="footer-links">
-              <li>
-                <a href="#" onclick="shopCategory('suits-kurtis')"
-                  >Suits & Kurtis</a
-                >
-              </li>
-              <li><a href="#" onclick="shopCategory('sarees')">Sarees</a></li>
-              <li>
-                <a href="#" onclick="shopCategory('cord-sets')">Cord Sets</a>
-              </li>
-              <li>
-                <a href="#" onclick="shopCategory('accessories')"
-                  >Accessories</a
-                >
-              </li>
-            </ul>
-          </div>
-          <div class="footer-section">
-            <h4 class="footer-title">SERVICES</h4>
-            <ul class="footer-links">
-              <li>
-                <a href="#" onclick="openService('styling')"
-                  >Personal Styling</a
-                >
-              </li>
-              <li>
-                <a href="#" onclick="openService('appointment')"
-                  >Book Appointment</a
-                >
-              </li>
-              <li>
-                <a href="#" onclick="openService('alteration')"
-                  >Alteration Services</a
-                >
-              </li>
-              <li>
-                <a href="#" onclick="openService('sizing')">Size Guide</a>
-              </li>
-            </ul>
-          </div>
-          <div class="footer-section">
-            <h4 class="footer-title">CONNECT</h4>
-            <div class="footer-social">
-              <a href="#" class="footer-social-link">Instagram</a>
-              <a href="#" class="footer-social-link">Facebook</a>
-              <a href="#" class="footer-social-link">Pinterest</a>
+
+            <div class="cta-features">
+              <div class="cta-feature">
+                <i class="ri-shield-check-line"></i>
+                <span>Authentic Craftsmanship</span>
+              </div>
+              <div class="cta-feature">
+                <i class="ri-truck-line"></i>
+                <span>Free Delivery in Rajasthan</span>
+              </div>
+              <div class="cta-feature">
+                <i class="ri-customer-service-2-line"></i>
+                <span>Personal Styling Consultation</span>
+              </div>
             </div>
-            <div class="footer-newsletter">
-              <p class="footer-newsletter-text">Subscribe to our newsletter</p>
-              <div class="footer-newsletter-form">
-                <input
-                  type="email"
-                  placeholder="Your email"
-                  class="footer-newsletter-input"
-                  id="footerNewsletterEmail"
+
+            <div class="cta-actions">
+              <button class="cta-button primary" onclick="shopCategory('all')">
+                <span class="button-text">Explore Collection</span>
+                <span class="button-icon">
+                  <i class="ri-arrow-right-line"></i>
+                </span>
+                <div class="button-ripple"></div>
+              </button>
+
+              <button class="cta-button secondary" onclick="openContact()">
+                <span class="button-text">Book Consultation</span>
+                <span class="button-icon">
+                  <i class="ri-phone-line"></i>
+                </span>
+              </button>
+            </div>
+          </div>
+
+          <div class="cta-visual">
+            <div class="cta-image-container">
+              <div class="cta-image-frame">
+                <img
+                  src="images/pexels-anubhaw-anand-3236651.jpg"
+                  alt="Behna Collection"
+                  class="cta-image"
                 />
-                <button
-                  class="footer-newsletter-btn"
-                  onclick="subscribeFooterNewsletter()"
-                >
-                  SUBSCRIBE
-                </button>
+                <div class="cta-image-decoration">
+                  <div class="decoration-element"></div>
+                  <div class="decoration-element"></div>
+                  <div class="decoration-element"></div>
+                </div>
+              </div>
+
+              <div class="cta-floating-card">
+                <div class="floating-card-content">
+                  <div class="floating-card-icon">
+                    <i class="ri-award-line"></i>
+                  </div>
+                  <div class="floating-card-text">
+                    <span class="floating-card-number">25+</span>
+                    <span class="floating-card-label">Years of Excellence</span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-top">
+          <div class="footer-content">
+            <!-- Brand Section -->
+            <div class="footer-brand">
+              <div class="brand-logo">
+                <img src="img/logo.png" alt="BEHNA" class="footer-logo" />
+              </div>
+              <p class="brand-description">
+                Authentic traditional wear from the heart of Jaipur, crafted
+                with love and precision by skilled artisans. Experience the
+                finest Rajasthani heritage.
+              </p>
+              <div class="brand-contact">
+                <div class="contact-item">
+                  <i class="ri-map-pin-line"></i>
+                  <span>Johari Bazaar, Pink City, Jaipur</span>
+                </div>
+                <div class="contact-item">
+                  <i class="ri-phone-line"></i>
+                  <span>+91 98765 43210</span>
+                </div>
+                <div class="contact-item">
+                  <i class="ri-mail-line"></i>
+                  <span>info@behna.com</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="footer-links">
+              <h3 class="footer-title">Quick Links</h3>
+              <ul class="link-list">
+                <li>
+                  <a href="#" onclick="shopCategory('suits-kurtis')"
+                    >Suits & Kurtis</a
+                  >
+                </li>
+                <li><a href="#" onclick="shopCategory('sarees')">Sarees</a></li>
+                <li>
+                  <a href="#" onclick="shopCategory('cord-sets')">Cord Sets</a>
+                </li>
+                <li>
+                  <a href="#" onclick="shopCategory('accessories')"
+                    >Accessories</a
+                  >
+                </li>
+                <li>
+                  <a href="#" onclick="shopCategory('festive')">Festive Wear</a>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Customer Care -->
+            <div class="footer-links">
+              <h3 class="footer-title">Customer Care</h3>
+              <ul class="link-list">
+                <li><a href="#" onclick="openContact()">Contact Us</a></li>
+                <li>
+                  <a href="#" onclick="openService('sizing')">Size Guide</a>
+                </li>
+                <li><a href="#">Shipping Info</a></li>
+                <li><a href="#">Returns & Exchange</a></li>
+                <li><a href="#">Track Your Order</a></li>
+              </ul>
+            </div>
+
+            <!-- Newsletter -->
+            <div class="footer-newsletter">
+              <h3 class="footer-title">Stay Updated</h3>
+              <p class="newsletter-text">
+                Subscribe to receive exclusive offers and latest collections
+              </p>
+              <form class="newsletter-form">
+                <div class="input-group">
+                  <input
+                    type="email"
+                    placeholder="Enter your email"
+                    class="newsletter-input"
+                    id="footerNewsletterEmail"
+                  />
+                  <button
+                    type="button"
+                    class="newsletter-btn"
+                    onclick="subscribeFooterNewsletter()"
+                  >
+                    <i class="ri-send-plane-line"></i>
+                  </button>
+                </div>
+              </form>
+
+              <!-- Social Links -->
+              <div class="social-section">
+                <p class="social-title">Follow Us</p>
+                <div class="social-links">
+                  <a href="#" class="social-link" title="Instagram">
+                    <i class="ri-instagram-line"></i>
+                  </a>
+                  <a href="#" class="social-link" title="Facebook">
+                    <i class="ri-facebook-line"></i>
+                  </a>
+                  <a href="#" class="social-link" title="Pinterest">
+                    <i class="ri-pinterest-line"></i>
+                  </a>
+                  <a href="#" class="social-link" title="YouTube">
+                    <i class="ri-youtube-line"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Footer Bottom -->
         <div class="footer-bottom">
           <div class="footer-bottom-content">
-            <p class="footer-copyright">© 2024 BEHNA. All rights reserved.</p>
-            <div class="footer-bottom-links">
-              <a href="#" class="footer-bottom-link">Privacy Policy</a>
-              <a href="#" class="footer-bottom-link">Terms of Service</a>
-              <a href="#" class="footer-bottom-link">Return Policy</a>
+            <div class="footer-left">
+              <p class="copyright">© 2024 BEHNA. All rights reserved.</p>
+            </div>
+            <div class="footer-center">
+              <div class="footer-badges">
+                <span class="badge">
+                  <i class="ri-shield-check-line"></i>
+                  Authentic Handcrafted
+                </span>
+                <span class="badge">
+                  <i class="ri-truck-line"></i>
+                  Free Shipping in Rajasthan
+                </span>
+              </div>
+            </div>
+            <div class="footer-right">
+              <div class="footer-policies">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Return Policy</a>
+              </div>
             </div>
           </div>
         </div>
       </div>
+
+      <!-- Back to Top -->
+      <button class="back-to-top" onclick="scrollToTop()" title="Back to top">
+        <i class="ri-arrow-up-line"></i>
+      </button>
     </footer>
 
+    <!-- Swiper CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <!-- jQuery for preloader -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="script.js"></script>
   </body>
 </html>
