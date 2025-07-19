@@ -104,6 +104,51 @@ $(document).ready(function() {
   setTimeout(startCountdown, 100);
 });
 
+// Initialize New Arrivals Swiper
+document.addEventListener('DOMContentLoaded', function() {
+  const newArrivalsSwiper = new Swiper(".new-arrivals-swiper", {
+    effect: "coverflow",
+    grabCursor: true,
+    centeredSlides: true,
+    coverflowEffect: {
+      rotate: 0,
+      stretch: 0,
+      depth: 100,
+      modifier: 3,
+      slideShadows: true
+    },
+    keyboard: {
+      enabled: true
+    },
+    mousewheel: {
+      thresholdDelta: 70
+    },
+    loop: true,
+    pagination: {
+      el: ".new-arrivals-swiper .swiper-pagination",
+      clickable: true
+    },
+    autoplay: {
+      delay: 4000,
+      disableOnInteraction: false,
+    },
+    breakpoints: {
+      640: {
+        slidesPerView: 2
+      },
+      768: {
+        slidesPerView: 1
+      },
+      1024: {
+        slidesPerView: 2
+      },
+      1560: {
+        slidesPerView: 3
+      }
+    }
+  });
+});
+
 // Initialize Swiper for offers
 document.addEventListener('DOMContentLoaded', function() {
   const offersSwiper = new Swiper('.offers-swiper', {
@@ -758,3 +803,4 @@ window.addEventListener('scroll', () => {
     }
   }
 });
+

@@ -5,7 +5,8 @@
       "WebFetch(domain:www.kitandace.com)",
       "Bash(rm:*)",
       "Bash(tail:*)",
-      "Bash(grep:*)"
+      "Bash(grep:*)",
+      "Bash(wc:*)"
     ],
     "deny": []
   }

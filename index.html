@@ -89,7 +89,7 @@
         webkit-playsinline
         preload="metadata"
       >
-        <source src="img/hero-vid-1 (2).mp4" type="video/mp4" />
+        <source src="img/3894706-uhd_2160_4096_25fps.mp4" type="video/mp4" />
       </video>
       <div class="hero-overlay"></div>
       <div class="hero-content">
@@ -111,113 +111,78 @@
 
     <!-- New Arrivals Section -->
     <section class="new-arrivals">
-      <h2 class="section-title">New Arrivals</h2>
-      <div class="cd-slider">
-        <ul>
-          <li>
-            <div
-              class="image"
-              style="
-                background-image: url(images/cheerful-traditional-indian-woman-white-background-studio-shot.jpg);
-              "
-            ></div>
-            <div class="content">
-              <h2>Elegant Kurtis</h2>
-              <a href="#">View Collection</a>
-            </div>
-          </li>
-          <li>
-            <div
-              class="image"
-              style="
-                background-image: url(images/beautiful-woman-purple-sweater-skirt.jpg);
-              "
-            ></div>
-            <div class="content">
-              <h2>Designer Suits</h2>
-              <a href="#">View Collection</a>
-            </div>
-          </li>
-          <li>
-            <div
-              class="image"
-              style="background-image: url(img/newarr1.jpg)"
-            ></div>
-            <div class="content">
-              <h2>Banarasi Sarees</h2>
-              <a href="#">View Collection</a>
-            </div>
-          </li>
-          <li>
-            <div
-              class="image"
-              style="
-                background-image: url(images/pexels-anubhaw-anand-3236651.jpg);
-              "
-            ></div>
-            <div class="content">
-              <h2>Festive Wear</h2>
-              <a href="#">View Collection</a>
-            </div>
-          </li>
-        </ul>
-        <div class="slider-controls">
-          <button class="prev-btn" aria-label="Previous slide">‹</button>
-          <button class="next-btn" aria-label="Next slide">›</button>
+      <div class="new-arrivals-container">
+        <div class="offers-header">
+          <div class="offers-badge">
+            <span class="badge-text">Discover</span>
+          </div>
+          <h2 class="offers-title">
+            <span class="offers-main">New Arrivals</span>
+          </h2>
         </div>
-      </div>
-    </section>
-
-    <!-- Elevate Shopping Experience Section -->
-    <section class="elevate-section">
-      <div class="elevate-container">
-        <div class="elevate-hero">
-          <div class="elevate-hero__left">
-            <img
-              src="images/beautiful-woman-purple-sweater-skirt.jpg"
-              alt="Fashion Models"
-              class="elevate-hero__image"
-            />
-          </div>
-          <div class="elevate-hero__center">
-            <div class="elevate-content">
-              <h2 class="elevate-title">
-                Elevate<br />
-                <span class="elevate-highlight">Shopping</span><br />
-                Experience.
-              </h2>
-              <p class="elevate-subtitle">
-                Refresh your basics, try new trends, it's<br />
-                time to cozy up your closet. Sustainably<br />
-                and on a budget, off course.
-              </p>
-              <button class="elevate-btn">
-                Shop Now
-                <svg
-                  class="elevate-btn__arrow"
-                  width="16"
-                  height="16"
-                  viewBox="0 0 16 16"
-                  fill="none"
-                >
-                  <path
-                    d="M6 12L10 8L6 4"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-              </button>
+        <div class="swiper new-arrivals-swiper">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide swiper-slide--one">
+              <div>
+                <h2>Elegant Sarees</h2>
+                <p>
+                  Discover our exquisite collection of handwoven sarees
+                  featuring traditional Rajasthani motifs. Each piece tells a
+                  story of heritage and artistry, crafted by skilled artisans
+                  with generations of expertise.
+                </p>
+                <a href="#" onclick="shopCategory('sarees')">explore</a>
+              </div>
+            </div>
+            <div class="swiper-slide swiper-slide--two">
+              <div>
+                <h2>Designer Suits</h2>
+                <p>
+                  Contemporary designs meet traditional craftsmanship in our
+                  stunning suit collection. Perfect for special occasions, each
+                  piece features intricate embroidery and premium fabrics
+                  sourced from the finest mills.
+                </p>
+                <a href="#" onclick="shopCategory('suits-kurtis')">explore</a>
+              </div>
+            </div>
+            <div class="swiper-slide swiper-slide--three">
+              <div>
+                <h2>Trendy Kurtis</h2>
+                <p>
+                  Versatile and stylish kurtis that blend comfort with elegance.
+                  Our latest designs feature modern cuts with traditional
+                  embellishments, perfect for both casual and formal occasions.
+                </p>
+                <a href="#" onclick="shopCategory('kurtis')">explore</a>
+              </div>
+            </div>
+            <div class="swiper-slide swiper-slide--four">
+              <div>
+                <h2>Cord Sets</h2>
+                <p>
+                  The perfect fusion of comfort and style. Our coordinated sets
+                  feature matching tops and bottoms with contemporary prints and
+                  traditional block printing techniques from Jaipur.
+                </p>
+                <a href="#" onclick="shopCategory('cord-sets')">explore</a>
+              </div>
+            </div>
+            <div class="swiper-slide swiper-slide--five">
+              <div>
+                <h2>Accessories</h2>
+                <p>
+                  Complete your look with our carefully curated collection of
+                  traditional accessories. From handcrafted jewelry to elegant
+                  clutches, each piece adds the perfect finishing touch to your
+                  ensemble.
+                </p>
+                <a href="#" onclick="shopCategory('accessories')">explore</a>
+              </div>
             </div>
           </div>
-          <div class="elevate-hero__right">
-            <img
-              src="images/new arr2.jpg"
-              alt="Fashion Bag"
-              class="elevate-hero__image"
-            />
-          </div>
+          <!-- Add Pagination -->
+          <div class="swiper-pagination"></div>
         </div>
       </div>
     </section>
@@ -225,8 +190,13 @@
     <!-- Popular Categories Section -->
     <section class="popular-section">
       <div class="popular-container">
-        <div class="popular-header">
-          <h2 class="popular-title">Popular top category</h2>
+        <div class="offers-header">
+          <div class="offers-badge">
+            <span class="badge-text">Explore</span>
+          </div>
+          <h2 class="offers-title">
+            <span class="offers-main">Top Categories</span>
+          </h2>
         </div>
         <div class="popular-grid">
           <div class="category-item travel">
@@ -629,9 +599,7 @@
       <div class="about-container">
         <div class="about-header">
           <div class="about-badge">
-            <span class="badge-line"></span>
             <span class="badge-text">Our Heritage</span>
-            <span class="badge-line"></span>
           </div>
           <h2 class="about-title">About Behna</h2>
           <p class="about-subtitle">
