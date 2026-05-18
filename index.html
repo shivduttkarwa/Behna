@@ -927,132 +927,49 @@
 
     <!-- Footer -->
     <footer class="footer">
-      <div class="footer-container">
-        <div class="footer-top">
-          <div class="footer-content">
-            <!-- Brand Section -->
-            <div class="footer-brand">
-              <div class="brand-logo">
-                <img src="img/logo.png" alt="BEHNA" class="footer-logo" />
-              </div>
-              <p class="brand-description">
-                Your destination for curated Indian women's fashion in Jaipur.
-                From kurtis to party wear — find your perfect style at
-                Behna Clothing Studio.
-              </p>
-              <div class="brand-contact">
-                <div class="contact-item">
-                  <i class="ri-map-pin-line"></i>
-                  <span>Plot No. 60, Gandhi Path West, Lalarpura, Jaipur 302034</span>
-                </div>
-                <div class="contact-item">
-                  <i class="ri-phone-line"></i>
-                  <span>+91 72310 42253 / +91 73003 59127</span>
-                </div>
-              </div>
-            </div>
+      <div class="footer-inner">
 
-            <!-- Quick Links -->
-            <div class="footer-links">
-              <h3 class="footer-title">Quick Links</h3>
-              <ul class="link-list">
-                <li>
-                  <a href="#" onclick="shopCategory('suits-kurtis')"
-                    >Suits & Kurtis</a
-                  >
-                </li>
-                <li><a href="#" onclick="shopCategory('sarees')">Sarees</a></li>
-                <li>
-                  <a href="#" onclick="shopCategory('cord-sets')">Cord Sets</a>
-                </li>
-                <li>
-                  <a href="#" onclick="shopCategory('accessories')"
-                    >Accessories</a
-                  >
-                </li>
-                <li>
-                  <a href="#" onclick="shopCategory('festive')">Festive Wear</a>
-                </li>
-              </ul>
-            </div>
-
-            <!-- Customer Care -->
-            <div class="footer-links">
-              <h3 class="footer-title">Customer Care</h3>
-              <ul class="link-list">
-                <li><a href="#" onclick="openContact()">Contact Us</a></li>
-                <li>
-                  <a href="#" onclick="openService('sizing')">Size Guide</a>
-                </li>
-                <li><a href="#">Shipping Info</a></li>
-                <li><a href="#">Returns & Exchange</a></li>
-                <li><a href="#">Track Your Order</a></li>
-              </ul>
-            </div>
-
-            <!-- Newsletter -->
-            <div class="footer-newsletter">
-              <h3 class="footer-title">Stay Updated</h3>
-              <p class="newsletter-text">
-                Subscribe to receive exclusive offers and latest collections
-              </p>
-              <form class="newsletter-form">
-                <div class="input-group">
-                  <input
-                    type="email"
-                    placeholder="Enter your email"
-                    class="newsletter-input"
-                    id="footerNewsletterEmail"
-                  />
-                  <button
-                    type="button"
-                    class="newsletter-btn"
-                    onclick="subscribeFooterNewsletter()"
-                  >
-                    <i class="ri-send-plane-line"></i>
-                  </button>
-                </div>
-              </form>
-
-              <!-- Social Links -->
-              <div class="social-section">
-                <p class="social-title">Follow Us</p>
-                <div class="social-links">
-                  <a href="https://www.instagram.com/behna_clothing_studio/" target="_blank" rel="noopener noreferrer" class="social-link" title="Instagram">
-                    <i class="ri-instagram-line"></i>
-                  </a>
-                  <a href="https://www.youtube.com/channel/UCqkJZisHnd1wD8gK0ailsxA" target="_blank" rel="noopener noreferrer" class="social-link" title="YouTube">
-                    <i class="ri-youtube-line"></i>
-                  </a>
-                </div>
-              </div>
+        <!-- Top row -->
+        <div class="footer-top-row">
+          <div class="footer-col">
+            <h4 class="footer-col-title">Visit Us</h4>
+            <p class="footer-col-text">Plot No. 60, Gandhi Path West<br>Lalarpura, Jaipur 302034</p>
+            <p class="footer-col-text">+91 72310 42253 &middot; +91 73003 59127</p>
+            <p class="footer-col-text">Mon–Sat: 10:30 AM – 10 PM<br>Sunday: 1 PM – 10 PM</p>
+          </div>
+          <div class="footer-col">
+            <h4 class="footer-col-title">Shop</h4>
+            <ul class="footer-nav">
+              <li><a href="#" onclick="shopCategory('kurtis')">Kurtis</a></li>
+              <li><a href="#" onclick="shopCategory('co-ord-sets')">Co-ord Sets</a></li>
+              <li><a href="#" onclick="shopCategory('anarkali')">Anarkali</a></li>
+              <li><a href="#" onclick="shopCategory('party-wear')">Party Wear</a></li>
+              <li><a href="#" onclick="shopCategory('salwar-kameez')">Salwar Kameez</a></li>
+              <li><a href="#" onclick="shopCategory('office-formals')">Office Formals</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4 class="footer-col-title">Follow Us</h4>
+            <div class="footer-socials">
+              <a href="https://www.instagram.com/behna_clothing_studio/" target="_blank" rel="noopener noreferrer" class="footer-social-link" title="Instagram">
+                <i class="ri-instagram-line"></i>
+              </a>
+              <a href="https://www.youtube.com/channel/UCqkJZisHnd1wD8gK0ailsxA" target="_blank" rel="noopener noreferrer" class="footer-social-link" title="YouTube">
+                <i class="ri-youtube-line"></i>
+              </a>
             </div>
           </div>
         </div>
 
-        <!-- Footer Bottom -->
-        <div class="footer-bottom">
-          <div class="footer-bottom-content">
-            <div class="footer-left">
-              <p class="copyright">© 2026 BEHNA. All rights reserved.</p>
-            </div>
-            <div class="footer-center">
-              <div class="footer-badges">
-                <span class="badge">
-                  <i class="ri-truck-line"></i>
-                  Free Shipping in Rajasthan
-                </span>
-              </div>
-            </div>
-            <div class="footer-right">
-              <div class="footer-policies">
-                <a href="#">Privacy Policy</a>
-                <a href="#">Terms of Service</a>
-                <a href="#">Return Policy</a>
-              </div>
-            </div>
-          </div>
+        <!-- Big brand name -->
+        <div class="footer-brand-display">BEHNA</div>
+
+        <!-- Copyright -->
+        <div class="footer-copy">
+          <span>© 2026 Behna Clothing Studio. All rights reserved.</span>
+          <span>Jaipur, Rajasthan</span>
         </div>
+
       </div>
 
       <!-- Floating Action Buttons -->
