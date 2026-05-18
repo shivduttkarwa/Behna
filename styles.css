@@ -1911,6 +1911,12 @@ body {
   padding: 0 5rem;
 }
 
+@media (max-width: 768px) {
+  .about-container {
+    padding: 0 1.25rem;
+  }
+}
+
 /* About Header */
 .about-header {
   text-align: center;
@@ -3852,23 +3858,23 @@ body {
   }
   .contact-text {
     margin-left: -1.375rem;
-    font-size: 1rem;
-    letter-spacing: 0.05rem;
+    font-size: 0.8rem;
+    letter-spacing: 0.08rem;
   }
   .menu-text {
     margin-right: -1.375rem;
-    font-size: 1rem;
-    letter-spacing: 0.05rem;
+    font-size: 0.8rem;
+    letter-spacing: 0.08rem;
   }
   .icon {
-    width: 1.75rem;
-    height: 1.75rem;
+    width: 1.4rem;
+    height: 1.4rem;
   }
   .nav-icons {
-    gap: 1.25rem;
+    gap: 1rem;
   }
   .header {
-    padding: 1.25rem 1.5rem;
+    padding: 1rem 1.25rem;
   }
 }
 
