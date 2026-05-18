@@ -227,12 +227,14 @@ document.addEventListener('DOMContentLoaded', function() {
 // Menu functionality
 function openMenu() {
   document.getElementById("menuOverlay").classList.add("active");
+  document.documentElement.style.overflow = "hidden";
   document.body.style.overflow = "hidden";
 }
 
 function closeMenu() {
   document.getElementById("menuOverlay").classList.remove("active");
-  document.body.style.overflow = "auto";
+  document.documentElement.style.overflow = "";
+  document.body.style.overflow = "";
 }
 
 function closeMenuOverlay(event) {
