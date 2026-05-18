@@ -4275,12 +4275,11 @@ body {
 .visit-left {
   background: #1a252f;
   color: #fff;
-  padding: 4rem 4rem;
+  padding: 3rem 4rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 1.5rem;
-  overflow-y: auto;
+  gap: 1.25rem;
 }
 
 .visit-tag {
