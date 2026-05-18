@@ -33,7 +33,8 @@ window.addEventListener("scroll", function () {
 
     // Smooth logo transformation
     const topVh = 5 - (5 - 0.2) * scrollRatio;
-    const newHeight = 200 - (200 - 80) * scrollRatio;
+    const baseHeight = window.innerWidth > 768 ? 240 : 200;
+    const newHeight = baseHeight - (baseHeight - 80) * scrollRatio;
     const filterValue = 1 - scrollRatio;
 
     logoMaster.style.top = `${topVh}vh`;
@@ -48,7 +49,7 @@ window.addEventListener("scroll", function () {
     logoMaster.style.top = "5vh";
     logoMaster.style.left = "50%";
     logoMaster.style.transform = "translateX(-50%)";
-    transformLogo.style.height = "200px";
+    transformLogo.style.height = window.innerWidth > 768 ? "240px" : "200px";
     transformLogo.style.filter = "brightness(0) invert(1)";
   }
 

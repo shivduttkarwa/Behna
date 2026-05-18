@@ -2996,6 +2996,12 @@ body {
   transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+@media (min-width: 769px) {
+  .main-logo img {
+    height: 15rem;
+  }
+}
+
 /* Scrolled state - logo moves to navbar position */
 .header.scrolled .logo-master {
   /* JavaScript handles the transformation */
@@ -4390,14 +4396,15 @@ body {
 @media (max-width: 768px) {
   .visit-section {
     grid-template-columns: 1fr;
-    min-height: auto;
+    height: auto;
   }
   .visit-left {
     padding: 4rem 1.5rem;
     gap: 1.5rem;
   }
   .visit-title { font-size: 3.5rem; }
-  .visit-map { min-height: 50vw; }
+  .visit-right { height: 60vw; }
+  .visit-map { height: 100%; min-height: unset; }
 }
 
 /* ── Minimal Footer ── */
@@ -4417,6 +4424,29 @@ body {
   gap: 4rem;
   padding-bottom: 4rem;
   border-bottom: 0.0625rem solid rgba(255,255,255,0.1);
+}
+
+.footer-col-quote {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.footer-quote {
+  font-family: "Georgia", serif;
+  font-size: 1.6rem;
+  font-style: italic;
+  color: rgba(255,255,255,0.9);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.footer-quote-attr {
+  font-size: 0.7rem;
+  letter-spacing: 0.15rem;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
 }
 
 .footer-col-title {
