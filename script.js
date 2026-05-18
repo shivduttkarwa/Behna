@@ -58,8 +58,8 @@ window.addEventListener("scroll", function () {
 
 // Countdown Timer Functionality
 function startCountdown() {
-  // Set the date we're counting down to (12 days from now)
-  const countDownDate = new Date().getTime() + (12 * 24 * 60 * 60 * 1000);
+  // Set the date we're counting down to (24 hours from now)
+  const countDownDate = new Date().getTime() + (24 * 60 * 60 * 1000);
   
   // Update the count down every 1 second
   const timer = setInterval(function() {
