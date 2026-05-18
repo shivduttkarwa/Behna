@@ -9,6 +9,7 @@
 /* ── Scale UP for large / 4K displays ── */
 html {
   font-size: 16px;   /* 1440px – 1599px  (base) */
+  overflow-x: hidden;
 }
 @media (min-width: 1600px) {
   html { font-size: 17px; }   /* 1rem = 17px */
@@ -52,7 +53,7 @@ body {
   color: #000;
   background: #fff;
   overflow-x: hidden;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .no-scroll-y {
@@ -4941,14 +4942,14 @@ body {
 .collection-section {
   padding: 0 0 4rem;
   background-color: #fff;
-  width: 100vw;
+  width: 100%;
   overflow: hidden;
 }
 
 .collection-hero {
   position: relative;
   height: 90vh;
-  width: 100vw;
+  width: 100%;
   overflow: hidden;
   margin-bottom: 3rem;
 }
