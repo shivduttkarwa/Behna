@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="format-detection" content="telephone=no" />
     <title>BEHNA</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@500&display=swap"
@@ -104,7 +105,9 @@
     <!-- New Arrivals Section -->
     <section class="na-section">
       <div class="na-section-header">
-        <span class="na-section-tag">Just In</span>
+        <div class="offers-badge">
+          <span class="badge-text">Just In</span>
+        </div>
         <h2 class="na-section-title">New Arrivals</h2>
         <div class="na-section-line"></div>
       </div>
@@ -114,7 +117,7 @@
 
           <div class="swiper-slide">
             <div class="na-card">
-              <img src="img/newarr1.jpg" alt="Kurtis" class="na-img" />
+              <img src="assets/img/suit-1.jpg" alt="Kurtis" class="na-img" />
               <div class="na-gradient"></div>
               <div class="na-content">
                 <span class="na-badge">New Arrival</span>
@@ -126,7 +129,7 @@
 
           <div class="swiper-slide">
             <div class="na-card">
-              <img src="img/newarr2.jpg" alt="Co-ord Sets" class="na-img" />
+              <img src="assets/img/co-ord-1.png" alt="Co-ord Sets" class="na-img" />
               <div class="na-gradient"></div>
               <div class="na-content">
                 <span class="na-badge">New Arrival</span>
@@ -138,7 +141,7 @@
 
           <div class="swiper-slide">
             <div class="na-card">
-              <img src="img/newaarr3.jpg" alt="Anarkali" class="na-img" />
+              <img src="assets/img/anarkali.jpg" alt="Anarkali" class="na-img" />
               <div class="na-gradient"></div>
               <div class="na-content">
                 <span class="na-badge">New Arrival</span>
@@ -150,7 +153,7 @@
 
           <div class="swiper-slide">
             <div class="na-card">
-              <img src="images/pexels-anubhaw-anand-3236651.jpg" alt="Party Wear" class="na-img" />
+              <img src="assets/img/party.jpg" alt="Party Wear" class="na-img" />
               <div class="na-gradient"></div>
               <div class="na-content">
                 <span class="na-badge">New Arrival</span>
@@ -162,7 +165,7 @@
 
           <div class="swiper-slide">
             <div class="na-card">
-              <img src="images/beautiful-woman-purple-sweater-skirt.jpg" alt="Salwar Kameez" class="na-img" />
+              <img src="assets/img/suit-2.jpg" alt="Salwar Kameez" class="na-img" />
               <div class="na-gradient"></div>
               <div class="na-content">
                 <span class="na-badge">New Arrival</span>
@@ -174,7 +177,7 @@
 
           <div class="swiper-slide">
             <div class="na-card">
-              <img src="images/pexels-brollwalamunda-20415076.jpg" alt="Office Formals" class="na-img" />
+              <img src="assets/img/suit-1.jpg" alt="Office Formals" class="na-img" />
               <div class="na-gradient"></div>
               <div class="na-content">
                 <span class="na-badge">New Arrival</span>
@@ -203,45 +206,29 @@
           </h2>
         </div>
         <div class="popular-grid">
-          <div class="category-item travel">
+          <div class="category-item kurtis" onclick="shopCategory('kurtis')">
             <div class="category-icon">
-              <img
-                src="images/pexels-anubhaw-anand-3236651.jpg"
-                alt="Travel"
-                class="category-image"
-              />
+              <img src="assets/img/suit-1.jpg" alt="Kurtis" class="category-image" />
             </div>
-            <span class="category-name">Suits & Kurtis</span>
+            <span class="category-name">Kurtis</span>
           </div>
-          <div class="category-item electronics">
+          <div class="category-item coord-sets" onclick="shopCategory('co-ord-sets')">
             <div class="category-icon">
-              <img
-                src="images/beautiful-woman-purple-sweater-skirt.jpg"
-                alt="Electronics"
-                class="category-image"
-              />
+              <img src="assets/img/co-ord-1.png" alt="Co-ord Sets" class="category-image" />
             </div>
-            <span class="category-name">Sarees</span>
+            <span class="category-name">Co-ord Sets</span>
           </div>
-          <div class="category-item furniture">
+          <div class="category-item anarkali" onclick="shopCategory('anarkali')">
             <div class="category-icon">
-              <img
-                src="images/new arr2.jpg"
-                alt="Home & furniture"
-                class="category-image"
-              />
+              <img src="assets/img/anarkali.jpg" alt="Anarkali" class="category-image" />
             </div>
-            <span class="category-name">Cord-Sets</span>
+            <span class="category-name">Anarkali</span>
           </div>
-          <div class="category-item books">
+          <div class="category-item party-wear" onclick="shopCategory('party-wear')">
             <div class="category-icon">
-              <img
-                src="images/new arr1 (1).jpg"
-                alt="Books"
-                class="category-image"
-              />
+              <img src="assets/img/co%20ord%20set-2.jpg" alt="Party Wear" class="category-image" />
             </div>
-            <span class="category-name">Accessories</span>
+            <span class="category-name">Party Wear</span>
           </div>
         </div>
       </div>
@@ -256,7 +243,7 @@
           </div>
           <h2 class="offers-title">
             <span class="offers-main">Special Offers</span>
-            <span class="offers-subtitle">Up to 70% Off</span>
+            <span class="offers-subtitle">Up to 10% Off</span>
           </h2>
         </div>
 
@@ -275,7 +262,7 @@
                   <div class="card-content">
                     <div class="card-badge">FESTIVE SPECIAL</div>
                     <h3 class="card-title">Festive Collection</h3>
-                    <p class="card-discount">50% OFF</p>
+                    <p class="card-discount">10% OFF</p>
                     <p class="card-description">
                       Celebrate in style with our exclusive festive wear
                       collection
@@ -303,10 +290,10 @@
                   </div>
                   <div class="card-content">
                     <div class="card-badge">TRENDING</div>
-                    <h3 class="card-title">Designer Sarees</h3>
-                    <p class="card-discount">40% OFF</p>
+                    <h3 class="card-title">Anarkali Collection</h3>
+                    <p class="card-discount">8% OFF</p>
                     <p class="card-description">
-                      Handcrafted sarees from the finest artisans
+                      Elegant designs for every special occasion
                     </p>
                     <button class="card-button">
                       <span>Explore</span>
@@ -332,7 +319,7 @@
                   <div class="card-content">
                     <div class="card-badge">NEW ARRIVAL</div>
                     <h3 class="card-title">Cord Sets</h3>
-                    <p class="card-discount">30% OFF</p>
+                    <p class="card-discount">5% OFF</p>
                     <p class="card-description">
                       Modern comfort meets traditional elegance
                     </p>
@@ -602,7 +589,7 @@
     <section class="about-section">
       <div class="about-container">
         <div class="about-header">
-          <div class="about-badge">
+          <div class="offers-badge">
             <span class="badge-text">Our Heritage</span>
           </div>
           <h2 class="about-title">About Behna</h2>
@@ -626,10 +613,10 @@
           <div class="about-right">
             <div class="about-text-content">
               <p class="about-intro">
-                Born in the vibrant city of Jaipur, Behna embodies the essence
-                of traditional Rajasthani craftsmanship. Our story began with a
-                passion for preserving the rich heritage of Indian textiles
-                while creating contemporary pieces for the modern woman.
+                Born in the vibrant city of Jaipur, Behna is your destination
+                for curated Indian women's fashion. We bring together the best
+                in traditional and contemporary styles, helping every woman
+                dress with confidence and grace.
               </p>
 
               <div class="about-highlights">
@@ -638,10 +625,10 @@
                     <i class="ri-hand-heart-line"></i>
                   </div>
                   <div class="highlight-content">
-                    <h4 class="highlight-title">Handcrafted Excellence</h4>
+                    <h4 class="highlight-title">Curated Collections</h4>
                     <p class="highlight-text">
-                      Every piece is meticulously crafted by skilled artisans
-                      who have inherited their craft through generations.
+                      Every piece is carefully selected to bring you the finest
+                      styles in Indian women's fashion.
                     </p>
                   </div>
                 </div>
@@ -651,10 +638,10 @@
                     <i class="ri-leaf-line"></i>
                   </div>
                   <div class="highlight-content">
-                    <h4 class="highlight-title">Sustainable Fashion</h4>
+                    <h4 class="highlight-title">Quality You Can Trust</h4>
                     <p class="highlight-text">
-                      We believe in ethical fashion that respects both our
-                      artisans and the environment.
+                      We stand behind every piece we sell — premium fabrics,
+                      great fits, and lasting quality.
                     </p>
                   </div>
                 </div>
@@ -676,32 +663,19 @@
           </div>
         </div>
 
-        <div class="about-stats">
-          <div class="stats-container">
-            <div class="stat-card">
-              <div class="stat-number" data-count="1000">0</div>
-              <div class="stat-label">Happy Customers</div>
-              <div class="stat-description">Across Rajasthan</div>
-            </div>
-            <div class="stat-card">
-              <div class="stat-number" data-count="500">0</div>
-              <div class="stat-label">Unique Designs</div>
-              <div class="stat-description">Created with Love</div>
-            </div>
-            <div class="stat-card">
-              <div class="stat-number" data-count="25">0</div>
-              <div class="stat-label">Years of Heritage</div>
-              <div class="stat-description">Traditional Craftsmanship</div>
-            </div>
-            <div class="stat-card">
-              <div class="stat-number" data-count="50">0</div>
-              <div class="stat-label">Master Artisans</div>
-              <div class="stat-description">Skilled Craftspeople</div>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
+
+    <!-- About CTA Banner -->
+    <div class="about-cta-banner">
+      <img src="assets/img/cta.jpg" alt="Behna Collection" class="about-cta-bg" />
+      <div class="about-cta-overlay"></div>
+      <div class="about-cta-content">
+        <h2 class="about-cta-title">Dress the Way You Feel</h2>
+        <p class="about-cta-sub">Kurtis · Co-ord Sets · Anarkali · Party Wear · Salwar Kameez · Office Formals</p>
+        <a href="#" class="about-cta-btn" onclick="openMenu(); return false;">Explore All Styles</a>
+      </div>
+    </div>
 
     <!-- Sliding Menu -->
     <div
@@ -869,11 +843,8 @@
           </div>
 
           <div class="cta-text-content">
-            <div class="cta-badge">
-              <span class="cta-badge-icon">
-                <i class="ri-sparkle-line"></i>
-              </span>
-              <span class="cta-badge-text">Join Our Heritage</span>
+            <div class="offers-badge">
+              <span class="badge-text">Join Our Heritage</span>
             </div>
 
             <h2 class="cta-title">
@@ -882,15 +853,15 @@
             </h2>
 
             <p class="cta-description">
-              Discover our exclusive collection of handcrafted garments that
-              celebrate the rich heritage of Rajasthani craftsmanship. Each
-              piece tells a story of tradition, elegance, and timeless beauty.
+              Discover our exclusive collection of Indian women's wear —
+              from everyday kurtis to stunning party wear. Style that fits
+              every occasion, every mood, every woman.
             </p>
 
             <div class="cta-features">
               <div class="cta-feature">
                 <i class="ri-shield-check-line"></i>
-                <span>Authentic Craftsmanship</span>
+                <span>Premium Quality</span>
               </div>
               <div class="cta-feature">
                 <i class="ri-truck-line"></i>
@@ -938,11 +909,11 @@
               <div class="cta-floating-card">
                 <div class="floating-card-content">
                   <div class="floating-card-icon">
-                    <i class="ri-award-line"></i>
+                    <i class="ri-sparkling-line"></i>
                   </div>
                   <div class="floating-card-text">
-                    <span class="floating-card-number">25+</span>
-                    <span class="floating-card-label">Years of Excellence</span>
+                    <span class="floating-card-number">New</span>
+                    <span class="floating-card-label">Fresh Styles Daily</span>
                   </div>
                 </div>
               </div>
@@ -963,9 +934,9 @@
                 <img src="img/logo.png" alt="BEHNA" class="footer-logo" />
               </div>
               <p class="brand-description">
-                Authentic traditional wear from the heart of Jaipur, crafted
-                with love and precision by skilled artisans. Experience the
-                finest Rajasthani heritage.
+                Your destination for curated Indian women's fashion in Jaipur.
+                From kurtis to party wear — find your perfect style at
+                Behna Clothing Studio.
               </p>
               <div class="brand-contact">
                 <div class="contact-item">

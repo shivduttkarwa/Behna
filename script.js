@@ -385,16 +385,14 @@ function viewProduct(productId) {
 // Preloader functionality
 window.addEventListener("load", function () {
   const preloader = document.getElementById("pre-load");
+  if (!preloader) return;
 
-  // Hide preloader after a minimum time to show animation
   setTimeout(() => {
     preloader.classList.add("fade-out");
-
-    // Remove preloader from DOM after fade animation
     setTimeout(() => {
       preloader.remove();
     }, 500);
-  }, 2000); // Show preloader for minimum 2 seconds
+  }, 2000);
 });
 
 // Newsletter subscription functionality

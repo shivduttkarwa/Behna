@@ -47,6 +47,11 @@ html {
   box-sizing: border-box;
 }
 
+a[href^="tel"] {
+  color: inherit;
+  text-decoration: none;
+}
+
 body {
   font-family: "Arial", sans-serif;
   line-height: 1.6;
@@ -814,9 +819,8 @@ body {
 
 .offers-badge {
   display: inline-block;
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(1.25rem);
-  border: 0.0625rem solid rgba(255, 255, 255, 0.1);
+  background: rgba(44, 62, 80, 0.06);
+  border: 0.0625rem solid rgba(44, 62, 80, 0.3);
   border-radius: 0.125rem;
   padding: 0.75rem 1.5rem;
   margin-bottom: 1.875rem;
@@ -824,26 +828,11 @@ body {
   overflow: hidden;
 }
 
-.offers-badge::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.1),
-    transparent
-  );
-  animation: elegantShine 3s infinite;
-}
 
 .badge-text {
   font-size: 0.6875rem;
   font-weight: 500;
-  color: #ffffff;
+  color: #2c3e50;
   letter-spacing: 0.1875rem;
   text-transform: uppercase;
   position: relative;
@@ -1919,9 +1908,7 @@ body {
 }
 
 .about-container {
-  max-width: 75rem;
-  margin: 0 auto;
-  padding: 0 1.25rem;
+  padding: 0 5rem;
 }
 
 /* About Header */
@@ -2104,65 +2091,88 @@ body {
 }
 
 /* About Stats */
-.about-stats {
-  background: #f8f9fa;
-  padding: 3.75rem 0;
-  margin: 0 -1.25rem;
+.about-cta-banner {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
 }
 
-.stats-container {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 2.5rem;
-  max-width: 62.5rem;
-  margin: 0 auto;
-  padding: 0 1.25rem;
+.about-cta-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
 }
 
-.stat-card {
+.about-cta-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(20, 20, 20, 0.62);
+}
+
+.about-cta-content {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   text-align: center;
-  padding: 1.875rem 1.25rem;
-  background: white;
-  border-radius: 0.5rem;
-  box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.08);
-  transition: all 0.3s ease;
-  opacity: 0;
-  transform: translateY(1.875rem);
-  animation: fadeInUp 1s ease-out forwards;
+  padding: 2rem;
+  gap: 1rem;
 }
 
-.stat-card:nth-child(1) { animation-delay: 0.8s; }
-.stat-card:nth-child(2) { animation-delay: 1s; }
-.stat-card:nth-child(3) { animation-delay: 1.2s; }
-.stat-card:nth-child(4) { animation-delay: 1.4s; }
-
-.stat-card:hover {
-  transform: translateY(-0.5rem);
-  box-shadow: 0 0.5rem 1.5625rem rgba(0, 0, 0, 0.15);
-}
-
-.stat-number {
+.about-cta-title {
   font-family: "Oswald", sans-serif;
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: #2c3e50;
-  margin: 0 0 0.5rem 0;
-  line-height: 1;
-}
-
-.stat-label {
-  font-size: 1rem;
-  font-weight: 600;
-  color: #2c3e50;
-  margin: 0 0 0.3125rem 0;
+  font-size: 3.5rem;
+  font-weight: 300;
+  color: #fff;
   text-transform: uppercase;
-  letter-spacing: 0.0625rem;
+  letter-spacing: 0.4rem;
+  margin: 0;
+  line-height: 1.1;
 }
 
-.stat-description {
-  font-size: 0.85rem;
-  color: #666666;
+.about-cta-sub {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.7);
+  letter-spacing: 0.2rem;
+  text-transform: uppercase;
   margin: 0;
+}
+
+.about-cta-btn {
+  display: inline-block;
+  margin-top: 0.5rem;
+  padding: 0.85rem 2.5rem;
+  border: 0.0625rem solid #fff;
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.2rem;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.about-cta-btn:hover {
+  background: #fff;
+  color: #2c3e50;
+}
+
+@media (max-width: 768px) {
+  .about-cta-banner { height: 22rem; }
+  .about-cta-title { font-size: 2.2rem; letter-spacing: 0.2rem; }
+  .about-cta-sub { font-size: 0.7rem; letter-spacing: 0.1rem; }
+}
+
+@media (max-width: 480px) {
+  .about-cta-banner { height: 20rem; }
+  .about-cta-title { font-size: 1.8rem; }
 }
 
 /* Animations */
@@ -5241,28 +5251,28 @@ body {
   box-shadow: 0 0.5rem 1.5625rem rgba(0, 0, 0, 0.1);
 }
 
-.category-item.travel .category-icon {
-  background: linear-gradient(135deg, #87ceeb 0%, #4682b4 100%);
-}
-
-.category-item.electronics .category-icon {
-  background: linear-gradient(135deg, #dc143c 0%, #b22222 100%);
-}
-
-.category-item.furniture .category-icon {
+.category-item.kurtis .category-icon {
   background: linear-gradient(135deg, #f4e4bc 0%, #d4a574 100%);
 }
 
-.category-item.books .category-icon {
-  background: linear-gradient(135deg, #4f9cf9 0%, #1e40af 100%);
+.category-item.coord-sets .category-icon {
+  background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
 }
 
-.category-item.handbag .category-icon {
+.category-item.anarkali .category-icon {
+  background: linear-gradient(135deg, #8b4367 0%, #5c2d45 100%);
+}
+
+.category-item.party-wear .category-icon {
+  background: linear-gradient(135deg, #c0392b 0%, #922b21 100%);
+}
+
+.category-item.salwar-kameez .category-icon {
+  background: linear-gradient(135deg, #1a5276 0%, #154360 100%);
+}
+
+.category-item.office-formals .category-icon {
   background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
-}
-
-.category-item.accessories .category-icon {
-  background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
 }
 
 .category-image {
@@ -5290,8 +5300,8 @@ body {
   }
 
   .category-icon {
-    width: 6.25rem;
-    height: 6.25rem;
+    width: 9rem;
+    height: 9rem;
   }
 }
 
