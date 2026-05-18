@@ -104,48 +104,46 @@ $(document).ready(function() {
   setTimeout(startCountdown, 100);
 });
 
+
 // Initialize New Arrivals Swiper
-document.addEventListener('DOMContentLoaded', function() {
-  const newArrivalsSwiper = new Swiper(".new-arrivals-swiper", {
-    effect: "coverflow",
+document.addEventListener('DOMContentLoaded', function () {
+  new Swiper('.na-swiper', {
+    slidesPerView: 1,
+    spaceBetween: 16,
+    loop: false,
+    speed: 800,
     grabCursor: true,
-    centeredSlides: true,
-    coverflowEffect: {
-      rotate: 0,
-      stretch: 0,
-      depth: 100,
-      modifier: 3,
-      slideShadows: true
-    },
-    keyboard: {
-      enabled: true
-    },
-    mousewheel: {
-      thresholdDelta: 70
-    },
-    loop: true,
-    pagination: {
-      el: ".new-arrivals-swiper .swiper-pagination",
-      clickable: true
-    },
     autoplay: {
-      delay: 4000,
+      delay: 3500,
       disableOnInteraction: false,
+      pauseOnMouseEnter: true,
+    },
+    pagination: {
+      el: '.na-swiper .na-pagination',
+      clickable: true,
+    },
+    navigation: {
+      nextEl: '.na-swiper .na-next',
+      prevEl: '.na-swiper .na-prev',
     },
     breakpoints: {
-      640: {
-        slidesPerView: 2
+      480: {
+        slidesPerView: 2,
+        spaceBetween: 16,
       },
       768: {
-        slidesPerView: 1
+        slidesPerView: 2,
+        spaceBetween: 20,
       },
       1024: {
-        slidesPerView: 2
+        slidesPerView: 3,
+        spaceBetween: 24,
       },
-      1560: {
-        slidesPerView: 3
-      }
-    }
+      1440: {
+        slidesPerView: 4,
+        spaceBetween: 24,
+      },
+    },
   });
 });
 
@@ -308,62 +306,30 @@ function closeSearchOverlay(event) {
 
 // Search data
 const searchData = [
-  {
-    category: "Suits & Kurtis",
-    title: "Embroidered Silk Suit",
-    type: "product",
-  },
-  {
-    category: "Suits & Kurtis",
-    title: "Cotton Kurti with Mirror Work",
-    type: "product",
-  },
-  {
-    category: "Suits & Kurtis",
-    title: "Bandhani Print Suit",
-    type: "product",
-  },
-  {
-    category: "Suits & Kurtis",
-    title: "Palazzo Suit Set",
-    type: "product",
-  },
-  { category: "Sarees", title: "Banarasi Silk Saree", type: "product" },
-  {
-    category: "Sarees",
-    title: "Georgette Saree with Blouse",
-    type: "product",
-  },
-  {
-    category: "Sarees",
-    title: "Rajasthani Bandhani Saree",
-    type: "product",
-  },
-  { category: "Sarees", title: "Chiffon Saree", type: "product" },
-  { category: "Cord Sets", title: "Printed Cord Set", type: "product" },
-  { category: "Cord Sets", title: "Embroidered Cord Set", type: "product" },
-  { category: "Cord Sets", title: "Cotton Cord Set", type: "product" },
-  { category: "Cord Sets", title: "Designer Cord Set", type: "product" },
-  { category: "Accessories", title: "Jhumka Earrings", type: "product" },
-  { category: "Accessories", title: "Kundan Necklace", type: "product" },
-  {
-    category: "Accessories",
-    title: "Embroidered Clutch",
-    type: "product",
-  },
-  { category: "Accessories", title: "Silver Bangles", type: "product" },
-  { category: "Collections", title: "Festive Wear", type: "collection" },
-  {
-    category: "Collections",
-    title: "Bridal Collection",
-    type: "collection",
-  },
-  { category: "Collections", title: "Casual Wear", type: "collection" },
-  {
-    category: "Collections",
-    title: "Traditional Wear",
-    type: "collection",
-  },
+  { category: "Kurtis", title: "Embroidered Cotton Kurti", type: "product" },
+  { category: "Kurtis", title: "Mirror Work Kurti", type: "product" },
+  { category: "Kurtis", title: "Bandhani Print Kurti", type: "product" },
+  { category: "Kurtis", title: "Printed Flared Kurti", type: "product" },
+  { category: "Co-ord Sets", title: "Printed Co-ord Set", type: "product" },
+  { category: "Co-ord Sets", title: "Embroidered Co-ord Set", type: "product" },
+  { category: "Co-ord Sets", title: "Cotton Co-ord Set", type: "product" },
+  { category: "Co-ord Sets", title: "Designer Co-ord Set", type: "product" },
+  { category: "Anarkali", title: "Silk Anarkali Suit", type: "product" },
+  { category: "Anarkali", title: "Georgette Anarkali", type: "product" },
+  { category: "Anarkali", title: "Embroidered Anarkali", type: "product" },
+  { category: "Anarkali", title: "Floor-Length Anarkali", type: "product" },
+  { category: "Party Wear", title: "Sequin Party Suit", type: "product" },
+  { category: "Party Wear", title: "Heavy Embroidered Gown", type: "product" },
+  { category: "Party Wear", title: "Designer Lehenga Set", type: "product" },
+  { category: "Party Wear", title: "Velvet Party Wear", type: "product" },
+  { category: "Salwar Kameez", title: "Cotton Salwar Kameez", type: "product" },
+  { category: "Salwar Kameez", title: "Silk Salwar Kameez", type: "product" },
+  { category: "Salwar Kameez", title: "Punjabi Suit Set", type: "product" },
+  { category: "Salwar Kameez", title: "Straight-Cut Salwar Kameez", type: "product" },
+  { category: "Office Formals", title: "Formal Kurti with Pants", type: "product" },
+  { category: "Office Formals", title: "Straight Kurta Set", type: "product" },
+  { category: "Office Formals", title: "Linen Office Co-ord", type: "product" },
+  { category: "Office Formals", title: "Classic Formal Suit", type: "product" },
 ];
 
 function handleSearch() {

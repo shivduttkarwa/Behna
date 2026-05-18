@@ -13,6 +13,8 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <!-- Three.js for WebGL effects -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <!-- GSAP for animations -->
@@ -80,17 +82,7 @@
 
     <!-- Main Hero Section -->
     <section class="hero">
-      <video
-        class="hero-video"
-        autoplay
-        muted
-        loop
-        playsinline
-        webkit-playsinline
-        preload="metadata"
-      >
-        <source src="img/3894706-uhd_2160_4096_25fps.mp4" type="video/mp4" />
-      </video>
+      <img src="assets/img/hero.jpg" alt="Behna Collection" class="hero-video" />
       <div class="hero-overlay"></div>
       <div class="hero-content">
         <h2 class="hero-collection">Timeless Elegance</h2>
@@ -102,88 +94,100 @@
           <button class="hero-button" onclick="shopCategory('suits-kurtis')">
             SUITS & KURTIS
           </button>
-          <button class="hero-button" onclick="shopCategory('sarees')">
-            SAREES
+          <button class="hero-button" onclick="shopCategory('co-ord-sets')">
+            CO-ORD SETS
           </button>
         </div>
       </div>
     </section>
 
     <!-- New Arrivals Section -->
-    <section class="new-arrivals">
-      <div class="new-arrivals-container">
-        <div class="offers-header">
-          <div class="offers-badge">
-            <span class="badge-text">Discover</span>
-          </div>
-          <h2 class="offers-title">
-            <span class="offers-main">New Arrivals</span>
-          </h2>
-        </div>
-        <div class="swiper new-arrivals-swiper">
-          <div class="swiper-wrapper">
-            <div class="swiper-slide swiper-slide--one">
-              <div>
-                <h2>Elegant Sarees</h2>
-                <p>
-                  Discover our exquisite collection of handwoven sarees
-                  featuring traditional Rajasthani motifs. Each piece tells a
-                  story of heritage and artistry, crafted by skilled artisans
-                  with generations of expertise.
-                </p>
-                <a href="#" onclick="shopCategory('sarees')">explore</a>
-              </div>
-            </div>
-            <div class="swiper-slide swiper-slide--two">
-              <div>
-                <h2>Designer Suits</h2>
-                <p>
-                  Contemporary designs meet traditional craftsmanship in our
-                  stunning suit collection. Perfect for special occasions, each
-                  piece features intricate embroidery and premium fabrics
-                  sourced from the finest mills.
-                </p>
-                <a href="#" onclick="shopCategory('suits-kurtis')">explore</a>
-              </div>
-            </div>
-            <div class="swiper-slide swiper-slide--three">
-              <div>
-                <h2>Trendy Kurtis</h2>
-                <p>
-                  Versatile and stylish kurtis that blend comfort with elegance.
-                  Our latest designs feature modern cuts with traditional
-                  embellishments, perfect for both casual and formal occasions.
-                </p>
-                <a href="#" onclick="shopCategory('kurtis')">explore</a>
-              </div>
-            </div>
-            <div class="swiper-slide swiper-slide--four">
-              <div>
-                <h2>Cord Sets</h2>
-                <p>
-                  The perfect fusion of comfort and style. Our coordinated sets
-                  feature matching tops and bottoms with contemporary prints and
-                  traditional block printing techniques from Jaipur.
-                </p>
-                <a href="#" onclick="shopCategory('cord-sets')">explore</a>
-              </div>
-            </div>
-            <div class="swiper-slide swiper-slide--five">
-              <div>
-                <h2>Accessories</h2>
-                <p>
-                  Complete your look with our carefully curated collection of
-                  traditional accessories. From handcrafted jewelry to elegant
-                  clutches, each piece adds the perfect finishing touch to your
-                  ensemble.
-                </p>
-                <a href="#" onclick="shopCategory('accessories')">explore</a>
+    <section class="na-section">
+      <div class="na-section-header">
+        <span class="na-section-tag">Just In</span>
+        <h2 class="na-section-title">New Arrivals</h2>
+        <div class="na-section-line"></div>
+      </div>
+
+      <div class="swiper na-swiper">
+        <div class="swiper-wrapper">
+
+          <div class="swiper-slide">
+            <div class="na-card">
+              <img src="img/newarr1.jpg" alt="Kurtis" class="na-img" />
+              <div class="na-gradient"></div>
+              <div class="na-content">
+                <span class="na-badge">New Arrival</span>
+                <h3 class="na-name">Kurtis</h3>
+                <a href="#" class="na-btn" onclick="shopCategory('kurtis'); return false;">Explore</a>
               </div>
             </div>
           </div>
-          <!-- Add Pagination -->
-          <div class="swiper-pagination"></div>
+
+          <div class="swiper-slide">
+            <div class="na-card">
+              <img src="img/newarr2.jpg" alt="Co-ord Sets" class="na-img" />
+              <div class="na-gradient"></div>
+              <div class="na-content">
+                <span class="na-badge">New Arrival</span>
+                <h3 class="na-name">Co-ord Sets</h3>
+                <a href="#" class="na-btn" onclick="shopCategory('co-ord-sets'); return false;">Explore</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="swiper-slide">
+            <div class="na-card">
+              <img src="img/newaarr3.jpg" alt="Anarkali" class="na-img" />
+              <div class="na-gradient"></div>
+              <div class="na-content">
+                <span class="na-badge">New Arrival</span>
+                <h3 class="na-name">Anarkali</h3>
+                <a href="#" class="na-btn" onclick="shopCategory('anarkali'); return false;">Explore</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="swiper-slide">
+            <div class="na-card">
+              <img src="images/pexels-anubhaw-anand-3236651.jpg" alt="Party Wear" class="na-img" />
+              <div class="na-gradient"></div>
+              <div class="na-content">
+                <span class="na-badge">New Arrival</span>
+                <h3 class="na-name">Party Wear</h3>
+                <a href="#" class="na-btn" onclick="shopCategory('party-wear'); return false;">Explore</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="swiper-slide">
+            <div class="na-card">
+              <img src="images/beautiful-woman-purple-sweater-skirt.jpg" alt="Salwar Kameez" class="na-img" />
+              <div class="na-gradient"></div>
+              <div class="na-content">
+                <span class="na-badge">New Arrival</span>
+                <h3 class="na-name">Salwar Kameez</h3>
+                <a href="#" class="na-btn" onclick="shopCategory('salwar-kameez'); return false;">Explore</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="swiper-slide">
+            <div class="na-card">
+              <img src="images/pexels-brollwalamunda-20415076.jpg" alt="Office Formals" class="na-img" />
+              <div class="na-gradient"></div>
+              <div class="na-content">
+                <span class="na-badge">New Arrival</span>
+                <h3 class="na-name">Office Formals</h3>
+                <a href="#" class="na-btn" onclick="shopCategory('office-formals'); return false;">Explore</a>
+              </div>
+            </div>
+          </div>
+
         </div>
+        <div class="swiper-button-prev na-prev"></div>
+        <div class="swiper-button-next na-next"></div>
+        <div class="swiper-pagination na-pagination"></div>
       </div>
     </section>
 
@@ -716,49 +720,23 @@
         </div>
         <div class="menu-items">
           <div class="menu-category">
-            <h3 class="menu-category-title">Collections</h3>
-            <ul class="menu-links">
-              <li>
-                <a href="#" onclick="shopCategory('suits-kurtis')"
-                  >Suits & Kurtis</a
-                >
-              </li>
-              <li><a href="#" onclick="shopCategory('sarees')">Sarees</a></li>
-              <li>
-                <a href="#" onclick="shopCategory('cord-sets')">Cord Sets</a>
-              </li>
-              <li>
-                <a href="#" onclick="shopCategory('accessories')"
-                  >Accessories</a
-                >
-              </li>
-            </ul>
-          </div>
-          <div class="menu-category">
-            <h3 class="menu-category-title">Categories</h3>
+            <h3 class="menu-category-title">Shop</h3>
             <ul class="menu-links">
               <li><a href="#" onclick="shopCategory('kurtis')">Kurtis</a></li>
               <li>
-                <a href="#" onclick="shopCategory('punjabi-suits')"
-                  >Punjabi Suits</a
-                >
+                <a href="#" onclick="shopCategory('co-ord-sets')">Co-ord Sets</a>
               </li>
               <li>
                 <a href="#" onclick="shopCategory('anarkali')">Anarkali</a>
               </li>
               <li>
-                <a href="#" onclick="shopCategory('silk-sarees')"
-                  >Silk Sarees</a
-                >
+                <a href="#" onclick="shopCategory('party-wear')">Party Wear</a>
               </li>
               <li>
-                <a href="#" onclick="shopCategory('cotton-sarees')"
-                  >Cotton Sarees</a
-                >
+                <a href="#" onclick="shopCategory('salwar-kameez')">Salwar Kameez</a>
               </li>
-              <li><a href="#" onclick="shopCategory('jewelry')">Jewelry</a></li>
               <li>
-                <a href="#" onclick="shopCategory('bags')">Bags & Clutches</a>
+                <a href="#" onclick="shopCategory('office-formals')">Office Formals</a>
               </li>
             </ul>
           </div>
@@ -825,35 +803,26 @@
           <div class="contact-section">
             <h3 class="contact-section-title">Visit Our Store</h3>
             <div class="contact-info">
-              <strong>BEHNA Boutique</strong><br />
-              123 Johari Bazaar<br />
-              Pink City, Jaipur<br />
-              Rajasthan 302001, India
+              <strong>Behna Clothing Studio</strong><br />
+              Plot No. 60, Gandhi Path West<br />
+              Lalarpura, Jaipur 302034<br />
+              India
             </div>
           </div>
           <div class="contact-section">
             <h3 class="contact-section-title">Call Us</h3>
             <div class="contact-info">
-              <strong>Phone:</strong> +91 98765 43210<br />
-              <strong>WhatsApp:</strong> +91 98765 43210<br />
-              <strong>Hours:</strong> Mon-Sat: 10AM-8PM<br />
-              <strong>Sunday:</strong> 11AM-7PM
-            </div>
-          </div>
-          <div class="contact-section">
-            <h3 class="contact-section-title">Email Us</h3>
-            <div class="contact-info">
-              <strong>General:</strong> info@behna.com<br />
-              <strong>Orders:</strong> orders@behna.com<br />
-              <strong>Support:</strong> support@behna.com
+              <strong>Phone:</strong> +91 72310 42253<br />
+              <strong>Phone:</strong> +91 73003 59127<br />
+              <strong>WhatsApp:</strong> +91 72310 42253<br />
+              <strong>Hours:</strong> Mon-Sat: 10:30 AM – 10 PM<br />
+              <strong>Sunday:</strong> 1 PM – 10 PM
             </div>
           </div>
           <div class="contact-section">
             <h3 class="contact-section-title">Follow Us</h3>
             <div class="contact-info">
-              <strong>Instagram:</strong> @behna_jaipur<br />
-              <strong>Facebook:</strong> BEHNA Traditional Wear<br />
-              <strong>Pinterest:</strong> BEHNA Jaipur
+              <strong>Instagram:</strong> @behna_clothing_studio
             </div>
           </div>
         </div>
@@ -1001,15 +970,11 @@
               <div class="brand-contact">
                 <div class="contact-item">
                   <i class="ri-map-pin-line"></i>
-                  <span>Johari Bazaar, Pink City, Jaipur</span>
+                  <span>Plot No. 60, Gandhi Path West, Lalarpura, Jaipur 302034</span>
                 </div>
                 <div class="contact-item">
                   <i class="ri-phone-line"></i>
-                  <span>+91 98765 43210</span>
-                </div>
-                <div class="contact-item">
-                  <i class="ri-mail-line"></i>
-                  <span>info@behna.com</span>
+                  <span>+91 72310 42253 / +91 73003 59127</span>
                 </div>
               </div>
             </div>
@@ -1080,16 +1045,10 @@
               <div class="social-section">
                 <p class="social-title">Follow Us</p>
                 <div class="social-links">
-                  <a href="#" class="social-link" title="Instagram">
+                  <a href="https://www.instagram.com/behna_clothing_studio/" target="_blank" rel="noopener noreferrer" class="social-link" title="Instagram">
                     <i class="ri-instagram-line"></i>
                   </a>
-                  <a href="#" class="social-link" title="Facebook">
-                    <i class="ri-facebook-line"></i>
-                  </a>
-                  <a href="#" class="social-link" title="Pinterest">
-                    <i class="ri-pinterest-line"></i>
-                  </a>
-                  <a href="#" class="social-link" title="YouTube">
+                  <a href="https://www.youtube.com/channel/UCqkJZisHnd1wD8gK0ailsxA" target="_blank" rel="noopener noreferrer" class="social-link" title="YouTube">
                     <i class="ri-youtube-line"></i>
                   </a>
                 </div>
@@ -1102,14 +1061,10 @@
         <div class="footer-bottom">
           <div class="footer-bottom-content">
             <div class="footer-left">
-              <p class="copyright">© 2024 BEHNA. All rights reserved.</p>
+              <p class="copyright">© 2026 BEHNA. All rights reserved.</p>
             </div>
             <div class="footer-center">
               <div class="footer-badges">
-                <span class="badge">
-                  <i class="ri-shield-check-line"></i>
-                  Authentic Handcrafted
-                </span>
                 <span class="badge">
                   <i class="ri-truck-line"></i>
                   Free Shipping in Rajasthan
@@ -1127,17 +1082,20 @@
         </div>
       </div>
 
-      <!-- Back to Top -->
-      <button class="back-to-top" onclick="scrollToTop()" title="Back to top">
-        <i class="ri-arrow-up-line"></i>
-      </button>
+      <!-- Floating Action Buttons -->
+      <div class="fab-stack">
+        <a href="https://wa.me/917231042253?text=Hi%20Behna%20Clothing%20Studio!%20I%20saw%20your%20collection%20and%20would%20love%20to%20know%20more." target="_blank" rel="noopener noreferrer" class="fab fab-whatsapp" title="Chat on WhatsApp">
+          <i class="ri-whatsapp-line"></i>
+        </a>
+        <a href="tel:+917231042253" class="fab fab-call" title="Call Us">
+          <i class="ri-phone-line"></i>
+        </a>
+        <button class="back-to-top" onclick="scrollToTop()" title="Back to top">
+          <i class="ri-arrow-up-line"></i>
+        </button>
+      </div>
     </footer>
 
-    <!-- Swiper CSS -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
-    />
     <!-- jQuery for preloader -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <!-- Swiper JS -->
