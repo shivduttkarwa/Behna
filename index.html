@@ -63,6 +63,7 @@
         </div>
         <div class="nav-right">
           <div class="nav-icons">
+            <!-- search icon hidden for now
             <svg
               class="icon search-icon"
               fill="none"
@@ -77,6 +78,7 @@
                 d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
               ></path>
             </svg>
+            -->
             <span class="menu-text" onclick="openMenu()">MENU</span>
           </div>
         </div>
@@ -94,18 +96,15 @@
           Jaipur
         </p>
         <div class="hero-buttons">
-          <button class="hero-button" onclick="shopCategory('suits-kurtis')">
-            SUITS & KURTIS
-          </button>
-          <button class="hero-button" onclick="shopCategory('co-ord-sets')">
-            CO-ORD SETS
-          </button>
+          <a href="#new-arrivals" class="hero-button" onclick="document.getElementById('new-arrivals').scrollIntoView({behavior:'smooth'}); return false;">
+            EXPLORE
+          </a>
         </div>
       </div>
     </section>
 
     <!-- New Arrivals Section -->
-    <section class="na-section">
+    <section class="na-section" id="new-arrivals">
       <div class="na-section-header">
         <div class="offers-badge">
           <span class="badge-text">Just In</span>
@@ -124,7 +123,6 @@
               <div class="na-content">
                 <span class="na-badge">New Arrival</span>
                 <h3 class="na-name">Kurtis</h3>
-                <a href="#" class="na-btn" onclick="shopCategory('kurtis'); return false;">Explore</a>
               </div>
             </div>
           </div>
@@ -136,7 +134,6 @@
               <div class="na-content">
                 <span class="na-badge">New Arrival</span>
                 <h3 class="na-name">Co-ord Sets</h3>
-                <a href="#" class="na-btn" onclick="shopCategory('co-ord-sets'); return false;">Explore</a>
               </div>
             </div>
           </div>
@@ -148,7 +145,6 @@
               <div class="na-content">
                 <span class="na-badge">New Arrival</span>
                 <h3 class="na-name">Anarkali</h3>
-                <a href="#" class="na-btn" onclick="shopCategory('anarkali'); return false;">Explore</a>
               </div>
             </div>
           </div>
@@ -160,7 +156,6 @@
               <div class="na-content">
                 <span class="na-badge">New Arrival</span>
                 <h3 class="na-name">Party Wear</h3>
-                <a href="#" class="na-btn" onclick="shopCategory('party-wear'); return false;">Explore</a>
               </div>
             </div>
           </div>
@@ -172,7 +167,6 @@
               <div class="na-content">
                 <span class="na-badge">New Arrival</span>
                 <h3 class="na-name">Salwar Kameez</h3>
-                <a href="#" class="na-btn" onclick="shopCategory('salwar-kameez'); return false;">Explore</a>
               </div>
             </div>
           </div>
@@ -184,7 +178,6 @@
               <div class="na-content">
                 <span class="na-badge">New Arrival</span>
                 <h3 class="na-name">Office Formals</h3>
-                <a href="#" class="na-btn" onclick="shopCategory('office-formals'); return false;">Explore</a>
               </div>
             </div>
           </div>
@@ -236,6 +229,40 @@
       </div>
     </section>
 
+    <!-- Curated Collection Section -->
+    <section class="curated-section">
+      <div class="curated-header">
+        <div class="offers-badge"><span class="badge-text">Handpicked</span></div>
+        <h2 class="curated-title">Curated Collection</h2>
+      </div>
+      <div class="curated-grid">
+        <div class="curated-item curated-item--1">
+          <img src="assets/img/suit-1.jpg" alt="Kurti Look" class="curated-img" />
+          <div class="curated-overlay"><span>Kurtis</span></div>
+        </div>
+        <div class="curated-item curated-item--2">
+          <img src="assets/img/an-1.jpg" alt="Anarkali" class="curated-img" />
+          <div class="curated-overlay"><span>Anarkali</span></div>
+        </div>
+        <div class="curated-item curated-item--3">
+          <img src="assets/img/co-ord-1.png" alt="Co-ord Set" class="curated-img" />
+          <div class="curated-overlay"><span>Co-ord Sets</span></div>
+        </div>
+        <div class="curated-item curated-item--4">
+          <img src="assets/img/party.jpg" alt="Party Wear" class="curated-img" />
+          <div class="curated-overlay"><span>Party Wear</span></div>
+        </div>
+        <div class="curated-item curated-item--5">
+          <img src="assets/img/anarkali.jpg" alt="Festive" class="curated-img" />
+          <div class="curated-overlay"><span>Festive</span></div>
+        </div>
+        <div class="curated-item curated-item--6">
+          <img src="assets/img/suit-2.jpg" alt="Salwar Kameez" class="curated-img" />
+          <div class="curated-overlay"><span>Salwar Kameez</span></div>
+        </div>
+      </div>
+    </section>
+
     <!-- Special Offers Section -->
     <section class="special-offers">
       <div class="offers-container">
@@ -269,10 +296,6 @@
                       Celebrate in style with our exclusive festive wear
                       collection
                     </p>
-                    <button class="card-button">
-                      <span>Shop Now</span>
-                      <i class="ri-arrow-right-line"></i>
-                    </button>
                   </div>
                   <div class="card-decoration">
                     <div class="floating-element"></div>
@@ -297,10 +320,6 @@
                     <p class="card-description">
                       Elegant designs for every special occasion
                     </p>
-                    <button class="card-button">
-                      <span>Explore</span>
-                      <i class="ri-arrow-right-line"></i>
-                    </button>
                   </div>
                   <div class="card-decoration">
                     <div class="floating-element"></div>
@@ -325,10 +344,6 @@
                     <p class="card-description">
                       Modern comfort meets traditional elegance
                     </p>
-                    <button class="card-button">
-                      <span>Discover</span>
-                      <i class="ri-arrow-right-line"></i>
-                    </button>
                   </div>
                   <div class="card-decoration">
                     <div class="floating-element"></div>
@@ -675,7 +690,7 @@
       <div class="about-cta-content">
         <h2 class="about-cta-title">Dress the Way You Feel</h2>
         <p class="about-cta-sub">Kurtis · Co-ord Sets · Anarkali · Party Wear · Salwar Kameez · Office Formals</p>
-        <a href="#" class="about-cta-btn" onclick="openMenu(); return false;">Explore All Styles</a>
+        <a href="https://wa.me/917231042253?text=Hi%20Behna!%20I%27d%20love%20to%20explore%20your%20latest%20styles." target="_blank" rel="noopener noreferrer" class="about-cta-btn">Explore All Styles</a>
       </div>
     </div>
 
@@ -867,20 +882,20 @@
             </div>
 
             <div class="cta-actions">
-              <button class="cta-button primary" onclick="shopCategory('all')">
+              <a href="https://wa.me/917231042253?text=Hi%20Behna!%20I%27d%20love%20to%20explore%20your%20collection." target="_blank" rel="noopener noreferrer" class="cta-button primary">
                 <span class="button-text">Explore Collection</span>
                 <span class="button-icon">
                   <i class="ri-arrow-right-line"></i>
                 </span>
                 <div class="button-ripple"></div>
-              </button>
+              </a>
 
-              <button class="cta-button secondary" onclick="openContact()">
-                <span class="button-text">Book Consultation</span>
+              <a href="tel:+917231042253" class="cta-button secondary">
+                <span class="button-text">Call Us Now</span>
                 <span class="button-icon">
                   <i class="ri-phone-line"></i>
                 </span>
-              </button>
+              </a>
             </div>
           </div>
 
