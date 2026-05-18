@@ -2,15 +2,18 @@
 $(document).ready(function() {
   setTimeout(function() {
     $('#ctn-preloader').addClass('loaded');
-    // Una vez haya terminado el preloader aparezca el scroll
     $('body').removeClass('no-scroll-y');
 
     if ($('#ctn-preloader').hasClass('loaded')) {
-      // Es para que una vez que se haya ido el preloader se elimine toda la seccion preloader
       $('#preloader').delay(1000).queue(function() {
         $(this).remove();
       });
     }
+
+    // Show FAB buttons after preloader is gone
+    setTimeout(function() {
+      document.querySelector('.fab-stack').classList.add('visible');
+    }, 1200);
   }, 3000);
 });
 
