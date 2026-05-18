@@ -3971,6 +3971,27 @@ body {
   margin-bottom: 0.9375rem;
 }
 
+.contact-directions-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.75rem;
+  padding: 0.6rem 1.25rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #2c3e50;
+  border: 0.0625rem solid #2c3e50;
+  transition: all 0.3s ease;
+}
+
+.contact-directions-btn:hover {
+  background: #2c3e50;
+  color: #fff;
+}
+
 .contact-info strong {
   color: #000;
   font-weight: 500;
