@@ -109,6 +109,26 @@ $(document).ready(function() {
 });
 
 
+// Curated Collection — Swiper on mobile only
+new Swiper('.curated-swiper', {
+  slidesPerView: 1,
+  spaceBetween: 0,
+  loop: true,
+  pagination: {
+    el: '.curated-pagination',
+    clickable: true,
+  },
+  navigation: {
+    nextEl: '.curated-next',
+    prevEl: '.curated-prev',
+  },
+  breakpoints: {
+    769: {
+      enabled: false,
+    }
+  }
+});
+
 // Initialize New Arrivals Swiper
 document.addEventListener('DOMContentLoaded', function () {
   new Swiper('.na-swiper', {
