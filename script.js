@@ -846,7 +846,7 @@ function typewriteEl(el, scrollTriggerConfig) {
     opacity: 0,
     duration: 0.001,
     ease: 'none',
-    stagger: 0.022
+    stagger: 0.035
   });
 }
 
@@ -880,10 +880,20 @@ function initTextAnimations() {
     gsap.to('.hero-buttons',  { opacity: 1, duration: 0.6, ease: 'power2.out', delay: titleDelay + titleDuration + 0.35 });
   }
 
+  // ── Section badges — fade in on scroll ──
+  gsap.utils.toArray('.offers-badge').forEach(el => {
+    gsap.from(el, {
+      scrollTrigger: { trigger: el, start: 'top 90%', toggleActions: 'play none none none' },
+      opacity: 0,
+      y: 8,
+      duration: 0.5,
+      ease: 'power2.out'
+    });
+  });
+
   // ── Section titles — scroll triggered ──
   const titleSelectors = [
-    '.na-section-title', '.curated-title', '.why-title',
-    '.story-title', '.testimonials-main',
+    '.section-title',
     '.coll-hero-title', '.coll-title-group h2'
   ];
 
