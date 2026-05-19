@@ -1668,7 +1668,6 @@ body {
 }
 
 .testimonials-main {
-  font-size: 3.5rem;
   margin-bottom: 0.9375rem;
   position: relative;
 }
@@ -2435,9 +2434,6 @@ body {
   margin-bottom: 1rem;
 }
 
-.na-section-title {
-  font-size: 3.5rem;
-}
 
 .na-swiper {
   width: 100%;
