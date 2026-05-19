@@ -18,7 +18,10 @@ html {
   html { font-size: 18px; }   /* 1rem = 18px — 1080p large monitor */
 }
 @media (min-width: 2560px) {
-  html { font-size: 20px; }   /* 1rem = 20px — 4K / ultra-wide */
+  html { font-size: 22px; }   /* 1rem = 20px — 4K / ultra-wide */
+}
+@media (min-width: 3000px) {
+  html { font-size: 26px; }   /* 1rem = 20px — 4K / ultra-wide */
 }
 
 /* ── Scale DOWN for tablets & phones ── */
@@ -6106,4 +6109,305 @@ body {
     min-height: 2.375rem;
     padding: 0.4375rem 0.625rem;
   }
+}
+
+/* ═══════════════════════════════════════════
+   COLLECTIONS PAGE — collections.html
+   ═══════════════════════════════════════════ */
+
+/* ── Hero ── */
+.coll-hero {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  overflow: hidden;
+}
+.coll-hero-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+.coll-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.78) 0%,
+    rgba(0, 0, 0, 0.35) 55%,
+    rgba(0, 0, 0, 0.15) 100%
+  );
+}
+.coll-hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: #fff;
+  padding: 0 2rem 5rem;
+  width: 100%;
+  max-width: 900px;
+}
+.coll-breadcrumb {
+  font-size: 0.7rem;
+  letter-spacing: 0.22rem;
+  text-transform: uppercase;
+  opacity: 0;
+  margin-bottom: 1.25rem;
+}
+.coll-breadcrumb a {
+  color: #fff;
+  text-decoration: none;
+}
+.coll-breadcrumb a:hover { opacity: 1; }
+.coll-breadcrumb span { margin: 0 0.5rem; opacity: 0.5; }
+.coll-hero-title {
+  font-family: 'Oswald', sans-serif;
+  font-size: clamp(2rem, 5vw, 3.8rem);
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  line-height: 1;
+  margin-bottom: 1rem;
+  opacity: 0;
+}
+.coll-hero-sub,
+.coll-hero-nav a { opacity: 0; }
+.coll-hero-sub {
+  font-size: clamp(0.8rem, 1.5vw, 0.95rem);
+  letter-spacing: 0.12em;
+  margin-bottom: 2.5rem;
+}
+.coll-hero-nav {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.coll-hero-nav a {
+  color: #fff;
+  text-decoration: none;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  padding: 0.5rem 1.4rem;
+  font-size: 0.7rem;
+  letter-spacing: 0.15rem;
+  text-transform: uppercase;
+  transition: background 0.25s, color 0.25s, border-color 0.25s;
+}
+.coll-hero-nav a:hover {
+  background: #fff;
+  color: #000;
+  border-color: #fff;
+}
+
+/* ── Category Sections ── */
+.coll-section {
+  padding: 5rem 2.5rem 4rem;
+}
+.coll-section:nth-child(odd) { background: #fff; }
+.coll-section:nth-child(even) { background: #f8f7f5; }
+.coll-section-head {
+  display: flex;
+  align-items: flex-end;
+  gap: 1.25rem;
+  margin-bottom: 2.5rem;
+}
+.coll-num {
+  font-family: 'Oswald', sans-serif;
+  font-size: clamp(4rem, 6vw, 6rem);
+  font-weight: 500;
+  color: #e8e2db;
+  line-height: 1;
+  flex-shrink: 0;
+}
+.coll-title-group { flex: 1; }
+.coll-title-group h2 {
+  font-family: 'Oswald', sans-serif;
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #1a1a1a;
+  margin-bottom: 0.25rem;
+}
+.coll-title-group p {
+  font-size: 0.8rem;
+  color: #888;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.coll-divider {
+  flex: 1;
+  height: 1px;
+  background: #ddd;
+  margin-bottom: 0.9rem;
+  display: none;
+}
+@media (min-width: 768px) {
+  .coll-divider { display: block; }
+}
+
+/* ── Collection Swiper ── */
+.coll-swiper .na-card { height: 420px; }
+@media (min-width: 768px) { .coll-swiper .na-card { height: 480px; } }
+@media (min-width: 1024px) { .coll-swiper .na-card { height: 520px; } }
+.coll-slider-wrap {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+.coll-swiper {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+}
+.coll-btn-prev,
+.coll-btn-next {
+  flex-shrink: 0;
+  width: 3rem;
+  height: 3rem;
+  background: #2c3e50;
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1.4rem;
+  transition: background 0.2s;
+  user-select: none;
+}
+.coll-btn-prev:hover,
+.coll-btn-next:hover { background: #1a2635; }
+.coll-btn-prev.swiper-button-disabled,
+.coll-btn-next.swiper-button-disabled {
+  opacity: 0.3;
+  pointer-events: none;
+}
+.coll-pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.25rem;
+}
+.coll-pagination .swiper-pagination-bullet {
+  width: 0.6rem;
+  height: 0.6rem;
+  background: #2c3e50;
+  opacity: 0.3;
+  border-radius: 50%;
+  margin: 0 0.3rem;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+.coll-pagination .swiper-pagination-bullet-active {
+  opacity: 1;
+  width: 1.5rem;
+  border-radius: 0.25rem;
+}
+@media (max-width: 768px) {
+  .coll-btn-prev, .coll-btn-next { display: none; }
+  .coll-slider-wrap { gap: 0; }
+}
+
+/* ── Enquire button inside cards ── */
+.na-card .coll-enquire {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  color: #fff;
+  font-size: 0.78rem;
+  letter-spacing: 0.12rem;
+  text-transform: uppercase;
+  padding: 0.55rem 1.25rem;
+  text-decoration: none;
+  width: fit-content;
+  transition: background 0.25s, color 0.25s, border-color 0.25s;
+}
+.na-card:hover .coll-enquire {
+  background: #fff;
+  color: #000;
+  border-color: #fff;
+}
+
+/* ── Full Width CTA ── */
+.coll-cta {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.coll-cta-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+.coll-cta-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.52);
+}
+.coll-cta-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: #fff;
+  padding: 0 2rem;
+  max-width: 700px;
+}
+.coll-cta-tag {
+  font-size: 0.7rem;
+  letter-spacing: 0.25rem;
+  text-transform: uppercase;
+  opacity: 0.7;
+  margin-bottom: 1rem;
+}
+.coll-cta-title {
+  font-family: 'Oswald', sans-serif;
+  font-size: clamp(2rem, 5vw, 3.8rem);
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  line-height: 1.1;
+  margin-bottom: 1rem;
+}
+.coll-cta-sub {
+  font-size: clamp(0.8rem, 1.5vw, 0.95rem);
+  opacity: 0.75;
+  letter-spacing: 0.05em;
+  margin-bottom: 2rem;
+}
+.coll-cta-btn {
+  display: inline-block;
+  background: #fff;
+  color: #000;
+  padding: 0.85rem 2.5rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.2rem;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background 0.25s, color 0.25s;
+}
+.coll-cta-btn:hover {
+  background: #2c3e50;
+  color: #fff;
+}
+
+/* ── Collections mobile tweaks ── */
+@media (max-width: 768px) {
+  .coll-section { padding: 3.5rem 1.25rem 3rem; }
+  .coll-hero-content { padding: 0 1.25rem 5rem; }
+  .coll-hero-nav { gap: 0.5rem; }
+  .coll-hero-nav a { padding: 0.45rem 1rem; font-size: 0.65rem; }
 }

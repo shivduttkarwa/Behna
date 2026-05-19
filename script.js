@@ -843,6 +843,7 @@ function getChars(el) {
 }
 
 function typewriteEl(el, scrollTriggerConfig) {
+  gsap.set(el, { opacity: 1 });
   const chars = getChars(el);
   gsap.from(chars, {
     scrollTrigger: scrollTriggerConfig || null,
@@ -1087,10 +1088,69 @@ function initTextAnimations() {
     });
   }
 
+  // ── Collections hero — sequenced timeline ──
+  const collHeroTitle = document.querySelector('.coll-hero-title');
+  if (collHeroTitle) {
+    const collBreadcrumb = document.querySelector('.coll-breadcrumb');
+    const collHeroSub    = document.querySelector('.coll-hero-sub');
+    const collHeroNav    = document.querySelector('.coll-hero-nav');
+
+    gsap.set(collHeroTitle, { opacity: 1 });
+    const collChars = getChars(collHeroTitle);
+    gsap.set(collChars, { opacity: 0 });
+
+    const collTL = gsap.timeline({ delay: 0.3 });
+    if (collBreadcrumb) collTL.to(collBreadcrumb, { opacity: 1, duration: 0.4, ease: 'power2.out' });
+    collTL.to(collChars, { opacity: 1, duration: 0.001, ease: 'none', stagger: 0.04 }, '+=0.1');
+    if (collHeroSub) collTL.to(collHeroSub, { opacity: 1, duration: 0.5, ease: 'power2.out' });
+    if (collHeroNav) {
+      const collNavLinks = gsap.utils.toArray('.coll-hero-nav a');
+      collTL.to(collNavLinks, { opacity: 1, duration: 0.4, ease: 'power2.out', stagger: 0.1 }, '-=0.2');
+    }
+  }
+
+  // ── Collections CTA — staggered fade in ──
+  const collCtaEls = gsap.utils.toArray('.coll-cta-tag, .coll-cta-title, .coll-cta-sub, .coll-cta-btn');
+  if (collCtaEls.length) {
+    gsap.set(collCtaEls, { opacity: 0 });
+    gsap.to(collCtaEls, {
+      scrollTrigger: { trigger: '.coll-cta-content', start: 'top 80%', toggleActions: 'play none none none' },
+      opacity: 1,
+      duration: 0.6,
+      ease: 'power2.out',
+      stagger: 0.15
+    });
+  }
+
+  // ── Collections section subtitles — fade in on scroll ──
+  gsap.utils.toArray('.coll-title-group p').forEach(el => {
+    gsap.set(el, { opacity: 0 });
+    gsap.to(el, {
+      scrollTrigger: { trigger: el, start: 'top 85%', toggleActions: 'play none none none' },
+      opacity: 1,
+      duration: 0.6,
+      ease: 'power2.out'
+    });
+  });
+
+  // ── Collections swipers — cards clip bottom to top staggered ──
+  ['.suits-swiper', '.kurtis-swiper', '.anarkali-swiper', '.coords-swiper', '.festival-swiper'].forEach(sel => {
+    const cards = gsap.utils.toArray(`${sel} .swiper-slide:not(.swiper-slide-duplicate) .na-card`);
+    if (!cards.length) return;
+    gsap.set(cards, { clipPath: 'inset(100% 0 0 0)' });
+    gsap.to(cards, {
+      scrollTrigger: { trigger: sel, start: 'top 80%', toggleActions: 'play none none none' },
+      clipPath: 'inset(0% 0 0 0)',
+      duration: 1.0,
+      ease: 'power3.out',
+      stagger: 0.12
+    });
+  });
+
   // ── Section titles — scroll triggered ──
   const titleSelectors = [
     '.section-title',
-    '.coll-hero-title', '.coll-title-group h2'
+    '.coll-title-group h2'
   ];
 
   gsap.utils.toArray(titleSelectors.join(',')).forEach(el => {
@@ -1106,9 +1166,9 @@ function initTextAnimations() {
 // Return visit / reload: run immediately after scripts load
 const _isReload = performance.getEntriesByType('navigation')[0]?.type === 'reload';
 const _isReturn = sessionStorage.getItem('behna_visited') && !_isReload;
+const _hasPreloader = !!document.getElementById('preloader');
 
-if (_isReturn) {
-  // DOMContentLoaded already fired at this point — call directly
+if (_isReturn || !_hasPreloader) {
   initTextAnimations();
 } else {
   window.addEventListener('behnaReady', initTextAnimations);
