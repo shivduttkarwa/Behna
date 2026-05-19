@@ -1,6 +1,16 @@
 // jQuery preloader functionality
 $(document).ready(function() {
+  // Skip preloader on return visits within the same session
+  if (sessionStorage.getItem('behna_visited')) {
+    $('#preloader').remove();
+    $('body').removeClass('no-scroll-y');
+    var fab = document.querySelector('.fab-stack');
+    if (fab) fab.classList.add('visible');
+    return;
+  }
+
   setTimeout(function() {
+    sessionStorage.setItem('behna_visited', '1');
     $('#ctn-preloader').addClass('loaded');
     $('body').removeClass('no-scroll-y');
 
@@ -274,8 +284,15 @@ function shopCategory(category) {
 
 // Services
 function openService(service) {
-  alert(`Opening ${service} service...`);
   closeMenu();
+  const messages = {
+    appointment: "Hi Behna! I'd like to book an appointment at your studio.",
+    styling:     "Hi Behna! I'm interested in your Personal Styling service.",
+    alteration:  "Hi Behna! I need Alteration Services for my outfit.",
+    sizing:      "Hi Behna! I need help with sizing — can you guide me?"
+  };
+  const text = messages[service] || "Hi Behna! I'd like to know more about your services.";
+  window.open("https://wa.me/917231042253?text=" + encodeURIComponent(text), "_blank");
 }
 
 // Stories and About

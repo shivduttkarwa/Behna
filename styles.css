@@ -65,6 +65,9 @@ body {
   overflow-y: hidden;
 }
 
+.skip-preloader #preloader { display: none !important; }
+.skip-preloader.no-scroll-y { overflow-y: auto !important; }
+
 
 .section-title {
   font-family: "Oswald", sans-serif;

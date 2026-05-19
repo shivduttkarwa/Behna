@@ -883,25 +883,31 @@
     <div class="menu-overlay" id="menuOverlay" onclick="closeMenuOverlay(event)">
       <div class="menu-content">
         <div class="menu-header">
-          <img src="img/logo-1.png" alt="BEHNA" style="height: 60px; width: auto" />
+          <img
+            src="img/logo-1.png"
+            alt="BEHNA"
+            style="height: 60px; width: auto"
+          />
           <span class="menu-close-text" onclick="closeMenu()">CLOSE</span>
         </div>
         <div class="menu-items">
           <div class="menu-category">
             <h3 class="menu-category-title">Shop</h3>
             <ul class="menu-links">
-              <li><a href="#three-piece-suits">3 Piece Suits</a></li>
-              <li><a href="#kurtis">Kurtis</a></li>
-              <li><a href="#anarkali">Anarkali</a></li>
-              <li><a href="#co-ord-sets">Co-ord Sets</a></li>
-              <li><a href="#festival-wears">Festival Wears</a></li>
+              <li><a href="collections.html" onclick="closeMenu()">All Collections</a></li>
+              <li><a href="#three-piece-suits" onclick="closeMenu()">3 Piece Suits</a></li>
+              <li><a href="#kurtis" onclick="closeMenu()">Kurtis</a></li>
+              <li><a href="#anarkali" onclick="closeMenu()">Anarkali</a></li>
+              <li><a href="#co-ord-sets" onclick="closeMenu()">Co-ord Sets</a></li>
+              <li><a href="#festival-wears" onclick="closeMenu()">Festival Wears</a></li>
             </ul>
           </div>
           <div class="menu-category">
-            <h3 class="menu-category-title">Navigate</h3>
+            <h3 class="menu-category-title">Explore</h3>
             <ul class="menu-links">
-              <li><a href="index.html">Home</a></li>
-              <li><a href="collections.html">All Collections</a></li>
+              <li><a href="index.html#new-arrivals" onclick="closeMenu()">New Arrivals</a></li>
+              <li><a href="index.html#curated-collection" onclick="closeMenu()">Curated Collection</a></li>
+              <li><a href="index.html#our-story" onclick="closeMenu()">Our Story</a></li>
             </ul>
           </div>
         </div>

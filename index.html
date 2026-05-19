@@ -77,6 +77,7 @@
     }
     </script>
 
+    <script>if(sessionStorage.getItem('behna_visited')){document.documentElement.classList.add('skip-preloader');}</script>
     <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg" />
     <link rel="shortcut icon" href="assets/img/favicon.svg" />
     <link
@@ -307,7 +308,7 @@
     </section>
 
     <!-- Curated Collection Section -->
-    <section class="curated-section">
+    <section class="curated-section" id="curated-collection">
       <div class="curated-header">
         <div class="offers-badge"><span class="badge-text">Handpicked</span></div>
         <h2 class="curated-title">Curated Collection</h2>
@@ -750,26 +751,11 @@
             </ul>
           </div>
           <div class="menu-category">
-            <h3 class="menu-category-title">Services</h3>
+            <h3 class="menu-category-title">Explore</h3>
             <ul class="menu-links">
-              <li>
-                <a href="#" onclick="openService('appointment')"
-                  >Book an Appointment</a
-                >
-              </li>
-              <li>
-                <a href="#" onclick="openService('styling')"
-                  >Personal Styling</a
-                >
-              </li>
-              <li>
-                <a href="#" onclick="openService('alteration')"
-                  >Alteration Services</a
-                >
-              </li>
-              <li>
-                <a href="#" onclick="openService('sizing')">Size Guide</a>
-              </li>
+              <li><a href="#new-arrivals" onclick="closeMenu()">New Arrivals</a></li>
+              <li><a href="#curated-collection" onclick="closeMenu()">Curated Collection</a></li>
+              <li><a href="#our-story" onclick="closeMenu()">Our Story</a></li>
             </ul>
           </div>
         </div>
@@ -860,7 +846,7 @@
     </div>
 
     <!-- Our Story Section -->
-    <section class="story-section">
+    <section class="story-section" id="our-story">
       <div class="story-image-side">
         <img src="assets/img/founders.jpg" alt="Anita and Indu — Founders of Behna" class="story-img" />
       </div>
