@@ -32,12 +32,15 @@ window.addEventListener("scroll", function () {
     header.classList.add("scrolled");
 
     // Smooth logo transformation
-    const topVh = 5 - (5 - 0.2) * scrollRatio;
     const baseHeight = window.innerWidth > 768 ? 240 : 200;
-    const newHeight = baseHeight - (baseHeight - 80) * scrollRatio;
+    const newHeight = baseHeight - (baseHeight - 120) * scrollRatio;
     const filterValue = 1 - scrollRatio;
 
-    logoMaster.style.top = `${topVh}vh`;
+    const startTopPx = window.innerHeight * 0.05;
+    const endTopPx = (header.offsetHeight - newHeight) / 2;
+    const topPx = startTopPx + (endTopPx - startTopPx) * scrollRatio;
+
+    logoMaster.style.top = `${topPx}px`;
     logoMaster.style.left = "50%";
     logoMaster.style.transform = "translateX(-50%)";
     transformLogo.style.height = `${newHeight}px`;
