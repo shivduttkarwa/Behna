@@ -888,7 +888,6 @@ function initTextAnimations() {
     gsap.from(el, {
       scrollTrigger: { trigger: el, start: 'top 90%', toggleActions: 'play none none none' },
       opacity: 0,
-      y: 8,
       duration: 0.5,
       ease: 'power2.out'
     });
@@ -952,16 +951,113 @@ function initTextAnimations() {
     });
   }
 
+  // ── Offer timer units — staggered fade in ──
+  const timerUnits = gsap.utils.toArray('.timer-unit');
+  if (timerUnits.length) {
+    gsap.set(timerUnits, { opacity: 0 });
+    gsap.to(timerUnits, {
+      scrollTrigger: { trigger: '.offers-timer', start: 'top 90%', toggleActions: 'play none none none' },
+      opacity: 1,
+      duration: 0.6,
+      ease: 'power2.out',
+      stagger: 0.15
+    });
+  }
+
+  // ── Special Offers — cards clip reveal bottom to top, staggered ──
+  const offerCards = gsap.utils.toArray('.offers-swiper .swiper-slide:not(.swiper-slide-duplicate) .offer-card');
+  if (offerCards.length) {
+    gsap.set(offerCards, { clipPath: 'inset(100% 0 0 0)' });
+    gsap.to(offerCards, {
+      scrollTrigger: { trigger: '.offers-swiper', start: 'top 80%', toggleActions: 'play none none none' },
+      clipPath: 'inset(0% 0 0 0)',
+      duration: 1.0,
+      ease: 'power3.out',
+      stagger: 0.12
+    });
+  }
+
+  // ── Curated Collection — staggered fade in ──
+  const curatedItems = gsap.utils.toArray('.curated-item');
+  if (curatedItems.length) {
+    gsap.from(curatedItems, {
+      scrollTrigger: { trigger: '.curated-section', start: 'top 65%', toggleActions: 'play none none none' },
+      opacity: 0,
+      duration: 0.8,
+      ease: 'power2.out',
+      stagger: 0.15
+    });
+  }
+
   // ── Top Categories — staggered fade in ──
   const categoryItems = gsap.utils.toArray('.category-item');
   if (categoryItems.length) {
     gsap.from(categoryItems, {
       scrollTrigger: { trigger: '.popular-section', start: 'top 55%', toggleActions: 'play none none none' },
       opacity: 0,
-      y: 30,
       duration: 0.7,
       ease: 'power2.out',
       stagger: 0.1
+    });
+  }
+
+  // ── Story — image clip left to right + text fade line by line ──
+  const storyImg = document.querySelector('.story-image-side');
+  if (storyImg) {
+    gsap.set(storyImg, { clipPath: 'inset(0 100% 0 0)' });
+    gsap.to(storyImg, {
+      scrollTrigger: { trigger: '.story-section', start: 'top 75%', toggleActions: 'play none none none' },
+      clipPath: 'inset(0 0% 0 0)',
+      duration: 1.2,
+      ease: 'power3.inOut'
+    });
+  }
+
+  const storyTextEls = gsap.utils.toArray('.story-lead, .story-body, .story-founders');
+  if (storyTextEls.length) {
+    gsap.set(storyTextEls, { opacity: 0 });
+    gsap.to(storyTextEls, {
+      scrollTrigger: { trigger: '.story-text-side', start: 'top 75%', toggleActions: 'play none none none' },
+      opacity: 1,
+      duration: 0.6,
+      ease: 'power2.out',
+      stagger: 0.15
+    });
+  }
+
+  // ── Why grid items — staggered fade in ──
+  const whyItems = gsap.utils.toArray('.why-item');
+  if (whyItems.length) {
+    gsap.set(whyItems, { opacity: 0 });
+    gsap.to(whyItems, {
+      scrollTrigger: { trigger: '.why-grid', start: 'top 80%', toggleActions: 'play none none none' },
+      opacity: 1,
+      duration: 0.7,
+      ease: 'power2.out',
+      stagger: 0.15
+    });
+  }
+
+  // ── Testimonials subtitle + cards ──
+  const testSubtitle = document.querySelector('.testimonials-subtitle');
+  if (testSubtitle) {
+    gsap.from(testSubtitle, {
+      scrollTrigger: { trigger: testSubtitle, start: 'top 90%', toggleActions: 'play none none none' },
+      opacity: 0,
+      duration: 0.6,
+      ease: 'power2.out'
+    });
+  }
+
+  const testCards = gsap.utils.toArray('.testimonials-swiper .swiper-slide:not(.swiper-slide-duplicate) .testimonial-card');
+  if (testCards.length) {
+    gsap.set(testCards, { opacity: 0 });
+    gsap.to(testCards, {
+      scrollTrigger: { trigger: '.testimonials-swiper', start: 'top 80%', toggleActions: 'play none none none' },
+      opacity: 1,
+      duration: 0.7,
+      ease: 'power2.out',
+      stagger: 0.15
     });
   }
 
