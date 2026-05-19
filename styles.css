@@ -2692,8 +2692,9 @@ body {
 
 .story-title {
   font-size: 2.9rem;
-  
 }
+@media (max-width: 768px) { .story-title { font-size: 2.1rem; } }
+@media (max-width: 480px) { .story-title { font-size: 1.7rem; } }
 
 .story-lead {
   font-size: 1.05rem;
