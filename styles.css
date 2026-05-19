@@ -3397,6 +3397,10 @@ body {
   background: rgba(255, 255, 255, 0.9);
   color: #000;
   border: none;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
   padding: 0.9375rem 2.5rem;
   font-size: 0.75rem;
   letter-spacing: 0.125rem;
