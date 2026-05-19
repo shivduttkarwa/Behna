@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>All Collections — BEHNA Clothing Studio</title>
+    <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg" />
+    <link rel="shortcut icon" href="assets/img/favicon.svg" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+    <style>
+      /* ── Collections Hero ── */
+      .coll-hero {
+        position: relative;
+        height: 100vh;
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        overflow: hidden;
+      }
+      .coll-hero-bg {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center top;
+      }
+      .coll-hero-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to top,
+          rgba(0, 0, 0, 0.78) 0%,
+          rgba(0, 0, 0, 0.35) 55%,
+          rgba(0, 0, 0, 0.15) 100%
+        );
+      }
+      .coll-hero-content {
+        position: relative;
+        z-index: 2;
+        text-align: center;
+        color: #fff;
+        padding: 0 2rem 5rem;
+        width: 100%;
+        max-width: 900px;
+      }
+      .coll-breadcrumb {
+        font-size: 0.7rem;
+        letter-spacing: 0.22rem;
+        text-transform: uppercase;
+        opacity: 0.6;
+        margin-bottom: 1.25rem;
+      }
+      .coll-breadcrumb a {
+        color: #fff;
+        text-decoration: none;
+      }
+      .coll-breadcrumb a:hover { opacity: 1; }
+      .coll-breadcrumb span { margin: 0 0.5rem; opacity: 0.5; }
+      .coll-hero-title {
+        font-family: 'Oswald', sans-serif;
+        font-size: clamp(2.8rem, 7vw, 5.5rem);
+        font-weight: 500;
+        letter-spacing: 0.25em;
+        text-transform: uppercase;
+        line-height: 1;
+        margin-bottom: 1rem;
+      }
+      .coll-hero-sub {
+        font-size: clamp(0.8rem, 1.5vw, 0.95rem);
+        letter-spacing: 0.12em;
+        opacity: 0.75;
+        margin-bottom: 2.5rem;
+      }
+      .coll-hero-nav {
+        display: flex;
+        gap: 0.75rem;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      .coll-hero-nav a {
+        color: #fff;
+        text-decoration: none;
+        border: 1px solid rgba(255, 255, 255, 0.45);
+        padding: 0.5rem 1.4rem;
+        font-size: 0.7rem;
+        letter-spacing: 0.15rem;
+        text-transform: uppercase;
+        transition: background 0.25s, color 0.25s, border-color 0.25s;
+      }
+      .coll-hero-nav a:hover {
+        background: #fff;
+        color: #000;
+        border-color: #fff;
+      }
+
+      /* ── Category Sections ── */
+      .coll-section {
+        padding: 5rem 2.5rem 4rem;
+      }
+      .coll-section:nth-child(odd) {
+        background: #fff;
+      }
+      .coll-section:nth-child(even) {
+        background: #f8f7f5;
+      }
+
+      .coll-section-head {
+        display: flex;
+        align-items: flex-end;
+        gap: 1.25rem;
+        margin-bottom: 2.5rem;
+      }
+      .coll-num {
+        font-family: 'Oswald', sans-serif;
+        font-size: clamp(4rem, 6vw, 6rem);
+        font-weight: 500;
+        color: #e8e2db;
+        line-height: 1;
+        flex-shrink: 0;
+      }
+      .coll-title-group {
+        flex: 1;
+      }
+      .coll-title-group h2 {
+        font-family: 'Oswald', sans-serif;
+        font-size: clamp(1.5rem, 3vw, 2.2rem);
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: #1a1a1a;
+        margin-bottom: 0.25rem;
+      }
+      .coll-title-group p {
+        font-size: 0.8rem;
+        color: #888;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+      .coll-divider {
+        flex: 1;
+        height: 1px;
+        background: #ddd;
+        margin-bottom: 0.9rem;
+        display: none;
+      }
+      @media (min-width: 768px) {
+        .coll-divider { display: block; }
+      }
+
+      /* Reuse na-card sizing but ensure consistent height */
+      .coll-swiper .na-card {
+        height: 420px;
+      }
+      @media (min-width: 768px) {
+        .coll-swiper .na-card { height: 480px; }
+      }
+      @media (min-width: 1024px) {
+        .coll-swiper .na-card { height: 520px; }
+      }
+
+      /* Nav arrows themed to section */
+      .coll-prev,
+      .coll-next {
+        color: #1a1a1a !important;
+      }
+      .coll-prev::after,
+      .coll-next::after {
+        font-size: 1rem !important;
+        font-weight: 700;
+      }
+
+      /* WhatsApp enquiry button — sits inside na-content above the name */
+      .na-card .coll-enquire {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        background: transparent;
+        border: 1px solid rgba(255, 255, 255, 0.55);
+        color: #fff;
+        font-size: 0.78rem;
+        letter-spacing: 0.12rem;
+        text-transform: uppercase;
+        padding: 0.55rem 1.25rem;
+        text-decoration: none;
+        width: fit-content;
+        transition: background 0.25s, color 0.25s, border-color 0.25s;
+      }
+      .na-card:hover .coll-enquire {
+        background: #fff;
+        color: #000;
+        border-color: #fff;
+      }
+
+      /* ── Collections page mobile tweaks ── */
+      @media (max-width: 768px) {
+        .coll-section { padding: 3.5rem 1.25rem 3rem; }
+        .coll-hero-content { padding: 0 1.25rem 5rem; }
+        .coll-hero-nav { gap: 0.5rem; }
+        .coll-hero-nav a { padding: 0.45rem 1rem; font-size: 0.65rem; }
+      }
+    </style>
+  </head>
+
+  <body>
+
+    <!-- Logo Transformation -->
+    <div class="logo-master">
+      <div class="logo-transform main-logo">
+        <a href="index.html" style="display:block;pointer-events:auto;">
+          <img src="img/logo-1.png" alt="BEHNA" id="transformLogo" />
+        </a>
+      </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header" id="header">
+      <nav class="nav-container">
+        <div class="nav-left">
+          <span class="contact-text" onclick="openContact()">
+            <span class="contact-icon">+</span>CONTACT US
+          </span>
+        </div>
+        <div class="nav-right">
+          <div class="nav-icons">
+            <span class="menu-text" onclick="openMenu()">MENU</span>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Collections Hero -->
+    <section class="coll-hero">
+      <img src="assets/img/hero.jpg" alt="All Collections" class="coll-hero-bg" />
+      <div class="coll-hero-overlay"></div>
+      <div class="coll-hero-content">
+        <div class="coll-breadcrumb">
+          <a href="index.html">Home</a>
+          <span>/</span>
+          <span>Collections</span>
+        </div>
+        <h1 class="coll-hero-title">All Collections</h1>
+        <p class="coll-hero-sub">Handcrafted styles from Jaipur's finest clothing studio</p>
+        <div class="coll-hero-nav">
+          <a href="#three-piece-suits">3 Piece Suits</a>
+          <a href="#kurtis">Kurtis</a>
+          <a href="#anarkali">Anarkali</a>
+          <a href="#co-ord-sets">Co-ord Sets</a>
+          <a href="#festival-wears">Festival Wears</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 01 · 3 Piece Suits ── -->
+    <section class="coll-section" id="three-piece-suits">
+      <div class="coll-section-head">
+        <span class="coll-num">01</span>
+        <div class="coll-title-group">
+          <h2>3 Piece Suits</h2>
+          <p>Complete ensemble sets — top, bottom &amp; dupatta</p>
+        </div>
+        <div class="coll-divider"></div>
+      </div>
+
+      <div class="swiper coll-swiper suits-swiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <div class="na-card">
+              <img src="assets/img/f7.jpg" alt="3 Piece Suit 1" class="na-img" />
+              <div class="na-gradient"></div>
+              <div class="na-content">
+                <a href="https://wa.me/917231042253?text=Hi%20Behna!%20I%20am%20interested%20in%20the%203%20Piece%20Suit%201." target="_blank" class="coll-enquire"><i class="ri-whatsapp-line"></i> Enquire</a>
+                <h3 class="na-name">Classic Cotton Set</h3>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="na-card">
+              <img src="assets/collections/3p2.jpg" alt="3 Piece Suit 2" class="na-img" />
+              <div class="na-gradient"></div>
+              <div class="na-content">
+                <a href="https://wa.me/917231042253?text=Hi%20Behna!%20I%20am%20interested%20in%20the%203%20Piece%20Suit%202." target="_blank" class="coll-enquire"><i class="ri-whatsapp-line"></i> Enquire</a>
+                <h3 class="na-name">Embroidered Set</h3>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="na-card">
+              <img src="assets/collections/3p3.jpg" alt="3 Piece Suit 3" class="na-img" />
+              <div class="na-gradient"></div>
+              <div class="na-content">
+                <a href="https://wa.me/917231042253?text=Hi%20Behna!%20I%20am%20interested%20in%20the%203%20Piece%20Suit%203." target="_blank" class="coll-enquire"><i class="ri-whatsapp-line"></i> Enquire</a>
+                <h3 class="na-name">Ethnic Print Set</h3>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="na-card">
+              <img src="assets/collections/3p5.jpg" alt="3 Piece Suit 5" class="na-img" />
+              <div class="na-gradient"></div>
+              <div class="na-content">
+                <a href="https://wa.me/917231042253?text=Hi%20Behna!%20I%20am%20interested%20in%20the%203%20Piece%20Suit%205." target="_blank" class="coll-enquire"><i class="ri-whatsapp-line"></i> Enquire</a>
+                <h3 class="na-name">Floral Print Set</h3>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="na-card">
+              <img src="assets/collections/3p6.jpg" alt="3 Piece Suit 6" class="na-img" />
+              <div class="na-gradient"></div>
+              <div class="na-content">
+                <a href="https://wa.me/917231042253?text=Hi%20Behna!%20I%20am%20interested%20in%20the%203%20Piece%20Suit%206." target="_blank" class="coll-enquire"><i class="ri-whatsapp-line"></i> Enquire</a>
+                <h3 class="na-name">Silk Blend Set</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-button-prev coll-prev"></div>
+        <div class="swiper-button-next coll-next"></div>
+        <div class="swiper-pagination suits-pagination"></div>
+      </div>
+    </section>
+
+    <!-- ── 02 · Kurtis ── -->
+    <section class="coll-section" id="kurtis">
+      <div class="coll-section-head">
+        <span class="coll-num">02</span>
+        <div class="coll-title-group">
+          <h2>Kurtis</h2>
+          <p>Everyday elegance — from casual to festive</p>
+        </div>
+        <div class="coll-divider"></div>
+      </div>
+
+      <div class="swiper coll-swiper kurtis-swiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <div class="na-card">
+              <img src="assets/collections/k4.jpg" alt="Kurti 1" class="na-img" />
+              <div class="na-gradient"></div>
+              <div class="na-content">
+                <a href="https://wa.me/917231042253?text=Hi%20Behna!%20I%20am%20interested%20in%20the%20Printed%20Kurti." target="_blank" class="coll-enquire"><i class="ri-whatsapp-line"></i> Enquire</a>
+                <h3 class="na-name">Printed Kurti</h3>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="na-card">
+              <img src="assets/collections/k2.jpg" alt="Kurti 2" class="na-img" />
+              <div class="na-gradient"></div>
+              <div class="na-content">
+                <a href="https://wa.me/917231042253?text=Hi%20Behna!%20I%20am%20interested%20in%20the%20Block%20Print%20Kurti." target="_blank" class="coll-enquire"><i class="ri-whatsapp-line"></i> Enquire</a>
+                <h3 class="na-name">Block Print Kurti</h3>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="na-card">
+              <img src="assets/collections/k3.jpg" alt="Kurti 3" class="na-img" />
+              <div class="na-gradient"></div>
+              <div class="na-content">
+                <a href="https://wa.me/917231042253?text=Hi%20Behna!%20I%20am%20interested%20in%20the%20Casual%20Kurti." target="_blank" class="coll-enquire"><i class="ri-whatsapp-line"></i> Enquire</a>
+                <h3 class="na-name">Casual Kurti</h3>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="na-card">
+              <img src="assets/collections/k1.jpg" alt="Kurti 4" class="na-img" />
+              <div class="na-gradient"></div>
+              <div class="na-content">
+                <a href="https://wa.me/917231042253?text=Hi%20Behna!%20I%20am%20interested%20in%20the%20Embroidered%20Kurti." target="_blank" class="coll-enquire"><i class="ri-whatsapp-line"></i> Enquire</a>
+                <h3 class="na-name">Embroidered Kurti</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-button-prev coll-prev"></div>
+        <div class="swiper-button-next coll-next"></div>
+        <div class="swiper-pagination kurtis-pagination"></div>
+      </div>
+    </section>
+
+    <!-- ── 03 · Anarkali ── -->
+    <section class="coll-section" id="anarkali">
+      <div class="coll-section-head">
+        <span class="coll-num">03</span>
+        <div class="coll-title-group">
+          <h2>Anarkali</h2>
+          <p>Flowing silhouettes with timeless grace</p>
+        </div>
+        <div class="coll-divider"></div>
+      </div>
+
+      <div class="swiper coll-swiper anarkali-swiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <div class="na-card">
+              <img src="assets/img/f3.jpg" alt="Classic Anarkali" class="na-img" />
+              <div class="na-gradient"></div>
+              <div class="na-content">
+                <a href="https://wa.me/917231042253?text=Hi%20Behna!%20I%20am%20interested%20in%20the%20Classic%20Anarkali." target="_blank" class="coll-enquire"><i class="ri-whatsapp-line"></i> Enquire</a>
+                <h3 class="na-name">Classic Anarkali</h3>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="na-card">
+              <img src="assets/img/f4.jpg" alt="Zari Work Anarkali" class="na-img" />
+              <div class="na-gradient"></div>
+              <div class="na-content">
+                <a href="https://wa.me/917231042253?text=Hi%20Behna!%20I%20am%20interested%20in%20the%20Zari%20Work%20Anarkali." target="_blank" class="coll-enquire"><i class="ri-whatsapp-line"></i> Enquire</a>
+                <h3 class="na-name">Zari Work Anarkali</h3>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="na-card">
+              <img src="assets/img/an-2.jpg" alt="Flared Anarkali" class="na-img" />
+              <div class="na-gradient"></div>
+              <div class="na-content">
+                <a href="https://wa.me/917231042253?text=Hi%20Behna!%20I%20am%20interested%20in%20the%20Flared%20Anarkali." target="_blank" class="coll-enquire"><i class="ri-whatsapp-line"></i> Enquire</a>
+                <h3 class="na-name">Flared Anarkali</h3>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="na-card">
+              <img src="assets/img/an-2.png" alt="Printed Anarkali" class="na-img" />
+              <div class="na-gradient"></div>
+              <div class="na-content">
+                <a href="https://wa.me/917231042253?text=Hi%20Behna!%20I%20am%20interested%20in%20the%20Printed%20Anarkali." target="_blank" class="coll-enquire"><i class="ri-whatsapp-line"></i> Enquire</a>
+                <h3 class="na-name">Printed Anarkali</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-button-prev coll-prev"></div>
+        <div class="swiper-button-next coll-next"></div>
+        <div class="swiper-pagination anarkali-pagination"></div>
+      </div>
+    </section>
+
+    <!-- ── 04 · Co-ord Sets ── -->
+    <section class="coll-section" id="co-ord-sets">
+      <div class="coll-section-head">
+        <span class="coll-num">04</span>
+        <div class="coll-title-group">
+          <h2>Co-ord Sets</h2>
+          <p>Perfectly matched separates — effortlessly styled</p>
+        </div>
+        <div class="coll-divider"></div>
+      </div>
+
+      <div class="swiper coll-swiper coords-swiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <div class="na-card">
+              <img src="assets/img/co-ord-1.jpg" alt="Pastel Co-ord Set" class="na-img" />
+              <div class="na-gradient"></div>
+              <div class="na-content">
+                <a href="https://wa.me/917231042253?text=Hi%20Behna!%20I%20am%20interested%20in%20the%20Pastel%20Co-ord%20Set." target="_blank" class="coll-enquire"><i class="ri-whatsapp-line"></i> Enquire</a>
+                <h3 class="na-name">Pastel Co-ord</h3>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="na-card">
+              <img src="assets/img/co ord set-2.jpg" alt="Printed Co-ord Set" class="na-img" />
+              <div class="na-gradient"></div>
+              <div class="na-content">
+                <a href="https://wa.me/917231042253?text=Hi%20Behna!%20I%20am%20interested%20in%20the%20Printed%20Co-ord%20Set." target="_blank" class="coll-enquire"><i class="ri-whatsapp-line"></i> Enquire</a>
+                <h3 class="na-name">Printed Co-ord</h3>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="na-card">
+              <img src="assets/img/cord-3.jpg" alt="Crop Co-ord Set" class="na-img" />
+              <div class="na-gradient"></div>
+              <div class="na-content">
+                <a href="https://wa.me/917231042253?text=Hi%20Behna!%20I%20am%20interested%20in%20the%20Crop%20Co-ord%20Set." target="_blank" class="coll-enquire"><i class="ri-whatsapp-line"></i> Enquire</a>
+                <h3 class="na-name">Crop Co-ord</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-button-prev coll-prev"></div>
+        <div class="swiper-button-next coll-next"></div>
+        <div class="swiper-pagination coords-pagination"></div>
+      </div>
+    </section>
+
+    <!-- ── 05 · Festival Wears ── -->
+    <section class="coll-section" id="festival-wears">
+      <div class="coll-section-head">
+        <span class="coll-num">05</span>
+        <div class="coll-title-group">
+          <h2>Festival Wears</h2>
+          <p>Dressed for Diwali, Navratri &amp; every celebration</p>
+        </div>
+        <div class="coll-divider"></div>
+      </div>
+
+      <div class="swiper coll-swiper festival-swiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <div class="na-card">
+              <img src="assets/img/f1.jpg" alt="Diwali Special" class="na-img" />
+              <div class="na-gradient"></div>
+              <div class="na-content">
+                <a href="https://wa.me/917231042253?text=Hi%20Behna!%20I%20am%20interested%20in%20the%20Diwali%20Special." target="_blank" class="coll-enquire"><i class="ri-whatsapp-line"></i> Enquire</a>
+                <h3 class="na-name">Diwali Special</h3>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="na-card">
+              <img src="assets/img/f2.jpg" alt="Wedding Guest" class="na-img" />
+              <div class="na-gradient"></div>
+              <div class="na-content">
+                <a href="https://wa.me/917231042253?text=Hi%20Behna!%20I%20am%20interested%20in%20the%20Wedding%20Guest%20outfit." target="_blank" class="coll-enquire"><i class="ri-whatsapp-line"></i> Enquire</a>
+                <h3 class="na-name">Wedding Guest</h3>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="na-card">
+              <img src="assets/img/f3.jpg" alt="Navratri Collection" class="na-img" />
+              <div class="na-gradient"></div>
+              <div class="na-content">
+                <a href="https://wa.me/917231042253?text=Hi%20Behna!%20I%20am%20interested%20in%20the%20Navratri%20Collection." target="_blank" class="coll-enquire"><i class="ri-whatsapp-line"></i> Enquire</a>
+                <h3 class="na-name">Navratri Collection</h3>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="na-card">
+              <img src="assets/img/f4.jpg" alt="Sangeet Night" class="na-img" />
+              <div class="na-gradient"></div>
+              <div class="na-content">
+                <a href="https://wa.me/917231042253?text=Hi%20Behna!%20I%20am%20interested%20in%20the%20Sangeet%20Night%20outfit." target="_blank" class="coll-enquire"><i class="ri-whatsapp-line"></i> Enquire</a>
+                <h3 class="na-name">Sangeet Night</h3>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="na-card">
+              <img src="assets/img/f5.jpg" alt="Festival Glam" class="na-img" />
+              <div class="na-gradient"></div>
+              <div class="na-content">
+                <a href="https://wa.me/917231042253?text=Hi%20Behna!%20I%20am%20interested%20in%20the%20Festival%20Glam%20outfit." target="_blank" class="coll-enquire"><i class="ri-whatsapp-line"></i> Enquire</a>
+                <h3 class="na-name">Festival Glam</h3>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="na-card">
+              <img src="assets/img/f6.jpg" alt="Bridal Guest" class="na-img" />
+              <div class="na-gradient"></div>
+              <div class="na-content">
+                <a href="https://wa.me/917231042253?text=Hi%20Behna!%20I%20am%20interested%20in%20the%20Bridal%20Guest%20outfit." target="_blank" class="coll-enquire"><i class="ri-whatsapp-line"></i> Enquire</a>
+                <h3 class="na-name">Bridal Guest</h3>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="na-card">
+              <img src="assets/img/f7.jpg" alt="Ethnic Chic" class="na-img" />
+              <div class="na-gradient"></div>
+              <div class="na-content">
+                <a href="https://wa.me/917231042253?text=Hi%20Behna!%20I%20am%20interested%20in%20the%20Ethnic%20Chic%20outfit." target="_blank" class="coll-enquire"><i class="ri-whatsapp-line"></i> Enquire</a>
+                <h3 class="na-name">Ethnic Chic</h3>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="na-card">
+              <img src="assets/img/party.jpg" alt="Party Wear" class="na-img" />
+              <div class="na-gradient"></div>
+              <div class="na-content">
+                <span class="na-badge">Festival</span>
+                <h3 class="na-name">Party Wear</h3>
+              </div>
+              <a href="https://wa.me/917231042253?text=Hi%20Behna!%20I%20am%20interested%20in%20the%20Party%20Wear." target="_blank" class="coll-enquire">
+                <i class="ri-whatsapp-line"></i> Enquire
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-button-prev coll-prev"></div>
+        <div class="swiper-button-next coll-next"></div>
+        <div class="swiper-pagination festival-pagination"></div>
+      </div>
+    </section>
+
+    <!-- Visit Us CTA -->
+    <section class="visit-section">
+      <div class="visit-left">
+        <span class="visit-tag">Come See Us</span>
+        <h2 class="visit-title">Find Us<br>in Jaipur</h2>
+        <p class="visit-address">
+          Plot No. 60, Gandhi Path West<br>
+          Lalarpura, Jaipur 302034<br>
+          Rajasthan, India
+        </p>
+        <div class="visit-actions">
+          <a href="https://wa.me/917231042253?text=Hi%20Behna%20Clothing%20Studio!%20I%20would%20like%20to%20visit%20your%20store." target="_blank" rel="noopener noreferrer" class="visit-btn visit-btn-primary">
+            <i class="ri-whatsapp-line"></i> WhatsApp Us
+          </a>
+          <a href="https://www.google.com/maps/dir//Behna+Clothing+Studio,+Plot+Number:+60,+Lalarpura,+Jaipur,+Rajasthan+302034/@26.9000762,75.7255187,15z" target="_blank" rel="noopener noreferrer" class="visit-btn visit-btn-secondary">
+            <i class="ri-map-pin-line"></i> Get Directions
+          </a>
+        </div>
+      </div>
+      <div class="visit-right">
+        <iframe
+          src="https://maps.google.com/maps?q=26.9051636,75.7243111&output=embed&z=17"
+          class="visit-map"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Behna Clothing Studio Location">
+        </iframe>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-inner">
+        <div class="footer-top-row">
+          <div class="footer-col footer-col-quote">
+            <p class="footer-quote">&ldquo;Dress the way<br>you feel.&rdquo;</p>
+            <span class="footer-quote-attr">— Behna Clothing Studio, Jaipur</span>
+          </div>
+          <div class="footer-col">
+            <h4 class="footer-col-title">Shop</h4>
+            <ul class="footer-nav">
+              <li><a href="#three-piece-suits">3 Piece Suits</a></li>
+              <li><a href="#kurtis">Kurtis</a></li>
+              <li><a href="#anarkali">Anarkali</a></li>
+              <li><a href="#co-ord-sets">Co-ord Sets</a></li>
+              <li><a href="#festival-wears">Festival Wears</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4 class="footer-col-title">Follow Us</h4>
+            <div class="footer-socials">
+              <a href="https://www.instagram.com/behna_clothing_studio/" target="_blank" rel="noopener noreferrer" class="footer-social-link" title="Instagram">
+                <i class="ri-instagram-line"></i>
+              </a>
+              <a href="https://www.youtube.com/channel/UCqkJZisHnd1wD8gK0ailsxA" target="_blank" rel="noopener noreferrer" class="footer-social-link" title="YouTube">
+                <i class="ri-youtube-line"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-brand-display">BEHNA</div>
+        <div class="footer-copy">
+          <span>© 2026 Behna Clothing Studio. All rights reserved.</span>
+          <span>Jaipur, Rajasthan</span>
+        </div>
+      </div>
+
+      <!-- Floating Action Buttons -->
+      <div class="fab-stack">
+        <a href="https://wa.me/917231042253?text=Hi%20Behna%20Clothing%20Studio!%20I%20saw%20your%20collection%20and%20would%20love%20to%20know%20more." target="_blank" rel="noopener noreferrer" class="fab fab-whatsapp" title="Chat on WhatsApp">
+          <i class="ri-whatsapp-line"></i>
+        </a>
+        <a href="tel:+917231042253" class="fab fab-call" title="Call Us">
+          <i class="ri-phone-line"></i>
+        </a>
+        <button class="back-to-top" onclick="scrollToTop()" title="Back to top">
+          <i class="ri-arrow-up-line"></i>
+        </button>
+      </div>
+    </footer>
+
+    <!-- Sliding Menu -->
+    <div class="menu-overlay" id="menuOverlay" onclick="closeMenuOverlay(event)">
+      <div class="menu-content">
+        <div class="menu-header">
+          <img src="img/logo-1.png" alt="BEHNA" style="height: 60px; width: auto" />
+          <span class="menu-close-text" onclick="closeMenu()">CLOSE</span>
+        </div>
+        <div class="menu-items">
+          <div class="menu-category">
+            <h3 class="menu-category-title">Shop</h3>
+            <ul class="menu-links">
+              <li><a href="#three-piece-suits">3 Piece Suits</a></li>
+              <li><a href="#kurtis">Kurtis</a></li>
+              <li><a href="#anarkali">Anarkali</a></li>
+              <li><a href="#co-ord-sets">Co-ord Sets</a></li>
+              <li><a href="#festival-wears">Festival Wears</a></li>
+            </ul>
+          </div>
+          <div class="menu-category">
+            <h3 class="menu-category-title">Navigate</h3>
+            <ul class="menu-links">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="collections.html">All Collections</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contact Sliding Panel -->
+    <div class="contact-overlay" id="contactOverlay" onclick="closeContactOverlay(event)">
+      <div class="contact-content">
+        <div class="contact-header">
+          <img src="img/logo-1.png" alt="BEHNA" style="height: 60px; width: auto" />
+          <span class="contact-close-text" onclick="closeContact()">CLOSE</span>
+        </div>
+        <div class="contact-details">
+          <div class="contact-section">
+            <h3 class="contact-section-title">Visit Our Store</h3>
+            <div class="contact-info">
+              <strong>Behna Clothing Studio</strong><br />
+              Plot No. 60, Gandhi Path West<br />
+              Lalarpura, Jaipur 302034<br />
+              India
+            </div>
+            <a href="https://www.google.com/maps/dir//Behna+Clothing+Studio,+Plot+Number:+60,+Lalarpura,+Jaipur,+Rajasthan+302034/@26.9000762,75.7255187,15z" target="_blank" rel="noopener noreferrer" class="contact-directions-btn">
+              <i class="ri-map-pin-line"></i> Get Directions
+            </a>
+          </div>
+          <div class="contact-section">
+            <h3 class="contact-section-title">Call Us</h3>
+            <div class="contact-info">
+              <strong>Phone:</strong> +91 72310 42253<br />
+              <strong>Phone:</strong> +91 73003 59127<br />
+              <strong>WhatsApp:</strong> +91 72310 42253<br />
+              <strong>Hours:</strong> Mon-Sat: 10:30 AM – 10 PM<br />
+              <strong>Sunday:</strong> 1 PM – 10 PM
+            </div>
+          </div>
+          <div class="contact-section">
+            <h3 class="contact-section-title">Follow Us</h3>
+            <div class="contact-socials">
+              <a href="https://www.instagram.com/behna_clothing_studio/" target="_blank" rel="noopener noreferrer" class="footer-social-link" title="Instagram">
+                <i class="ri-instagram-line"></i>
+              </a>
+              <a href="https://www.youtube.com/channel/UCqkJZisHnd1wD8gK0ailsxA" target="_blank" rel="noopener noreferrer" class="footer-social-link" title="YouTube">
+                <i class="ri-youtube-line"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="script.js"></script>
+
+    <script>
+      // Collections page Swiper initializations
+      const collSwiperConfig = {
+        spaceBetween: 16,
+        loop: false,
+        speed: 700,
+        grabCursor: true,
+        autoplay: { delay: 3500, disableOnInteraction: false, pauseOnMouseEnter: true },
+        pagination: { clickable: true },
+        navigation: {
+          prevEl: '.swiper-button-prev',
+          nextEl: '.swiper-button-next',
+        },
+        breakpoints: {
+          480:  { slidesPerView: 2, spaceBetween: 16 },
+          768:  { slidesPerView: 2, spaceBetween: 20 },
+          1024: { slidesPerView: 3, spaceBetween: 24 },
+          1440: { slidesPerView: 4, spaceBetween: 24 },
+        },
+      };
+
+      document.addEventListener('DOMContentLoaded', function () {
+        new Swiper('.suits-swiper',    { ...collSwiperConfig, slidesPerView: 1, pagination: { el: '.suits-pagination',    clickable: true }, navigation: { prevEl: '.suits-swiper .swiper-button-prev',    nextEl: '.suits-swiper .swiper-button-next' } });
+        new Swiper('.kurtis-swiper',   { ...collSwiperConfig, slidesPerView: 1, pagination: { el: '.kurtis-pagination',   clickable: true }, navigation: { prevEl: '.kurtis-swiper .swiper-button-prev',   nextEl: '.kurtis-swiper .swiper-button-next' } });
+        new Swiper('.anarkali-swiper', { ...collSwiperConfig, slidesPerView: 1, pagination: { el: '.anarkali-pagination', clickable: true }, navigation: { prevEl: '.anarkali-swiper .swiper-button-prev', nextEl: '.anarkali-swiper .swiper-button-next' } });
+        new Swiper('.coords-swiper',   { ...collSwiperConfig, slidesPerView: 1, pagination: { el: '.coords-pagination',   clickable: true }, navigation: { prevEl: '.coords-swiper .swiper-button-prev',   nextEl: '.coords-swiper .swiper-button-next' } });
+        new Swiper('.festival-swiper', { ...collSwiperConfig, slidesPerView: 1, pagination: { el: '.festival-pagination', clickable: true }, navigation: { prevEl: '.festival-swiper .swiper-button-prev', nextEl: '.festival-swiper .swiper-button-next' } });
+      });
+
+      // Smooth scroll for hero nav links
+      document.querySelectorAll('.coll-hero-nav a').forEach(function(link) {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) target.scrollIntoView({ behavior: 'smooth' });
+          closeMenu();
+        });
+      });
+    </script>
+  </body>
+</html>
