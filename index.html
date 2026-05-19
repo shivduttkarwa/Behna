@@ -77,7 +77,7 @@
     }
     </script>
 
-    <script>if(sessionStorage.getItem('behna_visited')){document.documentElement.classList.add('skip-preloader');}</script>
+    <script>if(sessionStorage.getItem('behna_visited')&&performance.getEntriesByType('navigation')[0]?.type!=='reload'){document.documentElement.classList.add('skip-preloader');}</script>
     <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg" />
     <link rel="shortcut icon" href="assets/img/favicon.svg" />
     <link
@@ -263,7 +263,7 @@
         <div class="swiper-pagination na-pagination"></div>
       </div>
       <div style="text-align:center; margin-top:2.5rem;">
-        <a href="collections.html" class="hero-button" style="display:inline-block;background:#2c3e50;color:#fff;">VIEW ALL COLLECTIONS</a>
+        <a href="collections" class="hero-button" style="display:inline-block;background:#2c3e50;color:#fff;">VIEW ALL COLLECTIONS</a>
       </div>
     </section>
 
@@ -279,25 +279,25 @@
           </h2>
         </div>
         <div class="popular-grid">
-          <div class="category-item" onclick="location.href='collections.html#three-piece-suits'">
+          <div class="category-item" onclick="location.href='collections#three-piece-suits'">
             <div class="category-icon">
               <img src="assets/collections/3p-1.jpg" alt="3 Piece Suits" class="category-image" />
             </div>
             <span class="category-name">3 Piece Suits</span>
           </div>
-          <div class="category-item" onclick="location.href='collections.html#kurtis'">
+          <div class="category-item" onclick="location.href='collections#kurtis'">
             <div class="category-icon">
               <img src="assets/collections/k1.jpg" alt="Kurtis" class="category-image" />
             </div>
             <span class="category-name">Kurtis</span>
           </div>
-          <div class="category-item" onclick="location.href='collections.html#anarkali'">
+          <div class="category-item" onclick="location.href='collections#anarkali'">
             <div class="category-icon">
               <img src="assets/img/anarkali.jpg" alt="Anarkali" class="category-image" />
             </div>
             <span class="category-name">Anarkali</span>
           </div>
-          <div class="category-item" onclick="location.href='collections.html#co-ord-sets'">
+          <div class="category-item" onclick="location.href='collections#co-ord-sets'">
             <div class="category-icon">
               <img src="assets/img/cord-3.jpg" alt="Co-ord Sets" class="category-image" />
             </div>
@@ -345,7 +345,7 @@
         <div class="swiper-pagination curated-pagination"></div>
       </div>
       <div style="text-align:center; margin-top:2.5rem;">
-        <a href="collections.html" class="hero-button" style="display:inline-block;background:#2c3e50;color:#fff;">VIEW ALL COLLECTIONS</a>
+        <a href="collections" class="hero-button" style="display:inline-block;background:#2c3e50;color:#fff;">VIEW ALL COLLECTIONS</a>
       </div>
     </section>
 
@@ -742,12 +742,12 @@
           <div class="menu-category">
             <h3 class="menu-category-title">Shop</h3>
             <ul class="menu-links">
-              <li><a href="collections.html">All Collections</a></li>
-              <li><a href="collections.html#three-piece-suits">3 Piece Suits</a></li>
-              <li><a href="collections.html#kurtis">Kurtis</a></li>
-              <li><a href="collections.html#anarkali">Anarkali</a></li>
-              <li><a href="collections.html#co-ord-sets">Co-ord Sets</a></li>
-              <li><a href="collections.html#festival-wears">Festival Wears</a></li>
+              <li><a href="collections">All Collections</a></li>
+              <li><a href="collections#three-piece-suits">3 Piece Suits</a></li>
+              <li><a href="collections#kurtis">Kurtis</a></li>
+              <li><a href="collections#anarkali">Anarkali</a></li>
+              <li><a href="collections#co-ord-sets">Co-ord Sets</a></li>
+              <li><a href="collections#festival-wears">Festival Wears</a></li>
             </ul>
           </div>
           <div class="menu-category">
@@ -877,7 +877,7 @@
       <div class="about-cta-content">
         <h2 class="about-cta-title">Dress the Way You Feel</h2>
         <p class="about-cta-sub">Kurtis · Co-ord Sets · Anarkali · Party Wear · Salwar Kameez · Office Formals</p>
-        <a href="collections.html" class="about-cta-btn">Explore All Styles</a>
+        <a href="collections" class="about-cta-btn">Explore All Styles</a>
       </div>
     </div>
 
@@ -925,12 +925,11 @@
           <div class="footer-col">
             <h4 class="footer-col-title">Shop</h4>
             <ul class="footer-nav">
-              <li><a href="#" onclick="shopCategory('kurtis')">Kurtis</a></li>
-              <li><a href="#" onclick="shopCategory('co-ord-sets')">Co-ord Sets</a></li>
-              <li><a href="#" onclick="shopCategory('anarkali')">Anarkali</a></li>
-              <li><a href="#" onclick="shopCategory('party-wear')">Party Wear</a></li>
-              <li><a href="#" onclick="shopCategory('salwar-kameez')">Salwar Kameez</a></li>
-              <li><a href="#" onclick="shopCategory('office-formals')">Office Formals</a></li>
+              <li><a href="collections#three-piece-suits">3 Piece Suits</a></li>
+              <li><a href="collections#kurtis">Kurtis</a></li>
+              <li><a href="collections#anarkali">Anarkali</a></li>
+              <li><a href="collections#co-ord-sets">Co-ord Sets</a></li>
+              <li><a href="collections#festival-wears">Festival Wears</a></li>
             </ul>
           </div>
           <div class="footer-col">

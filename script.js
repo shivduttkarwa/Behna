@@ -1,7 +1,8 @@
 // jQuery preloader functionality
 $(document).ready(function() {
-  // Skip preloader on return visits within the same session
-  if (sessionStorage.getItem('behna_visited')) {
+  // Skip preloader on return visits (not on reload/hard refresh)
+  const isReload = performance.getEntriesByType('navigation')[0]?.type === 'reload';
+  if (sessionStorage.getItem('behna_visited') && !isReload) {
     $('#preloader').remove();
     $('body').removeClass('no-scroll-y');
     var fab = document.querySelector('.fab-stack');
