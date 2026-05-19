@@ -1038,6 +1038,19 @@ function initTextAnimations() {
     });
   }
 
+  // ── About CTA — staggered fade in ──
+  const ctaEls = gsap.utils.toArray('.about-cta-title, .about-cta-sub, .about-cta-btn');
+  if (ctaEls.length) {
+    gsap.set(ctaEls, { opacity: 0 });
+    gsap.to(ctaEls, {
+      scrollTrigger: { trigger: '.about-cta-content', start: 'top 80%', toggleActions: 'play none none none' },
+      opacity: 1,
+      duration: 0.6,
+      ease: 'power2.out',
+      stagger: 0.15
+    });
+  }
+
   // ── Visit section — staggered fade in ──
   const visitEls = gsap.utils.toArray('.visit-tag, .visit-title, .visit-address, .visit-actions');
   if (visitEls.length) {

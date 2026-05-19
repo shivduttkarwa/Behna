@@ -78,7 +78,7 @@ body {
 
 .section-title {
   font-family: "Oswald", sans-serif;
-  font-size: 3.5rem;
+  font-size: 3rem;
   font-weight: 300;
   color: #2c3e50;
   text-transform: uppercase;
@@ -261,7 +261,7 @@ body {
 @media screen and (max-width: 768px) {
 
   .section-title {
-    font-size: 2.5rem;
+    font-size: 2.1rem;
     letter-spacing: 0.1rem;
   }
 
@@ -363,7 +363,7 @@ body {
 
 @media screen and (max-width: 480px) {
   .section-title {
-    font-size: 2rem;
+    font-size: 1.7rem;
     letter-spacing: 0.08rem;
   }
 
@@ -2697,9 +2697,8 @@ body {
 }
 
 .story-title {
-  font-size: 3.5rem;
-  letter-spacing: 0.1rem;
-  line-height: 1.1;
+  font-size: 2.9rem;
+  
 }
 
 .story-lead {
