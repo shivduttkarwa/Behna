@@ -899,7 +899,7 @@ function initTextAnimations() {
   if (naCards.length) {
     gsap.set(naCards, { clipPath: 'inset(100% 0 0 0)' });
     gsap.to(naCards, {
-      scrollTrigger: { trigger: '.na-section', start: 'top 70%', toggleActions: 'play none none none' },
+      scrollTrigger: { trigger: '.na-swiper', start: 'top 80%', toggleActions: 'play none none none' },
       clipPath: 'inset(0% 0 0 0)',
       duration: 1.0,
       ease: 'power3.out',
@@ -949,6 +949,19 @@ function initTextAnimations() {
       duration: 0.9,
       ease: 'power3.out',
       stagger: 0.14
+    });
+  }
+
+  // ── Top Categories — staggered fade in ──
+  const categoryItems = gsap.utils.toArray('.category-item');
+  if (categoryItems.length) {
+    gsap.from(categoryItems, {
+      scrollTrigger: { trigger: '.popular-section', start: 'top 55%', toggleActions: 'play none none none' },
+      opacity: 0,
+      y: 30,
+      duration: 0.7,
+      ease: 'power2.out',
+      stagger: 0.1
     });
   }
 
