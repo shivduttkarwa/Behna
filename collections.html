@@ -253,6 +253,75 @@
         border-color: #fff;
       }
 
+      /* ── Full Width CTA ── */
+      .coll-cta {
+        position: relative;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+      }
+      .coll-cta-bg {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+      }
+      .coll-cta-overlay {
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.52);
+      }
+      .coll-cta-content {
+        position: relative;
+        z-index: 2;
+        text-align: center;
+        color: #fff;
+        padding: 0 2rem;
+        max-width: 700px;
+      }
+      .coll-cta-tag {
+        font-size: 0.7rem;
+        letter-spacing: 0.25rem;
+        text-transform: uppercase;
+        opacity: 0.7;
+        margin-bottom: 1rem;
+      }
+      .coll-cta-title {
+        font-family: 'Oswald', sans-serif;
+        font-size: clamp(2rem, 5vw, 3.8rem);
+        font-weight: 500;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        line-height: 1.1;
+        margin-bottom: 1rem;
+      }
+      .coll-cta-sub {
+        font-size: clamp(0.8rem, 1.5vw, 0.95rem);
+        opacity: 0.75;
+        letter-spacing: 0.05em;
+        margin-bottom: 2rem;
+      }
+      .coll-cta-btn {
+        display: inline-block;
+        background: #fff;
+        color: #000;
+        padding: 0.85rem 2.5rem;
+        font-size: 0.75rem;
+        letter-spacing: 0.2rem;
+        text-transform: uppercase;
+        text-decoration: none;
+        font-weight: 500;
+        transition: background 0.25s, color 0.25s;
+      }
+      .coll-cta-btn:hover {
+        background: #2c3e50;
+        color: #fff;
+      }
+
       /* ── Collections page mobile tweaks ── */
       @media (max-width: 768px) {
         .coll-section { padding: 3.5rem 1.25rem 3rem; }
@@ -652,6 +721,18 @@
         <div class="swiper-button-prev coll-prev"></div>
         <div class="swiper-button-next coll-next"></div>
         <div class="swiper-pagination festival-pagination"></div>
+      </div>
+    </section>
+
+    <!-- Full Width CTA -->
+    <section class="coll-cta">
+      <img src="assets/collections/cta-3.jpg" alt="Behna Clothing Studio" class="coll-cta-bg" />
+      <div class="coll-cta-overlay"></div>
+      <div class="coll-cta-content">
+        <p class="coll-cta-tag">Handcrafted in Jaipur</p>
+        <h2 class="coll-cta-title">Wear the Art of Rajasthan</h2>
+        <p class="coll-cta-sub">Visit our studio or reach out on WhatsApp — we'd love to dress you.</p>
+        <a href="https://wa.me/917231042253?text=Hi%20Behna!%20I%20would%20love%20to%20explore%20your%20collection." target="_blank" rel="noopener noreferrer" class="coll-cta-btn">ENQUIRE NOW</a>
       </div>
     </section>
 
