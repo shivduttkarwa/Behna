@@ -2355,12 +2355,12 @@ body {
   .intro-section { flex-direction: column; min-height: unset; }
   .intro-inner { width: 100%; padding: 5rem 2.5rem; }
   .intro-image-side { width: 100%; height: 60vw; }
-  .intro-line { font-size: 1.8rem; }
+  .intro-line { font-size: 2.15rem; }
 }
 
 @media (max-width: 480px) {
   .intro-inner { padding: 4rem 1.5rem; }
-  .intro-line { font-size: 1.4rem; }
+  .intro-line { font-size: 1.68rem; }
 }
 
 /* ── New Arrivals Section ── */
