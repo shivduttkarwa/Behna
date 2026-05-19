@@ -891,6 +891,19 @@ function initTextAnimations() {
     });
   });
 
+  // ── Intro statement — staggered line slide-up ──
+  const introLines = gsap.utils.toArray('.intro-line');
+  if (introLines.length) {
+    gsap.from(introLines, {
+      scrollTrigger: { trigger: '.intro-section', start: 'top 75%', toggleActions: 'play none none none' },
+      y: 70,
+      opacity: 0,
+      duration: 0.9,
+      ease: 'power3.out',
+      stagger: 0.14
+    });
+  }
+
   // ── Section titles — scroll triggered ──
   const titleSelectors = [
     '.section-title',
