@@ -3240,13 +3240,17 @@ body {
 /* Header */
 .header {
   position: fixed;
-  top: 0;
+  top: -1px;
   left: 0;
   right: 0;
   background: transparent;
   z-index: 1000;
-  padding: 1.5625rem 2.5rem;
-  transition: all 0.4s ease;
+  padding: calc(1.5625rem + 1px) 2.5rem 1.5625rem;
+  transition: background 0.4s ease, backdrop-filter 0.4s ease;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
 .header.scrolled {
@@ -3301,14 +3305,6 @@ body {
   }
 }
 
-/* Scrolled state - logo moves to navbar position */
-.header.scrolled .logo-master {
-  /* JavaScript handles the transformation */
-}
-
-.header.scrolled .main-logo img {
-  /* JavaScript handles the transformation */
-}
 
 /* Rest of your CSS... */
 .nav-icons {
@@ -4179,7 +4175,7 @@ body {
     gap: 0.875rem;
   }
   .header {
-    padding: 1rem 1.25rem;
+    padding: calc(1rem + 1px) 1.25rem 1rem;
   }
 }
 
