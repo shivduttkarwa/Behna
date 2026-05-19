@@ -863,8 +863,8 @@ function initTextAnimations() {
   // ── Logo zoom-in (fires first) ──
   const logoDoneAt = 0.15 + 0.85; // 1.0s
   gsap.fromTo('.logo-master',
-    { scale: 0.45, opacity: 0 },
-    { scale: 1, opacity: 1, duration: 0.85, ease: 'back.out(1.7)', delay: 0.15 }
+    { scale: 0.45, opacity: 0, xPercent: -50 },
+    { scale: 1, opacity: 1, xPercent: -50, duration: 0.85, ease: 'back.out(1.7)', delay: 0.15 }
   );
 
   // ── Hero title — starts after logo finishes ──
