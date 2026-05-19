@@ -850,7 +850,7 @@ function typewriteEl(el, scrollTriggerConfig) {
     opacity: 0,
     duration: 0.001,
     ease: 'none',
-    stagger: 0.035
+    stagger: 0.02
   });
 }
 
