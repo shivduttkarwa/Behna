@@ -23,7 +23,8 @@ $(document).ready(function() {
 
     // Show FAB buttons and fire animation start
     setTimeout(function() {
-      document.querySelector('.fab-stack').classList.add('visible');
+      const fab = document.querySelector('.fab-stack');
+      if (fab) fab.classList.add('visible');
       window.dispatchEvent(new Event('behnaReady'));
     }, 400);
   }, 3000);
