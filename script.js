@@ -891,6 +891,18 @@ function initTextAnimations() {
     });
   });
 
+  // ── Intro image — clip-path wipe right to left ──
+  const introImg = document.querySelector('.intro-img');
+  if (introImg) {
+    gsap.set(introImg, { clipPath: 'inset(0 0 0 100%)' });
+    gsap.to(introImg, {
+      scrollTrigger: { trigger: '.intro-section', start: 'top 75%', toggleActions: 'play none none none' },
+      clipPath: 'inset(0 0 0 0%)',
+      duration: 1.2,
+      ease: 'power3.inOut'
+    });
+  }
+
   // ── Intro statement — staggered line slide-up ──
   const introLines = gsap.utils.toArray('.intro-line');
   if (introLines.length) {

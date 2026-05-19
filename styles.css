@@ -2377,6 +2377,7 @@ body {
 }
 
 .intro-image-side {
+  position: relative;
   width: 50%;
   flex-shrink: 0;
   overflow: hidden;
