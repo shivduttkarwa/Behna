@@ -3234,12 +3234,14 @@ body {
 .logo-master {
   position: fixed;
   top: 5vh;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 0;
+  right: 0;
+  width: fit-content;
+  margin: 0 auto;
   z-index: 2000;
   text-align: center;
   pointer-events: none;
-  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: top 0.8s cubic-bezier(0.16, 1, 0.3, 1);
   opacity: 0;
 }
 

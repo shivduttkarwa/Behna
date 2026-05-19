@@ -54,8 +54,6 @@ window.addEventListener("scroll", function () {
     const topPx = startTopPx + (endTopPx - startTopPx) * scrollRatio;
 
     logoMaster.style.top = `${topPx}px`;
-    logoMaster.style.left = "50%";
-    logoMaster.style.transform = "translateX(-50%)";
     transformLogo.style.height = `${newHeight}px`;
     transformLogo.style.filter = `brightness(${filterValue}) invert(${filterValue})`;
   } else {
@@ -63,8 +61,6 @@ window.addEventListener("scroll", function () {
 
     // Reset logo to hero position
     logoMaster.style.top = "5vh";
-    logoMaster.style.left = "50%";
-    logoMaster.style.transform = "translateX(-50%)";
     transformLogo.style.height = window.innerWidth > 768 ? "240px" : "200px";
     transformLogo.style.filter = "brightness(0) invert(1)";
   }
@@ -863,8 +859,8 @@ function initTextAnimations() {
   // ── Logo zoom-in (fires first) ──
   const logoDoneAt = 0.15 + 0.85; // 1.0s
   gsap.fromTo('.logo-master',
-    { scale: 0.45, opacity: 0, xPercent: -50 },
-    { scale: 1, opacity: 1, xPercent: -50, duration: 0.85, ease: 'back.out(1.7)', delay: 0.15 }
+    { scale: 0.45, opacity: 0 },
+    { scale: 1, opacity: 1, duration: 0.85, ease: 'back.out(1.7)', delay: 0.15 }
   );
 
   // ── Hero title — starts after logo finishes ──
