@@ -782,11 +782,6 @@ body {
   margin-bottom: 2.5rem;
 }
 
-.curated-title {
-  font-size: 2.8rem;
-  letter-spacing: 0.1rem;
-  margin: 0.5rem 0 0;
-}
 
 .curated-pagination { display: none; }
 .curated-swiper .swiper-button-prev,
@@ -2610,11 +2605,7 @@ body {
   margin-bottom: 4rem;
 }
 
-.why-title {
-  font-size: 2.8rem;
-  letter-spacing: 0.1rem;
-  margin: 0.5rem 0 0;
-}
+
 
 .why-grid {
   display: grid;
@@ -2760,7 +2751,7 @@ body {
     padding: 3rem 1.5rem;
     gap: 1.1rem;
   }
-  .story-title { font-size: 2.4rem; }
+ 
 }
 
 /* CTA Section - Elegant & Modern */
