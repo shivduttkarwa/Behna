@@ -146,7 +146,7 @@ new Swiper('.curated-swiper', {
 
 // Initialize New Arrivals Swiper
 document.addEventListener('DOMContentLoaded', function () {
-  new Swiper('.na-swiper', {
+  window.naSwiper = new Swiper('.na-swiper', {
     slidesPerView: 1,
     spaceBetween: 16,
     loop: false,
@@ -184,11 +184,12 @@ document.addEventListener('DOMContentLoaded', function () {
       },
     },
   });
+  window.naSwiper.autoplay.stop();
 });
 
 // Initialize Swiper for offers
 document.addEventListener('DOMContentLoaded', function() {
-  const offersSwiper = new Swiper('.offers-swiper', {
+  window.offersSwiper = new Swiper('.offers-swiper', {
     slidesPerView: 1,
     spaceBetween: 20,
     pagination: {
@@ -226,7 +227,7 @@ document.addEventListener('DOMContentLoaded', function() {
   });
   
   // Initialize Swiper for testimonials
-  const testimonialsSwiper = new Swiper('.testimonials-swiper', {
+  window.testimonialsSwiper = new Swiper('.testimonials-swiper', {
     slidesPerView: 1,
     spaceBetween: 20,
     pagination: {
@@ -257,6 +258,8 @@ document.addEventListener('DOMContentLoaded', function() {
       },
     },
   });
+  window.offersSwiper.autoplay.stop();
+  window.testimonialsSwiper.autoplay.stop();
 });
 
 // Menu functionality
@@ -890,6 +893,39 @@ function initTextAnimations() {
       ease: 'power2.out'
     });
   });
+
+  // ── New Arrivals — cards clip reveal bottom to top, staggered ──
+  const naCards = gsap.utils.toArray('.na-swiper .swiper-slide:not(.swiper-slide-duplicate) .na-card');
+  if (naCards.length) {
+    gsap.set(naCards, { clipPath: 'inset(100% 0 0 0)' });
+    gsap.to(naCards, {
+      scrollTrigger: { trigger: '.na-section', start: 'top 70%', toggleActions: 'play none none none' },
+      clipPath: 'inset(0% 0 0 0)',
+      duration: 1.0,
+      ease: 'power3.out',
+      stagger: 0.12,
+      onComplete: () => window.naSwiper && window.naSwiper.autoplay.start()
+    });
+  }
+
+  // ── Autoplay only while each slider section is in view ──
+  if (typeof ScrollTrigger !== 'undefined') {
+    [
+      { trigger: '.na-section',         swiper: () => window.naSwiper },
+      { trigger: '.special-offers',     swiper: () => window.offersSwiper },
+      { trigger: '.testimonials-section', swiper: () => window.testimonialsSwiper },
+    ].forEach(({ trigger, swiper }) => {
+      ScrollTrigger.create({
+        trigger,
+        start: 'top bottom',
+        end: 'bottom top',
+        onEnter:     () => swiper() && swiper().autoplay.start(),
+        onLeave:     () => swiper() && swiper().autoplay.stop(),
+        onEnterBack: () => swiper() && swiper().autoplay.start(),
+        onLeaveBack: () => swiper() && swiper().autoplay.stop(),
+      });
+    });
+  }
 
   // ── Intro image — clip-path wipe right to left ──
   const introImg = document.querySelector('.intro-img');
