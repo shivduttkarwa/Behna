@@ -4663,6 +4663,11 @@ body {
   .visit-left {
     padding: 4rem 1.5rem;
     gap: 1.5rem;
+    align-items: center;
+    text-align: center;
+  }
+  .visit-actions {
+    justify-content: center;
   }
   .visit-title { font-size: 3.5rem; }
   .visit-right { height: 60vw; }
