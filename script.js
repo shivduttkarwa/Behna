@@ -218,13 +218,12 @@ document.addEventListener('DOMContentLoaded', function() {
     slidesPerView: 1,
     spaceBetween: 20,
     pagination: {
-      el: '.testimonials-swiper .swiper-pagination',
+      el: '.t-pagination',
       clickable: true,
-      dynamicBullets: true,
     },
     navigation: {
-      nextEl: '.testimonials-swiper .swiper-button-next',
-      prevEl: '.testimonials-swiper .swiper-button-prev',
+      nextEl: '.t-btn-next',
+      prevEl: '.t-btn-prev',
     },
     autoplay: {
       delay: 6000,

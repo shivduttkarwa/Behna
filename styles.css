@@ -1729,9 +1729,52 @@ body {
   margin-bottom: 3.75rem;
 }
 
+.testimonials-controls-wrap {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.t-btn-prev,
+.t-btn-next {
+  flex-shrink: 0;
+  width: 2.75rem;
+  height: 2.75rem;
+  background: #ffffff;
+  border: 0.0625rem solid #e0e0e0;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #2c3e50;
+  font-size: 1.25rem;
+  box-shadow: 0 0.125rem 0.5rem rgba(0,0,0,0.08);
+  transition: background 0.2s, box-shadow 0.2s;
+  user-select: none;
+}
+
+.t-btn-prev:hover,
+.t-btn-next:hover {
+  background: #f5f5f5;
+  box-shadow: 0 0.25rem 0.9375rem rgba(0,0,0,0.12);
+}
+
+.t-btn-prev.swiper-button-disabled,
+.t-btn-next.swiper-button-disabled {
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+.t-pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
 .testimonials-swiper {
-  width: 100%;
-  padding-bottom: 3.75rem;
+  flex: 1;
+  min-width: 0;
   overflow: hidden;
 }
 
@@ -1861,51 +1904,6 @@ body {
   font-weight: 400;
 }
 
-/* Testimonials Navigation */
-.testimonials-swiper .swiper-button-next,
-.testimonials-swiper .swiper-button-prev {
-  color: #2c3e50;
-  background: #ffffff;
-  border: 0.0625rem solid #e8e8e8;
-  border-radius: 50%;
-  width: 3.125rem;
-  height: 3.125rem;
-  margin-top: 0;
-  transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  top: 50%;
-  transform: translateY(-50%);
-  box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.08);
-}
-
-.testimonials-swiper .swiper-button-next:hover,
-.testimonials-swiper .swiper-button-prev:hover {
-  background: #f8f9fa;
-  border-color: #d0d0d0;
-  color: #2c3e50;
-  transform: translateY(-50%) scale(1.1);
-  box-shadow: 0 0.25rem 0.9375rem rgba(0, 0, 0, 0.12);
-}
-
-.testimonials-swiper .swiper-button-next {
-  right: 1.25rem;
-}
-
-.testimonials-swiper .swiper-button-prev {
-  left: 1.25rem;
-}
-
-.testimonials-swiper .swiper-button-next::after,
-.testimonials-swiper .swiper-button-prev::after {
-  font-size: 1rem;
-  font-weight: bold;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
 
 /* Mobile Responsive for Testimonials */
 @media (max-width: 768px) {
@@ -1962,22 +1960,22 @@ body {
     font-size: 0.8rem;
   }
 
-  .testimonials-swiper .swiper-button-next,
-  .testimonials-swiper .swiper-button-prev {
-    display: none !important;
+  .t-btn-prev,
+  .t-btn-next {
+    display: none;
   }
 
-  .testimonials-swiper .swiper-pagination {
-    margin-top: 1.875rem !important;
+  .t-pagination {
+    margin-top: 1rem;
   }
 
-  .testimonials-swiper .swiper-pagination-bullet {
+  .t-pagination .swiper-pagination-bullet {
     width: 0.625rem !important;
     height: 0.625rem !important;
     margin: 0 0.25rem !important;
   }
 
-  .testimonials-swiper .swiper-pagination-bullet-active {
+  .t-pagination .swiper-pagination-bullet-active {
     width: 1.5rem !important;
     height: 0.625rem !important;
     border-radius: 0.75rem !important;
@@ -1985,22 +1983,14 @@ body {
 }
 
 /* Testimonials Pagination */
-.testimonials-swiper .swiper-pagination {
-  position: relative !important;
-  margin-top: 2.5rem !important;
-  display: flex !important;
-  justify-content: center !important;
-  align-items: center !important;
-  text-align: center !important;
-  bottom: auto !important;
-  left: 50% !important;
-  right: auto !important;
-  width: 100% !important;
-  transform: translateX(-50%) !important;
-  z-index: 10 !important;
+.t-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1.5rem;
 }
 
-.testimonials-swiper .swiper-pagination-bullet {
+.t-pagination .swiper-pagination-bullet {
   width: 0.75rem !important;
   height: 0.75rem !important;
   background: #000000 !important;
@@ -2013,12 +2003,12 @@ body {
   border: none !important;
 }
 
-.testimonials-swiper .swiper-pagination-bullet:hover {
+.t-pagination .swiper-pagination-bullet:hover {
   opacity: 0.6 !important;
   transform: scale(1.1) !important;
 }
 
-.testimonials-swiper .swiper-pagination-bullet-active {
+.t-pagination .swiper-pagination-bullet-active {
   background: #000000 !important;
   opacity: 1 !important;
   width: 1.875rem !important;

@@ -220,15 +220,66 @@
         .coll-swiper .na-card { height: 520px; }
       }
 
-      /* Nav arrows themed to section */
-      .coll-prev,
-      .coll-next {
-        color: #1a1a1a !important;
+      /* Slider wrapper: buttons on sides, swiper in center */
+      .coll-slider-wrap {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-top: 2rem;
       }
-      .coll-prev::after,
-      .coll-next::after {
-        font-size: 1rem !important;
-        font-weight: 700;
+      .coll-swiper {
+        flex: 1;
+        min-width: 0;
+        overflow: hidden;
+      }
+      .coll-btn-prev,
+      .coll-btn-next {
+        flex-shrink: 0;
+        width: 3rem;
+        height: 3rem;
+        background: #2c3e50;
+        color: #fff;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        font-size: 1.4rem;
+        transition: background 0.2s;
+        user-select: none;
+      }
+      .coll-btn-prev:hover,
+      .coll-btn-next:hover {
+        background: #1a2635;
+      }
+      .coll-btn-prev.swiper-button-disabled,
+      .coll-btn-next.swiper-button-disabled {
+        opacity: 0.3;
+        pointer-events: none;
+      }
+      .coll-pagination {
+        display: flex;
+        justify-content: center;
+        margin-top: 1.25rem;
+      }
+      .coll-pagination .swiper-pagination-bullet {
+        width: 0.6rem;
+        height: 0.6rem;
+        background: #2c3e50;
+        opacity: 0.3;
+        border-radius: 50%;
+        margin: 0 0.3rem;
+        transition: all 0.3s;
+        cursor: pointer;
+      }
+      .coll-pagination .swiper-pagination-bullet-active {
+        opacity: 1;
+        width: 1.5rem;
+        border-radius: 0.25rem;
+      }
+      @media (max-width: 768px) {
+        .coll-btn-prev, .coll-btn-next { display: none; }
+        .coll-slider-wrap { gap: 0; }
       }
 
       /* WhatsApp enquiry button — sits inside na-content above the name */
@@ -392,7 +443,9 @@
         <div class="coll-divider"></div>
       </div>
 
-      <div class="swiper coll-swiper suits-swiper">
+      <div class="coll-slider-wrap">
+        <div class="coll-btn-prev suits-prev"><i class="ri-arrow-left-s-line"></i></div>
+        <div class="swiper coll-swiper suits-swiper">
         <div class="swiper-wrapper">
           <div class="swiper-slide">
             <div class="na-card">
@@ -445,10 +498,10 @@
             </div>
           </div>
         </div>
-        <div class="swiper-button-prev coll-prev"></div>
-        <div class="swiper-button-next coll-next"></div>
-        <div class="swiper-pagination suits-pagination"></div>
+        </div>
+        <div class="coll-btn-next suits-next"><i class="ri-arrow-right-s-line"></i></div>
       </div>
+      <div class="suits-pagination coll-pagination"></div>
     </section>
 
     <!-- ── 02 · Kurtis ── -->
@@ -462,7 +515,9 @@
         <div class="coll-divider"></div>
       </div>
 
-      <div class="swiper coll-swiper kurtis-swiper">
+      <div class="coll-slider-wrap">
+        <div class="coll-btn-prev kurtis-prev"><i class="ri-arrow-left-s-line"></i></div>
+        <div class="swiper coll-swiper kurtis-swiper">
         <div class="swiper-wrapper">
           <div class="swiper-slide">
             <div class="na-card">
@@ -505,10 +560,10 @@
             </div>
           </div>
         </div>
-        <div class="swiper-button-prev coll-prev"></div>
-        <div class="swiper-button-next coll-next"></div>
-        <div class="swiper-pagination kurtis-pagination"></div>
+        </div>
+        <div class="coll-btn-next kurtis-next"><i class="ri-arrow-right-s-line"></i></div>
       </div>
+      <div class="kurtis-pagination coll-pagination"></div>
     </section>
 
     <!-- ── 03 · Anarkali ── -->
@@ -522,7 +577,9 @@
         <div class="coll-divider"></div>
       </div>
 
-      <div class="swiper coll-swiper anarkali-swiper">
+      <div class="coll-slider-wrap">
+        <div class="coll-btn-prev anarkali-prev"><i class="ri-arrow-left-s-line"></i></div>
+        <div class="swiper coll-swiper anarkali-swiper">
         <div class="swiper-wrapper">
           <div class="swiper-slide">
             <div class="na-card">
@@ -565,10 +622,10 @@
             </div>
           </div>
         </div>
-        <div class="swiper-button-prev coll-prev"></div>
-        <div class="swiper-button-next coll-next"></div>
-        <div class="swiper-pagination anarkali-pagination"></div>
+        </div>
+        <div class="coll-btn-next anarkali-next"><i class="ri-arrow-right-s-line"></i></div>
       </div>
+      <div class="anarkali-pagination coll-pagination"></div>
     </section>
 
     <!-- ── 04 · Co-ord Sets ── -->
@@ -582,7 +639,9 @@
         <div class="coll-divider"></div>
       </div>
 
-      <div class="swiper coll-swiper coords-swiper">
+      <div class="coll-slider-wrap">
+        <div class="coll-btn-prev coords-prev"><i class="ri-arrow-left-s-line"></i></div>
+        <div class="swiper coll-swiper coords-swiper">
         <div class="swiper-wrapper">
           <div class="swiper-slide">
             <div class="na-card">
@@ -615,10 +674,10 @@
             </div>
           </div>
         </div>
-        <div class="swiper-button-prev coll-prev"></div>
-        <div class="swiper-button-next coll-next"></div>
-        <div class="swiper-pagination coords-pagination"></div>
+        </div>
+        <div class="coll-btn-next coords-next"><i class="ri-arrow-right-s-line"></i></div>
       </div>
+      <div class="coords-pagination coll-pagination"></div>
     </section>
 
     <!-- ── 05 · Festival Wears ── -->
@@ -632,7 +691,9 @@
         <div class="coll-divider"></div>
       </div>
 
-      <div class="swiper coll-swiper festival-swiper">
+      <div class="coll-slider-wrap">
+        <div class="coll-btn-prev festival-prev"><i class="ri-arrow-left-s-line"></i></div>
+        <div class="swiper coll-swiper festival-swiper">
         <div class="swiper-wrapper">
           <div class="swiper-slide">
             <div class="na-card">
@@ -718,10 +779,10 @@
             </div>
           </div>
         </div>
-        <div class="swiper-button-prev coll-prev"></div>
-        <div class="swiper-button-next coll-next"></div>
-        <div class="swiper-pagination festival-pagination"></div>
+        </div>
+        <div class="coll-btn-next festival-next"><i class="ri-arrow-right-s-line"></i></div>
       </div>
+      <div class="festival-pagination coll-pagination"></div>
     </section>
 
     <!-- Full Width CTA -->
@@ -906,10 +967,7 @@
         grabCursor: true,
         autoplay: { delay: 3500, disableOnInteraction: false, pauseOnMouseEnter: true },
         pagination: { clickable: true },
-        navigation: {
-          prevEl: '.swiper-button-prev',
-          nextEl: '.swiper-button-next',
-        },
+        navigation: false,
         breakpoints: {
           480:  { slidesPerView: 2, spaceBetween: 16 },
           768:  { slidesPerView: 2, spaceBetween: 20 },
@@ -919,11 +977,11 @@
       };
 
       document.addEventListener('DOMContentLoaded', function () {
-        new Swiper('.suits-swiper',    { ...collSwiperConfig, slidesPerView: 1, pagination: { el: '.suits-pagination',    clickable: true }, navigation: { prevEl: '.suits-swiper .swiper-button-prev',    nextEl: '.suits-swiper .swiper-button-next' } });
-        new Swiper('.kurtis-swiper',   { ...collSwiperConfig, slidesPerView: 1, pagination: { el: '.kurtis-pagination',   clickable: true }, navigation: { prevEl: '.kurtis-swiper .swiper-button-prev',   nextEl: '.kurtis-swiper .swiper-button-next' } });
-        new Swiper('.anarkali-swiper', { ...collSwiperConfig, slidesPerView: 1, pagination: { el: '.anarkali-pagination', clickable: true }, navigation: { prevEl: '.anarkali-swiper .swiper-button-prev', nextEl: '.anarkali-swiper .swiper-button-next' } });
-        new Swiper('.coords-swiper',   { ...collSwiperConfig, slidesPerView: 1, pagination: { el: '.coords-pagination',   clickable: true }, navigation: { prevEl: '.coords-swiper .swiper-button-prev',   nextEl: '.coords-swiper .swiper-button-next' } });
-        new Swiper('.festival-swiper', { ...collSwiperConfig, slidesPerView: 1, pagination: { el: '.festival-pagination', clickable: true }, navigation: { prevEl: '.festival-swiper .swiper-button-prev', nextEl: '.festival-swiper .swiper-button-next' } });
+        new Swiper('.suits-swiper',    { ...collSwiperConfig, slidesPerView: 1, pagination: { el: '.suits-pagination',    clickable: true }, navigation: { prevEl: '.suits-prev',    nextEl: '.suits-next' } });
+        new Swiper('.kurtis-swiper',   { ...collSwiperConfig, slidesPerView: 1, pagination: { el: '.kurtis-pagination',   clickable: true }, navigation: { prevEl: '.kurtis-prev',   nextEl: '.kurtis-next' } });
+        new Swiper('.anarkali-swiper', { ...collSwiperConfig, slidesPerView: 1, pagination: { el: '.anarkali-pagination', clickable: true }, navigation: { prevEl: '.anarkali-prev', nextEl: '.anarkali-next' } });
+        new Swiper('.coords-swiper',   { ...collSwiperConfig, slidesPerView: 1, pagination: { el: '.coords-pagination',   clickable: true }, navigation: { prevEl: '.coords-prev',   nextEl: '.coords-next' } });
+        new Swiper('.festival-swiper', { ...collSwiperConfig, slidesPerView: 1, pagination: { el: '.festival-pagination', clickable: true }, navigation: { prevEl: '.festival-prev', nextEl: '.festival-next' } });
       });
 
       // Smooth scroll for hero nav links
