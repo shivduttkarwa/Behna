@@ -25,7 +25,7 @@ $(document).ready(function() {
     setTimeout(function() {
       document.querySelector('.fab-stack').classList.add('visible');
       window.dispatchEvent(new Event('behnaReady'));
-    }, 1200);
+    }, 400);
   }, 3000);
 });
 
