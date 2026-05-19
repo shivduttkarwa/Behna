@@ -21,9 +21,10 @@ $(document).ready(function() {
       });
     }
 
-    // Show FAB buttons after preloader is gone
+    // Show FAB buttons and fire animation start
     setTimeout(function() {
       document.querySelector('.fab-stack').classList.add('visible');
+      window.dispatchEvent(new Event('behnaReady'));
     }, 1200);
   }, 3000);
 });
@@ -813,4 +814,97 @@ window.addEventListener('scroll', () => {
     }
   }
 });
+
+// ── GSAP Text Reveal Animations ──
+
+// Manual character splitter — fallback if SplitText unavailable
+function splitChars(el) {
+  const text = el.textContent;
+  el.innerHTML = '';
+  el.setAttribute('aria-label', text);
+  return [...text].map(char => {
+    const span = document.createElement('span');
+    span.style.cssText = 'display:inline-block;white-space:pre;';
+    span.textContent = char;
+    el.appendChild(span);
+    return span;
+  });
+}
+
+function getChars(el) {
+  if (typeof SplitText !== 'undefined') {
+    const split = new SplitText(el, { type: 'chars', aria: true });
+    return split.chars;
+  }
+  return splitChars(el);
+}
+
+function typewriteEl(el, scrollTriggerConfig) {
+  const chars = getChars(el);
+  gsap.from(chars, {
+    scrollTrigger: scrollTriggerConfig || null,
+    opacity: 0,
+    duration: 0.001,
+    ease: 'none',
+    stagger: 0.022
+  });
+}
+
+function initTextAnimations() {
+  if (typeof gsap === 'undefined') return;
+  if (typeof ScrollTrigger !== 'undefined') gsap.registerPlugin(ScrollTrigger);
+  if (typeof SplitText !== 'undefined') gsap.registerPlugin(SplitText);
+
+  // ── Logo zoom-in (fires first) ──
+  const logoDoneAt = 0.15 + 0.85; // 1.0s
+  gsap.fromTo('.logo-master',
+    { scale: 0.45, opacity: 0 },
+    { scale: 1, opacity: 1, duration: 0.85, ease: 'back.out(1.7)', delay: 0.15 }
+  );
+
+  // ── Hero title — starts after logo finishes ──
+  const titleDelay = logoDoneAt + 0.05;
+  const heroTitle = document.querySelector('.hero-collection');
+  if (heroTitle) {
+    gsap.set(heroTitle, { opacity: 1 });
+    const chars = getChars(heroTitle);
+    const titleDuration = chars.length * 0.025;
+    gsap.from(chars, {
+      opacity: 0,
+      duration: 0.001,
+      ease: 'none',
+      stagger: 0.025,
+      delay: titleDelay
+    });
+    gsap.to('.hero-subtitle', { opacity: 1, duration: 0.7, ease: 'power2.out', delay: titleDelay + titleDuration });
+    gsap.to('.hero-buttons',  { opacity: 1, duration: 0.6, ease: 'power2.out', delay: titleDelay + titleDuration + 0.35 });
+  }
+
+  // ── Section titles — scroll triggered ──
+  const titleSelectors = [
+    '.na-section-title', '.curated-title', '.why-title',
+    '.story-title', '.testimonials-main',
+    '.coll-hero-title', '.coll-title-group h2'
+  ];
+
+  gsap.utils.toArray(titleSelectors.join(',')).forEach(el => {
+    typewriteEl(el, {
+      trigger: el,
+      start: 'top 88%',
+      toggleActions: 'play none none none'
+    });
+  });
+}
+
+// First visit: wait for preloader to finish
+// Return visit / reload: run immediately after scripts load
+const _isReload = performance.getEntriesByType('navigation')[0]?.type === 'reload';
+const _isReturn = sessionStorage.getItem('behna_visited') && !_isReload;
+
+if (_isReturn) {
+  // DOMContentLoaded already fired at this point — call directly
+  initTextAnimations();
+} else {
+  window.addEventListener('behnaReady', initTextAnimations);
+}
 
