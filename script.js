@@ -202,7 +202,7 @@ document.addEventListener('DOMContentLoaded', function() {
       delay: 5000,
       disableOnInteraction: false,
     },
-    loop: true,
+    loop: false,
     effect: 'slide',
     speed: 600,
     allowTouchMove: true,
@@ -217,8 +217,8 @@ document.addEventListener('DOMContentLoaded', function() {
         spaceBetween: 30,
       },
       1024: {
-        slidesPerView: 2,
-        spaceBetween: 40,
+        slidesPerView: 3,
+        spaceBetween: 24,
       },
     },
   });
