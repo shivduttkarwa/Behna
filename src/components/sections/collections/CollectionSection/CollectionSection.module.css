@@ -1,0 +1,125 @@
+/* Collection Category Section — verbatim from original, scoped as a module */
+.collSection {
+  padding: 5rem 2.5rem 4rem;
+  background: #fff;
+}
+
+/* Alternating background — driven by index for deterministic order */
+.cream { background: #f8f7f5; }
+
+.collSectionHead {
+  display: flex;
+  align-items: flex-end;
+  gap: 1.25rem;
+  margin-bottom: 2.5rem;
+}
+
+.collNum {
+  font-family: var(--font-display);
+  font-size: clamp(4rem, 6vw, 6rem);
+  font-weight: 500;
+  color: #e8e2db;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.collTitleGroup { flex: 1; }
+
+.collTitleGroup h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #1a1a1a;
+  margin-bottom: 0.25rem;
+}
+
+.collTitleGroup p {
+  font-size: 0.8rem;
+  color: #888;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.collDivider {
+  flex: 1;
+  height: 1px;
+  background: #ddd;
+  margin-bottom: 0.9rem;
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .collDivider { display: block; }
+}
+
+/* Slider */
+.collSliderWrap {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.collSwiper {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.collSwiper :global(.swiper-slide) { height: 420px; }
+@media (min-width: 768px) { .collSwiper :global(.swiper-slide) { height: 480px; } }
+@media (min-width: 1024px) { .collSwiper :global(.swiper-slide) { height: 520px; } }
+
+.collBtn {
+  flex-shrink: 0;
+  width: 3rem;
+  height: 3rem;
+  background: #2c3e50;
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1.4rem;
+  transition: background 0.2s;
+  user-select: none;
+}
+
+.collBtn:hover { background: #1a2635; }
+
+.collBtn:global(.swiper-button-disabled) {
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+.collPagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.25rem;
+}
+
+.collPagination :global(.swiper-pagination-bullet) {
+  width: 0.6rem;
+  height: 0.6rem;
+  background: #2c3e50;
+  opacity: 0.3;
+  border-radius: 50%;
+  margin: 0 0.3rem;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.collPagination :global(.swiper-pagination-bullet-active) {
+  opacity: 1;
+  width: 1.5rem;
+  border-radius: 0.25rem;
+}
+
+@media (max-width: 768px) {
+  .collSection { padding: 3.5rem 1.25rem 3rem; }
+  .collBtn { display: none; }
+  .collSliderWrap { gap: 0; }
+}

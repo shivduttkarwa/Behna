@@ -1,0 +1,107 @@
+/* =====================================================
+   RESPONSIVE REM SCALE  (verbatim from original)
+   All sizing uses rem. The root font-size steps up on
+   large displays and down on small ones, so every rem
+   value scales proportionally.
+   Base reference: 1rem = 16px at 1440px viewport.
+   ===================================================== */
+html {
+  font-size: 16px; /* 1440px – 1599px (base) */
+  overflow-x: hidden;
+}
+@media (min-width: 1600px) {
+  html { font-size: 17px; }
+}
+@media (min-width: 1920px) {
+  html { font-size: 18px; }
+}
+@media (min-width: 2560px) {
+  html { font-size: 22px; }
+}
+@media (min-width: 3000px) {
+  html { font-size: 26px; }
+}
+
+@media (max-width: 1400px) {
+  html { font-size: 15px; }
+}
+@media (max-width: 1200px) {
+  html { font-size: 14.5px; }
+}
+@media (max-width: 1024px) {
+  html { font-size: 14px; }
+}
+@media (max-width: 768px) {
+  html { font-size: 16px; }
+}
+@media (max-width: 480px) {
+  html { font-size: 16px; }
+}
+@media (max-width: 360px) {
+  html { font-size: 15px; }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a[href^="tel"] {
+  color: inherit;
+  text-decoration: none;
+}
+
+body {
+  font-family: var(--font-body);
+  line-height: 1.6;
+  color: var(--color-text);
+  background: var(--color-bg);
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* Body scroll lock — toggled by React when an overlay / preloader is open */
+body.no-scroll-y {
+  overflow: hidden;
+  height: 100vh;
+  touch-action: none;
+}
+
+/* =====================================================
+   GLOBAL SECTION PRIMITIVES  (verbatim from original)
+   Shared across many sections, so they live globally.
+   ===================================================== */
+.section-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding: 0 1rem;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: 3rem;
+  font-weight: 300;
+  color: var(--color-ink);
+  text-transform: uppercase;
+  letter-spacing: 0.15rem;
+  display: block;
+  margin: 0;
+}
+
+/* Small uppercase eyebrow badge — used above most section titles */
+.offers-badge {
+  display: inline-block;
+  padding: 0;
+  margin-bottom: 1.875rem;
+}
+
+.badge-text {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  color: var(--color-ink);
+  letter-spacing: 0.1875rem;
+  text-transform: uppercase;
+  position: relative;
+  z-index: 1;
+}

@@ -1,0 +1,96 @@
+/* Sliding Menu — verbatim from original, scoped as a module */
+.menuOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: var(--z-overlay);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.menuOverlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.menuContent {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 31.25rem;
+  height: 100%;
+  background: white;
+  transform: translateX(100%);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow-y: auto;
+}
+
+.menuOverlay.active .menuContent {
+  transform: translateX(0);
+}
+
+.menuHeader {
+  padding: 1.5625rem 2.5rem;
+  border-bottom: 0.0625rem solid #eee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 6.25rem;
+}
+
+.menuCloseText {
+  background: none;
+  border: none;
+  font-size: 0.75rem;
+  letter-spacing: 0.125rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  color: #666;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.menuItems {
+  padding: 2.5rem;
+}
+
+.menuCategory {
+  margin-bottom: 2.5rem;
+}
+
+.menuCategoryTitle {
+  font-size: 1.1rem;
+  font-weight: 500;
+  letter-spacing: 0.125rem;
+  text-transform: uppercase;
+  margin-bottom: 1.25rem;
+  color: #000;
+}
+
+.menuLinks {
+  list-style: none;
+}
+
+.menuLinks li {
+  margin-bottom: 0.9375rem;
+}
+
+.menuLinks a {
+  color: #666;
+  text-decoration: none;
+  font-size: 0.95rem;
+  letter-spacing: 0.0625rem;
+  transition: color 0.3s ease;
+}
+
+.menuLinks a:hover {
+  color: #000;
+}
+
+@media screen and (max-width: 480px) {
+  .menuContent { width: 100vw; }
+}

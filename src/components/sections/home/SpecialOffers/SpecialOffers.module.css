@@ -1,0 +1,385 @@
+/* Special Offers Section — verbatim from original, scoped as a module.
+   Note: the original re-declares .special-offers later with the light theme
+   below, which wins the cascade — reproduced here as the single source. */
+.specialOffers {
+  background: #f8f9fa;
+  padding: 4rem 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.offersContainer {
+  margin: 0 auto;
+  padding: 0 1.25rem;
+  position: relative;
+  z-index: 2;
+}
+
+.offersHeader {
+  margin-bottom: 5rem;
+  animation: elegantFadeIn 1.2s ease-out;
+}
+
+.offersGrid {
+  display: block;
+  margin-bottom: 5rem;
+}
+
+/* Swiper */
+.offersSwiper {
+  width: 100%;
+  padding-bottom: 3.75rem;
+  overflow: hidden;
+}
+
+.offersSwiper :global(.swiper-wrapper) {
+  display: flex;
+  align-items: flex-start;
+  height: 28.125rem;
+}
+
+.offersSwiper :global(.swiper-slide) {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  height: 28.125rem;
+  flex-shrink: 0;
+  width: auto;
+}
+
+.offersSwiper :global(.swiper-pagination) {
+  position: relative !important;
+  margin-top: 1.875rem;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  bottom: auto !important;
+  z-index: 10 !important;
+}
+
+.offersSwiper :global(.swiper-pagination-bullet) {
+  width: 0.5rem !important;
+  height: 0.5rem !important;
+  background: rgba(0, 0, 0, 0.4) !important;
+  border-radius: 50% !important;
+  opacity: 1 !important;
+  transition: all 0.3s ease !important;
+  margin: 0 0.25rem !important;
+  display: inline-block !important;
+  cursor: pointer !important;
+}
+
+.offersSwiper :global(.swiper-pagination-bullet):hover {
+  background: rgba(0, 0, 0, 0.6) !important;
+}
+
+.offersSwiper :global(.swiper-pagination-bullet-active) {
+  background: #000000 !important;
+  width: 1.5rem !important;
+  border-radius: 0.75rem !important;
+  height: 0.5rem !important;
+}
+
+.offersSwiper :global(.swiper-button-next),
+.offersSwiper :global(.swiper-button-prev) {
+  color: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(0.625rem);
+  border: 0.0625rem solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  width: 3.125rem;
+  height: 3.125rem;
+  margin-top: 0;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.offersSwiper :global(.swiper-button-next):hover,
+.offersSwiper :global(.swiper-button-prev):hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.4);
+  color: rgba(255, 255, 255, 0.9);
+  transform: scale(1.1);
+}
+
+.offersSwiper :global(.swiper-button-next)::after,
+.offersSwiper :global(.swiper-button-prev)::after {
+  font-size: 1rem;
+  font-weight: bold;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.offersSwiper :global(.swiper-button-next) { right: 0.625rem; top: 50%; margin-top: -1.5625rem; }
+.offersSwiper :global(.swiper-button-prev) { left: 0.625rem; top: 50%; margin-top: -1.5625rem; }
+
+.offersSwiper :global(.swiper-button-disabled) { opacity: 0.3; cursor: not-allowed; }
+
+/* Offer card */
+.offerCard {
+  position: relative;
+  height: 28.125rem;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+  border: 0.0625rem solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.02);
+  flex-shrink: 0;
+}
+
+.offerCard:hover {
+  transform: translateY(-0.3125rem);
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 1.5625rem 3.125rem rgba(0, 0, 0, 0.3);
+}
+
+.cardBackground {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.cardBgImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  transition: transform 0.8s ease;
+  filter: contrast(1.1) brightness(1.1);
+}
+
+.offerCard:hover .cardBgImage {
+  transform: scale(1.05);
+  filter: contrast(1.2) brightness(1.2);
+}
+
+.cardContent {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.85) 100%);
+  padding: 3.125rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  color: white;
+  z-index: 3;
+}
+
+.cardBadge {
+  position: absolute;
+  top: 1.875rem;
+  right: 1.875rem;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(1.25rem);
+  border: 0.0625rem solid rgba(255, 255, 255, 0.1);
+  padding: 0.5rem 1rem;
+  font-size: 0.5625rem;
+  font-weight: 400;
+  letter-spacing: 0.125rem;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+
+.cardTitle {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  font-weight: 300;
+  margin: 0 0 0.9375rem 0;
+  text-transform: uppercase;
+  letter-spacing: 0.25rem;
+  position: relative;
+}
+
+.cardTitle::after {
+  content: "";
+  position: absolute;
+  bottom: -0.3125rem;
+  left: 0;
+  width: 2.5rem;
+  height: 0.0625rem;
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.cardDiscount {
+  font-size: 3.5rem;
+  font-weight: 100;
+  color: #ffffff;
+  margin: 0 0 1.25rem 0;
+  letter-spacing: 0.125rem;
+  position: relative;
+}
+
+.cardDiscount::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -1.25rem;
+  width: 0.9375rem;
+  height: 0.0625rem;
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.cardDescription {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 0 0 2.1875rem 0;
+  opacity: 0.7;
+  font-weight: 300;
+  letter-spacing: 0.0312rem;
+}
+
+.cardDecoration {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.floatingElement {
+  position: absolute;
+  width: 0.125rem;
+  height: 3.75rem;
+  background: rgba(255, 255, 255, 0.1);
+  animation: elegantFloat 8s ease-in-out infinite;
+}
+
+.floatingElement:nth-child(1) { top: 20%; left: 1.25rem; animation-delay: 0s; }
+.floatingElement:nth-child(2) { bottom: 30%; right: 1.25rem; animation-delay: 4s; transform: rotate(45deg); }
+
+/* Countdown timer */
+.offersTimer {
+  width: 100vw;
+  max-width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  background: #000000;
+  backdrop-filter: blur(1.875rem);
+  border-top: 0.0625rem solid rgba(255, 255, 255, 0.2);
+  border-bottom: 0.0625rem solid rgba(255, 255, 255, 0.2);
+  padding: 3.75rem 1.25rem;
+  text-align: center;
+  animation: elegantFadeIn 1s ease-out 0.8s both;
+  position: relative;
+  box-shadow: 0 0.625rem 1.875rem rgba(0, 0, 0, 0.3);
+}
+
+.offersTimer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 6.25rem;
+  height: 0.0625rem;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+}
+
+.timerContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.875rem;
+}
+
+.timerLabel {
+  font-size: 1rem;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.9);
+  text-transform: uppercase;
+  letter-spacing: 0.1875rem;
+}
+
+.timerDisplay {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.timerUnit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(1.25rem);
+  border: 0.0625rem solid rgba(255, 255, 255, 0.3);
+  padding: 1.5625rem 1.25rem;
+  min-width: 5.625rem;
+  transition: all 0.3s ease;
+}
+
+.timerUnit:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.timerNumber {
+  font-size: 2.8rem;
+  font-weight: 200;
+  color: #ffffff;
+  letter-spacing: 0.0625rem;
+}
+
+.timerText {
+  font-size: 0.8rem;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.8);
+  text-transform: uppercase;
+  letter-spacing: 0.125rem;
+  margin-top: 0.5rem;
+}
+
+.timerSeparator {
+  font-size: 1.5rem;
+  font-weight: 100;
+  color: rgba(255, 255, 255, 0.3);
+  animation: elegantPulse 2s infinite;
+}
+
+@keyframes elegantFadeIn {
+  from { opacity: 0; transform: translateY(1.875rem); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes elegantFloat {
+  0%, 100% { transform: translateY(0) scaleY(1); opacity: 0.3; }
+  50% { transform: translateY(-0.9375rem) scaleY(1.2); opacity: 0.6; }
+}
+
+@keyframes elegantPulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.8; }
+}
+
+@media (max-width: 768px) {
+  .offersSwiper :global(.swiper-button-next),
+  .offersSwiper :global(.swiper-button-prev) { display: none !important; }
+  .offersGrid { display: block; margin-bottom: 3.75rem; }
+  .offerCard { height: 25rem; width: 100%; max-width: 21.875rem; margin: 0 auto; }
+  .cardContent { padding: 2.5rem; }
+  .cardDiscount { font-size: 3rem; }
+  .timerDisplay { gap: 0.9375rem; flex-wrap: nowrap; }
+  .timerUnit { min-width: 3.75rem; padding: 0.9375rem 0.625rem; }
+  .timerNumber { font-size: 1.8rem; }
+  .timerText { font-size: 0.7rem; }
+  .timerSeparator { font-size: 1.2rem; }
+}
+
+@media (max-width: 480px) {
+  .cardTitle { font-size: 1.8rem; letter-spacing: 0.1875rem; }
+  .cardDiscount { font-size: 2.5rem; }
+  .cardContent { padding: 2.1875rem; }
+  .timerDisplay { gap: 0.5rem; flex-wrap: nowrap; justify-content: center; }
+  .timerUnit { min-width: 2.8125rem; padding: 0.625rem 0.375rem; flex-shrink: 0; }
+  .timerNumber { font-size: 1.2rem; }
+  .timerText { font-size: 0.6rem; margin-top: 0.25rem; }
+  .timerSeparator { font-size: 0.9rem; flex-shrink: 0; }
+  .offersTimer { padding: 1.875rem 0.9375rem; }
+}

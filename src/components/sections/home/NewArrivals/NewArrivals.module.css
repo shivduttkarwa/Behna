@@ -1,0 +1,74 @@
+/* ── New Arrivals Section ── verbatim from original, scoped as a module */
+.naSection {
+  padding: 5rem 0 3rem;
+  background: #fff;
+  overflow: hidden;
+}
+
+.naSectionHeader {
+  margin-bottom: 3.5rem;
+}
+
+.naSwiper {
+  width: 100%;
+  padding: 0 0 3.5rem;
+  overflow: hidden;
+}
+
+.naSwiper :global(.swiper-slide) {
+  height: 33rem;
+}
+
+/* Nav arrows */
+.naSwiper :global(.swiper-button-prev),
+.naSwiper :global(.swiper-button-next) {
+  width: 3rem;
+  height: 3rem;
+  background: #2c3e50;
+  border-radius: 50%;
+  color: #fff;
+  top: 44%;
+  transition: opacity 0.3s ease, background 0.3s ease;
+}
+
+.naSwiper :global(.swiper-button-prev)::after,
+.naSwiper :global(.swiper-button-next)::after {
+  font-size: 0.8rem;
+  font-weight: 900;
+}
+
+.naSwiper :global(.swiper-button-prev):hover,
+.naSwiper :global(.swiper-button-next):hover {
+  background: #1a2635;
+}
+
+.naSwiper :global(.swiper-button-disabled) {
+  opacity: 0.25 !important;
+  cursor: not-allowed !important;
+  pointer-events: none;
+}
+
+/* Pagination dots */
+.naSwiper :global(.swiper-pagination-bullet) {
+  background: #ccc;
+  opacity: 1;
+}
+
+.naSwiper :global(.swiper-pagination-bullet-active) {
+  background: #2c3e50;
+  width: 1.5rem;
+  border-radius: 0.25rem;
+}
+
+.viewAll {
+  text-align: center;
+  margin-top: 2.5rem;
+}
+
+@media (max-width: 768px) {
+  .naSwiper :global(.swiper-slide) { height: 31.2rem; }
+}
+
+@media (max-width: 480px) {
+  .naSwiper :global(.swiper-slide) { height: 26.4rem; }
+}

@@ -1,0 +1,92 @@
+/* Header — verbatim from original, scoped as a module */
+.header {
+  position: fixed;
+  top: -1px;
+  left: 0;
+  right: 0;
+  background: transparent;
+  z-index: var(--z-header);
+  padding: calc(1.5625rem + 1px) 2.5rem 1.5625rem;
+  transition: background 0.4s ease, backdrop-filter 0.4s ease;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.header.scrolled {
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(0.625rem);
+}
+
+.navContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  height: 100%;
+}
+
+.navLeft {
+  display: flex;
+  align-items: center;
+}
+
+.navRight {
+  display: flex;
+  align-items: center;
+}
+
+.navIcons {
+  display: flex;
+  gap: 1.5625rem;
+  align-items: center;
+}
+
+.menuText {
+  font-size: 0.9rem;
+  letter-spacing: 0.15rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  color: #fff;
+  font-weight: 400;
+  transition: color 0.3s ease;
+}
+
+.header.scrolled .menuText {
+  color: #000;
+}
+
+/* Contact Us in Navbar */
+.contactText {
+  font-size: 0.9rem;
+  letter-spacing: 0.15rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  color: #fff;
+  font-weight: 400;
+  transition: color 0.3s ease;
+  margin-right: auto;
+}
+
+.header.scrolled .contactText {
+  color: #000;
+}
+
+.contactIcon {
+  margin-right: 0.5rem;
+  font-size: 0.875rem;
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.contactText:hover .contactIcon {
+  transform: rotate(180deg);
+}
+
+@media (max-width: 768px) {
+  .contactText { font-size: 0.75rem; letter-spacing: 0.06rem; }
+  .menuText { font-size: 0.75rem; letter-spacing: 0.06rem; }
+  .navIcons { gap: 0.875rem; }
+  .header { padding: calc(1rem + 1px) 1.25rem 1rem; }
+}

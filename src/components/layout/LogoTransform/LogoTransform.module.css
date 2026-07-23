@@ -1,0 +1,31 @@
+/* Logo Transformation System — verbatim from original, scoped as a module */
+.logoMaster {
+  position: fixed;
+  top: 5vh;
+  left: 0;
+  right: 0;
+  width: fit-content;
+  margin: 0 auto;
+  z-index: var(--z-overlay);
+  text-align: center;
+  pointer-events: none;
+  transition: top 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  opacity: 0;
+}
+
+.mainLogo {
+  position: relative;
+}
+
+.mainLogo img {
+  height: 12.5rem;
+  width: auto;
+  filter: brightness(0) invert(1);
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (min-width: 769px) {
+  .mainLogo img {
+    height: 15rem;
+  }
+}

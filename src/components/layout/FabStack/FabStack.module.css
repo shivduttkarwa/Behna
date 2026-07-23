@@ -1,0 +1,91 @@
+/* Floating Action Button Stack — verbatim from original, scoped as a module */
+.fabStack {
+  position: fixed;
+  bottom: 1.875rem;
+  right: 1.875rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  z-index: var(--z-fab);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+}
+
+.fabStack.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.fab {
+  width: 3.125rem;
+  height: 3.125rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  box-shadow: 0 0.25rem 0.9375rem rgba(0, 0, 0, 0.25);
+  transition: all 0.3s ease;
+  font-size: 1.4rem;
+  color: #fff;
+}
+
+.fabWhatsapp {
+  background: #25d366;
+}
+
+.fabWhatsapp:hover {
+  background: #1da851;
+  transform: translateY(-0.3125rem);
+  box-shadow: 0 0.375rem 1.25rem rgba(37, 211, 102, 0.45);
+}
+
+/* Two classes (0,2,0) to outrank the global a[href^="tel"]{color:inherit} rule */
+.fab.fabCall {
+  background: #2c3e50;
+  color: #fff;
+  /* Ring keeps the dark button visible over dark sections (e.g. the footer) */
+  border: 1.5px solid rgba(255, 255, 255, 0.22);
+}
+
+.fabCall:hover {
+  background: #1a252f;
+  transform: translateY(-0.3125rem);
+  box-shadow: 0 0.375rem 1.25rem rgba(44, 62, 80, 0.45);
+}
+
+.backToTop {
+  width: 3.125rem;
+  height: 3.125rem;
+  background: #34495e;
+  border: 1.5px solid rgba(255, 255, 255, 0.22);
+  border-radius: 50%;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0.25rem 0.9375rem rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  opacity: 0;
+  transform: translateY(1.25rem);
+  pointer-events: none;
+}
+
+.backToTop:hover {
+  background: #2c3e50;
+  transform: translateY(-0.3125rem);
+  box-shadow: 0 0.375rem 1.25rem rgba(0, 0, 0, 0.3);
+}
+
+.backToTop.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.backToTop i {
+  font-size: 1.2rem;
+}

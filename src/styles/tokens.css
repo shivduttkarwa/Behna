@@ -1,0 +1,30 @@
+/* =====================================================
+   DESIGN TOKENS
+   Single source of truth for brand colours, typography
+   and z-index layers. Extracted from the original site's
+   repeated literal values so components stay consistent.
+   ===================================================== */
+:root {
+  /* Brand palette */
+  --color-ink: #2c3e50; /* primary brand navy — used everywhere */
+  --color-ink-dark: #1a2635; /* hover / darker navy */
+  --color-white: #fff;
+  --color-black: #000;
+  --color-bg: #fff;
+  --color-bg-cream: #faf9f7; /* story section background */
+  --color-text: #000;
+  --color-text-muted: #555;
+  --color-text-soft: #777;
+
+  /* Typography */
+  --font-body: "Arial", sans-serif;
+  --font-display: "Oswald", sans-serif;
+  --font-ui: "Inter", sans-serif;
+
+  /* Z-index layers */
+  --z-header: 1000;
+  --z-logo: 1100;
+  --z-fab: 900;
+  --z-overlay: 2000;
+  --z-preloader: 9999;
+}

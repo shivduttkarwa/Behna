@@ -1,0 +1,100 @@
+/* Product card (na-card family) — verbatim from original, scoped as a module */
+.naCard {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.naCard:hover .naImg {
+  transform: scale(1.06);
+}
+
+.naImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  transition: transform 0.6s ease;
+  display: block;
+}
+
+.naGradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.82) 0%,
+    rgba(0, 0, 0, 0.25) 45%,
+    transparent 100%
+  );
+}
+
+.naContent {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 2rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.naBadge {
+  display: inline-block;
+  background: #2c3e50;
+  color: #fff;
+  font-size: 0.5625rem;
+  font-weight: 700;
+  letter-spacing: 0.15rem;
+  text-transform: uppercase;
+  padding: 0.25rem 0.75rem;
+  border-radius: 0.125rem;
+  width: fit-content;
+}
+
+.naName {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 500;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  line-height: 1;
+  margin: 0;
+}
+
+/* Enquire button inside cards */
+.enquire {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  color: #fff;
+  font-size: 0.78rem;
+  letter-spacing: 0.12rem;
+  text-transform: uppercase;
+  padding: 0.55rem 1.25rem;
+  text-decoration: none;
+  width: fit-content;
+  transition: background 0.25s, color 0.25s, border-color 0.25s;
+}
+
+.naCard:hover .enquire {
+  background: #fff;
+  color: #000;
+  border-color: #fff;
+}
+
+@media (max-width: 768px) {
+  .naName { font-size: 1.6rem; }
+}
+
+@media (max-width: 480px) {
+  .naName { font-size: 1.4rem; }
+  .naContent { padding: 1.5rem 1.25rem; }
+}

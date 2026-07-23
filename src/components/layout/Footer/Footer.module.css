@@ -1,0 +1,151 @@
+/* ── Minimal Footer ── verbatim from original, scoped as a module */
+.footer {
+  background: #111;
+  color: #fff;
+  position: relative;
+}
+
+.footerInner {
+  padding: 5rem 5rem 0;
+}
+
+.footerTopRow {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  gap: 4rem;
+  padding-bottom: 4rem;
+  border-bottom: 0.0625rem solid rgba(255, 255, 255, 0.1);
+}
+
+.footerColQuote {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.footerQuote {
+  font-family: "Georgia", serif;
+  font-size: 1.6rem;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.footerQuoteAttr {
+  font-size: 0.7rem;
+  letter-spacing: 0.15rem;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.footerColTitle {
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.2rem;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.4);
+  margin-bottom: 1.25rem;
+}
+
+.footerNav {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.footerNav a {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.65);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footerNav a:hover {
+  color: #fff;
+}
+
+.footerSocials {
+  display: flex;
+  flex-direction: row;
+  gap: 0.75rem;
+}
+
+.footerSocialLink {
+  width: 2.8rem;
+  height: 2.8rem;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  transition: background 0.3s ease, transform 0.3s ease, color 0.3s ease;
+}
+
+.footerSocialLink:hover {
+  transform: translateY(-0.2rem);
+  color: #fff;
+}
+
+.footerSocialLink[title="Instagram"]:hover { background: #e4405f; }
+.footerSocialLink[title="YouTube"]:hover { background: #ff0000; }
+
+.footerSocialLink i {
+  font-size: 1.2rem;
+}
+
+/* Big brand name */
+.footerBrandDisplay {
+  font-family: var(--font-display);
+  font-size: 22vw;
+  font-weight: 700;
+  line-height: 0.85;
+  color: rgba(255, 255, 255, 0.06);
+  letter-spacing: 2vw;
+  text-transform: uppercase;
+  text-align: center;
+  user-select: none;
+  white-space: nowrap;
+  width: 100%;
+  overflow: hidden;
+  margin: 0;
+}
+
+/* Copyright strip */
+.footerCopy {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 0 1.5rem;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.3);
+  letter-spacing: 0.05rem;
+  border-top: 0.0625rem solid rgba(255, 255, 255, 0.07);
+}
+
+@media (max-width: 768px) {
+  .footerInner { padding: 3rem 1.25rem 0; }
+  .footerTopRow { grid-template-columns: 1fr; gap: 2.5rem; padding-bottom: 2.5rem; }
+  .footerBrandDisplay { font-size: 22vw; letter-spacing: 1.5vw; }
+  .footerCopy { flex-direction: column; gap: 0.5rem; text-align: center; }
+
+  .footerColQuote { align-items: center; text-align: center; }
+
+  .footerNav {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem 2rem;
+    justify-items: center;
+  }
+
+  .footerCol:nth-child(2) { text-align: center; }
+
+  .footerSocials { justify-content: center; }
+  .footerCol:nth-child(3) { text-align: center; }
+}
