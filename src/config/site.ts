@@ -10,7 +10,7 @@ export const PHONE_SECONDARY_DISPLAY = '+91 73003 59127';
 
 export const WHATSAPP_NUMBER = '917231042253';
 
-export const INSTAGRAM_URL = 'https://www.instagram.com/behna_clothing_studio/';
+export const INSTAGRAM_URL = 'https://www.instagram.com/behna_clothing_studio_jaipur/';
 export const YOUTUBE_URL = 'https://www.youtube.com/channel/UCqkJZisHnd1wD8gK0ailsxA';
 
 export const MAPS_DIRECTIONS_URL =
