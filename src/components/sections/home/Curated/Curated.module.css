@@ -69,18 +69,27 @@
   color: #fff;
 }
 
+.curatedCta {
+  text-align: center;
+  margin-top: 2.5rem;
+}
+
 @media (max-width: 768px) {
-  .curatedSection { padding: 3.5rem 1.25rem; }
+  .curatedSection { padding: 3rem 1.25rem; }
+  .curatedHeader { margin-bottom: 1.75rem; }
   .curatedSwiper { overflow: hidden; }
-  .curatedItem { height: 90vh !important; }
-  .curatedOverlay { opacity: 1; padding-bottom: 5rem; }
+  .curatedItem { height: auto !important; }
+  .curatedImg { height: auto; aspect-ratio: 4 / 5; max-height: 70vh; }
+  .curatedOverlay { opacity: 1; }
   .curatedPagination {
     display: flex;
     left: 0 !important;
     right: 0 !important;
     width: 100% !important;
     justify-content: center;
+    margin-top: 1.25rem;
   }
+  .curatedCta { margin-top: 1.5rem; }
   .curatedSwiper :global(.swiper-button-prev),
   .curatedSwiper :global(.swiper-button-next) {
     --swiper-navigation-color: #fff;

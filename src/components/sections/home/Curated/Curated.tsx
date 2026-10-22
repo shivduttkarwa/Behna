@@ -51,7 +51,7 @@ export default function Curated() {
         ))}
       </Swiper>
       <div className={styles.curatedPagination} />
-      <div style={{ textAlign: 'center', marginTop: '2.5rem' }}>
+      <div className={styles.curatedCta}>
         <CtaButton to="/collections" variant="dark">
           VIEW ALL COLLECTIONS
         </CtaButton>
