@@ -14,7 +14,6 @@ export default function Testimonials() {
   const swiperRef = useRef<SwiperClass | null>(null);
   const prevRef = useRef<HTMLDivElement>(null);
   const nextRef = useRef<HTMLDivElement>(null);
-  const paginationRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLSpanElement>(null);
 
   useReveal(ref, () => {
@@ -88,15 +87,12 @@ export default function Testimonials() {
               loop
               speed={600}
               autoplay={{ delay: 6000, disableOnInteraction: false }}
-              pagination={{ clickable: true }}
+              pagination={{ clickable: true, el: `.${styles.tPagination}` }}
               navigation={{ prevEl: null, nextEl: null }}
               onBeforeInit={(swiper) => {
                 const nav = swiper.params.navigation as NavigationOptions;
                 nav.prevEl = prevRef.current;
                 nav.nextEl = nextRef.current;
-                if (swiper.params.pagination && typeof swiper.params.pagination !== 'boolean') {
-                  swiper.params.pagination.el = paginationRef.current;
-                }
               }}
               breakpoints={{
                 768: { slidesPerView: 2, spaceBetween: 30 },
@@ -130,7 +126,7 @@ export default function Testimonials() {
               <i className="ri-arrow-right-s-line" />
             </div>
           </div>
-          <div className={styles.tPagination} ref={paginationRef} />
+          <div className={styles.tPagination} />
         </div>
       </div>
     </section>

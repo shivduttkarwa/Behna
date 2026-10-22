@@ -245,3 +245,9 @@
     border-radius: 0.75rem !important;
   }
 }
+
+@media (max-width: 480px) {
+  .testimonialsSection { padding: 3rem 0; }
+  .testimonialsHeader { margin-bottom: 2rem; }
+  .testimonialsSubtitle { font-size: 0.8rem; letter-spacing: 0.05rem; }
+}

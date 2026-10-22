@@ -10,19 +10,31 @@ export { gsap, ScrollTrigger, SplitText };
 /** Split an element into character spans (SplitText, with a manual fallback). */
 export function getChars(el: HTMLElement): Element[] {
   try {
-    const split = new SplitText(el, { type: 'chars', aria: 'auto' });
+    const split = new SplitText(el, { type: 'words,chars', aria: 'auto' });
     return split.chars;
   } catch {
     const text = el.textContent ?? '';
     el.innerHTML = '';
     el.setAttribute('aria-label', text);
-    return [...text].map((char) => {
-      const span = document.createElement('span');
-      span.style.cssText = 'display:inline-block;white-space:pre;';
-      span.textContent = char;
-      el.appendChild(span);
-      return span;
+    const chars: HTMLSpanElement[] = [];
+    text.split(/(\s+)/).forEach((part) => {
+      if (!part) return;
+      if (!part.trim()) {
+        el.appendChild(document.createTextNode(part));
+        return;
+      }
+      const word = document.createElement('span');
+      word.style.cssText = 'display:inline-block;white-space:nowrap;';
+      [...part].forEach((char) => {
+        const span = document.createElement('span');
+        span.style.cssText = 'display:inline-block;white-space:pre;';
+        span.textContent = char;
+        word.appendChild(span);
+        chars.push(span);
+      });
+      el.appendChild(word);
     });
+    return chars;
   }
 }
 
