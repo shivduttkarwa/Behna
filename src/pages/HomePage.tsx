@@ -14,7 +14,7 @@ import VisitUs from '@/components/sections/shared/VisitUs/VisitUs';
 const HOME_META = {
   title: "Behna Clothing Studio | Women's Ethnic Wear in Jaipur",
   description:
-    'Behna Clothing Studio in Jaipur — handcrafted 3 piece suits, kurtis, anarkali, co-ord sets & festival wear for women. Gandhi Path West, Lalarpura, Jaipur. Open Mon–Sat 10:30 AM–10 PM.',
+    'Behna Clothing Studio in Jaipur — handcrafted 3 piece suits, kurtis, anarkali, co-ord sets & festival wear for women. Gandhi Path West, Lalarpura, Jaipur. Open Mon–Sat 10:30 AM–10 PM, Sun 1–10 PM.',
   canonical: 'https://behna.in/',
   ogTitle: "Behna Clothing Studio | Women's Ethnic Wear in Jaipur",
   ogDescription:

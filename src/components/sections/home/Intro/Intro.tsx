@@ -88,7 +88,7 @@ export default function Intro() {
               <i className="ri-map-pin-line" /> Gandhi Path West, Jaipur
             </a>
             <span>
-              <i className="ri-time-line" /> Mon–Sat, 10:30 AM – 10 PM
+              <i className="ri-time-line" /> Mon–Sat 10:30 AM – 10 PM · Sun 1 – 10 PM
             </span>
           </div>
         </div>
